@@ -11,6 +11,11 @@ else
 	prefix=$2
 fi
 
+#makedir in case it doesnt exist
+#this file is called recursively, so it will
+#make all the dirs
+$(makedir -p "$dir")
+
 #enable * top check hidden files
 shopt -s dotglob
 
@@ -33,7 +38,7 @@ for i in $dir*; do
 		fi
 		
 		echo "creating symlink $current -> $projected"
-			
+
 		if [ -e "$projected" ]; then
 			echo "file exists, removing now"
 			$(rm "$projected")
