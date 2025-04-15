@@ -18,6 +18,6 @@ nitrogen `desktop background manager` \
 wget sed grep `cant believe this isnt default`\
 gcc make cmake vim neovim  `general tools` \
 fdisk `volume viwer thats worst than lsblk but i like it`\
-
+git gh `if you got this far you should already have this` \
 
 
