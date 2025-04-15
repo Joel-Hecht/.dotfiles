@@ -1,0 +1,9 @@
+#!/bin/bash
+
+cd ~/
+sudo chown -Rv _apt:root /var/cache/apt/archives/partial/
+sudo chmod -Rv 700 /var/cache/apt/archives/partial/
+
+wget "https://discord.com/api/download?platform=linux&format=deb" -O discord.deb
+sudo apt install ./discord.deb
+rm discord.deb
