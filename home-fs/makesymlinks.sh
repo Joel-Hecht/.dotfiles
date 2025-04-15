@@ -40,7 +40,7 @@ for i in $dir*; do
 			#directory, but due to the way the program is structured
 			#and the fact that i don't care we will not be fixing that
 		proj_dir=$(dirname "$projected")
-		$(mkdir -p proj_dir)
+		$(mkdir -p "$proj_dir")
 
 
 		if [ -e "$projected" ]; then
