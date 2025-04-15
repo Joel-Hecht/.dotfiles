@@ -19,6 +19,7 @@ for i in $dir*; do
 		if [[ "$i" != "." ]] && [[ "$i" != ".." ]]; then
 			echo "directory found: $i"
 			$0 "$i/" "$prefix"
+			#might want to put dotglob here too
 		fi
 	elif [ -f "$i" ]; then
 		r=$( echo $i | sed -e "s/${prefix//\//\\/}//" )
@@ -32,11 +33,11 @@ for i in $dir*; do
 		fi
 		
 		echo "creating symlink $current -> $projected"
-		
-		if [ -e $projected ]; then
-			echo "removing file"
-			rm $projected
-		fi		
+			
+		if [ -e "$projected" ]; then
+			echo "file exists, removing now"
+			$(rm "$projected")
+		fi
 	
 		$(ln -s "$current" "$projected")
 
