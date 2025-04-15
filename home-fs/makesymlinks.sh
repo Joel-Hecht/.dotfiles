@@ -14,7 +14,7 @@ fi
 #makedir in case it doesnt exist
 #this file is called recursively, so it will
 #make all the dirs
-$(makedir -p "$dir")
+$(mkdir -p "$dir")
 
 #enable * top check hidden files
 shopt -s dotglob
