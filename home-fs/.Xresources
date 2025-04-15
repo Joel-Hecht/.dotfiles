@@ -1,0 +1,10 @@
+# SCALING x96
+# 300% 288
+# 200% 192
+# 150% 144
+# 125% 120
+# Xft.dpi: 144
+URxvt.transparent: true
+URxct.shading:20
+
+URxvt.foreground: #eeeeee
