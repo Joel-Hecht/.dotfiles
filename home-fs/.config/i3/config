@@ -204,3 +204,13 @@ bindsym $mod+Shift+s exec --no-startup-id maim --select | tee "/home/$USER/Pictu
 # this will go haywire if we ever shift to $mod=Mod1 (alt)
 bindsym $mod+$alt+s exec --no-startup-id maim "/home/$USER/Pictures/$(date)" | xclip -selection clipboard -t image/png
 
+#resize windows with arrow keys only
+#scared of overriding vim bindings
+bindsym $mod+Control+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Control+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Control+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Control+Right resize grow width 10 px or 10 ppt
+
+#controls moving workspaces between monitors
+bindsym $mod+Control+Shift+h move workspace to output left
+bindsym $mod+Control+Shift+l move workspace to output right
