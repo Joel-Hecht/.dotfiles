@@ -200,9 +200,10 @@ gaps outer 2px
 #enable transparent windows
 exec_always --no-startup-id compton
 
-bindsym $mod+Shift+s exec --no-startup-id maim --select | tee "/home/$USER/Pictures/$(date)" >( xclip -selection clipboard -t image/png)
+
+bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/$(date)"| xclip -selection clipboard -t image/png
 # this will go haywire if we ever shift to $mod=Mod1 (alt)
-bindsym $mod+$alt+s exec --no-startup-id maim "/home/$USER/Pictures/$(date)" | xclip -selection clipboard -t image/png
+bindsym $mod+$alt+s exec --no-startup-id maim | tee "/home/$USER/Pictures/$(date)" |  xclip -selection clipboard -t image/png 
 
 #resize windows with arrow keys only
 #scared of overriding vim bindings
