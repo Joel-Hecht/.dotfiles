@@ -118,3 +118,5 @@ fi
 
 #add my custom commands to path
 export PATH="$HOME/bin:$PATH"
+
+export PATH="/usr/lib/qt6/bin:$PATH"

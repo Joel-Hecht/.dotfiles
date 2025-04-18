@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	echo "needs an argument (pdf file)" 
+	exit 1
+else
+	file=$(realpath "$1")
+fi
+
+prove_ext=$(grep -e '\.pdf$' "$file")
+
+if [[ -z "$prove_ext" ]]; then
+	if  [[ -e "$file" ]]; then
+		$(firefox "$file")
+	else
+		echo "file $file does not exist"
+	fi	
+
+else
+	echo "not a pdf file or doesnt exist"
+fi
+
