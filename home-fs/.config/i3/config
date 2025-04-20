@@ -215,3 +215,8 @@ bindsym $mod+Control+Right resize grow width 10 px or 10 ppt
 #controls moving workspaces between monitors
 bindsym $mod+Control+Shift+h move workspace to output left
 bindsym $mod+Control+Shift+l move workspace to output right
+
+focus_follows_mouse no
+
+# cant decide if i want this, read i3 manual 4.28
+# workspace_auto_back_and_forth yes
