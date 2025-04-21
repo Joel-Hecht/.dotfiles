@@ -1,3 +1,0 @@
-#!/bin/bash
-
-firefox --new-window --profile "$HOME/.mozilla/firefox/sjhbesy5.Drexel Fencing" &

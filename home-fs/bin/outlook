@@ -1,3 +1,0 @@
-#!/bin/bash
-
-firefox --new-window  "https://outlook.office365.com/mail" &

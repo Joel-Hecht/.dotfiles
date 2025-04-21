@@ -1,3 +1,0 @@
-#!/bin/bash
-
-firefox --new-window  "https://teams.microsoft.com/v2/" &
