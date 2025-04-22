@@ -122,6 +122,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="/usr/lib/qt6/bin:$PATH"
 
 #macros for certain webpage functions, etc
+alias config="vi ~/.dotfiles/home-fs/.config/i3/config"
 alias outlook="firefox --new-window  https://outlook.office365.com/mail &"
 alias teams="firefox --new-window  https://teams.microsoft.com/v2/ &"
 alias tumblr="firefox --new-window  https://www.tumblr.com &"
