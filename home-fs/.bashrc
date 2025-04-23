@@ -132,4 +132,8 @@ alias fencing="firefox --new-window --profile '$HOME/.mozilla/firefox/sjhbesy5.D
 #needed to source i3bar tray to primary monitor on multi-monitor setup
 #should work dynamically with laptop and PC systems
 #install xrandr with sudo apt install libx11-dev
-xrandr --output HDMI-0 --primary
+#get first available display
+DISPLAY=$(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1)
+xrandr --output "$DISPLAY" --primary
+
+

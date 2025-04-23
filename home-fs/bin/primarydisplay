@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#get first available display
+DISPLAY=$(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1)
+
+xrandr --output "$DISPLAY" --primary
+
+
