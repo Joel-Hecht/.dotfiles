@@ -129,3 +129,7 @@ alias teams="firefox --new-window  https://teams.microsoft.com/v2/ &"
 alias tumblr="firefox --new-window  https://www.tumblr.com &"
 alias fencing="firefox --new-window --profile '$HOME/.mozilla/firefox/sjhbesy5.Drexel Fencing' & " #uses profile specific to Joe desktop, dont use
 
+#needed to source i3bar tray to primary monitor on multi-monitor setup
+#should work dynamically with laptop and PC systems
+#install xrandr with sudo apt install libx11-dev
+xrandr --output HDMI-0 --primary
