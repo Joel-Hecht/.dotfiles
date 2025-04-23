@@ -189,6 +189,7 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status --config ~/.i3status.conf
 		tray_padding 2
+		tray_output primary
 		font pango:JetBrainsMono Nerd Font 9
 		separator_symbol ":|:"
 		workspace_min_width 40
