@@ -133,7 +133,7 @@ alias fencing="firefox --new-window --profile '$HOME/.mozilla/firefox/sjhbesy5.D
 #should work dynamically with laptop and PC systems
 #install xrandr with sudo apt install libx11-dev
 #get first available display
-DISPLAY=$(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1)
-xrandr --output "$DISPLAY" --primary
+disp=$(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1)
+xrandr --output $disp --primary
 
 
