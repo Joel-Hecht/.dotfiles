@@ -136,4 +136,3 @@ alias fencing="firefox --new-window --profile '$HOME/.mozilla/firefox/sjhbesy5.D
 disp=$(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1)
 xrandr --output $disp --primary
 
-
