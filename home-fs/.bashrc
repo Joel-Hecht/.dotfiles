@@ -116,18 +116,13 @@ fi
 #generate random color/image when we start a terminal window
 #colorscript random
 
+#import all aliases
+source ~/.aliases.sh
+
 #add my custom commands to path
 export PATH="$HOME/bin:$PATH"
-
 export PATH="/usr/lib/qt6/bin:$PATH"
-
-#macros for certain webpage functions, etc
-alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
-alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
-alias outlook="firefox --new-window  https://outlook.office365.com/mail &"
-alias teams="firefox --new-window  https://teams.microsoft.com/v2/ &"
-alias tumblr="firefox --new-window  https://www.tumblr.com &"
-alias fencing="firefox --new-window --profile '$HOME/.mozilla/firefox/sjhbesy5.Drexel Fencing' & " #uses profile specific to Joe desktop, dont use
+export PATH="$HOME/bin/aliases:$PATH"
 
 #needed to source i3bar tray to primary monitor on multi-monitor setup
 #should work dynamically with laptop and PC systems
