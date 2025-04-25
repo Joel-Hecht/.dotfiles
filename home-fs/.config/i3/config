@@ -233,3 +233,6 @@ focus_follows_mouse no
 
 #keybinds
  exec_always --no-startup-id xmodmap ~/.dotfiles/.Xmodmap 
+
+#program shortcuts
+bindsym Control+Mod1+f exec --no-startup-id firefox
