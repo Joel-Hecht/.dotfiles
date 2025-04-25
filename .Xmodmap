@@ -1,3 +1,2 @@
-pointer = 1 2 3 4 5 7 6 8 9 10 
+keycode 62 = Escape NoSymbol
 remove shift = Escape
-keycode 62 = Escape
