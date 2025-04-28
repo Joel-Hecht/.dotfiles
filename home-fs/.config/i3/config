@@ -236,3 +236,11 @@ focus_follows_mouse no
 
 #program shortcuts
 bindsym Control+Mod1+f exec --no-startup-id firefox
+bindsym Control+Mod1+a exec --no-startup-id firefox drive.google.com/drive/u/0
+bindsym Control+Mod1+d exec --no-startup-id firefox discord.com/channels/@me
+bindsym Control+Mod1+q exec --no-startup-id firefox learn.dcollege.net
+bindsym Control+Mod1+j exec --no-startup-id firefox jisho.org
+bindsym Control+Mod1+s exec --no-startup-id firefox one.drexel.edu
+bindsym Control+Mod1+k exec --no-startup-id firefox calendar.google.com/calendar/u/1
+bindsym Control+Mod1+o exec --no-startup-id firefox outlook.office365.com/mail/ 
+bindsym Control+Mod1+m exec --no-startup-id firefox gmail.com
