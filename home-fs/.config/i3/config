@@ -244,6 +244,7 @@ bindsym Control+Mod1+m exec --no-startup-id firefox maps.google.com
 bindsym Control+Mod1+g exec --no-startup-id firefox gmail.com
 bindsym Control+Mod1+t exec --no-startup-id firefox translate.google.com
 bindsym Control+Mod1+n exec --no-startup-id notepadqq
+bindsym Control+Mod1+p exec --no-startup-id snap run pinta 
 # rui spreadsheet you cannot access
 bindsym Control+Mod1+s exec --no-startup-id firefox docs.google.com/spreadsheets/d/1XUmurBMg0Zmd--QApo49J7yvUWF4IAfexJhuBa1Q9WU/edit?gid=1565386317#gid=1565386317
 # dreXel
