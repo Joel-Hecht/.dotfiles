@@ -1,5 +1,5 @@
-
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
+alias dot="cd ~/.dotfiles"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 alias outlook="firefox --new-window  https://outlook.office365.com/mail &"
 alias teams="firefox --new-window  https://teams.microsoft.com/v2/ &"

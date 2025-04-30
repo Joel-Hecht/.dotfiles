@@ -131,3 +131,4 @@ export PATH="$HOME/bin/aliases:$PATH"
 disp=$(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1)
 xrandr --output $disp --primary
 
+xmodmap -e "pointer = 1 2 3 5 4 7 6 8 9 10"
