@@ -197,6 +197,9 @@ bar {
 		padding 5px
 }
 
+#for bar tray, set which monitor is primary using screen script	
+exec_always --no-startup-id sh ~/screen.sh
+
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id autotiling --limit 2
 

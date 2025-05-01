@@ -124,11 +124,12 @@ export PATH="$HOME/bin:$PATH"
 export PATH="/usr/lib/qt6/bin:$PATH"
 export PATH="$HOME/bin/aliases:$PATH"
 
+#MOVED TO I3CONFIG
 #needed to source i3bar tray to primary monitor on multi-monitor setup
 #should work dynamically with laptop and PC systems
 #install xrandr with sudo apt install libx11-dev
 #get first available display
-disp=$(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1)
-xrandr --output $disp --primary
+#disp=$(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1)
+#xrandr --output $disp --primary
 
 xmodmap -e "pointer = 1 2 3 5 4 7 6 8 9 10"
