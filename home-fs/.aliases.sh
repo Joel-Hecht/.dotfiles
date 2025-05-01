@@ -5,5 +5,5 @@ alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 alias outlook="firefox --new-window  https://outlook.office365.com/mail &"
 alias teams="firefox --new-window  https://teams.microsoft.com/v2/ &"
 alias tumblr="firefox --new-window  https://www.tumblr.com &"
-alias fencing="firefox --new-window --profile '$HOME/.mozilla/firefox/sjhbesy5.Drexel Fencing' & " #uses profile specific to Joe desktop, dont use
+alias fencing="firefox --new-window --profile "$(realpath $HOME/.mozilla/firefox/*\.Drexel\ Fencing | sed -e 's/ /\\ /')" & " #uses profile specific to Joe desktop, dont use
 
