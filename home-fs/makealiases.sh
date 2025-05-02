@@ -1,6 +1,5 @@
 #!/bin/bash
 
-as=$(tail -n +2 .aliases.sh | sed -e 's/alias *//' | sed -e 's/=.*$//')
 
 bpath="#!/bin/bash"
 
@@ -9,6 +8,8 @@ thispath=$(dirname "$thispath")
 aliaspath="$thispath/bin/aliases"
 
 $(mkdir -p $aliaspath)
+
+as=$(tail -n +2 "$HOME/.aliases.sh" | sed -e 's/alias *//' | sed -e 's/=.*$//')
 
 #note that we are not removing actual bash scripts stored
 #in the ~/bin/aliases folder
