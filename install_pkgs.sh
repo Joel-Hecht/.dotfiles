@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#packages installed with apt (run first)
 sudo apt update
 sudo apt upgrade -y
 sudo apt install \
@@ -21,4 +22,3 @@ gcc make cmake vim neovim  `general tools` \
 fdisk `volume viwer thats worst than lsblk but i like it`\
 git gh `if you got this far you should already have this` \
 libx11-dev `x11 support, needed for multi-monitor config` \
-
