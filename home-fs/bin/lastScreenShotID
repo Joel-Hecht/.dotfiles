@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd ${HOME}/Pictures/
+
+id=$(ls | grep ^SCID[0-9]*_.*.png$ | sed -e s/^SCID// | sed -e s/_.*$// | sort -nr | head -1)
+echo $id

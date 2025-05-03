@@ -2,6 +2,7 @@
 
 #navigation
 alias dot="cd ~/.dotfiles"
+alias dhome="cd ~/.dotfiles/home-fs"
 
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
@@ -17,6 +18,7 @@ alias gcm="git commit -m"
 alias staged="git diff --name-only --staged"
 alias names="git diff --name-only"
 alias gp="git push"
+alias gpull="git pull"
 
 #copy last command entered
 alias cplast="fc -ln -1 | xargs | xclip -sel c"
