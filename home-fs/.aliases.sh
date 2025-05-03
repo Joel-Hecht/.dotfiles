@@ -1,10 +1,25 @@
-alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
+#!/bin/bash
+
+#navigation
 alias dot="cd ~/.dotfiles"
+
+#files
+alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
 alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
-alias outlook="firefox --new-window  https://outlook.office365.com/mail &"
-alias teams="firefox --new-window  https://teams.microsoft.com/v2/ &"
-alias tumblr="firefox --new-window  https://www.tumblr.com &"
-alias fencing="firefox --new-window --profile "$(realpath $HOME/.mozilla/firefox/*\.Drexel\ Fencing | sed -e 's/ /\\ /')" & " #uses profile specific to Joe desktop, dont use
-alias keychron="chromium 'https://launcher.keychron.com' &"
+
+#computer control
 alias sl="systemctl suspend"
+
+#git / general shortcuts
+alias gaa="git add --all"
+alias gcm="git commit -m"
+alias staged="git diff --name-only --staged"
+alias names="git diff --name-only"
+alias gp="git push"
+
+#copy last command entered
+alias cplast="fc -ln -1 | xargs | xclip -sel c"
+
+#source aliases that act as applications
+source ${HOME}/.aliases_dmenu.sh

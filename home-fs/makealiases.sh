@@ -9,7 +9,7 @@ aliaspath="$thispath/bin/aliases"
 
 $(mkdir -p $aliaspath)
 
-as=$(tail -n +2 "$HOME/.aliases.sh" | sed -e 's/alias *//' | sed -e 's/=.*$//')
+as=$(tail -n +2 "$HOME/.aliases_dmenu.sh" | sed -e 's/alias *//' | sed -e 's/=.*$//')
 
 #note that we are not removing actual bash scripts stored
 #in the ~/bin/aliases folder
@@ -23,7 +23,7 @@ for a in $as; do
 	cat > "$p" <<- EOF
 	$bpath
 	shopt -s expand_aliases
-	source $HOME/.aliases.sh
+	source $HOME/.aliases_dmenu.sh
 	$a 
 	EOF
 	chmod +x $p

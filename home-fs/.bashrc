@@ -133,3 +133,12 @@ export PATH="$HOME/bin/aliases:$PATH"
 #xrandr --output $disp --primary
 
 xmodmap -e "pointer = 1 2 3 4 5 7 6 8 9 10"
+
+#append to bash history for this terminal live, instead of when file ends
+#useful for copying last command
+#When each command is executed, this will append the contents to the active
+#bash history list for the current terminal (-a), then pull all history from 
+#other terminals (-c), and add the current termianls history tot that file (-r)
+#this allows bash (which is a seperate, noninteractable terminal) to read 
+#the history live
+export PROMPT_COMMAND='history -a'
