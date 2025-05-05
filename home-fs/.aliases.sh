@@ -27,6 +27,7 @@ alias killpid="kill -9"
 
 #copy last command entered
 alias cplast="fc -ln -1 | xargs | xclip -sel c"
+alias cpy="xclip -sel c"
 
 #source aliases that act as applications
 source ${HOME}/.aliases_dmenu.sh
