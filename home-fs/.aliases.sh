@@ -22,6 +22,8 @@ alias push="git push"
 
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
+alias pids="ps aux"
+alias killpid="kill -9"
 
 #copy last command entered
 alias cplast="fc -ln -1 | xargs | xclip -sel c"
