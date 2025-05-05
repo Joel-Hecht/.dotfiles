@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-#exec_always --no-startup-id source ~/.bashrc
+exec_always --no-startup-id source ~/.bashrc
 
 set $mod Mod4
 set $alt Mod1
@@ -258,7 +258,7 @@ bindsym Control+Mod1+q exec --no-startup-id firefox learn.dcollege.net/ultra/cou
 bindsym Control+Mod1+a exec --no-startup-id firefox drive.google.com/drive/u/1/my-drive
 
 #make this a toggle later
-bindsym Control+Mod1+h exec --no-startup-id xmodmap -e "pointer = 1 2 3 5 4 6 7 8 9 10"
+bindsym Control+Mod1+h exec --no-startup-id sh ${HOME}/bin/toggleScrollDirection 
 
 # audio buttons
 bindsym F2 exec amixer -q -M set Master 5%-
