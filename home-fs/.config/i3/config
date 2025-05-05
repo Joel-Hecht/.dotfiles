@@ -260,7 +260,11 @@ bindsym Control+Mod1+k exec --no-startup-id firefox calendar.google.com/calendar
 bindsym Control+Mod1+q exec --no-startup-id firefox learn.dcollege.net/ultra/course
 bindsym Control+Mod1+a exec --no-startup-id firefox drive.google.com/drive/u/1/my-drive
 
+#make this a toggle later
+bindsym Control+Mod1+h exec --no-startup-id xmodmap -e "pointer = 1 2 3 5 4 6 7 8 9 10"
+
 # audio buttons
 bindsym F2 exec amixer -q -M set Master 5%-
 bindsym F3 exec amixer -q -M set Master 5%+ 
 bindsym F4 exec amixer -q set Master toggle
+bindsym F1 exec amixer -q set Master toggle
