@@ -10,7 +10,7 @@ alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 
 #computer control
-alias sl="systemctl suspend"
+alias eep="systemctl suspend"
 
 #git / general shortcuts
 alias gaa="git add --all"
