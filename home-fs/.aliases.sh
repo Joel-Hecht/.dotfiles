@@ -17,8 +17,11 @@ alias gaa="git add --all"
 alias gcm="git commit -m"
 alias staged="git diff --name-only --staged"
 alias names="git diff --name-only"
-alias gp="git push"
-alias gpull="git pull"
+alias gp="git pull"
+alias push="git push"
+
+#reload bashrc after updates	
+alias sb="source ~/.bashrc"
 
 #copy last command entered
 alias cplast="fc -ln -1 | xargs | xclip -sel c"
