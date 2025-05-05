@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-exec_always --no-startup-id source ~/.bashrc
+#exec_always --no-startup-id source ~/.bashrc
 
 set $mod Mod4
 set $alt Mod1
@@ -198,9 +198,6 @@ bar {
 		#binding_mode_indicator yes
 		padding 5px
 }
-
-#for bar tray, set which monitor is primary using screen script	
-exec_always --no-startup-id sh ~/bin/primarydisplay
 
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id autotiling --limit 2
