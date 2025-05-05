@@ -9,6 +9,8 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+exec_always --no-startup-id source ~/.bashrc
+
 set $mod Mod4
 set $alt Mod1
 
@@ -211,9 +213,9 @@ gaps outer 2px
 exec_always --no-startup-id compton
 
 
-bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/$(date)"| xclip -selection clipboard -t image/png
+bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/SCID$(sh ${HOME}/bin/nextScreenShotID)_$(date).png"| xclip -selection clipboard -t image/png
 # this will go haywire if we ever shift to $mod=Mod1 (alt)
-bindsym $mod+$alt+s exec --no-startup-id maim | tee "/home/$USER/Pictures/$(date)" |  xclip -selection clipboard -t image/png 
+bindsym $mod+$alt+s exec --no-startup-id maim | tee "$HOME/Pictures/SCID$(sh ${HOME}/bin/nextScreenShotID)_$(date).png" |  xclip -selection clipboard -t image/png 
 
 bindsym $mod+Control+Left resize shrink width 10 px or 10 ppt
 bindsym $mod+Control+Down resize grow height 10 px or 10 ppt
@@ -255,13 +257,10 @@ bindsym Control+Mod1+x exec --no-startup-id firefox one.drexel.edu
 # Kalendar
 bindsym Control+Mod1+k exec --no-startup-id firefox calendar.google.com/calendar/u/1
 # i came up with these like 2 years ago i dont even know
-bindsym Control+Mod1+q exec --no-startup-id firefox learn.dcollege.net
+bindsym Control+Mod1+q exec --no-startup-id firefox learn.dcollege.net/ultra/course
 bindsym Control+Mod1+a exec --no-startup-id firefox drive.google.com/drive/u/1/my-drive
-
-bindsym Control+Mod1+h exec --no-startup-id xmodmap -e "pointer = 1 2 3 5 4 6 7 8 9 10"
 
 # audio buttons
 bindsym F2 exec amixer -q -M set Master 5%-
 bindsym F3 exec amixer -q -M set Master 5%+ 
 bindsym F4 exec amixer -q set Master toggle
-bindsym F1 exec amixer -q set Master toggle
