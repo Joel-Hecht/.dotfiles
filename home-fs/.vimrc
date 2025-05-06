@@ -7,3 +7,7 @@
 :set softtabstop=0 noexpandtab
 :syntax enable
 
+autocmd BufReadPost *
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+  \ |   exe "normal! g`\""
+  \ | endif
