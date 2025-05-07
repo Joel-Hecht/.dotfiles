@@ -19,6 +19,7 @@ alias staged="git diff --name-only --staged"
 alias names="git diff --name-only"
 alias gp="git pull"
 alias push="git push"
+alias dp="dot && gp"
 
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
