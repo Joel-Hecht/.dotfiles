@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#count number of x in permissions
+#we need to divide by 2 because rw is 2 characters
+xcount=$(($(ls /dev/hidraw3 -l | sed -e "s/ .*$//" | tr -cd "rw" | wc -c) / 2 ))
+
+operator="a+"
+if [ $xcount -gt 1 ]; then
+	operator="go-"
+fi
+
+echo $operator
+
+sudo chmod "$operator"rw /dev/hidraw3

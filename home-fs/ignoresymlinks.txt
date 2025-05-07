@@ -1,0 +1,5 @@
+ignoresymlinks.txt
+makesymlinks.sh
+makealiases.sh
+Makefile
+permission_setup.sh

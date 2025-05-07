@@ -22,8 +22,10 @@ alias push="git push"
 
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
+
 alias pids="ps aux"
 alias killpid="kill -9"
+alias kf="keyboard_firmware"
 
 #copy last command entered
 alias cplast="fc -ln -1 | xargs | xclip -sel c"
