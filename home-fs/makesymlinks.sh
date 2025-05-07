@@ -1,16 +1,35 @@
 #!/bin/bash
 
+echoargs () {
+	flag=""
+	if [ $1 -eq 1 ]; then
+		flag="v"
+	fi
+	shift
+	for arg in "$@"; do
+		if echo "$arg" | grep -q"$flag" "/"; then
+			echo "$arg"
+		fi
+	done
+}
+
 # for recursive calls, get the current dir that we 
 # are working on
 if [ -z "$1" ]; then
 	dir=$(echo $0 | sed 's/[^\/]*$//')
 	dir=$(realpath "$dir")
 	prefix=$dir
+	nextignores=$(echoargs 0 $(cat ignoresymlinks.txt))
+	thisignores=$(echoargs 1 $(cat ignoresymlinks.txt))
 else
 	dir=$1
 	prefix=$2
+	nextignores=$(echoargs 0 "$@")
+	thisignores=$(echoargs 1 "$@")
 fi
 
+echo $thisignores
+echo $nextignores
 
 #enable * top check hidden files
 shopt -s dotglob
@@ -42,12 +61,12 @@ for i in $dir*; do
 		proj_dir=$(dirname "$projected")
 		$(mkdir -p "$proj_dir")
 
-
-		if [ -e "$projected" ]; then
+		#we need to check if it is a symlink (broken) or if it is a file at all (in which case we overwrite)
+		if [[ -e "$projected" || -L "$projected" ]]; then
 			echo "file exists, removing now"
 			$(rm "$projected")
 		fi
-	
+		
 		$(ln -s "$current" "$projected")
 
 	else
