@@ -1,8 +1,8 @@
 #!/bin/bash
 
-popeaddress="https://m.media-amazon.com/images/M/MV5BNGYyM2Y5M2ItMzRiNi00MGQzLThmY2EtZWEyZDJiOWE5ZTNiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+popeaddress="${HOME}/img/pope.jpg"
 
-firefox --new-instance --profile $(echo ${HOME}/.mozilla/firefox/$(ls ${HOME}/.mozilla/firefox/ | grep -e default-esr | head -1)) "$popeaddress"  &
+eog "$popeaddress" &
 
 killme=$!
 sleep 3
