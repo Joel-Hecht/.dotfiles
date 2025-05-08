@@ -5,6 +5,6 @@ popeaddress="${HOME}/img/pope.jpg"
 eog "$popeaddress" &
 
 killme=$!
-sleep 3
+sleep 1.5
 
 kill -9 $killme
