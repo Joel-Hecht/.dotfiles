@@ -252,7 +252,8 @@ bindsym Control+Mod1+s exec --no-startup-id firefox docs.google.com/spreadsheets
 # dreXel
 bindsym Control+Mod1+x exec --no-startup-id firefox one.drexel.edu
 # Kalendar
-bindsym Control+Mod1+k exec --no-startup-id firefox calendar.google.com/calendar/u/1
+#bindsym Control+Mod1+k exec --no-startup-id firefox calendar.google.com/calendar/u/1
+bindsym Control+Mod1+k exec --no-startup-id konsole -e calcurse
 # i came up with these like 2 years ago i dont even know
 bindsym Control+Mod1+q exec --no-startup-id firefox learn.dcollege.net/ultra/course
 bindsym Control+Mod1+a exec --no-startup-id firefox drive.google.com/drive/u/1/my-drive
