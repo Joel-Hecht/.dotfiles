@@ -236,27 +236,27 @@ focus_follows_mouse no
 #keybinds, this works better than the .Xmodmap file i think
 exec_always --no-startup-id xmodmap -e "keycode 62 = Escape NoSymbol" 
 exec_always --no-startup-id xmodmap -e "remove shift = Escape"
+exec_always --no-startup-id xmodmap -e "keycode 108 = Multi_key Alt_R" 
 
 #program shortcuts
 bindsym Control+Mod1+f exec --no-startup-id firefox
+bindsym Control+Mod1+n exec --no-startup-id notepadqq
+bindsym Control+Mod1+p exec --no-startup-id snap run pinta 
+bindsym Control+Mod1+k exec --no-startup-id konsole -e calcurse
+
+#website shortcuts
 bindsym Control+Mod1+d exec --no-startup-id firefox discord.com/channels/@me
 bindsym Control+Mod1+j exec --no-startup-id firefox jisho.org
 bindsym Control+Mod1+o exec --no-startup-id firefox outlook.office365.com/mail 
 bindsym Control+Mod1+m exec --no-startup-id firefox maps.google.com
 bindsym Control+Mod1+g exec --no-startup-id firefox gmail.com
 bindsym Control+Mod1+t exec --no-startup-id firefox translate.google.com
-bindsym Control+Mod1+n exec --no-startup-id notepadqq
-bindsym Control+Mod1+p exec --no-startup-id snap run pinta 
-# rui spreadsheet you cannot access
-bindsym Control+Mod1+s exec --no-startup-id firefox docs.google.com/spreadsheets/d/1XUmurBMg0Zmd--QApo49J7yvUWF4IAfexJhuBa1Q9WU/edit?gid=1565386317#gid=1565386317
-# dreXel
 bindsym Control+Mod1+x exec --no-startup-id firefox one.drexel.edu
-# Kalendar
-#bindsym Control+Mod1+k exec --no-startup-id firefox calendar.google.com/calendar/u/1
-bindsym Control+Mod1+k exec --no-startup-id konsole -e calcurse
-# i came up with these like 2 years ago i dont even know
 bindsym Control+Mod1+q exec --no-startup-id firefox learn.dcollege.net/ultra/course
 bindsym Control+Mod1+a exec --no-startup-id firefox drive.google.com/drive/u/1/my-drive
+# rui spreadsheet you cannot access
+bindsym Control+Mod1+s exec --no-startup-id firefox docs.google.com/spreadsheets/d/1XUmurBMg0Zmd--QApo49J7yvUWF4IAfexJhuBa1Q9WU/edit?gid=1565386317#gid=1565386317
+# i came up with these like 2 years ago i dont even know
 
 #make this a toggle later
 bindsym Control+Mod1+h exec --no-startup-id sh ${HOME}/bin/toggleScrollDirection 
