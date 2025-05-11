@@ -16,39 +16,47 @@ echoargs () {
 # for recursive calls, get the current dir that we 
 # are working on
 if [ -z "$1" ]; then
-	dir=$(echo $0 | sed 's/[^\/]*$//')
-	dir=$(realpath "$dir")
+	#dir=$(echo $0 | sed 's/[^\/]*$//')
+	dir=$(dirname -- "${BASH_SOURCE[0]}")
+	dir=$(cd -- "$MY_PATH" && pwd)
 	prefix=$dir
-	nextignores=$(echoargs 0 $(cat ignoresymlinks.txt))
-	thisignores=$(echoargs 1 $(cat ignoresymlinks.txt))
+	nextignores=$(cat ignoresymlinks.txt | sed -e 's/^/home-fs\//') #prepend home-fs to all we get for the root dir
+	#thisignores=$(echoargs 1 $(cat ignoresymlinks.txt) | sed -e 's/^/home-fs\//')
+	thisignores="" #since first call enteres home-fs, all arguments should be prepended with home fs and read as nextignores
 else
 	dir=$1
 	prefix=$2
-	nextignores=$(echoargs 0 "$@")
-	thisignores=$(echoargs 1 "$@")
+	nextignores=$(echoargs 0 "${@:3}") #take all args except the first two
+	thisignores=$(echoargs 1 "${@:3}")
 fi
 
-echo $thisignores
-echo $nextignores
+#echo "thisignores;  $thisignores"
+#echo $nextignores
 
 #enable * top check hidden files
 shopt -s dotglob
 
-for i in $dir*; do
+for i in $dir*;  do
 	if [ -d "$i" ]; then
 		if [[ "$i" != "." ]] && [[ "$i" != ".." ]]; then
 			echo "directory found: $i"
-			$0 "$i/" "$prefix"
+			newdirname=$(echo $i | grep -oP '[^/]*$')
+			newargs=$(echo "$nextignores" | grep "^$newdirname""/" | sed -e "s/^$newdirname\///" )
+    		echo $newargs | xargs $0 "$i""/" "$prefix" 
 			#might want to put dotglob here too
 		fi
 	elif [ -f "$i" ]; then
+		#horrble evil sed
 		r=$( echo $i | sed -e "s/${prefix//\//\\/}//" )
-		
+		fname=$(echo $r | sed -e 's/.*\///')
+
 		current="$2$r"
 		projected="$HOME$r"
 		
-		if [ "$current" == $(realpath $0) ]; then
-			#we do not want to make symlink of this bash file
+		ignorematches=$(echo "$thisignores" | grep -w "$fname" )
+		if [ -n "$ignorematches" ]; then #if the mtaches are non-empty
+			#we do not want to make symlink of this since it is in the ignore file
+			echo "ignoring file: $r"
 			continue
 		fi
 		

@@ -4,3 +4,5 @@ makealiases.sh
 Makefile
 permission_setup.sh
 bin/testignored
+bin/testignored2
+bin/testignored3
