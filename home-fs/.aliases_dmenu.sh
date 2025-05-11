@@ -7,3 +7,4 @@ alias fencing="firefox --new-window --profile "$(realpath $HOME/.mozilla/firefox
 alias keychron="chromium 'https://launcher.keychron.com' &"
 alias slack="flatpak run com.slack.Slack &"
 alias pinta="flatpak run com.github.PintaProject.Pinta &"
+alias files="nautilus &"
