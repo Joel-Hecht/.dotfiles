@@ -6,5 +6,7 @@ cd ${HOME}/Pictures
 
 fname=$(ls | grep ^SCID"$lastID"_.*.png)
 
-eog "$fname" &
+#eog "$fname" &
+#update to use pinta instead
+flatpak run com.github.PintaProject.Pinta "$fname" &
 

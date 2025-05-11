@@ -13,3 +13,8 @@ done
 ##make root owner and change setUID so it can exectue without password
 #sudo chown root:root "$kf"
 #sudo chmod 4755 "$kf"
+
+#give pinta home directory access
+sudo flatpak override com.github.PintaProject.Pinta --filesystem=~/ && echo "pinta permissions added"
+
+

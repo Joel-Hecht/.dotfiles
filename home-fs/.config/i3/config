@@ -241,7 +241,7 @@ exec_always --no-startup-id xmodmap -e "keycode 108 = Multi_key Alt_R"
 #program shortcuts
 bindsym Control+Mod1+f exec --no-startup-id firefox
 bindsym Control+Mod1+n exec --no-startup-id notepadqq
-bindsym Control+Mod1+p exec --no-startup-id snap run pinta 
+bindsym Control+Mod1+p exec --no-startup-id flatpak run com.github.PintaProject.Pinta & 
 bindsym Control+Mod1+k exec --no-startup-id konsole -e calcurse
 
 #website shortcuts
