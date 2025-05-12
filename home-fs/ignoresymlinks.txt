@@ -3,6 +3,7 @@ makesymlinks.sh
 makealiases.sh
 Makefile
 permission_setup.sh
+removebrokensymlinks.sh
 bin/testignored
 bin/testignored2
 bin/testignored3

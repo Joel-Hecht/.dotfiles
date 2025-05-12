@@ -39,7 +39,7 @@ shopt -s dotglob
 for i in $dir*;  do
 	if [ -d "$i" ]; then
 		if [[ "$i" != "." ]] && [[ "$i" != ".." ]]; then
-			echo "directory found: $i"
+			#echo "directory found: $i"
 			newdirname=$(echo $i | grep -oP '[^/]*$')
 			newargs=$(echo "$nextignores" | grep "^$newdirname""/" | sed -e "s/^$newdirname\///" )
     		echo $newargs | xargs $0 "$i""/" "$prefix" 
@@ -71,14 +71,14 @@ for i in $dir*;  do
 
 		#we need to check if it is a symlink (broken) or if it is a file at all (in which case we overwrite)
 		if [[ -e "$projected" || -L "$projected" ]]; then
-			echo "file exists, removing now"
+			#echo "file exists, removing now"
 			$(rm "$projected")
 		fi
 		
 		$(ln -s "$current" "$projected")
 
-	else
-		echo "no files in $i"
+	#else
+		#echo "no files in $i"
 	fi
 done
 
