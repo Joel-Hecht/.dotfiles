@@ -8,6 +8,7 @@ alias dhome="cd ~/.dotfiles/home-fs"
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
 alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
+alias sl="pope"
 
 #computer control
 alias eep="systemctl suspend"
