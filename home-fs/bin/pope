@@ -1,12 +1,16 @@
 #!/bin/bash
 
-if [ $# -eq 0 ] || [ $1 = "leo" ] ; then
-	popeaddress="${HOME}/img/pope.jpg"
-elif [ $1 = "francis" ]; then
-	popeaddress="${HOME}/img/pope2.jpg"
-else
-	popeaddress="${HOME}/img/what.png"
-fi
+hasold=""
+
+#overkill handler but I want to be conventional
+while getopts 'lf' flag; do
+	case "${flag}" in 
+		f) hasold="_old" ;;
+		l) hasold="" ;;
+	esac
+done
+
+popeaddress="${HOME}/img/pope${hasold}.jpg"
 
 eog "$popeaddress" &
 
