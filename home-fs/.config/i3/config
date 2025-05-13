@@ -268,3 +268,6 @@ bindsym F3 exec amixer -q -M set Master 5%+
 
 bindsym F1 exec --no-startup-id sh ${HOME}/bin/mute_unmute
 bindsym F4 exec --no-startup-id sh ${HOME}/bin/mute_unmute
+
+#activate gnome policykit, needed for i3wm to authenmtiate root
+exec_always --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
