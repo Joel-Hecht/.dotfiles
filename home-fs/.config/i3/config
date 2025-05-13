@@ -266,3 +266,6 @@ bindsym F2 exec amixer -q -M set Master 5%-
 bindsym F3 exec amixer -q -M set Master 5%+ 
 bindsym F4 exec amixer -q set Master toggle
 bindsym F1 exec amixer -q set Master toggle
+
+#activate gnome policykit, needed for i3wm to authenmtiate root
+exec_always --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
