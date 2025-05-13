@@ -1,0 +1,10 @@
+#!/bin/bash
+
+amixer -q set Master toggle
+off=$(amixer | head -n 6 | grep off | wc -l)
+
+if [ $off -gt 0 ]; then 
+	pope francis	
+else 
+	pope leo
+fi

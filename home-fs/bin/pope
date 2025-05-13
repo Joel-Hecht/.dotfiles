@@ -1,6 +1,12 @@
 #!/bin/bash
 
-popeaddress="${HOME}/img/pope.jpg"
+if [ $# -eq 0 ] || [ $1 = "leo" ] ; then
+	popeaddress="${HOME}/img/pope.jpg"
+elif [ $1 = "francis" ]; then
+	popeaddress="${HOME}/img/pope2.jpg"
+else
+	popeaddress="${HOME}/img/what.png"
+fi
 
 eog "$popeaddress" &
 

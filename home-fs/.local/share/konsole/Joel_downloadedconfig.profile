@@ -1,5 +1,5 @@
 [Appearance]
-ColorScheme=joeltheme
+ColorScheme=BlueOnBlack
 
 [Cursor Options]
 CursorShape=0

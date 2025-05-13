@@ -1,0 +1,29 @@
+#!/bin/bash
+
+current=$( pwd )
+cd ${HOME}/Pictures
+touch tmp 
+touch numfiles
+
+long=$( ls -l )
+short=$( ls )
+numfiles=$( echo "$long" > tmp | wc -l < tmp)
+numfiles=$(( numfiles - 1 ))
+long=$( echo "$long" > tmp | tail tmp -n $numfiles )
+echo $numfiles >> numfiles
+
+while [ $numfiles -gt 0 ] 
+do
+	echo $numfiles >> numfiles
+	line=$( echo "$long" > tmp | tail tmp -n $numfiles | head -n 1 )
+	words=( $line )
+	bytes=${words[4]}
+	if [ $bytes -eq 0 ]; then
+		file=$( echo "$short" > tmp | tail tmp -n $numfiles | head -n 1 )
+		rm -f "$file"
+	fi
+	numfiles=$(( numfiles - 1 ))
+done
+
+echo $numfiles >> numfiles
+cd $current
