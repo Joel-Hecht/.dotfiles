@@ -1,0 +1,17 @@
+#!/bin/bash
+
+maim --select | tee "$HOME/Pictures/SCID$(sh ${HOME}/bin/nextScreenShotID)_$(date).png"| xclip -selection clipboard -t image/png 
+
+current=$( pwd )
+cd ${HOME}/Pictures
+
+line=$( ls -lt | head -n 2 | tail -n 1 )
+for i in {1..3} ;  do
+	line=${line:$(expr index "$line" " ")}
+do
+if [ $bytes -eq 0 ]; then
+	file=$( ls -t | head -n 1 )
+	rm -f "$file"
+fi
+
+cd $current

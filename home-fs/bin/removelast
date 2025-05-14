@@ -1,0 +1,14 @@
+#!/bin/bash
+
+current=$( pwd )
+cd ${HOME}/Pictures
+
+line=$( ls -lt | head -n 2 | tail -n 1 )
+words=( $line )
+bytes=${words[4]}
+if [ $bytes -eq 0 ]; then
+	file=$( ls -t | head -n 1 )
+	rm -f "$file"
+fi
+
+cd $current
