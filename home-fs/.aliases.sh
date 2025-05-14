@@ -3,6 +3,7 @@
 #navigation
 alias dot="cd ~/.dotfiles"
 alias dhome="cd ~/.dotfiles/home-fs"
+alias dbin="cd ~/.dotfiles/home-fs/bin"
 
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
