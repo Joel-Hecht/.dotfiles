@@ -210,7 +210,7 @@ gaps outer 2px
 exec_always --no-startup-id compton
 
 
-bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/SCID$(sh ${HOME}/bin/nextScreenShotID)_$(date).png"| xclip -selection clipboard -t image/png && bash ${HOME}/bin/removesc
+bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/SCID$(sh ${HOME}/bin/nextScreenShotID)_$(date).png"| xclip -selection clipboard -t image/png && bash ${HOME}/bin/removelast
 
 # this will go haywire if we ever shift to $mod=Mod1 (alt)
 bindsym $mod+$alt+s exec --no-startup-id maim | tee "$HOME/Pictures/SCID$(sh ${HOME}/bin/nextScreenShotID)_$(date).png" |  xclip -selection clipboard -t image/png 
