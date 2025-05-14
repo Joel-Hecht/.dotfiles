@@ -210,9 +210,7 @@ gaps outer 2px
 exec_always --no-startup-id compton
 
 
-bindsym $mod+Shift+s exec --no-startup-id sh ${HOME}/bin/ss
-
-#maim --select | tee "$HOME/Pictures/SCID$(sh ${HOME}/bin/nextScreenShotID)_$(date).png"| xclip -selection clipboard -t image/png && sh ${HOME}/bin/removelast 
+bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/SCID$(sh ${HOME}/bin/nextScreenShotID)_$(date).png"| xclip -selection clipboard -t image/png && bash ${HOME}/bin/removesc
 
 # this will go haywire if we ever shift to $mod=Mod1 (alt)
 bindsym $mod+$alt+s exec --no-startup-id maim | tee "$HOME/Pictures/SCID$(sh ${HOME}/bin/nextScreenShotID)_$(date).png" |  xclip -selection clipboard -t image/png 
@@ -268,8 +266,8 @@ bindsym Control+Mod1+h exec --no-startup-id sh ${HOME}/bin/toggleScrollDirection
 bindsym F2 exec amixer -q -M set Master 5%-
 bindsym F3 exec amixer -q -M set Master 5%+ 
 
-bindsym F1 exec --no-startup-id sh ${HOME}/bin/mute_unmute
-bindsym F4 exec --no-startup-id sh ${HOME}/bin/mute_unmute
+bindsym F1 exec --no-startup-id bash ${HOME}/bin/mute_unmute
+bindsym F4 exec --no-startup-id bash ${HOME}/bin/mute_unmute
 
 #activate gnome policykit, needed for i3wm to authenmtiate root
 exec_always --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &

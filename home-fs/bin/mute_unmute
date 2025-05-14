@@ -3,8 +3,9 @@
 amixer -q set Master toggle
 off=$(amixer | head -n 6 | grep off | wc -l)
 
+flags=""
 if [ $off -gt 0 ]; then 
-	sh "${HOME}/bin/pope" francis	
-else 
-	sh "${HOME}/bin/pope" leo 
+	flags="-f"
 fi
+
+bash "${HOME}/bin/pope" "${flags}" 	

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+current=$( pwd )
+cd ${HOME}/Pictures
+
+long=$( ls -l )
+short=$( ls )
+numfiles=$( ls -l | wc -l )
+
+while [ $numfiles -gt 0 ] 
+do
+	line=$( echo "$long" | tail -n $numfiles | head -n 1 )
+	bytes=$(echo $line | grep -oP " [0-9]* "  | head -n 2 | tail -n 1)
+	if [[ "$bytes" == " 0 " ]] ; then
+		file=$( echo "$short" | tail -n $numfiles | head -n 1 )
+		echo "removing $file"
+		rm -f "$file"
+	fi
+	numfiles=$(( numfiles - 1 ))
+done
+
+cd $current
