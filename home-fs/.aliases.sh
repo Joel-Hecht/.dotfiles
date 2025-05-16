@@ -4,6 +4,7 @@
 alias dot="cd ~/.dotfiles"
 alias dhome="cd ~/.dotfiles/home-fs"
 alias dbin="cd ~/.dotfiles/home-fs/bin"
+alias down="cd ~/Downloads"
 
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
@@ -14,8 +15,9 @@ alias sl="pope"
 #computer control
 alias eep="systemctl suspend"
 
-#CTRL+Z -> dc to disconnect an app from terminal and remove the terminal
-alias dc="bg; jobs; disown %1; kill -9 $(xdotool getactivewindow getwindowpid)"
+#CTRL+Z -> dc to disconnect an app from terminal, dcq also removes the terminal
+alias dcq="bg; jobs; disown %1; kill -9 $(xdotool getactivewindow getwindowpid)"
+alias dc="bg; jobs; disown %1"
 
 #git / general shortcuts
 alias gaa="git add --all"
