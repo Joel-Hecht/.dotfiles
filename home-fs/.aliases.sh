@@ -16,7 +16,7 @@ alias sl="pope"
 alias eep="systemctl suspend"
 
 #CTRL+Z -> dc to disconnect an app from terminal, dcq also removes the terminal
-alias dcq="bg; jobs; disown %1; kill -9 $(xdotool getactivewindow getwindowpid)"
+alias dcq="bg; jobs; disown %1; xdotool getactivewindow windowkill"
 alias dc="bg; jobs; disown %1"
 
 #git / general shortcuts
