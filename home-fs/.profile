@@ -5,3 +5,18 @@
 sh ~/bin/primarydisplay
 
 PATH="$HOME/bin/aliases:$PATH"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:$HOME/rui/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=$HOME/rui/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<

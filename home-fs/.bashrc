@@ -123,6 +123,7 @@ source ~/.aliases.sh
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/lib/qt6/bin:$PATH"
 export PATH="$HOME/bin/aliases:$PATH"
+export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
 
 #MOVED TO I3CONFIG
 #needed to source i3bar tray to primary monitor on multi-monitor setup
@@ -142,3 +143,18 @@ xmodmap -e "pointer = 1 2 3 4 5 7 6 8 9 10"
 #this allows bash (which is a seperate, noninteractable terminal) to read 
 #the history live
 export PROMPT_COMMAND='history -a'
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:$HOME/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=$HOME/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<

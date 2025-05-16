@@ -13,6 +13,7 @@ alias sl="pope"
 
 #computer control
 alias eep="systemctl suspend"
+alias z="bg; jobs; disown %1; kill -9 $(xdotool getactivewindow getwindowpid)"
 
 #git / general shortcuts
 alias gaa="git add --all"
