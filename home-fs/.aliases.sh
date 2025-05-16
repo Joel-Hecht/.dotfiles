@@ -14,8 +14,8 @@ alias sl="pope"
 #computer control
 alias eep="systemctl suspend"
 
-#CTRL+Z -> z to disconnect an app from terminal and remove the terminal
-alias z="bg; jobs; disown %1; kill -9 $(xdotool getactivewindow getwindowpid)"
+#CTRL+Z -> dc to disconnect an app from terminal and remove the terminal
+alias dc="bg; jobs; disown %1; kill -9 $(xdotool getactivewindow getwindowpid)"
 
 #git / general shortcuts
 alias gaa="git add --all"
