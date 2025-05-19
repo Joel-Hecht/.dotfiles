@@ -158,3 +158,8 @@ case ":$PATH:" in
 esac
 
 # <<< juliaup initialize <<<
+
+#stay in a base venv always
+#we also make an alias for pip here because im a fuck
+python3 -m venv basevenv
+alias pip="basevenv/bin/pip"
