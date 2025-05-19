@@ -25,6 +25,7 @@ libx11-dev `x11 support, needed for multi-monitor config` \
 calcurse `in-terminal calendar` \
 policykit-1-gnome polkitd `polkit needed to authenticate as root from i3wm` \
 vim-gtk3 `install graphical vim, installation gives vim access to system clipboard register`\
+python3-venv pip `needed to use pip`\
 
 
 #flatpaks
