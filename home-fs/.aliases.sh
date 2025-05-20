@@ -20,9 +20,9 @@ alias dcq="bg; jobs; disown %1; xdotool getactivewindow windowkill"
 alias dc="bg; jobs; disown %1"
 
 #git / general shortcuts
-alias gaa="git add --all"
 alias gcm="git commit -m"
 alias staged="git diff --name-only --staged"
+alias gaa="git add --all && git diff --name-only --staged | sed 's/^/staged: /' "
 alias names="git diff --name-only"
 alias gp="git pull"
 alias push="git push"

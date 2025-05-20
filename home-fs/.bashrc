@@ -161,5 +161,13 @@ esac
 
 #stay in a base venv always
 #we also make an alias for pip here because im a fuck
-python3 -m venv basevenv
-alias pip="basevenv/bin/pip"
+VENVNAME="basevenv"
+if ! [ -d  "${HOME}/${VENVNAME}" ]; then
+	curr=$(pwd)
+	cd "${HOME}"
+	python3 -m venv "${VENVNAME}"
+	cd curr
+fi
+alias venv="source \"${HOME}/${VENVNAME}/bin/activate\""
+alias venvl="deactivate"
+alias pip="${HOME}/${VENVNAME}/bin/pip"
