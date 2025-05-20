@@ -9,4 +9,4 @@ if [ $numlines -gt 1 ]; then
 	scroll="4 5"
 fi	
 
-xmodmap -e "pointer = 1 2 3 $scroll 6 7 8 9 10"
+xmodmap -e "pointer = 1 2 3 $scroll 6 7 8 9 10 11 12"
