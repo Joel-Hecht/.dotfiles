@@ -36,7 +36,7 @@ alias killpid="kill -9"
 alias kf="keyboard_firmware"
 
 #copy last command entered
-alias cplast="fc -ln -1 | xargs | xclip -sel c"
+alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
 alias cpy="xclip -sel c"
 
 #source aliases that act as applications
