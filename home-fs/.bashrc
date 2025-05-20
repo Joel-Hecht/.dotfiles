@@ -166,7 +166,7 @@ if ! [ -d  "${HOME}/${VENVNAME}" ]; then
 	curr=$(pwd)
 	cd "${HOME}"
 	python3 -m venv "${VENVNAME}"
-	cd curr
+	cd "$curr"
 fi
 alias venv="source \"${HOME}/${VENVNAME}/bin/activate\""
 alias venvl="deactivate"

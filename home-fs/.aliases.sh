@@ -26,7 +26,7 @@ alias gaa="git add --all && git diff --name-only --staged | sed 's/^/staged: /' 
 alias names="git diff --name-only"
 alias gp="git pull"
 alias push="git push"
-alias dp="current=$PWD && dot && gp && cd ""${current}"
+alias dp="curr=\"\$(pwd)\" && dot && gp ; cd \"\$curr\""
 
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
