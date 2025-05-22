@@ -26,6 +26,7 @@ calcurse `in-terminal calendar` \
 policykit-1-gnome polkitd `polkit needed to authenticate as root from i3wm` \
 vim-gtk3 `install graphical vim, installation gives vim access to system clipboard register`\
 python3-venv pip `needed to use pip`\
+kitty `new termianl emulator` \
 
 
 #flatpaks
@@ -33,3 +34,15 @@ sudo apt install flatpak
 sudo apt install gnome-software-plugin-flatpak
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub com.github.PintaProject.Pinta `pinta`
+
+
+#rust stuff
+if ! [ -d ~/.cargo ]; then 
+	sudo apt install cargo 
+	sudo apt autoremove rustc
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+
+#actual rustup isntalls
+rustup defualt 1.7.0
+rustup target add wasm32-unknown-unknown

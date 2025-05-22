@@ -124,6 +124,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="/usr/lib/qt6/bin:$PATH"
 export PATH="$HOME/bin/aliases:$PATH"
 export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 #MOVED TO I3CONFIG
 #needed to source i3bar tray to primary monitor on multi-monitor setup
@@ -171,3 +172,4 @@ fi
 alias venv="source \"${HOME}/${VENVNAME}/bin/activate\""
 alias venvl="deactivate"
 alias pip="${HOME}/${VENVNAME}/bin/pip"
+. "$HOME/.cargo/env"
