@@ -174,3 +174,5 @@ alias venv="source \"${HOME}/${VENVNAME}/bin/activate\""
 alias venvl="deactivate"
 alias pip="${HOME}/${VENVNAME}/bin/pip"
 . "$HOME/.cargo/env"
+
+

@@ -40,5 +40,9 @@ alias kf="keyboard_firmware"
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
 alias cpy="xclip -sel c"
 
+#make ssh kitty-friendly
+alias ssh="TERM=xterm-256color ssh"
+
+
 #source aliases that act as applications
 source ${HOME}/.aliases_dmenu.sh
