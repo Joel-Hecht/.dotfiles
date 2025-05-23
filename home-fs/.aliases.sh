@@ -5,6 +5,7 @@ alias dot="cd ~/.dotfiles"
 alias dhome="cd ~/.dotfiles/home-fs"
 alias dbin="cd ~/.dotfiles/home-fs/bin"
 alias down="cd ~/Downloads"
+alias me="echo \"$(whoami)@$(hostname)\""
 
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
