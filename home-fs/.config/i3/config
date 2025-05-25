@@ -274,6 +274,3 @@ bindsym F12 exec --no-startup-id xrandr --output $(xrandr -q | grep " connected"
 
 #activate gnome policykit, needed for i3wm to authenmtiate root
 exec_always --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
-
-# xrandr --output eDP-1 --brightness 0.6
-
