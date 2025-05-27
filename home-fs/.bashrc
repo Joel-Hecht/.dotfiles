@@ -134,6 +134,9 @@ export PATH="$HOME/bin/aliases:$PATH"
 export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# gcp machine learning
+export PATH="$HOME/Downloads/google-cloud-sdk/bin:$PATH"
+
 #MOVED TO I3CONFIG
 #needed to source i3bar tray to primary monitor on multi-monitor setup
 #should work dynamically with laptop and PC systems
@@ -141,8 +144,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 #get first available display
 #disp=$(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1)
 #xrandr --output $disp --primary
-
-xmodmap -e "pointer = 1 2 3 4 5 7 6 8 9 10"
 
 #append to bash history for this terminal live, instead of when file ends
 #useful for copying last command
