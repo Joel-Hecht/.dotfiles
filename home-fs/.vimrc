@@ -8,7 +8,7 @@ set nocompatible | "use vim instead of vi, even when launching as vi
 :set tabstop=4
 :set shiftwidth=4
 :set softtabstop=0 noexpandtab
-:set clipboard=unnamedplus | " default vim clipbaord is system clipboard
+":set clipboard=unnamedplus | " default vim clipbaord is system clipboard
 :set ruler | "always show cursor
 :set showcmd | "show incomplete commands (should be on by default) 
 :syntax enable
