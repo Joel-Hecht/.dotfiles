@@ -39,6 +39,8 @@ alias kf="keyboard_firmware"
 #copy last command entered
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
 alias cpy="xclip -sel c"
+#copy github access token to authenticate on tux
+alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
 
 #make ssh kitty-friendly
 alias ssh="TERM=xterm-256color ssh"
