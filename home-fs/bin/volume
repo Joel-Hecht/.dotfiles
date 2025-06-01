@@ -1,8 +1,8 @@
 #!/bin/bash
 #half from https://whatacold.io/blog/2022-01-14-i3wm-i3status-reload-config/
 
+# there is probably a better way to do this but oh well
 VOLUME=~/.VOLUME
-
 current=$( cat $VOLUME )
 
 # tell volume we're currently running it
@@ -10,6 +10,7 @@ chmod 644 $VOLUME
 echo IN PROGRESS > $VOLUME
 
 # make sure another run of volume isn't currently in progress
+# this sometimes is a false positive and you have to hit F4 but trust me you don't want the false negative
 if [[ $current == "IN PROGRESS" ]]; then
 	echo "you're going too fast"
 	exit 2
@@ -30,9 +31,10 @@ amixer -q -M set Master $new%
 
 # reload i3bar
 sed -i "s/= \".*W:/= \"VOLUME: $new% :|: W:/" ~/.i3status.conf
-killall i3bar &> /dev/null
-i3bar --bar_id=bar-0 &> /dev/null &
+killall i3bar 
+i3bar --bar_id=bar-0 & # this & is very necessary for some reason
 
 # set volume file
 echo $new > $VOLUME
+# weird with permissions because i don't want this file getting messed up
 chmod 444 $VOLUME

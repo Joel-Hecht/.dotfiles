@@ -2,6 +2,10 @@
 
 # HOTFIX FOR BUG WITH HOLDING DOWN VOLUME THAT IS NOT AS BAD AS THE OTHER BUG WITH HOLDING DOWN VOLUME THAT I HOTFIXED
 VOLUME=~/.VOLUME
+current=$( amixer | head -n 6 | grep -o [[:digit:]][[:digit:]][[:digit:]]* | tail -n 1 )
 chmod 644 $VOLUME
-echo 50 > $VOLUME
+echo $current > $VOLUME
 chmod 444 $VOLUME
+
+killall i3bar 
+i3bar --bar_id=bar-0 & 
