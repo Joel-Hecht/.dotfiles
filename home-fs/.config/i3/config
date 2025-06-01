@@ -263,11 +263,11 @@ bindsym Control+Mod1+s exec --no-startup-id firefox docs.google.com/spreadsheets
 bindsym Control+Mod1+h exec --no-startup-id sh ${HOME}/bin/toggleScrollDirection 
 
 # audio buttons
-bindsym F2 exec amixer -q -M set Master 5%-
-bindsym F3 exec amixer -q -M set Master 5%+ 
-
 bindsym F1 exec --no-startup-id bash ${HOME}/bin/mute_unmute
-bindsym F4 exec --no-startup-id bash ${HOME}/bin/mute_unmute
+bindsym F2 exec --no-startup-id bash ${HOME}/bin/volume down
+bindsym F3 exec --no-startup-id bash ${HOME}/bin/volume up
+bindsym F4 exec --no-startup-id bash ${HOME}/bin/fix_volume
+
 bindsym F10 exec --no-startup-id xrandr --output $(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1) --brightness 1
 bindsym F11 exec --no-startup-id xrandr --output $(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1) --brightness $(echo $(xrandr --verbose --current | grep Brightness | sed 's/.*\ //')"-0.1" | bc )
 bindsym F12 exec --no-startup-id xrandr --output $(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1) --brightness $(echo $(xrandr --verbose --current | grep Brightness | sed 's/.*\ //')"+0.1" | bc )
