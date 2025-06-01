@@ -43,6 +43,7 @@ alias clipboard="xclip -sel c" # same thing but commmand | clipboard makes more 
 
 #copy github access token to authenticate on tux
 alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
+alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt | cpy ; cd \"\$curr\""
 
 #make ssh kitty-friendly
 alias ssh="TERM=xterm-256color ssh"
