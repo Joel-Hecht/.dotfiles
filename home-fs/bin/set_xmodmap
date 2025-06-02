@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xmodmap -e "keycode 62 = Escape NoSymbol" 
+xmodmap -e "remove shift = Escape"
+xmodmap -e "keycode 108 = Multi_key Alt_R" 
