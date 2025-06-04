@@ -52,9 +52,9 @@ rustup target add wasm32-unknown-unknown
 #we need to build from source
 #Solution from https://www.reddit.com/r/debian/comments/188d3wc/neovim_on_debian/ 
 
-#here I should check if neovim exists or if the version is less than 0.8
+#here I should check if neovim exists or if the version is less than 0.9.0
 nvim_version=$(nvim --version | head -1 | sed "s/[^\.]*\.//" | sed "s/\..*//")
-if [[ $nvim_version -lt 8 ||  -z $(command -v nvim)  ]]; then
+if [[ $nvim_version -lt 9 ||  -z $(command -v nvim)  ]]; then
 	sudo apt remove neovim
 	currentdir = $(pwd)
 	mkdir -p "${HOME}/apps"
