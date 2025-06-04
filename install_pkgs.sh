@@ -18,7 +18,7 @@ xclip \
 xdotool \
 nitrogen `desktop background manager` \
 wget sed grep `cant believe this isnt default`\
-gcc make cmake vim neovim ripgrep  `general tools` \
+gcc make cmake vim ripgrep  `general tools` \
 fdisk `volume viwer thats worst than lsblk but i like it`\
 git gh `if you got this far you should already have this` \
 libx11-dev `x11 support, needed for multi-monitor config` \
@@ -27,7 +27,8 @@ policykit-1-gnome polkitd `polkit needed to authenticate as root from i3wm` \
 vim-gtk3 `install graphical vim, installation gives vim access to system clipboard register`\
 python3-venv pip `needed to use pip`\
 kitty `new termianl emulator` \
-
+lua5.4 `lua language` \
+ninja-build gettext cmake unzip curl `tools we need for later to install neovim` \
 
 #flatpaks
 sudo apt install flatpak
@@ -46,3 +47,25 @@ fi
 #actual rustup isntalls
 rustup defualt 1.7.0
 rustup target add wasm32-unknown-unknown
+
+#neovim version 0.8 isnt in apt
+#we need to build from source
+#Solution from https://www.reddit.com/r/debian/comments/188d3wc/neovim_on_debian/ 
+
+#here I should check if neovim exists or if the version is less than 0.8
+nvim_version=$(nvim --version | head -1 | sed "s/[^\.]*\.//" | sed "s/\..*//")
+if [[ $nvim_version -lt 8 ||  -z $(command -v nvim)  ]]; then
+	sudo apt remove neovim
+	currentdir = $(pwd)
+	mkdir -p "${HOME}/apps"
+	cd "${HOME}/apps"
+	git clone https://github.com/neovim/neovim
+	cd neovim
+	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	cd build
+	cpack -G DEB
+	sudo dpkg -i --force-overwrite  nvim-linux*.deb
+	cd "$currentdir"
+else
+	echo "latest neovim already installed"	
+fi
