@@ -6,3 +6,5 @@ home-fs/.gitconfig
 # ignore swapfiles
 **.swp
 **~
+
+home-fs/.VOLUME
