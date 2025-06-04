@@ -266,6 +266,7 @@ bindsym F1 exec --no-startup-id bash ${HOME}/bin/mute_unmute
 bindsym F2 exec --no-startup-id bash ${HOME}/bin/volume down
 bindsym F3 exec --no-startup-id bash ${HOME}/bin/volume up
 bindsym F4 exec --no-startup-id bash ${HOME}/bin/fix_volume
+exec_always --no-startup-id touch "${HOME}/.VOLUME"
 
 bindsym F10 exec --no-startup-id xrandr --output $(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1) --brightness 1
 bindsym F11 exec --no-startup-id xrandr --output $(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1) --brightness $(echo $(xrandr --verbose --current | grep Brightness | sed 's/.*\ //')"-0.1" | bc )
