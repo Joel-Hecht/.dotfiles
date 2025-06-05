@@ -53,7 +53,8 @@ alias ssh="TERM=xterm-256color ssh"
 #source aliases that act as applications
 source ${HOME}/.aliases_dmenu.sh
 
-#force load keybinds whenever you do basically anything (i really like rshift = escape)
+#force load keybinds when starting firefox
 alias firefox="i3-msg -q restart && firefox"
-#alias vim="i3-msg -q restart && vim"
-#alias vi="i3-msg -q restart && vi"
+
+#allow bfs to cd
+alias bfs="source bfs"

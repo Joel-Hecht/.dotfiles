@@ -1,0 +1,47 @@
+#!/bin/bash
+
+subdirs=""
+depth=0
+execute_loop=true
+
+# help
+if [[ $# -eq 0 || $1 == "-help" || $1 == "--help" ]]; then
+	echo "syntax: bfs dirname [maxdepth (default=6)]"
+	execute_loop=false
+fi
+
+# default maxdepth
+if [[ $# -gt 1 ]]; then
+	if ! [[ "$maxdepth" =~ ^[0-9]+$ ]]; then
+		echo "maxdepth (arg 2) must be a number"
+		execute_loop=false
+	fi
+	maxdepth=$2
+else
+	maxdepth=6
+fi
+
+# main loop
+while [[ $go == "true" ]]; do
+	subdirs+="*/"
+	depth=$(( $depth + 1))
+
+	# check for termination
+	if [[ $depth -gt $maxdepth ]]; then
+		echo "hit maxdepth ($maxdepth)!"
+		break
+	fi	
+	targets=$( ls -d $subdirs &> /dev/null || echo "no more subdirs" )
+	if [[ "$targets" == "no more subdirs" ]]; then
+		echo "no more subdirectories at depth=$depth"
+		break
+	fi
+
+	# look for directory
+	matched_dir=$( ls -d $subdirs | grep "/$1/" )
+	if [[ -n "$matched_dir" ]]; then
+		# if multiple matched dirs (get better names bro), just go to first
+		cd "$( echo "$matched_dir" | head -n 1)"
+		break
+	fi
+done

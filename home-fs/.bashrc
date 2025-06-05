@@ -184,3 +184,25 @@ alias pip="${HOME}/${VENVNAME}/bin/pip"
 . "$HOME/.cargo/env"
 
 
+function mkcd {
+	if [ ! -n "$1" ]; then
+		echo "Enter a directory name"
+	elif [ -d $1 ]; then
+		echo "\'$1' already exists"
+	else
+		command mkdir $1 && cd $1
+	fi
+}
+
+comment='function bfs {
+	subdir="*/"
+	level=""
+	while true; do
+		level+=$subdir
+		dir=$( ls -d $level | grep "$1" )
+		if [ -n "$dir" ]; then
+			cd "$( echo "$dir" | head -n 1)"
+			break	
+		fi
+	done
+}'
