@@ -57,4 +57,4 @@ source ${HOME}/.aliases_dmenu.sh
 alias firefox="i3-msg -q restart && firefox"
 
 #allow bfs to cd
-alias bfs="source bfs"
+alias bfs="source bfs_base"

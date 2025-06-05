@@ -1,28 +1,30 @@
 #!/bin/bash
 
+one_level_down="*/"
 subdirs=""
 depth=0
 execute_loop=true
 
 # help
 if [[ $# -eq 0 || $1 == "-help" || $1 == "--help" ]]; then
+	echo "breadth first recursive cd"
 	echo "syntax: bfs dirname [maxdepth (default=6)]"
 	execute_loop=false
 fi
 
 # default maxdepth
 if [[ $# -gt 1 ]]; then
+	maxdepth=$2
 	if ! [[ "$maxdepth" =~ ^[0-9]+$ ]]; then
 		echo "maxdepth (arg 2) must be a number"
 		execute_loop=false
 	fi
-	maxdepth=$2
 else
 	maxdepth=6
 fi
 
 # main loop
-while [[ $go == "true" ]]; do
+while [[ $execute_loop == "true" ]]; do
 	subdirs+="*/"
 	depth=$(( $depth + 1))
 
