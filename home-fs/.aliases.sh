@@ -60,3 +60,19 @@ alias firefox="i3-msg -q restart && firefox"
 #allow bfs to cd
 alias bfs="source bfs_base"
 alias bfsh="source bfsh_base"
+
+cd_func() {
+
+	if [ -z "$1" ]; then
+		cd "${HOME}"
+	fi
+
+	substring="**"
+	if [[ "$1" =~ "$substring" ]];then 
+		echo "use bfs instead"
+	else
+		cd "$1"
+	fi
+}
+
+alias cd='cd_func'
