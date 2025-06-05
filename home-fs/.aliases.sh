@@ -33,6 +33,7 @@ alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
+alias sa="source ~/.aliases.sh"
 
 alias pids="ps aux"
 alias killpid="kill -9"
@@ -41,7 +42,7 @@ alias kf="keyboard_firmware"
 #copy last command entered
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
 alias cpy="xclip -sel c"
-alias clipboard="xclip -sel c" # same thing but commmand | clipboard makes more sense to me -rui
+alias cb="xclip -sel c"
 
 #copy github access token to authenticate on tux
 alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
