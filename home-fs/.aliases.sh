@@ -33,6 +33,7 @@ alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
+alias bs="pope"
 alias sa="source ~/.aliases.sh"
 
 alias pids="ps aux"
