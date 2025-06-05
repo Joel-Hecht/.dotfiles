@@ -6,8 +6,8 @@ execute_loop=true
 
 # help
 if [[ $# -eq 0 || $1 == "-help" || $1 == "--help" ]]; then
-	echo "breadth first recursive cd"
-	echo "syntax: bfs dirname [maxdepth (default=6)]"
+	echo "breadth first recursive cd, enters hidden directories"
+	echo "syntax: bfsh dirname [maxdepth (default=6)]"
 	execute_loop=false
 fi
 
@@ -24,7 +24,7 @@ fi
 
 # main loop
 while [[ $execute_loop == "true" ]]; do
-	subdirs+="*/"
+	subdirs+="?(.)*/"
 	depth=$(( $depth + 1))
 
 	# check for termination

@@ -58,3 +58,4 @@ alias firefox="i3-msg -q restart && firefox"
 
 #allow bfs to cd
 alias bfs="source bfs_base"
+alias bfsh="source bfsh_base"
