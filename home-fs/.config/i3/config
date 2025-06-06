@@ -267,6 +267,7 @@ bindsym F2 exec --no-startup-id bash ${HOME}/bin/volume down
 bindsym F3 exec --no-startup-id bash ${HOME}/bin/volume up
 bindsym F4 exec --no-startup-id bash ${HOME}/bin/fix_volume
 exec_always --no-startup-id touch "${HOME}/.VOLUME"
+exec_always --no-startup-id [[ $( whoami ) == "rui" ]] && xmodmap -e "pointer = 1 2 3 5 4 7 6 8 9 10 11 12"
 
 bindsym F10 exec --no-startup-id xrandr --output $(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1) --brightness 1
 bindsym F11 exec --no-startup-id xrandr --output $(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1) --brightness $(echo $(xrandr --verbose --current | grep Brightness | sed 's/.*\ //')"-0.1" | bc )

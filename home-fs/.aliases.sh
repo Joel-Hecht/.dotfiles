@@ -78,6 +78,6 @@ cd_func() {
 	fi
 }
 												
-if [[ $( whoami ) -ne 'rui' ]]; then
+if ! [[ $( whoami ) == 'rui' ]]; then
 	alias cd='cd_func'
 fi
