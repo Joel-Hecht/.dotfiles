@@ -22,6 +22,9 @@ else
 	maxdepth=6
 fi
 
+# check if target is in pwd
+cd "$1" &> /dev/null && execute_loop=false
+
 # main loop
 while [[ $execute_loop == "true" ]]; do
 	subdirs+="*/"
@@ -32,11 +35,7 @@ while [[ $execute_loop == "true" ]]; do
 		echo "hit maxdepth ($maxdepth)!"
 		break
 	fi	
-	targets=$( ls -d $subdirs &> /dev/null || echo "no more subdirs" )
-	if [[ "$targets" == "no more subdirs" ]]; then
-		echo "no more subdirectories at depth=$depth"
-		break
-	fi
+	ls -d $subdirs &> /dev/null || ( echo "no more subdirectories at depth=$depth"; break )
 
 	# look for directory
 	matched_dir=$( ls -d $subdirs | grep "/$1/" )

@@ -1,0 +1,58 @@
+#!/bin/bash
+
+next_level=""
+next_level+="*/"
+depth=0
+execute_loop=true
+
+# help
+if [[ $# -eq 0 || $1 == "-help" || $1 == "--help" ]]; then
+	echo "breadth first recursive cd"
+	echo "syntax: bfs dirname [maxdepth (default=6)]"
+	execute_loop=false
+fi
+
+# default maxdepth
+if [[ $# -gt 1 ]]; then
+	maxdepth=$2
+	if ! [[ "$maxdepth" =~ ^[0-9]+$ ]]; then
+		echo "maxdepth (arg 2) must be a number"
+		execute_loop=false
+	fi
+else
+	maxdepth=6
+fi
+
+# check if target is in pwd
+cd "$1" &> /dev/null && execute_loop=false
+
+# main loop
+function dfs {
+	subdirs=$( ls -d $next_level &> /dev/null || echo "no more subdirs") 
+	if [[ "$subdirs" == "no more subdirs" ]]; then
+		cd ..
+		return 1
+	else	
+		# check if target found
+		matched_dir=$(ls -d $next_level | grep "/$1/" )
+		if [[ -n "$matched_dir" ]]; then
+			cd "$( echo "$matched_dir" | head -n 1)"
+			execute_loop=false
+			return	
+		else
+			for i in $subdirs; do
+				echo "$i"
+				cd "$i"
+				dfs $1
+				if [[ $execute_loop == "false" ]]; then
+					return
+				fi
+			done
+		fi
+	fi
+}
+
+home=$( pwd )
+if [[ $execute_loop == "true" ]]; then
+	dfs $1 || cd "$home"
+fi
