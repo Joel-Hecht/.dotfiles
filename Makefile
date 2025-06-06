@@ -6,6 +6,6 @@ all:
 #	source ./home-fs/.bashrc
 	cd home-fs && make $@
 
-.PHONY: mini
-mini:
+.PHONY: sym 
+sym:
 	cd home-fs && make $@

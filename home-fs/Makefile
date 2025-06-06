@@ -3,6 +3,5 @@ all:
 	./makesymlinks.sh
 	./permission_setup.sh
 
-mini:
-	./makealiases.sh
+sym:
 	./makesymlinks.sh

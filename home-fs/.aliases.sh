@@ -29,6 +29,7 @@ alias names="git diff --name-only"
 alias gp="git pull"
 alias push="git push"
 alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
+alias dhm="curr=\"\$(pwd)\" && dhome ; make mini ; cd \"\$curr\""
 
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
