@@ -29,7 +29,7 @@ alias names="git diff --name-only"
 alias gp="git pull"
 alias push="git push"
 alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
-alias dhm="curr=\"\$(pwd)\" && dhome ; make mini ; cd \"\$curr\""
+alias dhm="curr=\"\$(pwd)\" && dhome ; make sym ; cd \"\$curr\""
 
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
@@ -69,7 +69,7 @@ cd_func() {
 		cd "${HOME}"
 	fi	
 
-	substring="**"
+	substring="*"
 						
 	if [[ "$1" =~ "$substring" ]]; then
 		echo "use bfs instead"
@@ -78,4 +78,6 @@ cd_func() {
 	fi
 }
 												
-alias cd='cd_func'
+if [[ $( whoami ) -ne 'rui' ]]; then
+	alias cd='cd_func'
+fi
