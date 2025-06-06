@@ -8,7 +8,6 @@ alias down="cd ~/Downloads"
 alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
 alias me="echo \"$(whoami)@$(hostname)\""
 
-
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
 alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
@@ -33,8 +32,8 @@ alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
-alias bs="pope"
 alias sa="source ~/.aliases.sh"
+alias bs="pope"
 
 alias pids="ps aux"
 alias killpid="kill -9"
@@ -61,6 +60,8 @@ alias firefox="i3-msg -q restart && firefox"
 #allow bfs to cd
 alias bfs="source bfs_base"
 alias bfsh="source bfsh_base"
+alias dfs=". dfs_base"
+alias dfsh=". dfsh_base"
 
 cd_func() {
 	if [ -z "$1" ]; then

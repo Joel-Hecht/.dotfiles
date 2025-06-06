@@ -1,12 +1,12 @@
 #!/bin/bash
 
-next_level="*/"
+next_level="?(.)*/"
 depth=0
 execute_loop=true
 
 # help
 if [[ $# -eq 0 || $1 == "-help" || $1 == "--help" ]]; then
-	echo "depth first recursive cd (very bad)"
+	echo "depth first recursive cd (very bad) enters hidden directories"
 	echo "syntax: dfs dirname [maxdepth (default=3)]"
 	execute_loop=false
 fi
@@ -38,7 +38,7 @@ function dfs_rec {
 	depth=$(( $depth + 1 ))
 	for i in $( ls -dt $next_level ); do
 		echo "$next_level"
-		next_level="$i*/"	
+		next_level="$i?(.)*/"	
 		dfs_rec "$1" && return 0
 	done
 	depth=$(( $depth - 1 ))
