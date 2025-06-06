@@ -68,12 +68,13 @@ cd_func() {
 		cd "${HOME}"
 	fi
 
-	substring="**"
-	if [[ "$1" =~ "$substring" ]];then 
-		echo "use bfs instead"
-	else
-		cd "$1"
-	fi
+	for arg in "$@"; do
+		if [[ "$arg" == *"**"* ]]; then
+			echo "use bfs instead"
+		else
+			cd "$1"
+		fi
+	done
 }
 
-alias cd='cd_func'
+alias cd=cd_func
