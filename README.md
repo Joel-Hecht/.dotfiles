@@ -1,6 +1,6 @@
 ### .dotfiles
 
-This is my linux config
+This is OUR linux config
 
 
 please run all bash scripts to set up.
@@ -12,4 +12,3 @@ home-fs simulates the $HOME directory, so all config files found in the home dir
 
 
 please only edit .dotfiles in this directory, as any changes to the .dotfiles in the actual filesystem will not be recorded to this repo
-

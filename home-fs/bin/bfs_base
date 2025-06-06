@@ -7,7 +7,7 @@ execute_loop=true
 # help
 if [[ $# -eq 0 || $1 == "-help" || $1 == "--help" ]]; then
 	echo "breadth first recursive cd"
-	echo "syntax: bfs dirname [maxdepth (default=6)]"
+	echo "syntax: bfs dirname [maxdepth (default=5)]"
 	execute_loop=false
 fi
 
@@ -19,7 +19,7 @@ if [[ $# -gt 1 ]]; then
 		execute_loop=false
 	fi
 else
-	maxdepth=6
+	maxdepth=5
 fi
 
 # check if target is in pwd
