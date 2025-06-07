@@ -33,11 +33,12 @@ while [[ $execute_loop == "true" ]]; do
 	# check for termination
 	[[ $depth -le $maxdepth ]] || echo "hit maxdepth ($maxdepth)!"
 	[[ $depth -le $maxdepth ]] || break
-	ls --color=no -dt $subdirs &> /dev/null || echo "no more subdirectories at depth=$depth"
-	ls --color=no -dt $subdirs &> /dev/null || break
+	targets=$( ls -dt $subdirs )
+   	[[ -n targets ]] || echo "no more subdirectories at depth=$depth"
+   	[[ -n targets ]] || break
 
 	# look for directory
-	matched_dir=$( ls -dt $subdirs | grep "/$1/" )
+	matched_dir=$( grep "/$1/" <<< $targets )
 	if [[ -n "$matched_dir" ]]; then
 		# if multiple matched dirs (get better names bro), just go to first
 		cd "$( echo "$matched_dir" | head -n 1)"
