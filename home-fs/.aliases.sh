@@ -11,6 +11,7 @@ alias me="echo \"$(whoami)@$(hostname)\""
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
 alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
+alias br="vim ~/.bashrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 alias sl="pope"
 

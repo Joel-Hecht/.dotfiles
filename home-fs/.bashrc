@@ -133,6 +133,7 @@ export PATH="/usr/lib/qt6/bin:$PATH"
 export PATH="$HOME/bin/aliases:$PATH"
 export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="${HOME}/.local/bin:$PATH"
 
 # gcp machine learning
 export PATH="$HOME/Downloads/google-cloud-sdk/bin:$PATH"
