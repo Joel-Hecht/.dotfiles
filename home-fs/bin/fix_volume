@@ -7,5 +7,6 @@ chmod 644 $VOLUME
 echo $current > $VOLUME
 chmod 444 $VOLUME
 
+sed -i "s/= \".*W:/= \"VOLUME: $current% :|: W:/" ~/.i3status.conf.
 killall i3bar 
 i3bar --bar_id=bar-0 & 

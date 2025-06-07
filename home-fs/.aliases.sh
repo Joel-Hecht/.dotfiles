@@ -61,8 +61,11 @@ alias firefox="i3-msg -q restart && firefox"
 #allow bfs to cd
 alias bfs="source bfs_base"
 alias bfsh="source bfsh_base"
-alias dfs=". dfs_base"
-alias dfsh=". dfsh_base"
+alias dfs="source dfs_base"
+alias dfsh="source dfsh_base"
+
+#reset calcurse
+alias fixcurse="cal/share/calcurse/.calcurse.pid"
 
 cd_func() {
 	if [ -z "$1" ]; then
