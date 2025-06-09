@@ -30,6 +30,9 @@ kitty `new termianl emulator` \
 lua5.4 `lua language` \
 ninja-build gettext cmake unzip curl `tools we need for later to install neovim` \
 
+
+#golang `needed for some stuff` \
+
 #flatpaks
 sudo apt install flatpak
 sudo apt install gnome-software-plugin-flatpak

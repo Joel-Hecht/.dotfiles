@@ -207,3 +207,6 @@ comment='function bfs {
 		fi
 	done
 }'
+
+
+export TERM=xterm-256color
