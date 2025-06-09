@@ -235,8 +235,7 @@ focus_follows_mouse no
 # workspace_auto_back_and_forth yes
 
 #keybinds, this works better than the .Xmodmap file i think
-exec_always --no-startup-id xmodmap -e "keycode 62 = Escape NoSymbol" 
-exec_always --no-startup-id xmodmap -e "remove shift = Escape"
+exec_always --no-startup-id xmodmap -e "keycode 62 = Escape NoSymbol" && xmodmap -e "remove shift = Escape"
 exec_always --no-startup-id xmodmap -e "keycode 108 = Multi_key Alt_R" 
 
 #program shortcuts
@@ -251,6 +250,7 @@ bindsym Control+$alt+j exec --no-startup-id firefox jisho.org
 bindsym Control+$alt+o exec --no-startup-id firefox outlook.office365.com/mail 
 bindsym Control+$alt+m exec --no-startup-id firefox maps.google.com
 bindsym Control+$alt+g exec --no-startup-id firefox gmail.com
+bindsym Control+Shift+$alt+g exec --no-startup-id firefox gmail.com/mail/u/1
 bindsym Control+$alt+t exec --no-startup-id firefox translate.google.com
 bindsym Control+$alt+x exec --no-startup-id firefox one.drexel.edu
 bindsym Control+$alt+q exec --no-startup-id firefox learn.dcollege.net/ultra/course

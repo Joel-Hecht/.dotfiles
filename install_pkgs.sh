@@ -44,6 +44,9 @@ if ! [ -d ~/.cargo ]; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
+#lean stuff
+lean --version || wget -q https://raw.githubusercontent.com/leanprover-community/mathlib4/master/scripts/install_debian.sh && bash install_debian.sh ; rm -f install_debian.sh && source ~/.profile
+
 #actual rustup isntalls
 rustup defualt 1.7.0
 rustup target add wasm32-unknown-unknown
