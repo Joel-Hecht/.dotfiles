@@ -37,22 +37,32 @@ ninja-build gettext cmake unzip curl `tools we need for later to install neovim`
 sudo apt install flatpak
 sudo apt install gnome-software-plugin-flatpak
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.github.PintaProject.Pinta `pinta`
 
+#pinta
+flatpak install flathub com.github.PintaProject.Pinta
+#discord
+flatpak install flathub com.discordapp.Discord
 
 #rust stuff
 if ! [ -d ~/.cargo ]; then 
 	sudo apt install cargo 
 	sudo apt autoremove rustc
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+	#actual rustup isntalls
+	rustup defualt 1.7.0
+	rustup target add wasm32-unknown-unknown
+
+else
+	echo "rust installed already"
 fi
 
 #lean stuff
-lean --version || wget -q https://raw.githubusercontent.com/leanprover-community/mathlib4/master/scripts/install_debian.sh && bash install_debian.sh ; rm -f install_debian.sh && source ~/.profile
-
-#actual rustup isntalls
-rustup defualt 1.7.0
-rustup target add wasm32-unknown-unknown
+if ! [ -f "${HOME}/.elan/bin/lean" ]; then
+	lean --version || wget -q https://raw.githubusercontent.com/leanprover-community/mathlib4/master/scripts/install_debian.sh && bash install_debian.sh ; rm -f install_debian.sh && source ~/.profile
+else
+	echo "lean installed already"
+fi
 
 #neovim version 0.8 isnt in apt
 #we need to build from source

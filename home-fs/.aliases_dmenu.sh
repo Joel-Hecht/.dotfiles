@@ -10,3 +10,7 @@ alias pinta="flatpak run com.github.PintaProject.Pinta &"
 alias files="nautilus &"
 alias videos="totem &"
 alias video="totem"
+alias shop="gnome-software &"
+
+alias discord="flatpak run com.discordapp.Discord &"
+alias prusaslicer="flatpak run com.prusa3d.PrusaSlicer &"
