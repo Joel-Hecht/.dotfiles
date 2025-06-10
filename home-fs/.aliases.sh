@@ -15,6 +15,7 @@ alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
 alias br="vim ~/.bashrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 alias sl="pope"
+alias sexy="echo sexy!"
 
 #computer control
 alias eep="systemctl suspend"
@@ -32,6 +33,7 @@ alias gp="git pull"
 alias push="git push"
 alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 alias dhm="curr=\"\$(pwd)\" && dhome ; make sym ; cd \"\$curr\""
+alias grh="git reset --hard origin/main"
 
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
@@ -65,6 +67,9 @@ alias bfs="source bfs_base"
 alias bfsh="source bfsh_base"
 alias dfs="source dfs_base"
 alias dfsh="source dfsh_base"
+
+#remove .swp files
+alias rmswp="rm .*.swp"
 
 #reset calcurse
 alias fixcurse="cal/share/calcurse/.calcurse.pid"
