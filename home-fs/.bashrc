@@ -184,7 +184,6 @@ alias venvl="deactivate"
 alias pip="${HOME}/${VENVNAME}/bin/pip"
 . "$HOME/.cargo/env"
 
-
 function mkcd {
 	if [ ! -n "$1" ]; then
 		echo "Enter a directory name"
@@ -194,19 +193,5 @@ function mkcd {
 		command mkdir $1 && cd $1
 	fi
 }
-
-comment='function bfs {
-	subdir="*/"
-	level=""
-	while true; do
-		level+=$subdir
-		dir=$( ls -d $level | grep "$1" )
-		if [ -n "$dir" ]; then
-			cd "$( echo "$dir" | head -n 1)"
-			break	
-		fi
-	done
-}'
-
 
 export TERM=xterm-256color

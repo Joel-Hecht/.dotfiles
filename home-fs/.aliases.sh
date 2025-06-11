@@ -14,7 +14,6 @@ alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
 alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
 alias br="vim ~/.bashrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
-alias sl="pope"
 alias sexy="echo sexy!"
 
 #computer control
@@ -32,13 +31,24 @@ alias names="git diff --name-only"
 alias gp="git pull"
 alias push="git push"
 alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
-alias dhm="curr=\"\$(pwd)\" && dhome ; make sym ; cd \"\$curr\""
 alias grh="git reset --hard origin/main"
 
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
 alias sa="source ~/.aliases.sh"
+alias ms="$HOME/.dotfiles/home-fs/makesymlinks.sh"
+
+#pope
 alias bs="pope"
+alias pg="pope"
+alias pd="pope"
+alias as="pope"
+alias sm="pope"
+alias rb="pope"
+alias em="pope"
+alias sl="pope"
+alias bc="pope"
+alias fk="pope"
 
 alias pids="ps aux"
 alias killpid="kill -9"
@@ -73,21 +83,5 @@ alias rmswp="rm .*.swp"
 
 #reset calcurse
 alias fixcurse="cal/share/calcurse/.calcurse.pid"
-
-cd_func() {
-	if [ -z "$1" ]; then
-		cd "${HOME}"
-	fi	
-
-	substring="*"
-						
-	if [[ "$1" =~ "$substring" ]]; then
-		echo "use bfs instead"
-	else
-		cd "$1"
-	fi
-}
-												
-if ! [[ $( whoami ) == 'rui' ]]; then
-	alias cd='cd_func'
-fi
+alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
+alias unhdmi="xrandr --auto"
