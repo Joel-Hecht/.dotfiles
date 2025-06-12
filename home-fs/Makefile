@@ -3,6 +3,7 @@ all:
 	./makesymlinks.sh
 	./permission_setup.sh
 	./source_ab.sh
+	./makemans.sh
 
 sym:
 	./makesymlinks.sh

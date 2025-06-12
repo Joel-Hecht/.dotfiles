@@ -19,12 +19,13 @@ alias sex="sexy"
 
 #computer control
 alias eep="systemctl suspend"
-
-#CTRL+Z -> dc to disconnect an app from terminal, dcq also removes the terminal
 alias dcq="bg; jobs; disown %1; xdotool getactivewindow windowkill"
 alias dc="bg; jobs; disown %1"
+alias pids="ps aux"
+alias killpid="kill -9"
+alias kf="keyboard_firmware"
 
-#git / general shortcuts
+#git shortcuts
 alias gcm="git commit -m"
 alias staged="git diff --name-only --staged"
 alias gaa="git add --all && git diff --name-only --staged | sed 's/^/staged: /' "
@@ -34,7 +35,7 @@ alias push="git push"
 alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 alias grh="git reset --hard origin/main"
 
-#reload bashrc after updates	
+#reload after updates	
 alias sb="source ~/.bashrc"
 alias sa="source ~/.aliases.sh"
 alias ms="curr=\"\$(pwd)\" && dhome && ./makesymlinks.sh; cd \"\$curr\""
@@ -51,11 +52,7 @@ alias sl="pope"
 alias bc="pope"
 alias fk="pope"
 
-alias pids="ps aux"
-alias killpid="kill -9"
-alias kf="keyboard_firmware"
-
-#copy last command entered
+#clipboard
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
 alias cpy="xclip -sel c"
 alias cb="xclip -sel c"
@@ -87,7 +84,6 @@ alias bfsfh="source bfs_base -fh"
 alias bfshf="source bfs_base -hf"
 alias bfsrf="source bfs_base -rf"
 alias bfsfr="source bfs_base -fr"
-
 alias hrf="source bfs_base -hrf"
 
 #remove .swp files
@@ -95,15 +91,16 @@ alias rmswp="rm .*.swp"
 
 #reset calcurse
 alias fixcurse="cal/share/calcurse/.calcurse.pid"
+
+#hdmi projecting
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
 alias unhdmi="xrandr --auto"
 
 down_func() {
-
 	fname=$(ls -tl "${HOME}/Downloads" | head -2 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')
 	fullpath="${HOME}/Downloads/${fname}"
 	mv "$fullpath" "./$fname"
-
 }
 
+#move last downloaded file to pwd
 alias downhere="down_func"
