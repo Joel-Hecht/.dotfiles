@@ -15,6 +15,7 @@ alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
 alias br="vim ~/.bashrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 alias sexy="echo sexy!"
+alias sex="sexy"
 
 #computer control
 alias eep="systemctl suspend"
