@@ -1,47 +1,95 @@
 #!/bin/bash
 
-subdirs=""
+OPTIND=1
+
+subdirs="./"
+hidden="no"
 depth=0
-execute_loop=true
 
 # help
-if [[ $# -eq 0 || $1 == "-help" || $1 == "--help" ]]; then
+if [[ $# -eq 0 || $1 == "--help" ]]; then
 	echo "breadth first recursive cd"
-	echo "syntax: bfs dirname [maxdepth (default=5)]"
-	execute_loop=false
+	echo "syntax: bfs [OPTION] dirname [maxdepth (default=5)]"
+	echo "options:"
+	echo "\t-h: explore hidden directories (also bfsh)"
+	echo "\t-r: start from root (also bfsr)"
+	echo "\t-f: explore fully and go to last used match"
+	return 0
 fi
+
+# options
+while getopts "hrf" opt; do
+	case $opt in
+		h) hidden=yes ;;
+		r) subdirs="$HOME/" ;;
+		f) full=yes ;;
+		\?) echo "Invalid option -$OPTARG" >&2
+			return 1 ;;
+	esac
+done
+
+shift $(( OPTIND - 1 ))
 
 # default maxdepth
 if [[ $# -gt 1 ]]; then
 	maxdepth=$2
 	if ! [[ "$maxdepth" =~ ^[0-9]+$ ]]; then
-		echo "maxdepth (arg 2) must be a number"
-		execute_loop=false
+		echo "maxdepth (arg 2) must be a number" >&2
+		return 1
 	fi
 else
 	maxdepth=5
 fi
 
-# check if target is in pwd
-cd "$1" &> /dev/null && execute_loop=false
+# -f 
+if [[ $full == yes ]]; then
+	current="$( pwd )"
+	cd "$subdirs"
+	for (( i=1; i<=$maxdepth; i++ )); do
+		for (( j=0; j<$i; j++ )); do
+			if [[ $hidden == yes ]]; then
+				subdirs+="?(.)*/"
+			else
+				subdirs+="*/"
+			fi
+		done
+		subdirs+=" "
+	done
+
+	top_dir=$( ls -dt $subdirs --color=no 2> /dev/null | egrep "(^|/)$1/$" | head -n 1 )
+	if [[ -n "$top_dir" ]]; then
+		cd "$top_dir"
+		return 0
+	fi
+	echo "failed to find!" >&2
+	cd "$current"
+	return 1
+fi
 
 # main loop
-while [[ $execute_loop == "true" ]]; do
-	subdirs+="*/"
+while [[ $depth -lt $maxdepth ]]; do
+	if [[ $hidden == yes ]]; then
+		subdirs+="?(.)*/"
+	else
+		subdirs+="*/"
+	fi
+
 	depth=$(( $depth + 1))
 
-	# check for termination
-	[[ $depth -le $maxdepth ]] || echo "hit maxdepth ($maxdepth)!"
-	[[ $depth -le $maxdepth ]] || break
-	targets=$( ls -dt $subdirs )
-   	[[ -n targets ]] || echo "no more subdirectories at depth=$depth"
-   	[[ -n targets ]] || break
+	# list all targets
+	targets=$( ls -dt $subdirs --color=no 2> /dev/null )
+	if [[ -z $targets ]]; then
+		echo "no more subdirectories at depth=$depth" >&2
+		return 2 
+	fi
 
 	# look for directory
 	matched_dir=$( grep "/$1/" <<< $targets )
 	if [[ -n "$matched_dir" ]]; then
-		# if multiple matched dirs (get better names bro), just go to first
-		cd "$( echo "$matched_dir" | head -n 1)"
-		break
+		cd "$( head -n 1 <<< "$matched_dir" )"
+		return 0
 	fi
 done
+
+echo "hit maxdepth ($maxdepth)!" >&2
+return 1 

@@ -2,12 +2,8 @@ all:
 	./makealiases.sh
 	./makesymlinks.sh
 	./permission_setup.sh
-	sa
-	sb
+	./source_ab.sh
 
 sym:
 	./makesymlinks.sh
-	sa
-	sb
-
-
+	./source_ab.sh

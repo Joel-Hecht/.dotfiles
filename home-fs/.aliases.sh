@@ -36,7 +36,7 @@ alias grh="git reset --hard origin/main"
 #reload bashrc after updates	
 alias sb="source ~/.bashrc"
 alias sa="source ~/.aliases.sh"
-alias ms="$HOME/.dotfiles/home-fs/makesymlinks.sh"
+alias ms="curr=\"\$(pwd)\" && dhome && ./makesymlinks.sh; cd \"\$curr\""
 
 #pope
 alias bs="pope"
@@ -74,10 +74,20 @@ alias firefox="i3-msg -q restart && firefox"
 
 #allow bfs to cd
 alias bfs="source bfs_base"
-alias bfsh="source bfsh_base"
-alias bfsr="source bfsr_base"
+alias bfsh="source bfs_base -h"
+alias bfsr="source bfs_base -r"
+alias bfsf="source bfs_base -f"
 alias dfs="source dfs_base"
-alias dfsh="source dfsh_base"
+
+#easy bfs options
+alias bfshr="source bfs_base -hr"
+alias bfsrh="source bfs_base -rh"
+alias bfsfh="source bfs_base -fh"
+alias bfshf="source bfs_base -hf"
+alias bfsrf="source bfs_base -rf"
+alias bfsfr="source bfs_base -fr"
+
+alias hrf="source bfs_base -hrf"
 
 #remove .swp files
 alias rmswp="rm .*.swp"
