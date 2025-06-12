@@ -87,3 +87,13 @@ alias rmswp="rm .*.swp"
 alias fixcurse="cal/share/calcurse/.calcurse.pid"
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
 alias unhdmi="xrandr --auto"
+
+down_func() {
+
+	fname=$(ls -tl "${HOME}/Downloads" | head -2 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')
+	fullpath="${HOME}/Downloads/${fname}"
+	mv "$fullpath" "./$fname"
+
+}
+
+alias downhere="down_func"
