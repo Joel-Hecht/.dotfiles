@@ -4,6 +4,8 @@ makealiases.sh
 Makefile
 permission_setup.sh
 removebrokensymlinks.sh
+makemans.sh
+sourceab.sh
 bin/testignored
 bin/testignored2
 bin/testignored3
