@@ -3,6 +3,7 @@
 #navigation
 alias dot="cd ~/.dotfiles"
 alias dhome="cd ~/.dotfiles/home-fs"
+alias dman="cd ~/.dotfiles/man"
 alias dbin="cd ~/.dotfiles/home-fs/bin"
 alias down="cd ~/Downloads"
 alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
@@ -75,16 +76,8 @@ alias bfs="source bfs_base"
 alias bfsh="source bfs_base -h"
 alias bfsr="source bfs_base -r"
 alias bfsf="source bfs_base -f"
+alias bfst="source bfs_base -f"
 alias dfs="source dfs_base"
-
-#easy bfs options
-alias bfshr="source bfs_base -hr"
-alias bfsrh="source bfs_base -rh"
-alias bfsfh="source bfs_base -fh"
-alias bfshf="source bfs_base -hf"
-alias bfsrf="source bfs_base -rf"
-alias bfsfr="source bfs_base -fr"
-alias hrf="source bfs_base -hrf"
 
 #remove .swp files
 alias rmswp="rm .*.swp"

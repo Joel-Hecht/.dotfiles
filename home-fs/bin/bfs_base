@@ -1,10 +1,12 @@
 #!/bin/bash
 
 OPTIND=1
-
 subdirs="./"
-hidden="no"
 depth=0
+
+hidden=no
+full=no
+tab=no
 
 # help
 if [[ $# -eq 0 || $1 == "--help" ]]; then
@@ -14,15 +16,17 @@ if [[ $# -eq 0 || $1 == "--help" ]]; then
 	echo "\t-h: explore hidden directories (also bfsh)"
 	echo "\t-r: start from root (also bfsr)"
 	echo "\t-f: explore fully and go to last used match"
+	echo "\t-t: find directory starting with argument"
 	return 0
 fi
 
 # options
-while getopts "hrf" opt; do
+while getopts "hrft" opt; do
 	case $opt in
 		h) hidden=yes ;;
 		r) subdirs="$HOME/" ;;
 		f) full=yes ;;
+		t) tab=yes ;;
 		\?) echo "Invalid option -$OPTARG" >&2
 			return 1 ;;
 	esac
@@ -43,20 +47,17 @@ fi
 
 # -f 
 if [[ $full == yes ]]; then
+	[[ $tab == yes ]] && search_term="(^|/)$1[^/]*/$" || search_term="(^|/)$1/$"
 	current="$( pwd )"
 	cd "$subdirs"
 	for (( i=1; i<=$maxdepth; i++ )); do
 		for (( j=0; j<$i; j++ )); do
-			if [[ $hidden == yes ]]; then
-				subdirs+="?(.)*/"
-			else
-				subdirs+="*/"
-			fi
+			[[ $hidden == yes ]] && subdirs+="?(.)*/" || subdirs+="*/"
 		done
 		subdirs+=" "
 	done
 
-	top_dir=$( ls -dt $subdirs --color=no 2> /dev/null | egrep "(^|/)$1/$" | head -n 1 )
+	top_dir=$( ls -dt $subdirs --color=no 2> /dev/null | egrep "$search_term" | head -n 1 )
 	if [[ -n "$top_dir" ]]; then
 		cd "$top_dir"
 		return 0
@@ -66,13 +67,11 @@ if [[ $full == yes ]]; then
 	return 1
 fi
 
+[[ $tab == yes ]] && search_term="/$1.*/" || search_term="/$1/"
+
 # main loop
 while [[ $depth -lt $maxdepth ]]; do
-	if [[ $hidden == yes ]]; then
-		subdirs+="?(.)*/"
-	else
-		subdirs+="*/"
-	fi
+	[[ $hidden == yes ]] && subdirs+="?(.)*/" || subdirs+="*/"
 
 	depth=$(( $depth + 1))
 
@@ -84,7 +83,7 @@ while [[ $depth -lt $maxdepth ]]; do
 	fi
 
 	# look for directory
-	matched_dir=$( grep "/$1/" <<< $targets )
+	matched_dir=$( egrep "$search_term" <<< $targets )
 	if [[ -n "$matched_dir" ]]; then
 		cd "$( head -n 1 <<< "$matched_dir" )"
 		return 0

@@ -1,0 +1,25 @@
+./" Manpage for bfs 
+.TH man 1 "21 June 2025" "1.0" "User Commands"
+.SH NAME 
+	bfs - breadth-first recursive cd
+.SH SYNOPSIS
+	bfs [OPTION] dirname [maxdepth (default=5)]
+.SH OPTIONS
+	-h explore hidden directories (bfsh)\n
+	-r start from root (bfsr)\n
+	-f explore to maxdepth and cd to last used match (bfsf)\n
+	-t find directories starting with argument (bfst)\n
+.SH EXAMPLES
+	bfs -h home-fs     probably goes to ~/.dotfiles/home-fs
+	bfs -tf cs         starting from pwd, goes to most recently used directory starting with "cs"
+	bfs -hrf bin       starting from root, goes to most recently used "bin" directory including hidden files (probably dbin)
+.SH BUGS
+	none that i can remember
+.SH AUTHOR
+	written by rui zhao 
+.SH REPORTING BUGS
+	tell me in person
+.SH COPYRIGHT
+	This is free software, you are free to change and redistribute it, there is no warranty
+.SH ALIASES
+	bfsh, bfsr, bfsf, bfst

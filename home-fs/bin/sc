@@ -1,6 +1,6 @@
 #!/bin/bash
 
-lastID=$(lastScreenShotID)
+lastID=$(.lastScreenShotID)
 
 cd ${HOME}/Pictures
 
@@ -8,5 +8,5 @@ fname=$(ls | grep ^SCID"$lastID"_.*.png)
 
 #eog "$fname" &
 #update to use pinta instead
-( flatpak run com.github.PintaProject.Pinta "$fname" ||  eog "$fname" ) &
+( flatpak run com.github.PintaProject.Pinta "$fname" 2> /dev/null ||  eog "$fname" 2> /dev/null ) &
 

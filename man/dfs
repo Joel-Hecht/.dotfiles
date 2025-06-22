@@ -1,0 +1,19 @@
+./" Manpage for dfs 
+.TH man 1 "21 June 2025" "1.0" "User Commands"
+.SH NAME 
+	dfs - depth-first recursive cd
+.SH SYNOPSIS
+	dfs dirname [maxdepth (default=3)]
+.SH OPTIONS
+	none because this is useless
+.SH EXAMPLES
+	dfs Downloads
+	dfs Pictures 5 (this will probably be very slow)
+.SH BUGS
+	don't use this it's horrible
+.SH AUTHOR
+	written by rui zhao 
+.SH REPORTING BUGS
+	tell me in person
+.SH COPYRIGHT
+	This is free software, you are free to change and redistribute it, there is no warranty

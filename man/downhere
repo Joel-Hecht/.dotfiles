@@ -1,0 +1,16 @@
+./" Manpage for downhere 
+.TH man 1 "22 June 2025" "1.0" "User Commands"
+.SH NAME 
+	downhere - move last downloaded file from ~/Downloads to pwd
+.SH SYNOPSIS
+	downhere
+.SH EXAMPLES
+	downhere
+.SH BUGS
+	unlikely
+.SH AUTHOR
+	written by joel hecht 
+.SH REPORTING BUGS
+	email catboyjoel@catboyjoel.com
+.SH COPYRIGHT
+	This is free software, you are free to change and redistribute it, there is no warranty

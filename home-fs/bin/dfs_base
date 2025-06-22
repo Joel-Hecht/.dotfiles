@@ -22,9 +22,6 @@ else
 	maxdepth=3
 fi
 
-# check if target is in pwd
-cd "$1" &> /dev/null && execute_loop=false
-
 # main loop
 function dfs_rec {
 	#check for termination (base case)
@@ -32,7 +29,7 @@ function dfs_rec {
 	[[ $depth -le $maxdepth ]] || return 1
 
 	# check if target found
-	ls -dt $next_level | grep "/$1/" && cd "$( ls -dt $next_level | grep "/$1/" | head -n 1)" && return 0	
+	ls -dt $next_level | egrep "(^|/)$1/" && cd "$( ls -dt $next_level | egrep "(^|/)$1/" | head -n 1)" && return 0	
 
 	# recurse through subdirectories
 	depth=$(( $depth + 1 ))

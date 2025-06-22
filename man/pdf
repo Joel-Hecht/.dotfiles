@@ -1,0 +1,16 @@
+./" Manpage for pdf 
+.TH man 1 "22 June 2025" "1.0" "User Commands"
+.SH NAME 
+	pdf - open pdf in firefox
+.SH SYNOPSIS
+	pdf [filename]
+.SH EXAMPLES
+	pdf file1.pdf
+.SH BUGS
+	it does nothing meaningful and is basically an alias for firefox
+.SH AUTHOR
+	written by joel hecht 
+.SH REPORTING BUGS
+	email catboyjoel@catboyjoel.com
+.SH COPYRIGHT
+	This is free software, you are free to change and redistribute it, there is no warranty
