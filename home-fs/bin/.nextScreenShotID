@@ -1,7 +1,7 @@
 #!/bin/bash
 
 lastcommand=$(dirname $(realpath $0))
-id=$(sh $lastcommand/lastScreenShotID)
+id=$(sh $lastcommand/.lastScreenShotID)
 
 #even if there are no ids, an empty string is interpreted as a 0
 #so the starting ID will always be 1

@@ -29,6 +29,7 @@ python3-venv pip `needed to use pip`\
 kitty `new termianl emulator` \
 lua5.4 `lua language` \
 ninja-build gettext cmake unzip curl `tools we need for later to install neovim` \
+notepadqq \
 
 
 #golang `needed for some stuff` \
