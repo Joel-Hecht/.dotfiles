@@ -281,3 +281,8 @@ bindsym F12 exec --no-startup-id xrandr --output $(xrandr -q | grep " connected"
 
 #activate gnome policykit, needed for i3wm to authenmtiate root
 exec_always --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+#screen no longer shuts down after inactivity.  Useful for watching movies with Karen Wongso
+exec --no-startup-id xset s off
+exec --no-startup-id xset -dpms
+exec --no-startup-id xset s noblank
