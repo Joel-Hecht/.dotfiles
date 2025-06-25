@@ -2,7 +2,7 @@ all:
 	./makealiases.sh
 	./makesymlinks.sh
 	./permission_setup.sh
-	./source_ab.sh
+	./sourceab.sh
 	./makemans.sh
 
 sym:

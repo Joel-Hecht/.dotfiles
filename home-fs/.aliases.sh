@@ -36,6 +36,7 @@ alias gp="git pull"
 alias push="git push"
 alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 alias grh="git reset --hard origin/main"
+alias changes="git diff --cached"
 
 #reload after updates	
 alias sb="source ~/.bashrc"
@@ -84,7 +85,7 @@ alias dfs="source dfs_base"
 alias rmswp="rm .*.swp"
 
 #reset calcurse
-alias fixcurse="cal/share/calcurse/.calcurse.pid"
+alias fixcurse="rm .local/share/calcurse/.calcurse.pid"
 
 #hdmi projecting
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
