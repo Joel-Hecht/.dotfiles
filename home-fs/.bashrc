@@ -172,7 +172,7 @@ esac
 
 #stay in a base venv always
 #we also make an alias for pip here because im a fuck
-VENVNAME="basevenv"
+VENVNAME=".basevenv"
 if ! [ -d  "${HOME}/${VENVNAME}" ]; then
 	curr=$(pwd)
 	cd "${HOME}"
