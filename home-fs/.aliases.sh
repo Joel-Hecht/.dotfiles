@@ -16,8 +16,6 @@ alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
 alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
 alias br="vim ~/.bashrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
-alias sexy="echo sexy!"
-alias sex="sexy"
 
 #computer control
 alias eep="systemctl suspend"
@@ -54,6 +52,8 @@ alias em="pope"
 alias sl="pope"
 alias bc="pope"
 alias fk="pope"
+alias sexy="echo sexy!"
+alias sex="sexy"
 
 #clipboard
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
@@ -99,3 +99,6 @@ down_func() {
 
 #move last downloaded file to pwd
 alias downhere="down_func"
+
+# reverse clean
+alias unclean="mv /tmp/trash/* ."

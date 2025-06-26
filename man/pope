@@ -4,6 +4,8 @@
 	pope - show pope (he is fleeting)
 .SH SYNOPSIS
 	pope [-l] [-f]
+.SH DESCRIPTION
+	display an eog window with the specified pope for 1.5 seconds then kill it
 .SH OPTIONS
 	-l for pope leo (default)\n
 	-f for pope francis\n

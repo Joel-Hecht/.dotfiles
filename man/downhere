@@ -1,9 +1,11 @@
 ./" Manpage for downhere 
 .TH man 1 "22 June 2025" "1.0" "User Commands"
 .SH NAME 
-	downhere - move last downloaded file from ~/Downloads to pwd
+	downhere - move last download here
 .SH SYNOPSIS
-	downhere
+	downhere (no arguments)
+.SH DESCRIPTION
+	moves the most recent file in ~/Downloads, which is probably whatever you just downloaded from your browser, to the pwd
 .SH EXAMPLES
 	downhere
 .SH BUGS

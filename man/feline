@@ -1,15 +1,17 @@
 ./" Manpage for feline
 .TH man 1 "21 June 2025" "1.0" "User Commands"
 .SH NAME 
-	feline - cat but implemented in lean
+	feline - lean cat
 .SH SYNOPSIS
 	feline [files] [-] [more files]
+.SH DESCRIPTION
+	confelinenate files to standard output (print their contents)
 .SH EXAMPLES
 	feline file1.txt file2.txt file3.txt\n
 	echo "------" | feline file1.txt - file2.txt         will print the dashes between the two files
 .SH AUTHOR
 	pretty much copied from David Thrane Christainsen https://lean-lang.org/functional_programming_in_lean/Hello___-World___/Worked-Example___--cat/#Functional-Programming-in-Lean--Hello___-World___--Worked-Example___--cat
 .SH REPORTING BUGS
-	tell me (rui zhao not david thrane christainsen) in person
+	tell me (chris rui zhao not david thrane christainsen) in person
 .SH COPYRIGHT
 	not sure

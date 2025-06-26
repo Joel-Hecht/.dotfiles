@@ -1,13 +1,15 @@
 ./" Manpage for pdf 
 .TH man 1 "22 June 2025" "1.0" "User Commands"
 .SH NAME 
-	pdf - open pdf in firefox
+	pdf - open pdf
 .SH SYNOPSIS
 	pdf [filename]
+.SH DESCRIPTION
+	opens pdf in firefox, actually will just open any file in firefox
 .SH EXAMPLES
 	pdf file1.pdf
 .SH BUGS
-	it does nothing meaningful and is basically an alias for firefox
+	doesn't actually handle file not existing or not having a readable extension
 .SH AUTHOR
 	written by joel hecht 
 .SH REPORTING BUGS

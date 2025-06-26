@@ -1,9 +1,11 @@
 ./" Manpage for dfs 
 .TH man 1 "21 June 2025" "1.0" "User Commands"
 .SH NAME 
-	dfs - depth-first recursive cd
+	dfs - depth-first search
 .SH SYNOPSIS
 	dfs dirname [maxdepth (default=3)]
+.SH DESCRIPTION
+	recursive cd that explores subdirectory branches one at a time very very slowly and lists them all out for fun
 .SH OPTIONS
 	none because this is useless
 .SH EXAMPLES

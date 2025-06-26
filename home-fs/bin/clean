@@ -1,0 +1,22 @@
+#!/bin/bash
+# check out man clean
+
+# recursively remove empty directories, leaving any directory with any file in any subdirectory of it
+rmdir_rec () {
+	for file in "$1"/*; do
+		[[ -d "$file" ]] && rmdir_rec "$file"
+	done
+
+	rmdir "$1" 2>/dev/null
+}
+
+# move current /tmp/trash/ to /tmp/old/ so you can easily see what was removed this call if needed
+mkdir /tmp/old 2>/dev/null
+mv /tmp/trash/* /tmp/old 2>/dev/null
+mkdir /tmp/trash/ 2>/dev/null
+
+# main
+for file in *; do
+	[[ -f "$file" ]] && mv "$file" /tmp/trash/
+	[[ -d "$file" ]] && rmdir_rec "$file"
+done

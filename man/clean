@@ -1,0 +1,20 @@
+./" Manpage for clean 
+.TH man 1 "25 June 2025" "1.0" "User Commands"
+.SH NAME 
+	clean - clean files and empty subdirectories 
+.SH SYNOPSIS
+	clean (no arguments)
+.SH DESCRIPTION
+	moves all files in directory to /tmp/trash/, where they will die; if there was stuff there it goes to /tmp/old/. also recursively goes through subdirectory tree to delete all directories that are empty or only contain empty directories. use unclean or mv /tmp/trash/ . to reverse the file deletion, empty subdirection deletion is unreversible because you did not need them.
+.SH OPTIONS
+	implement -f if you want
+.SH EXAMPLES
+	clean
+.SH BUGS
+	probably none??
+.SH AUTHOR
+	written by rui zhao 
+.SH REPORTING BUGS
+	tell me in person
+.SH COPYRIGHT
+	This is free software, you are free to change and redistribute it, there is no warranty

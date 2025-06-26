@@ -1,9 +1,11 @@
 ./" Manpage for sc 
 .TH man 1 "22 June 2025" "1.0" "User Commands"
 .SH NAME 
-	sc - open last screenshot in pinta (eog as backup)
+	sc - open last screenshot 
 .SH SYNOPSIS
 	sc
+.SH DESCRIPTION
+	uses pinta, or eog as backup, to open screenshot from ~/Pictures with correctly formatted name and the most recent SCID (see .lastScreenShotID in dbin)
 .SH EXAMPLES
 	sc
 .SH BUGS
