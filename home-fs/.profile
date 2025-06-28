@@ -22,9 +22,3 @@ esac
 . "$HOME/.cargo/env"
 
 export PATH="$HOME/.elan/bin:$PATH"
-
-# FSL Setup
-FSLDIR=/home/rui/fsl
-PATH=${FSLDIR}/share/fsl/bin:${PATH}
-export FSLDIR PATH
-. ${FSLDIR}/etc/fslconf/fsl.sh

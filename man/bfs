@@ -5,12 +5,12 @@
 .SH SYNOPSIS
 	bfs [OPTION] dirname [maxdepth (default=5)]
 .SH DESCRIPTION
-	recursive cd that goes layer-by-layer through the subdirectory tree until it finds a match and then sends you there
+	recursive cd that goes layer-by-layer until a maxdepth through the subdirectory tree until it finds a match and then sends you there
 .SH OPTIONS
 	-h explore hidden directories (bfsh)\n
 	-r start from root (bfsr)\n
 	-f explore to maxdepth and cd to last used match (bfsf)\n
-	-t find directories starting with argument (bfst)\n
+	-t find directories starting with argument (bfst) (t as in tab, like how you can hit tab when using cd to autocomplete the start of a directory name)\n
 .SH EXAMPLES
 	bfs -h home-fs     probably goes to ~/.dotfiles/home-fs
 	bfs -tf cs         starting from pwd, goes to most recently used directory starting with "cs"

@@ -5,9 +5,9 @@
 .SH SYNOPSIS
 	dfs dirname [maxdepth (default=3)]
 .SH DESCRIPTION
-	recursive cd that explores subdirectory branches one at a time very very slowly and lists them all out for fun
+	recursive cd that explores subdirectory branches one at a time very very slowly and lists them all out for fun. Somewhat useful for figuring out what's slowing down your bfs
 .SH OPTIONS
-	none because this is useless
+	i'll implement -h eventually
 .SH EXAMPLES
 	dfs Downloads
 	dfs Pictures 5 (this will probably be very slow)

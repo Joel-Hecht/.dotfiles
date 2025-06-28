@@ -5,7 +5,7 @@
 .SH SYNOPSIS
 	pope [-l] [-f]
 .SH DESCRIPTION
-	display an eog window with the specified pope for 1.5 seconds then kill it
+	display an eog window with the specified pope of the roman catholic church for 1.5 seconds then kill it (the window)
 .SH OPTIONS
 	-l for pope leo (default)\n
 	-f for pope francis\n

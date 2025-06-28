@@ -5,7 +5,7 @@
 .SH SYNOPSIS
 	pdf [filename]
 .SH DESCRIPTION
-	opens pdf in firefox, actually will just open any file in firefox
+	opens pdf in firefox (actually will just open any file in firefox)
 .SH EXAMPLES
 	pdf file1.pdf
 .SH BUGS

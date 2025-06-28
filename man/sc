@@ -5,7 +5,7 @@
 .SH SYNOPSIS
 	sc
 .SH DESCRIPTION
-	uses pinta, or eog as backup, to open screenshot from ~/Pictures with correctly formatted name and the most recent SCID (see .lastScreenShotID in dbin)
+	uses pinta, or eog as backup, to open screenshot from ~/Pictures with correctly formatted name and the most recent SCID (see ~/.dotfiles/home-fs/bin/.lastScreenShotID)
 .SH EXAMPLES
 	sc
 .SH BUGS
