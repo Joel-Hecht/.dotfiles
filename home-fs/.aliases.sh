@@ -78,7 +78,7 @@ alias bfs="source bfs_base"
 alias bfsh="source bfs_base -h"
 alias bfsr="source bfs_base -r"
 alias bfsf="source bfs_base -f"
-alias bfst="source bfs_base -f"
+alias bfst="source bfs_base -t"
 alias dfs="source dfs_base"
 
 #remove .swp files
