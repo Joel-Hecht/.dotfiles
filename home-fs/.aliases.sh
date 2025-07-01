@@ -52,6 +52,11 @@ alias em="pope"
 alias sl="pope"
 alias bc="pope"
 alias fk="pope"
+alias hd="pope"
+alias hd="pope"
+alias mr="pope"
+alias iv="pope"
+alias vm="pope"
 alias sexy="echo sexy!"
 alias sex="sexy"
 
@@ -85,7 +90,7 @@ alias dfs="source dfs_base"
 alias rmswp="rm .*.swp"
 
 #reset calcurse
-alias fixcurse="rm .local/share/calcurse/.calcurse.pid"
+alias fixcurse="rm ${HOME}/.local/share/calcurse/.calcurse.pid"
 
 #hdmi projecting
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
@@ -99,6 +104,10 @@ down_func() {
 
 #move last downloaded file to pwd
 alias downhere="down_func"
+alias dh="downhere"
 
 # reverse clean
 alias unclean="mv /tmp/trash/* ."
+
+# remember how zip works
+alias zip="echo zip -r dest.zip dirToZip; zip"

@@ -238,13 +238,14 @@ focus_follows_mouse no
 exec_always --no-startup-id xmodmap -e "keycode 62 = Escape NoSymbol" 
 exec_always --no-startup-id xmodmap -e "remove shift = Escape"
 exec_always --no-startup-id xmodmap -e "keycode 108 = Multi_key Alt_R" 
+exec_always --no-startup-id xmodmap -e "remove mod1 = Alt_R"
 exec_always --no-startup-id bash ${HOME}/bin/fix_volume
 
 #program shortcuts
 bindsym Control+$alt+f exec --no-startup-id firefox
 bindsym Control+$alt+n exec --no-startup-id notepadqq
 bindsym Control+$alt+p exec --no-startup-id flatpak run com.github.PintaProject.Pinta & 
-bindsym Control+$alt+k exec --no-startup-id kitty calcurse
+bindsym Control+$alt+k exec --no-startup-id bash $( fixcurse && kitty calcurse || kitty calcurse )
 
 #website shortcuts
 bindsym Control+$alt+d exec --no-startup-id firefox discord.com/channels/@me
@@ -265,7 +266,7 @@ bindsym Control+Shift+$alt+o exec --no-startup-id chromium mp.oasesonline.com/ca
 
 #make this a toggle later
 bindsym Control+$alt+h exec --no-startup-id bash ${HOME}/bin/.toggleScrollDirection 
-bindsym Control+Shift+$alt+h exec --no-startup-id xmodmap -e "remove shift = Escape"
+bindsym Control+Shift+$alt+h exec --no-startup-id bash $( xmodmap -e "remove shift = Escape" && xmodmap -e "keycode 108 = Multi_key Alt_R" )
 
 # audio buttons
 bindsym F1 exec --no-startup-id bash ${HOME}/bin/.mute_unmute
@@ -273,7 +274,6 @@ bindsym F2 exec --no-startup-id bash ${HOME}/bin/.volume down
 bindsym F3 exec --no-startup-id bash ${HOME}/bin/.volume up
 bindsym F4 exec --no-startup-id bash ${HOME}/bin/.fix_volume
 exec_always --no-startup-id touch "${HOME}/.VOLUME"
-exec_always --no-startup-id [[ $( whoami ) == "rui" ]] && xmodmap -e "pointer = 1 2 3 5 4 7 6 8 9 10 11 12"
 
 bindsym F10 exec --no-startup-id xrandr --output $(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1) --brightness 1
 bindsym F11 exec --no-startup-id xrandr --output $(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1) --brightness $(echo $(xrandr --verbose --current | grep Brightness | sed 's/.*\ //')"-0.1" | bc )
