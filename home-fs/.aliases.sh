@@ -88,6 +88,7 @@ alias dfs="source dfs_base"
 
 #remove .swp files
 alias rmswp="rm .*.swp"
+alias rmzip="rm .*.zip *.tar *.gz"
 
 #reset calcurse
 alias fixcurse="rm ${HOME}/.local/share/calcurse/.calcurse.pid"
@@ -111,3 +112,9 @@ alias unclean="mv /tmp/trash/* ."
 
 # remember how zip works
 alias zip="echo zip -r dest.zip dirToZip; zip"
+
+path_func() {
+	export PATH=$PATH:"$1"
+}
+
+alias path="path_func"

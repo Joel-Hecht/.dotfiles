@@ -134,9 +134,7 @@ export PATH="$HOME/bin/aliases:$PATH"
 export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="${HOME}/.local/bin:$PATH"
-
-# gcp machine learning
-export PATH="$HOME/Downloads/google-cloud-sdk/bin:$PATH"
+export PATH="$HOME/apps/MuseScore4/:$PATH"
 
 #MOVED TO I3CONFIG
 #needed to source i3bar tray to primary monitor on multi-monitor setup
