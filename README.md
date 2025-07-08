@@ -2,7 +2,6 @@
 
 This is OUR linux config
 
-
 please run all bash scripts to set up.
 
 ./home_fs/makesymlinks.sh should be run without arguments, and will set up all symlinks needed for .dotfiles to run well
