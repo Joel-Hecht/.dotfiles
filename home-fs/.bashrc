@@ -127,14 +127,6 @@ fi
 #import all aliases
 source ~/.aliases.sh
 
-#add my custom commands to path
-export PATH="$HOME/bin:$PATH"
-export PATH="/usr/lib/qt6/bin:$PATH"
-export PATH="$HOME/bin/aliases:$PATH"
-export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="${HOME}/.local/bin:$PATH"
-export PATH="$HOME/apps/MuseScore4/:$PATH"
 
 #MOVED TO I3CONFIG
 #needed to source i3bar tray to primary monitor on multi-monitor setup
@@ -197,3 +189,12 @@ export TERM=xterm-256color
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#add my custom commands to path
+export PATH="$HOME/bin:$PATH"
+export PATH="/usr/lib/qt6/bin:$PATH"
+export PATH="$HOME/bin/aliases:$PATH"
+export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="${HOME}/.local/bin:$PATH"
+export PATH="$HOME/apps/MuseScore4/:$PATH"

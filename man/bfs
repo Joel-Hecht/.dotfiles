@@ -11,6 +11,7 @@
 	-r start from root (bfsr)\n
 	-f explore to maxdepth and cd to last used match (bfsf)\n
 	-t find directories starting with argument (bfst) (t as in tab, like how you can hit tab when using cd to autocomplete the start of a directory name)\n
+	-i infinite maxdepth (not compatible with -f, -f will override)
 .SH EXAMPLES
 	bfs -h home-fs     probably goes to ~/.dotfiles/home-fs
 	bfs -tf cs         starting from pwd, goes to most recently used directory starting with "cs"
@@ -24,4 +25,4 @@
 .SH COPYRIGHT
 	This is free software, you are free to change and redistribute it, there is no warranty
 .SH ALIASES
-	bfsh, bfsr, bfsf, bfst
+	bfsh, bfsr, bfsf, bfst, bfsi

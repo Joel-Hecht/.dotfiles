@@ -84,6 +84,7 @@ alias bfsh="source bfs_base -h"
 alias bfsr="source bfs_base -r"
 alias bfsf="source bfs_base -f"
 alias bfst="source bfs_base -t"
+alias bfsi="source bfs_base -i"
 alias dfs="source dfs_base"
 
 #remove .swp files
@@ -114,7 +115,12 @@ alias unclean="mv /tmp/trash/* ."
 alias zip="echo zip -r dest.zip dirToZip; zip"
 
 path_func() {
-	export PATH=$PATH:"$1"
+	echo "export PATH=\""$1":\$PATH\"" >> ~/.bashrc
+}
+
+path_home() {
+	echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.bashrc
 }
 
 alias path="path_func"
+alias pathhome="path_home"

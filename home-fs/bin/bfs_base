@@ -7,6 +7,7 @@ depth=0
 hidden=no
 full=no
 tab=no
+infinite=yes
 
 # help
 if [[ $# -eq 0 || $1 == "--help" ]]; then
@@ -17,16 +18,18 @@ if [[ $# -eq 0 || $1 == "--help" ]]; then
 	echo "\t-r: start from root (also bfsr)"
 	echo "\t-f: explore fully and go to last used match"
 	echo "\t-t: find directory starting with argument"
+	echo "\t-i: infinite depth"
 	return 0
 fi
 
 # options
-while getopts "hrft" opt; do
+while getopts "hrfti" opt; do
 	case $opt in
 		h) hidden=yes ;;
 		r) subdirs="$HOME/" ;;
 		f) full=yes ;;
 		t) tab=yes ;;
+		i) infinite=yes ;;
 		\?) echo "Invalid option -$OPTARG" >&2
 			return 1 ;;
 	esac
@@ -43,6 +46,11 @@ if [[ $# -gt 1 ]]; then
 	fi
 else
 	maxdepth=5
+fi
+if [[ $infinite == yes ]]; then
+	if [[ $full == no ]] ; then
+		maxdepth=999
+	fi
 fi
 
 # -f 
