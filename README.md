@@ -2,7 +2,7 @@
 
 This is OUR linux config
 
-please run all bash scripts to set up.
+please run all bash scripts to set up. (running `make` in ~/.dotfiles should do this)
 
 ./home_fs/makesymlinks.sh should be run without arguments, and will set up all symlinks needed for .dotfiles to run well
 
