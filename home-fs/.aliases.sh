@@ -5,11 +5,14 @@ alias dot="cd ~/.dotfiles"
 alias dhome="cd ~/.dotfiles/home-fs"
 alias dman="cd ~/.dotfiles/man"
 alias dbin="cd ~/.dotfiles/home-fs/bin"
-alias down="cd ~/Downloads"
 alias scs="cd ~/Pictures"
 alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
 alias repo="firefox github.com/Joel-Hecht/.dotfiles"
 alias me="echo \"$(whoami)@$(hostname)\""
+alias down="cd ~/Downloads"
+# nav for rui
+alias drex="cd ~/Downloads/drexel"
+alias prog="cd ~/Downloads/program"
 
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
@@ -88,8 +91,8 @@ alias bfsi="source bfs_base -i"
 alias dfs="source dfs_base"
 
 #remove .swp files
-alias rmswp="rm .*.swp"
-alias rmzip="rm .*.zip *.tar *.gz"
+alias rmswp="rm *.swp"
+alias rmzip="rm *.zip *.tar *.gz 2> /dev/null"
 
 #reset calcurse
 alias fixcurse="rm ${HOME}/.local/share/calcurse/.calcurse.pid"
@@ -98,13 +101,12 @@ alias fixcurse="rm ${HOME}/.local/share/calcurse/.calcurse.pid"
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
 alias unhdmi="xrandr --auto"
 
+#move last downloaded file to pwd
 down_func() {
 	fname=$(ls -tl "${HOME}/Downloads" | head -2 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')
 	fullpath="${HOME}/Downloads/${fname}"
 	mv "$fullpath" "./$fname"
 }
-
-#move last downloaded file to pwd
 alias downhere="down_func"
 alias dh="downhere"
 
@@ -114,13 +116,15 @@ alias unclean="mv /tmp/trash/* ."
 # remember how zip works
 alias zip="echo zip -r dest.zip dirToZip; zip"
 
+# fix vim being slow until i actually fix it
+alias vix="vi -X"
+
+# add to path, probably
 path_func() {
-	echo "export PATH=\""$1":\$PATH\"" >> ~/.bashrc
+   	echo "export PATH=\""$1":\$PATH\"" >> ~/.bashrc 
 }
-
-path_home() {
-	echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.bashrc
+path_home() { 
+	echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.bashrc 
 }
-
 alias path="path_func"
 alias pathhome="path_home"
