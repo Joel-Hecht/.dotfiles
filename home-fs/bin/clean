@@ -1,7 +1,7 @@
 #!/bin/bash
 # check out man clean
 
-[[ "$(pwd)" == ${HOME} ]] && echo "Don't do that here." && exit 1
+#[[ "$(pwd)" == ${HOME} ]] && echo "Don't do that here." && exit 1
 
 # recursively remove empty directories, leaving any directory with any file in any subdirectory of it
 rmdir_rec () {
@@ -20,5 +20,8 @@ mkdir /tmp/trash/ 2>/dev/null
 # main
 for file in *; do
 	[[ -f "$file" ]] && mv "$file" /tmp/trash/
+done
+
+for file in *; do
 	[[ -d "$file" ]] && rmdir_rec "$file"
 done

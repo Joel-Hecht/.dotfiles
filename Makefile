@@ -9,3 +9,8 @@ all:
 .PHONY: sym 
 sym:
 	cd home-fs && make $@
+
+.PHONY: mans
+mans:
+	cd home-fs && make $@
+

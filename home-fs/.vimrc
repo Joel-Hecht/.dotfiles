@@ -1,4 +1,3 @@
-
 set nocompatible | "use vim instead of vi, even when launching as vi
 
 :set number relativenumber

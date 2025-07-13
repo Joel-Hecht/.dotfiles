@@ -7,7 +7,7 @@ depth=0
 hidden=no
 full=no
 tab=no
-infinite=yes
+infinite=no
 
 # help
 if [[ $# -eq 0 || $1 == "--help" ]]; then

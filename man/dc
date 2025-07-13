@@ -1,0 +1,23 @@
+./" Manpage for bfs 
+.TH man 1 "21 June 2025" "1.0" "User Commands"
+.SH NAME 
+	dc - disconnect job from terminal
+.SH SYNOPSIS
+	dc [-q] [job]
+.SH DESCRIPTION
+	either disconnect the last run job from the terminal, or run a job and disconnect it from the terminal immediately
+.SH OPTIONS
+	-q makes it also quit the terminal its run from (without ending the job because it's disconnected)
+.SH EXAMPLES
+	run "quadrapassel" then hit ctrl-z to pause it and use "dcq" to close the terminal without closing quadrapassel! \n\n
+	you can also use "dc quadrapassel" to run quadrapassel and disconnect it so you can do things in that terminal and eventually when you close it it willnot close quadrapassel! whichi svery important
+.SH BUGS
+	none that i can remember
+.SH AUTHOR
+	written by rui zhao 
+.SH REPORTING BUGS
+	tell me in person
+.SH COPYRIGHT
+	This is free software, you are free to change and redistribute it, there is no warranty
+.SH ALIASES
+	dcq for dc -q

@@ -22,7 +22,7 @@ if [[ "$1" == "down" ]]; then
 elif [[ "$1" == "up" ]]; then
 	[[ $current -lt 95 ]] && new=$((current + 5)) || new=100
 else
-	echo "syntax: volume up or volume down"
+	echo "syntax: volume up or volume down.. actually jus dont call this manually use your f2/f3"
 	exit 1
 fi
 
@@ -31,7 +31,7 @@ amixer -q -M set Master $new%
 
 # reload i3bar
 sed -i "s/= \".*W:/= \"VOLUME: $new% :|: W:/" ~/.i3status.conf
-killall i3bar 
+killall i3bar
 i3bar --bar_id=bar-0 & # this & is very necessary for some reason
 
 # set volume file

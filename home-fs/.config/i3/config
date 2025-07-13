@@ -235,17 +235,17 @@ focus_follows_mouse no
 # workspace_auto_back_and_forth yes
 
 #keybinds, this works better than the .Xmodmap file i think
-exec_always --no-startup-id xmodmap -e "keycode 62 = Escape NoSymbol" 
-exec_always --no-startup-id xmodmap -e "remove shift = Escape"
-exec_always --no-startup-id xmodmap -e "keycode 108 = Multi_key Alt_R" 
-exec_always --no-startup-id xmodmap -e "remove mod1 = Alt_R"
-exec_always --no-startup-id bash ${HOME}/bin/fix_volume
+exec --no-startup-id xmodmap -e "keycode 62 = Escape NoSymbol" 
+exec --no-startup-id xmodmap -e "remove shift = Escape"
+exec --no-startup-id xmodmap -e "keycode 108 = Multi_key Alt_R" 
+exec --no-startup-id xmodmap -e "remove mod1 = Alt_R"
+exec --no-startup-id bash ${HOME}/bin/fix_volume
 
 #program shortcuts
 bindsym Control+$alt+f exec --no-startup-id firefox
 bindsym Control+$alt+n exec --no-startup-id notepadqq
 bindsym Control+$alt+p exec --no-startup-id flatpak run com.github.PintaProject.Pinta & 
-bindsym Control+$alt+k exec --no-startup-id bash $( fixcurse && kitty calcurse || kitty calcurse )
+bindsym Control+$alt+k exec --no-startup-id kitty calcurse
 
 #website shortcuts
 bindsym Control+$alt+d exec --no-startup-id firefox discord.com/channels/@me
@@ -287,3 +287,4 @@ exec_always --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authenticati
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms
 exec --no-startup-id xset s noblank
+exec_always --no-startup-id bash rm -rf ~/MuseScore4

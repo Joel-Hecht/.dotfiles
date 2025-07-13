@@ -172,6 +172,7 @@ fi
 alias venv="source \"${HOME}/${VENVNAME}/bin/activate\""
 alias venvl="deactivate"
 alias pip="${HOME}/${VENVNAME}/bin/pip"
+alias jpnb="venv && jupyter-notebook"
 . "$HOME/.cargo/env"
 
 function mkcd {
@@ -197,4 +198,3 @@ export PATH="$HOME/bin/aliases:$PATH"
 export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/apps/MuseScore4/:$PATH"
