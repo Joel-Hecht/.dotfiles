@@ -3,8 +3,9 @@
 [[ $# -gt 0 && $1 == '-q' ]] && quit=yes || quit=no
 
 if [[ $quit == yes ]]; then
-	if [[ $# -gt 1 ]]; then
-		"$2" &
+	shift
+	if [[ $# -gt 0 ]]; then
+		"$@" &
 		disown %1
 		xdotool getactivewindow windowkill
 	else
@@ -12,8 +13,7 @@ if [[ $quit == yes ]]; then
 	fi
 else
 	if [[ $# -gt 0 ]]; then
-		"$1" &
-		disown %1
+		"$@" &
 	else
 		echo "need an argument to run"
 	fi

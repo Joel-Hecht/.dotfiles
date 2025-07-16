@@ -10,3 +10,5 @@ if [ $numlines -gt 1 ]; then
 fi	
 
 xmodmap -e "pointer = 1 2 3 $scroll 7 6 8 9 10 11 12"
+xmodmap -e "remove shift = Escape" 
+xmodmap -e "keycode 108 = Multi_key Alt_R"

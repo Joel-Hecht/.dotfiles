@@ -67,7 +67,6 @@ source ${HOME}/.aliases_dmenu.sh
 alias zip="echo zip -r dest.zip dirToZip; zip" # remember how zip works
 alias vix="vi -X" # use if vim is slow due to x11 issues
 alias fixcurse="rm ${HOME}/.local/share/calcurse/.calcurse.pid"  #reset calcurse
-alias musescore="/usr/local/MuseScore4/musescore && rm -rf ~/MuseScore4" # remove stupid musescore folder after quitting, doesn't work if dc'ed
 
 #allow bfs to cd
 alias bfs="source bfs_base"
@@ -103,7 +102,7 @@ dc_func () {
 		bg 2> /dev/null
 		disown %1
 	else
-		dc_arg "$1"
+		dc_arg "$@"
 	fi
 }
 dcq_func () {
@@ -112,7 +111,7 @@ dcq_func () {
 		disown %1
 		xdotool getactivewindow windowkill 
 	else
-		dc_arg -q "$1"
+		dc_arg -q "$@"
 	fi
 }
 alias dcq="dcq_func"

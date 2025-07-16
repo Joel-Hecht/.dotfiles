@@ -10,7 +10,8 @@
 	-q makes it also quit the terminal its run from (without ending the job because it's disconnected)
 .SH EXAMPLES
 	run "quadrapassel" then hit ctrl-z to pause it and use "dcq" to close the terminal without closing quadrapassel! \n\n
-	you can also use "dc quadrapassel" to run quadrapassel and disconnect it so you can do things in that terminal and eventually when you close it it willnot close quadrapassel! whichi svery important
+	you can also use "dc quadrapassel" to run quadrapassel and disconnect it so you can do things in that terminal and eventually when you close it it willnot close quadrapassel! whichi svery important \n\n\n\n
+	dcq now also works with commands that don't need to be dc'd, e.g. "dcq pdf [filename]" to open a pdf then close that terminal. this is maybe ven actually ueseful
 .SH BUGS
 	none that i can remember
 .SH AUTHOR
