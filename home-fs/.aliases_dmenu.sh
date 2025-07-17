@@ -15,3 +15,4 @@ alias chirp="~/.local/bin/chirp"
 
 alias discord="flatpak run com.discordapp.Discord &"
 alias prusaslicer="flatpak run com.prusa3d.PrusaSlicer &"
+alias rpi="flatpak run org.raspberrypi.rpi-imager &"

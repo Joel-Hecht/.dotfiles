@@ -40,6 +40,9 @@ alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 alias grh="git reset --hard origin/main"
 alias changes="git diff --cached"
 
+alias chirp="sudo ~/.local/bin/chirp &"
+
+
 #reload after updates	
 alias sb="source ~/.bashrc"
 alias sa="source ~/.aliases.sh"

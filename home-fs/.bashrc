@@ -199,3 +199,6 @@ export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/MuseScore4:$PATH"
+
+#add permissions so chirp can access radios over usb port0
+#sudo usermod -a -G $(stat -c %G /dev/ttyUSB0) $USER
