@@ -70,14 +70,17 @@ source ${HOME}/.aliases_dmenu.sh
 alias zip="echo zip -r dest.zip dirToZip; zip" # remember how zip works
 alias vix="vi -X" # use if vim is slow due to x11 issues
 alias fixcurse="rm ${HOME}/.local/share/calcurse/.calcurse.pid"  #reset calcurse
+alias stop="kill $( ps aux | grep http.server | head -n 1 | awk '{ print $2 }' )"
 
 #allow bfs to cd
 alias bfs="source bfs_base"
+#convenient aliases
 alias bfsh="source bfs_base -h"
 alias bfsr="source bfs_base -r"
 alias bfsf="source bfs_base -f"
 alias bfst="source bfs_base -t"
 alias bfsi="source bfs_base -i"
+alias bfsrt="source bfs_base -rt"
 alias dfs="source dfs_base"
 
 #move last downloaded file to pwd

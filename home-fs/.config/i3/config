@@ -259,11 +259,11 @@ bindsym Control+$alt+x exec --no-startup-id firefox one.drexel.edu
 bindsym Control+$alt+q exec --no-startup-id firefox learn.dcollege.net/ultra/course
 bindsym Control+$alt+a exec --no-startup-id firefox drive.google.com/drive/u/1/my-drive
 bindsym Control+$alt+y exec --no-startup-id firefox music.youtube.com
-bindsym Control+$alt+i exec --no-startup-id firefox instagram.com
 
 #these will not do work if you are not rui
 bindsym Control+$alt+s exec --no-startup-id firefox docs.google.com/spreadsheets/d/1XUmurBMg0Zmd--QApo49J7yvUWF4IAfexJhuBa1Q9WU/edit?gid=1565386317#gid=1565386317 
 bindsym Control+Shift+$alt+o exec --no-startup-id chromium mp.oasesonline.com/calendar 
+bindsym Control+$alt+i exec --no-startup-id firefox instagram.com/direct/t/8269335313190656/
 
 #make this a toggle later
 bindsym Control+$alt+h exec --no-startup-id bash ${HOME}/bin/.toggleScrollDirection 
