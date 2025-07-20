@@ -35,13 +35,14 @@ alias staged="git diff --name-only --staged"
 alias gaa="git add --all && git diff --name-only --staged | sed 's/^/staged: /' "
 alias names="git diff --name-only"
 alias gp="git pull"
+alias pull="git pull"
 alias push="git push"
 alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 alias grh="git reset --hard origin/main"
 alias changes="git diff --cached"
 
 alias chirp="sudo ~/.local/bin/chirp &"
-
+alias yt-dlp="venv && yt-dlp && venvl"
 
 #reload after updates	
 alias sb="source ~/.bashrc"
