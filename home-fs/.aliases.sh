@@ -28,6 +28,8 @@ alias kf="keyboard_firmware"
 alias rmswp="rm *.swp *~ 2> /dev/null"
 alias rmzip="rm *.zip *.tar *.gz 2> /dev/null"
 alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
+alias i3rs="i3-msg restart"
+alias i3rl="i3-msg reload"
 
 #git shortcuts
 alias gcm="git commit -m"
