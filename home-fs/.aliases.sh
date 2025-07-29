@@ -75,7 +75,7 @@ source ${HOME}/.aliases_dmenu.sh
 alias zip="echo zip -r dest.zip dirToZip; zip" # remember how zip works
 alias vix="vi -X" # use if vim is slow due to x11 issues
 alias fixcurse="rm ${HOME}/.local/share/calcurse/.calcurse.pid"  #reset calcurse
-alias stopserver="kill $( ps aux | grep http.server | head -n 1 | awk '{ print $2 }' )"
+alias stopserver="kill $( ps aux | /usr/bin/grep http.server | head -n 1 | awk '{ print $2 }' )"
 
 #allow bfs to cd
 alias bfs="source bfs_base"
