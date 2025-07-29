@@ -185,6 +185,15 @@ function mkcd {
 	fi
 }
 
+LSCOLOUR='\033[0;32m'
+NC='\033[0m'
+
+function cdls {
+	cd "$@"
+	printf "${LSCOLOUR}$( pwd | sed "s|$HOME|~|" )${NC}\n"
+	ls
+}
+
 function mvcd {
 	if [ $# -lt 2 ]; then
 		echo "mvcd source destination"
@@ -242,3 +251,4 @@ esac
 # extra path things
 export PATH="$HOME/kitty/kitty/launcher/:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
+export PATH="nowhere:$PATH"
