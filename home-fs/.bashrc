@@ -191,7 +191,7 @@ NC='\033[0m'
 function cdls {
 	cd "$@"
 	printf "${LSCOLOUR}$( pwd | sed "s|$HOME|~|" )${NC}\n"
-	ls
+	ls --color=auto
 }
 
 function mvcd {
@@ -200,11 +200,9 @@ function mvcd {
 	elif [ -d "$2" ]; then
 		mv "$1" "$2"
 		cd "$2"
-		ls
 	else
 		mv "$1" "$2"
 		cd "$( dirname "$2" )"
-		ls
 	fi
 }
 
@@ -214,11 +212,9 @@ function cpcd {
 	elif [ -d "$2" ]; then
 		cp "$1" "$2"
 		cd "$2"
-		ls
 	else
 		cp "$1" "$2"
 		cd "$( dirname "$2" )"
-		ls
 	fi
 }
 
