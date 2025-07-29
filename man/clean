@@ -5,7 +5,7 @@
 .SH SYNOPSIS
 	clean (no arguments)
 .SH DESCRIPTION
-	moves all files in directory to /tmp/trash/, where they will die; if there was stuff there it goes to /tmp/old/. also recursively goes through subdirectory tree to delete all directories that are empty or only contain empty directories. use unclean or mv /tmp/trash/ . to reverse the file deletion, empty subdirection deletion is unreversible because you did not need them.
+	moves all files in directory to /tmp/trash/, where they will die; if there was stuff there it goes to /tmp/old/. also recursively goes through subdirectory tree to delete all directories that are empty or only contain empty directories (only up to depth 4 to save time. Use deepclean to go all the way). use unclean or mv /tmp/trash/ . to reverse the file deletion, empty subdirection deletion is unreversible because you did not need them.
 .SH OPTIONS
 	implement -f if you want
 .SH EXAMPLES
@@ -18,3 +18,5 @@
 	tell me in person
 .SH COPYRIGHT
 	This is free software, you are free to change and redistribute it, there is no warranty
+.SH ALIASES
+	deepclean for no max depth

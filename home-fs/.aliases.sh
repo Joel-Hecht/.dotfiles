@@ -39,12 +39,14 @@ alias names="git diff --name-only"
 alias gp="git pull"
 alias pull="git pull"
 alias push="git push"
+alias pp="git pull && git push"
 alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 alias grh="git reset --hard origin/main"
 alias changes="git diff --cached"
 
 alias chirp="sudo ~/.local/bin/chirp &"
 alias yt-dlp="venv && yt-dlp && venvl"
+alias icat="kitten +kitty icat"
 
 #reload after updates	
 alias sb="source ~/.bashrc"
@@ -73,7 +75,7 @@ source ${HOME}/.aliases_dmenu.sh
 alias zip="echo zip -r dest.zip dirToZip; zip" # remember how zip works
 alias vix="vi -X" # use if vim is slow due to x11 issues
 alias fixcurse="rm ${HOME}/.local/share/calcurse/.calcurse.pid"  #reset calcurse
-alias stop="kill $( ps aux | grep http.server | head -n 1 | awk '{ print $2 }' )"
+alias stopserver="kill $( ps aux | grep http.server | head -n 1 | awk '{ print $2 }' )"
 
 #allow bfs to cd
 alias bfs="source bfs_base"
@@ -84,13 +86,20 @@ alias bfsf="source bfs_base -f"
 alias bfst="source bfs_base -t"
 alias bfsi="source bfs_base -i"
 alias bfsrt="source bfs_base -rt"
+alias bfsti="source bfs_base -ti"
 alias dfs="source dfs_base"
 
 #move last downloaded file to pwd
 down_func() {
 	fname=$(ls -tl "${HOME}/Downloads" | head -2 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')
 	fullpath="${HOME}/Downloads/${fname}"
-	mv "$fullpath" "./$fname"
+	if [[ $( tail -c 6 <<< "$fullpath" ) == '.part' ]]; then
+		echo "Still downloading!"
+		return 1
+	else
+		mv "$fullpath" "./$fname"
+		return 0
+	fi
 }
 alias downhere="down_func"
 alias dh="downhere"

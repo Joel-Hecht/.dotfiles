@@ -2,22 +2,14 @@
 # check out man clean
 
 [[ "$(pwd)" == ${HOME} ]] && echo "Don't do that here." && exit 1
-depth=0
 
 # recursively remove empty directories, leaving any directory with any file in any subdirectory of it
 rmdir_rec () {
-	depth=$(( $depth + 1 ))
-	if [[ $depth -gt 4 ]]; then
-		depth=$(( $depth - 1 ))
-		return
-	fi
-
 	for file in "$1"/*; do
 		[[ -d "$file" ]] && rmdir_rec "$file"
 	done
 
 	rmdir "$1" 2>/dev/null
-	depth=$(( $depth - 1 ))
 }
 
 # move current /tmp/trash/ to /tmp/old/ so you can easily see what was removed this call if needed
