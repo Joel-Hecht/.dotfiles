@@ -45,7 +45,6 @@ alias grh="git reset --hard origin/main"
 alias changes="git diff --cached"
 
 alias chirp="sudo ~/.local/bin/chirp &"
-alias yt-dlp="venv && yt-dlp && venvl"
 alias icat="kitten +kitty icat"
 
 #reload after updates	
