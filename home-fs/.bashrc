@@ -84,11 +84,11 @@ esac
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='ls --color=auto --hyperlink=auto' 
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    #alias grep='grep --color=auto'
+    alias grep='kitty +kitten hyperlinked_grep --smart-case'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
 fi
@@ -178,10 +178,38 @@ alias jpnb="venv && jupyter-notebook"
 function mkcd {
 	if [ ! -n "$1" ]; then
 		echo "Enter a directory name"
-	elif [ -d $1 ]; then
+	elif [ -d "$1" ]; then
 		echo "\'$1' already exists"
 	else
-		command mkdir $1 && cd $1
+		command mkdir "$1" && cd "$1"
+	fi
+}
+
+function mvcd {
+	if [ $# -lt 2 ]; then
+		echo "mvcd source destination"
+	elif [ -d "$2" ]; then
+		mv "$1" "$2"
+		cd "$2"
+		ls
+	else
+		mv "$1" "$2"
+		cd "$( dirname "$2" )"
+		ls
+	fi
+}
+
+function cpcd {
+	if [ $# -lt 2 ]; then
+		echo "cpcd source destination"
+	elif [ -d "$2" ]; then
+		cp "$1" "$2"
+		cd "$2"
+		ls
+	else
+		cp "$1" "$2"
+		cd "$( dirname "$2" )"
+		ls
 	fi
 }
 
@@ -202,3 +230,15 @@ export PATH="/usr/local/MuseScore4:$PATH"
 
 #add permissions so chirp can access radios over usb port0
 #sudo usermod -a -G $(stat -c %G /dev/ttyUSB0) $USER
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# extra path things
+export PATH="$HOME/kitty/kitty/launcher/:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
