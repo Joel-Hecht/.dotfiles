@@ -30,6 +30,11 @@ alias rmzip="rm *.zip *.tar *.gz 2> /dev/null"
 alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
 alias i3rs="i3-msg restart"
 alias i3rl="i3-msg reload"
+alias ll="ls -l"
+alias la="ls -A"
+alias llh="ls -lh"
+alias lla="ls -lA"
+alias llah="ls -lAh"
 
 #git shortcuts
 alias gcm="git commit -m"
@@ -85,6 +90,7 @@ alias bfsf="source bfs_base -f"
 alias bfst="source bfs_base -t"
 alias bfsi="source bfs_base -i"
 alias bfsrt="source bfs_base -rt"
+alias bfsri="source bfs_base -ri"
 alias bfsti="source bfs_base -ti"
 alias dfs="source dfs_base"
 
