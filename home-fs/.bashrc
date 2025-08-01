@@ -248,3 +248,4 @@ esac
 export PATH="$HOME/kitty/kitty/launcher/:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="nowhere:$PATH"
+export PATH="log:$PATH"

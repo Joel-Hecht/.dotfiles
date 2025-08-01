@@ -13,6 +13,7 @@ alias down="cd ~/Downloads"
 # nav for rui
 alias drex="cd ~/Downloads/drexel"
 alias prog="cd ~/Downloads/program"
+alias logs="cd ~/proj/geyserlog/logs"
 
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
