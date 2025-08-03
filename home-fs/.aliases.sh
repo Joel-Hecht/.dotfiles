@@ -19,6 +19,7 @@ alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
 alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
 alias br="vim ~/.bashrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
+alias lo="libreoffice"
 
 #computer control
 alias eep="systemctl suspend"
@@ -152,3 +153,4 @@ alias hd="pope"
 alias mr="pope"
 alias iv="pope"
 alias vm="pope"
+alias ol="pope"
