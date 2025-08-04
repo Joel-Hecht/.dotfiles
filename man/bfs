@@ -17,7 +17,7 @@
 	bfs -tf cs         starting from pwd, goes to most recently used directory starting with "cs"
 	bfs -hrf bin       starting from root, goes to most recently used "bin" directory including hidden files (probably dbin)
 .SH BUGS
-	none that i can remember
+	-f and -i do not work together and i am not sure how to make them work
 .SH AUTHOR
 	written by rui zhao 
 .SH REPORTING BUGS
