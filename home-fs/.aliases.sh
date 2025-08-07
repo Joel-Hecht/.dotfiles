@@ -20,7 +20,6 @@ alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
 alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
 alias br="vim ~/.bashrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
-alias lo="libreoffice"
 
 #computer control
 alias eep="systemctl suspend"
@@ -32,11 +31,14 @@ alias rmzip="rm *.zip *.tar *.gz 2> /dev/null"
 alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
 alias i3rs="i3-msg restart"
 alias i3rl="i3-msg reload"
+
+#info
 alias ll="ls -l"
 alias la="ls -A"
 alias llh="ls -lh"
 alias lla="ls -lA"
 alias llah="ls -lAh"
+alias dush="du -sh ?(.)*/"
 
 #git shortcuts
 alias gcm="git commit -m"
@@ -53,6 +55,7 @@ alias changes="git diff --cached"
 
 alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitten +kitty icat"
+alias lo="libreoffice"
 
 #reload after updates	
 alias sb="source ~/.bashrc"
@@ -98,6 +101,7 @@ alias dfs="source dfs_base"
 
 #move last downloaded file to pwd
 down_func() {
+	#[[ $# -eq 0 ]] && num=1 || num="$1"
 	fname=$(ls -tl "${HOME}/Downloads" | head -2 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')
 	fullpath="${HOME}/Downloads/${fname}"
 	if [[ $( tail -c 6 <<< "$fullpath" ) == '.part' ]]; then
@@ -105,7 +109,6 @@ down_func() {
 		return 1
 	else
 		mv "$fullpath" "./$fname"
-		return 0
 	fi
 }
 alias downhere="down_func"
