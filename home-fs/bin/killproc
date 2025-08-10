@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]; then
+	echo "killproc [process name]" >&2
+	return 1
+fi
+
+count=1
+while [ $( ps aux | /usr/bin/grep "$1" | wc -l ) -gt $count ]; do 
+	echo kill $( ps aux | /usr/bin/grep "$1" | head -n $count | tail -n 1 | awk '{ print $2 }' )
+	kill $( ps aux | /usr/bin/grep "$1" | head -n $count | tail -n 1 | awk '{ print $2 }' ) || exit 0
+	count=$(( $count + 1 )) 
+done

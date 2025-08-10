@@ -1,8 +1,0 @@
-#!/bin/bash
-
-count=1
-while [ $( ps aux | /usr/bin/grep discord | wc -l ) -gt $count ]; do 
-	echo kill $( ps aux | /usr/bin/grep discord | head -n $count | tail -n 1 | awk '{ print $2 }' )
-	kill $( ps aux | /usr/bin/grep discord | head -n $count | tail -n 1 | awk '{ print $2 }' ) || exit 0
-	count=$(( $count + 1 )) 
-done

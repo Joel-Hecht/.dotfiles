@@ -126,6 +126,7 @@ fi
 
 #import all aliases
 source ~/.aliases.sh
+source ~/.funcs.sh
 
 
 #MOVED TO I3CONFIG
@@ -174,50 +175,6 @@ alias venvl="deactivate"
 alias pip="${HOME}/${VENVNAME}/bin/pip"
 alias jpnb="venv && jupyter-notebook"
 . "$HOME/.cargo/env"
-
-function mkcd {
-	if [ ! -n "$1" ]; then
-		echo "Enter a directory name"
-	elif [ -d "$1" ]; then
-		echo "\'$1' already exists"
-	else
-		command mkdir "$1" && cd "$1"
-	fi
-}
-
-LSCOLOUR='\033[0;32m'
-NC='\033[0m'
-
-function cdls {
-	cd "$@"
-	printf "${LSCOLOUR}$( pwd | sed "s|$HOME|~|" )${NC}\n"
-	ls --color=auto
-}
-
-function mvcd {
-	if [ $# -lt 2 ]; then
-		echo "mvcd source destination"
-	elif [ -d "$2" ]; then
-		mv "$1" "$2"
-		cd "$2"
-	else
-		mv "$1" "$2"
-		cd "$( dirname "$2" )"
-	fi
-}
-
-function cpcd {
-	if [ $# -lt 2 ]; then
-		echo "cpcd source destination"
-	elif [ -d "$2" ]; then
-		cp "$1" "$2"
-		cd "$2"
-	else
-		cp "$1" "$2"
-		cd "$( dirname "$2" )"
-	fi
-}
-
 export TERM=xterm-256color
 
 export NVM_DIR="$HOME/.nvm"
@@ -249,3 +206,4 @@ export PATH="$HOME/kitty/kitty/launcher/:$PATH"
 export PATH="/usr/local/go/bin:$PATH"
 export PATH="nowhere:$PATH"
 export PATH="log:$PATH"
+export PATH=":$PATH"

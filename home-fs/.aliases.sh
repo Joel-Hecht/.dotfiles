@@ -18,6 +18,7 @@ alias logs="cd ~/proj/geyserlog/logs"
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
 alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
+alias funcs="vim ~/.dotfiles/home-fs/.funcs.sh"
 alias br="vim ~/.bashrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 
@@ -60,6 +61,7 @@ alias lo="libreoffice"
 #reload after updates	
 alias sb="source ~/.bashrc"
 alias sa="source ~/.aliases.sh"
+alias sf="source ~/.funcs.sh"
 alias ms="curr=\"\$(pwd)\" && dhome && ./makesymlinks.sh; cd \"\$curr\""
 
 #clipboard
@@ -98,52 +100,6 @@ alias bfsrt="source bfs_base -rt"
 alias bfsri="source bfs_base -ri"
 alias bfsti="source bfs_base -ti"
 alias dfs="source dfs_base"
-
-#move last downloaded file to pwd
-down_func() {
-	#[[ $# -eq 0 ]] && num=1 || num="$1"
-	fname=$(ls -tl "${HOME}/Downloads" | head -2 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')
-	fullpath="${HOME}/Downloads/${fname}"
-	if [[ $( tail -c 6 <<< "$fullpath" ) == '.part' ]]; then
-		echo "Still downloading!"
-		return 1
-	else
-		mv "$fullpath" "./$fname"
-	fi
-}
-alias downhere="down_func"
-alias dh="downhere"
-
-# add to path
-path_func() {
-   	echo "export PATH=\""$1":\$PATH\"" >> ~/.bashrc 
-}
-path_home() { 
-	echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.bashrc 
-}
-alias path="path_func"
-alias pathhome="path_home"
-
-# dc / dcq but fancy
-dc_func () {
-	if [[ $# -eq 0 ]]; then
-		bg 2> /dev/null
-		disown %1
-	else
-		dc_arg "$@"
-	fi
-}
-dcq_func () {
-	if [[ $# -eq 0 ]]; then
-		bg 2> /dev/null
-		disown %1
-		xdotool getactivewindow windowkill 
-	else
-		dc_arg -q "$@"
-	fi
-}
-alias dcq="dcq_func"
-alias dc="dc_func"
 
 # fun
 alias sexy="echo sexy!"
