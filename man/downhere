@@ -3,11 +3,12 @@
 .SH NAME 
 	downhere - move last download here
 .SH SYNOPSIS
-	downhere (no arguments)
+	downhere [X=1]
 .SH DESCRIPTION
-	moves the most recent file in ~/Downloads, which is probably whatever you just downloaded from your browser, to the pwd
+	moves the X most recent regular file in ~/Downloads, which is probably whatever you just downloaded from your browser, to the pwd. ignores directories
 .SH EXAMPLES
 	downhere
+	dh 5
 .SH BUGS
 	unlikely
 .SH AUTHOR

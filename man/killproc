@@ -1,0 +1,23 @@
+./" Manpage for killproc 
+.TH man 1 "11 August 2025" "1.0" "User Commands"
+.SH NAME 
+	killproc - kill process by name
+.SH SYNOPSIS
+	killproc processname
+.SH DESCRIPTION
+	iteratively kills all processes in ps aux that contain the given name. often throws an error, ignore this
+.SH OPTIONS
+	there probably should be some
+.SH EXAMPLES
+	killproc discord
+	killproc http.server (equivalent to stopserver alias)
+.SH BUGS
+	probably none??
+.SH AUTHOR
+	written by rui zhao 
+.SH REPORTING BUGS
+	tell me in person
+.SH COPYRIGHT
+	This is free software, you are free to change and redistribute it, there is no warranty
+.SH ALIASES
+	kp

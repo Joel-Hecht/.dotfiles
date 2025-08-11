@@ -28,6 +28,7 @@ alias reboot="systemctl reboot"
 alias pids="ps aux"
 alias killpid="kill -9"
 alias kf="keyboard_firmware"
+alias kp="killproc"
 alias rmswp="rm *.swp *~ 2> /dev/null"
 alias rmzip="rm *.zip *.tar *.gz 2> /dev/null"
 alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
