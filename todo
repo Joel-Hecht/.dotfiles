@@ -1,7 +1,4 @@
 easy
-- all bfs shortcuts
-		- make a script that takes every combination of like bfs[hrfti] and dumps a massive aliases file so bfsrfh and bfsthi all work in any order. dont put this in aliases make a new file.
-		- also probably make it so anything with both f and i in it either don't exist as aliases or maybe make that combination automatically throw an error or just have -i with -f set maxdepth to like 11 
 - add time and home options to rw
 		- so rw 1 ~ should have an interval of 1 second and never go further up than ~ for example
 - add -p option to mkcd, mvcd, and cpcd
