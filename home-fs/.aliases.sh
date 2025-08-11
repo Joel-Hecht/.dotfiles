@@ -24,6 +24,7 @@ alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 
 #computer control
 alias eep="systemctl suspend"
+alias reboot="systemctl reboot"
 alias pids="ps aux"
 alias killpid="kill -9"
 alias kf="keyboard_firmware"
