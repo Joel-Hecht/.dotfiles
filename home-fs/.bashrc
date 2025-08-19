@@ -127,7 +127,7 @@ fi
 #import all aliases
 source ~/.aliases.sh
 source ~/.funcs.sh
-
+source ~/.aliases_bfs.sh
 
 #MOVED TO I3CONFIG
 #needed to source i3bar tray to primary monitor on multi-monitor setup
