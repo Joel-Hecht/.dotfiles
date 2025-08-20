@@ -1,4 +1,5 @@
 ignoresymlinks.txt
+bins_for_dmenu.txt
 makesymlinks.sh
 makealiases.sh
 Makefile

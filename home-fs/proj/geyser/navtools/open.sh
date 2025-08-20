@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then 
+	echo "no args"
+	exit 1
+fi
+
+s="$@"
+p=$(python3 ~/proj/geyser/navtools/id_from_name.py "$s" | tee /dev/tty)
+p=$(echo "$p" | tail -1 )
+echo $p
+firefox --new-tab "https://www.geysertimes.org/geyser.php?id=$p" &
+
+

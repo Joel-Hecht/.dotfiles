@@ -3,7 +3,9 @@
 #for bar tray, set which monitor is primary using screen script
 sh ~/bin/primarydisplay
 
+#this is what dmenu reads
 PATH="$HOME/bin/aliases:$PATH"
+PATH="$HOME/bin/dmenu_specific:$PATH"
 
 # >>> juliaup initialize >>>
 

@@ -90,6 +90,68 @@ alias vix="vi -X" # use if vim is slow due to x11 issues
 alias fixcurse="rm ${HOME}/.local/share/calcurse/.calcurse.pid"  #reset calcurse
 alias stopserver="kill $( ps aux | /usr/bin/grep http.server | head -n 1 | awk '{ print $2 }' )"
 
+#allow bfs to cd
+alias bfs="source bfs_base"
+#convenient aliases
+alias bfsh="source bfs_base -h"
+alias bfsr="source bfs_base -r"
+alias bfsf="source bfs_base -f"
+alias bfst="source bfs_base -t"
+alias bfsi="source bfs_base -i"
+alias bfsrt="source bfs_base -rt"
+alias bfsri="source bfs_base -ri"
+alias bfsti="source bfs_base -ti"
+alias dfs="source dfs_base"
+
+#move last downloaded file to pwd
+down_func() {
+	fname=$(ls -tl "${HOME}/Downloads" | head -2 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')
+	fullpath="${HOME}/Downloads/${fname}"
+	if [[ $( tail -c 6 <<< "$fullpath" ) == '.part' ]]; then
+		echo "Still downloading!"
+		return 1
+	else
+		mv "$fullpath" "./$fname"
+		return 0
+	fi
+}
+alias downhere="down_func"
+alias dh="downhere"
+
+# add to path
+path_func() {
+   	echo "export PATH=\""$1":\$PATH\"" >> ~/.bashrc 
+}
+path_home() { 
+	echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.bashrc 
+}
+alias path="path_func"
+alias pathhome="path_home"
+
+# dc / dcq but fancy
+dc_func () {
+	if [[ $# -eq 0 ]]; then
+		bg 2> /dev/null
+		disown %1
+	else
+		dc_arg "$@"
+	fi
+}
+dcq_func () {
+	if [[ $# -eq 0 ]]; then
+		bg 2> /dev/null
+		disown %1
+		xdotool getactivewindow windowkill 
+	else
+		dc_arg -q "$@"
+	fi
+}
+alias dcq="dcq_func"
+alias dc="dc_func"
+
+
+#alias storage="apt-mark showmanual | xargs dpkg-query -W -f='${Installed-Size;10}\t${Package}\n' | sort -nr"
+
 # fun
 alias sexy="echo sexy!"
 alias sex="sexy"
