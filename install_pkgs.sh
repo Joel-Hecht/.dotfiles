@@ -2,7 +2,7 @@
 
 #packages installed with apt (run first)
 sudo apt update
-sudo apt upgrade -y
+#sudo apt upgrade -y
 sudo apt install \
 i3-wm `necessary for i3`\
 i3lock \
