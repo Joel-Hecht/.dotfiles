@@ -1,0 +1,23 @@
+./" Manpage for mvvi
+.TH man 1 "26 August 2025" "1.0" "User Commands"
+.SH NAME 
+	mvvi - mv a file then edit it in vim
+.SH SYNOPSIS
+	mvvi source destination
+.SH DESCRIPTION
+	does mv then edits the file in vim
+.SH OPTIONS
+	mv default options work, so -i to prompt before overwrite, -n to not overwrite, -b to make backups, -u for update, -v for verbose
+	vim default options do not work
+.SH EXAMPLES
+	mvvi hi.csv csvs
+	mvvi sdifji.py ../../ijsdif/jsissbsbbsb.py
+	mvvi 1.txt 2.txt
+.SH BUGS
+	probably none
+.SH AUTHOR
+	written by rui zhao 
+.SH REPORTING BUGS
+	tell me in person
+.SH COPYRIGHT
+	This is free software, you are free to change and redistribute it, there is no warranty

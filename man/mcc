@@ -1,0 +1,22 @@
+./" Manpage for mcc
+.TH man 1 "26 August 2025" "1.0" "User Commands"
+.SH NAME 
+	mcc - mkdir, cp things there, cd there
+.SH SYNOPSIS
+	mcc source[s] destination
+.SH DESCRIPTION
+	makes the destination directory. then copies the files there. then cds to that directory. if dest already exists it's just cpcd.
+.SH OPTIONS
+	cp default options work, so -i to prompt before overwrite, -n to not overwrite, -b to make backups, -u for update, -v for verbose. Copies directories by default (-r)
+	mkdir default options do not work because mkdir only uses the last argument
+.SH EXAMPLES
+	mcc *.csv csvs
+	mcc sdifji.py ../../ijsdif
+.SH BUGS
+	probably none
+.SH AUTHOR
+	written by rui zhao 
+.SH REPORTING BUGS
+	tell me in person
+.SH COPYRIGHT
+	This is free software, you are free to change and redistribute it, there is no warranty

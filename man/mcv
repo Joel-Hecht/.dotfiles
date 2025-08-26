@@ -1,0 +1,23 @@
+./" Manpage for mcv 
+.TH man 1 "26 August 2025" "1.0" "User Commands"
+.SH NAME 
+	mcv - mv a file, cd there, then edit it in vim
+.SH SYNOPSIS
+	mcv source destination
+.SH DESCRIPTION
+	does mv, cds to wherever it is now, then edits the file in vim
+	only edits the last file if you give multiple
+.SH OPTIONS
+	mv default options work, so -i to prompt before overwrite, -n to not overwrite, -b to make backups, -u for update, -v for verbose
+	vim default options do not work
+.SH EXAMPLES
+	mcv hi.csv csvs
+	mcv sdifji.py ../../ijsdif/jsissbsbbsb.py
+.SH BUGS
+	probably none
+.SH AUTHOR
+	written by rui zhao 
+.SH REPORTING BUGS
+	tell me in person
+.SH COPYRIGHT
+	This is free software, you are free to change and redistribute it, there is no warranty
