@@ -116,9 +116,9 @@ function cpvi {
 	if [ $# -lt 2 ]; then
 		echo "cpvi source destination"
 	elif [ -d "${@: -1}" ]; then
-		cp "$@" && cd "${@: -1}" && vi "$1"
+		cp "$@" && cd "${@: -1}" && vi "$( dirname "{@: -1}" )"/"$1"
 	else
-		cp "$@" && cd "$( dirname "${@: -1}" )" && vi "$1"
+		cp "$@" && cd "$( dirname "${@: -1}" )" && vi "${@: -1}"
 	fi
 }
 
@@ -126,8 +126,8 @@ function mvvi {
 	if [ $# -lt 2 ]; then
 		echo "mvvi source destination"
 	elif [ -d "${@: -1}" ]; then
-		mv "$@" && cd "${@: -1}" && vi "$1"
+		mv "$@" && cd "${@: -1}" && vi "$( dirname "{@: -1}" )"/"$1"
 	else
-		mv "$@" && cd "$( dirname "${@: -1}" )" && vi "$1"
+		mv "$@" && cd "$( dirname "${@: -1}" )" && vi "${@: -1}"
 	fi
 }
