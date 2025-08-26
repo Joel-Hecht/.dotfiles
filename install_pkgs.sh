@@ -2,7 +2,7 @@
 
 #packages installed with apt (run first)
 sudo apt update
-sudo apt upgrade -y
+#sudo apt upgrade -y
 sudo apt install \
 i3-wm `necessary for i3`\
 i3lock \
@@ -68,21 +68,21 @@ fi
 #neovim version 0.8 isnt in apt
 #we need to build from source
 #Solution from https://www.reddit.com/r/debian/comments/188d3wc/neovim_on_debian/ 
-
-#here I should check if neovim exists or if the version is less than 0.9.0
-nvim_version=$(nvim --version | head -1 | sed "s/[^\.]*\.//" | sed "s/\..*//")
-if [[ $nvim_version -lt 9 ||  -z $(command -v nvim)  ]]; then
-	sudo apt remove neovim
-	currentdir = $(pwd)
-	mkdir -p "${HOME}/apps"
-	cd "${HOME}/apps"
-	git clone https://github.com/neovim/neovim
-	cd neovim
-	make CMAKE_BUILD_TYPE=RelWithDebInfo
-	cd build
-	cpack -G DEB
-	sudo dpkg -i --force-overwrite  nvim-linux*.deb
-	cd "$currentdir"
-else
-	echo "latest neovim already installed"	
-fi
+#
+##here I should check if neovim exists or if the version is less than 0.9.0
+#nvim_version=$(nvim --version | head -1 | sed "s/[^\.]*\.//" | sed "s/\..*//")
+#if [[ $nvim_version -lt 9 ||  -z $(command -v nvim)  ]]; then
+#	sudo apt remove neovim
+#	currentdir = $(pwd)
+#	mkdir -p "${HOME}/apps"
+#	cd "${HOME}/apps"
+#	git clone https://github.com/neovim/neovim
+#	cd neovim
+#	make CMAKE_BUILD_TYPE=RelWithDebInfo
+#	cd build
+#	cpack -G DEB
+#	sudo dpkg -i --force-overwrite  nvim-linux*.deb
+#	cd "$currentdir"
+#else
+#	echo "latest neovim already installed"	
+#fi

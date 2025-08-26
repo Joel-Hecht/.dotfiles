@@ -28,3 +28,19 @@ for a in $as; do
 	EOF
 	chmod +x $p
 done
+
+#dmenu sources bin from .profile, not .bashrc.  using this, we can control what dmenu sees.  Reducing the number of user scripts that go into dmenu will decrease the number of autocomplete options, which is desirable.  As such, we will only specify specific scripts, instead of source all of ~/bin
+#This technically falls under the scope of makesymlinks.txt, but since other dmenu stuff is dealt with in this file, I have added it here instead
+#makealiases.sh executes before makesymlinks.sh in normal run order, so we need to make all the files here that will be symlinked in the future.  The issue then is that all the symlinks will not be made, so we need to reference the dotfiles filesystem
+#IMPORTANT - for autocomplete to work, you may need to delete ~/.cache/dmenu_cache
+bins=$(cat bins_for_dmenu.txt)
+base=$( dirname $(realpath "$0"))
+base="${base}/bin/"
+for k in $bins; do
+	p=$(ls "$base" | grep -w $k)
+	if [ -n "$p" ]; then
+		ln "${base}$k" "${base}dmenu_specific/$k"
+	fi
+done
+
+
