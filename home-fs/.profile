@@ -10,11 +10,11 @@ PATH="$HOME/bin/aliases:$PATH"
 # !! Contents within this block are managed by juliaup !!
 
 case ":$PATH:" in
-*:$HOME/rui/.juliaup/bin:*)
+*:$HOME/.juliaup/bin:*)
 ;;
 
 *)
-export PATH=$HOME/rui/.juliaup/bin${PATH:+:${PATH}}
+export PATH=$HOME/.juliaup/bin${PATH:+:${PATH}}
 ;;
 esac
 
@@ -22,3 +22,5 @@ esac
 . "$HOME/.cargo/env"
 
 export PATH="$HOME/.elan/bin:$PATH"
+
+[ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
