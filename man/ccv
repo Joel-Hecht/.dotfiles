@@ -1,0 +1,22 @@
+./" Manpage for ccv 
+.TH man 1 "26 August 2025" "1.0" "User Commands"
+.SH NAME 
+	ccv - cp a file, cd there, then edit it in vim (the copy not the original)
+.SH SYNOPSIS
+	ccv source destination
+.SH DESCRIPTION
+	does cp, cds to wherever it is now, then edits the copied file in vim
+.SH OPTIONS
+	cp default options work, so -i to prompt before overwrite, -n to not overwrite, -b to make backups, -u for update, -v for verbose. Copies directories by default (-r) \n\n
+	vim default options do not work
+.SH EXAMPLES
+	ccv hi.csv csvs
+	ccv sdifji.py ../../ijsdif/jsissbsbbsb.py
+.SH BUGS
+	probably none
+.SH AUTHOR
+	written by rui zhao 
+.SH REPORTING BUGS
+	tell me in person
+.SH COPYRIGHT
+	This is free software, you are free to change and redistribute it, there is no warranty
