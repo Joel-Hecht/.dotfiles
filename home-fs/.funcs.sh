@@ -116,9 +116,10 @@ function cpvi {
 	if [ $# -lt 2 ]; then
 		echo "cpvi source destination"
 	elif [ -d "${@: -1}" ]; then
-		cp "$@" && cd "${@: -1}" && vi "$( dirname "{@: -1}" )"/"$1"
+		echo "$( dirname "${@: -1}" )"/"$1" >&2
+		cp "$@" && vi "${@: -1}"/"$1"
 	else
-		cp "$@" && cd "$( dirname "${@: -1}" )" && vi "${@: -1}"
+		cp "$@" && vi "${@: -1}"
 	fi
 }
 
@@ -126,8 +127,61 @@ function mvvi {
 	if [ $# -lt 2 ]; then
 		echo "mvvi source destination"
 	elif [ -d "${@: -1}" ]; then
-		mv "$@" && cd "${@: -1}" && vi "$( dirname "{@: -1}" )"/"$1"
+		mv "$@" && vi "${@: -1}"/"$1"
+	else
+		mv "$@" && vi "${@: -1}"
+	fi
+}
+
+function ccv {
+	if [ $# -lt 2 ]; then
+		echo "ccv source destination"
+	elif [ -d "${@: -1}" ]; then
+		cp "$@" && cd "${@: -1}" && vi "${@: -1}"/"$1"
+	else
+		cp "$@" && cd "$( dirname "${@: -1}" )" && vi "${@: -1}"
+	fi
+}
+
+function mcv {
+	if [ $# -lt 2 ]; then
+		echo "mcv source destination"
+	elif [ -d "${@: -1}" ]; then
+		mv "$@" && cd "${@: -1}" && vi "${@: -1}"/"$1"
 	else
 		mv "$@" && cd "$( dirname "${@: -1}" )" && vi "${@: -1}"
+	fi
+}
+
+function mmc {
+	if [ ! -n "${@: -1}" ]; then
+		echo "mmc source destination" >&2
+	elif [ -d "${@: -1}" ]; then
+		echo "\'${@: -1}' already exists, mvcding anyway" >&2
+		mv "$@" && cd "${@: -1}"
+	else
+		mkdir "${@: -1}" && mv "$@" && cd "${@: -1}"
+	fi
+}
+
+function mmcv {
+	if [ $# -lt 2 ]; then
+		echo "mmcv source destination"
+	elif [ -d "${@: -1}" ]; then
+		echo "\'${@: -1}' already exists, mcving anyway" >&2
+		mv "$@" && cd "${@: -1}" && cd "${@: -1}" && vi "${@: -1}"/"$1"
+	else
+		mkdir "${@: -1}" && mv "$@" && cd "${@: -1}" && vi "${@: -1}"/"$1"
+	fi
+}
+
+function mccv {
+	if [ $# -lt 2 ]; then
+		echo "mccv source destination"
+	elif [ -d "${@: -1}" ]; then
+		echo "\'${@: -1}' already exists, ccving anyway" >&2
+		cp "$@" && cd "${@: -1}" && cd "${@: -1}" && vi "${@: -1}"/"$1"
+	else
+		mkdir "${@: -1}" && cp "$@" && cd "${@: -1}" && vi "${@: -1}"/"$1"
 	fi
 }

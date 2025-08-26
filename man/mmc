@@ -11,7 +11,7 @@
 	mkdir default options do not work because mkdir only uses the last argument
 .SH EXAMPLES
 	mmc *.csv csvs
-	mmc sdifji.py ../../ijsdif/jsissbsbbsb.py
+	mmc sdifji.py ../../ijsdif
 .SH BUGS
 	probably none
 .SH AUTHOR
