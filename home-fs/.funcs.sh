@@ -9,8 +9,8 @@ function downhere {
 	fi
 	
 	while [[ $num -gt 0 ]]; do
-		fname=$(ls -tl "${HOME}/Downloads" | grep ^- | awk '{ print $NF }' | head -2 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')
-		fullpath="${HOME}/Downloads/${fname}"
+		fname="$(ls -tl "${HOME}/Downloads" | grep ^- | awk '{ print $NF }' | head -2 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
+		fullpath="${HOME}/Downloads/"${fname}""
 		if [[ $( tail -c 6 <<< "$fullpath" ) == '.part' ]]; then
 			echo "Still downloading!"
 			return 1
@@ -57,7 +57,7 @@ function mkcd {
 	elif [ -d "$1" ]; then
 		echo "\'$1' already exists" >&2
 	else
-		command mkdir "$1" && cd "$1"
+		mkdir "$1" && cd "$1"
 	fi
 }
 
@@ -74,11 +74,9 @@ function mvcd {
 	if [ $# -lt 2 ]; then
 		echo "mvcd source destination" >&2
 	elif [ -d "${@: -1}" ]; then
-		mv "$@"
-		cd "${@: -1}"
+		mv "$@" && cd "${@: -1}"
 	else
-		mv "$@"
-		cd "$( dirname "${@: -1}" )"
+		mv "$@" && cd "$( dirname "${@: -1}" )"
 	fi
 }
 
@@ -86,10 +84,50 @@ function cpcd {
 	if [ $# -lt 2 ]; then
 		echo "cpcd source destination"
 	elif [ -d "${@: -1}" ]; then
-		cp -r "$@"
-		cd "${@: -1}"
+		cp -r "$@" && cd "${@: -1}"
 	else
-		cp -r "$@"
-		cd "$( dirname "${@: -1}" )"
+		cp -r "$@" && cd "$( dirname "${@: -1}" )"
+	fi
+}
+
+function mmc {
+	if [ ! -n "${@: -1}" ]; then
+		echo "mmc source destination" >&2
+	elif [ -d "${@: -1}" ]; then
+		echo "\'${@: -1}' already exists, mvcding anyway" >&2
+		mv "$@" && cd "${@: -1}"
+	else
+		mkdir "${@: -1}" && mv "$@" && cd "${@: -1}"
+	fi
+}
+
+function mcc {
+	if [ ! -n "${@: -1}" ]; then
+		echo "mcc source destination" >&2
+	elif [ -d "${@: -1}" ]; then
+		echo "\'${@: -1}' already exists, cpcding anyway" >&2
+		cp -r "$@" && cd "${@: -1}"
+	else
+		mkdir "${@: -1}" && cp -r "$@" && cd "${@: -1}"
+	fi
+}
+
+function cpvi {
+	if [ $# -lt 2 ]; then
+		echo "cpvi source destination"
+	elif [ -d "${@: -1}" ]; then
+		cp "$@" && cd "${@: -1}" && vi "$1"
+	else
+		cp "$@" && cd "$( dirname "${@: -1}" )" && vi "$1"
+	fi
+}
+
+function mvvi {
+	if [ $# -lt 2 ]; then
+		echo "mvvi source destination"
+	elif [ -d "${@: -1}" ]; then
+		mv "$@" && cd "${@: -1}" && vi "$1"
+	else
+		mv "$@" && cd "$( dirname "${@: -1}" )" && vi "$1"
 	fi
 }
