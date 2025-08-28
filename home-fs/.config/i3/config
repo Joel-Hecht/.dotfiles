@@ -54,7 +54,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec kitty
-#$HOME/kitty/kitty/launcher/kitty
+#bindsym $mod+Return exec $HOME/kitty/kitty/launcher/kitty
 
 # kill focused window
 bindsym $mod+q kill

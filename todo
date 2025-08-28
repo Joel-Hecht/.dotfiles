@@ -3,14 +3,18 @@ easy
 		- so rw 1 ~ should have an interval of 1 second and never go further up than ~ for example
 - add -p option to mkcd, mvcd, and cpcd
 		- if specified this would create all necessary parent directories for your target to exist
+- "v 39" should set volume to 39 and reload i3bar
 
 medium
 - bfsr starting from source dir
 		- so bfsr [options] dest [source] [maxdepth] search starting from [source], bfsr dest ~ would be equivalent to current default bfsr
 - volume dmenu
 		- i want something like typing "v45" into dmenu to set volume to 45 and do all accompanying things, this will probably just require manually creating all of the dmenu aliases which i'm fine with
-		- it would be nice if commandline "volume 39" or something also just set it to that, this is much easier
+- if rw sees a bunch of directories in a row with only one subdirectory each, it shouldn't bounce aroud within the chain. no idea how to implement this
 
 hard
-- bfs over any command 
-		- for example bfs vim that recursively searches for the filename you give it to edit, or bfs mv that recursively looks for the directoryname you give it to move your files to
+- bfs recursively do command
+		- bfsx -x / bfsx maybe
+		- for example bfsx vim that recursively searches for the filename you give it to edit
+		- bfsx mv would bfsx both for the thing you're moving and the place you're moving it to, maybe with different options for each tho. for example bfsx -r file -t dest
+		- would also have to know what it's actually looking for, bc for example mv's second arg is likely a filename that doesn't yet exist but it may be a directory that does exist, or be parentdirectory(exists)/file(doesn't)

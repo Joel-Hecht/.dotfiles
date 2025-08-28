@@ -7,7 +7,7 @@ while [ 1 -gt 0 ]; do
 	echo
 	sleep 0.5
 	numdests=$( ls -d */ 2> /dev/null | wc -l ) || 0
-	if [[ ( $( shuf -i 1-2 -n 1  ) -gt 1  || $numdests -lt 1 || $( pwd ) == "/bin"* || $( pwd ) == "/usr/bin"* ) && $( pwd ) != ~ ]]; then
+	if [[ ( $( shuf -i 1-2 -n 1  ) -gt 1  || $numdests -lt 1 || $( pwd ) == "/bin"* || $( pwd ) == "/usr/bin"* ) && $( pwd ) != / ]]; then
 		# don't want to go down infinite /bin/X11s & don't want to try to go back from /
 		cd ..
 	else
@@ -18,5 +18,12 @@ while [ 1 -gt 0 ]; do
 		cd "$target" 2>/dev/null || cd ..
 	fi
 	printf "${LSCOLOUR}$( pwd | sed "s|$HOME|~|" )${NC}\n"
-	ls --color=auto 2>/dev/null
-done
+	width=$(stty -a < $( tty ) | head -n 1 | awk '{ print $7 }') || 7;
+	contents="$( ls -C -w ${width%?} 2>/dev/null )"
+	if [[ $( wc -l <<< "$contents" ) -gt 4 ]]; then
+		ls -C -w ${width%?} --color=yes 2>/dev/null | head -n 4
+		echo ...
+	else
+		ls --color=auto 2>/dev/null
+	fi
+done 
