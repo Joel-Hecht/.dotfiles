@@ -9,7 +9,11 @@ function downhere {
 	fi
 	
 	while [[ $num -gt 0 ]]; do
-		fname="$(ls -tl "${HOME}/Downloads" | grep ^- | awk '{ print $NF }' | head -2 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
+		if [[ $num -eq 1 ]]; then
+			fname="$(ls -t "${HOME}/Downloads" | head -1 | tail -1 )"
+		else
+			fname="$(ls -tl "${HOME}/Downloads" | grep ^- | awk '{ print $NF }' | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
+		fi
 		fullpath="${HOME}/Downloads/"${fname}""
 		if [[ $( tail -c 6 <<< "$fullpath" ) == '.part' ]]; then
 			echo "Still downloading!"

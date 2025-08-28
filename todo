@@ -12,6 +12,9 @@ medium
 		- i want something like typing "v45" into dmenu to set volume to 45 and do all accompanying things, this will probably just require manually creating all of the dmenu aliases which i'm fine with
 - if rw sees a bunch of directories in a row with only one subdirectory each, it shouldn't bounce aroud within the chain. no idea how to implement this
 
+- keyboard shortcut to change kitty text size and reload all kitty terminals
+
+
 hard
 - bfs recursively do command
 		- bfsx -x / bfsx maybe
