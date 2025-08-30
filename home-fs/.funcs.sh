@@ -185,3 +185,39 @@ function mccv {
 		mkdir "${@: -1}" && cp "$@" && cd "${@: -1}" && vi "${@: -1}"/"$1"
 	fi
 }
+
+function v {
+	if [ $# -ne 1 ]; then
+		echo "usage: v <0-100>"
+	elif ! [[ $1 =~ ^[0-9]+$ ]]; then
+		echo "volume must be a number"
+	elif [[ $1 -gt 100 || $1 -lt 0 ]]; then
+		echo "usage: v <0-100>"
+	else # idk what im doing copying from home-fs/bin/.VOLUME
+		VOLUME=~/.VOLUME
+		
+		# make sure another run of volume isn't currently in progress
+		if [[ $( cat $VOLUME ) == "IN PROGRESS" ]]; then
+			echo "you're going too fast"
+			exit 2
+		fi
+
+		# tell volume we're currently running it
+		chmod 644 $VOLUME
+		echo IN PROGRESS > $VOLUME
+		
+		# set new volume
+		amixer -q -M set Master $1%
+
+		# reload i3bar
+		sed -i "s/= \".*W:/= \"VOLUME: $1% :|: W:/" ~/.i3status.conf
+		killall i3bar
+		i3bar --bar_id=bar-0 & # this & is very necessary for some reason
+		
+		# set volume file
+		echo $1 > $VOLUME
+		# weird with permissions because i don't want this file getting messed up
+		chmod 444 $VOLUME
+		
+	fi
+}
