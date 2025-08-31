@@ -15,6 +15,7 @@ function downhere {
 			echo "Still downloading!"
 			return 1
 		else
+			echo "$fullpath"
 			mv "$fullpath" "./$fname"
 		fi
 		num=$(( $num - 1 ))
@@ -185,3 +186,26 @@ function mccv {
 		mkdir "${@: -1}" && cp "$@" && cd "${@: -1}" && vi "${@: -1}"/"$1"
 	fi
 }
+
+function mkmv {
+	if [ ! -n "${@: -1}" ]; then
+		echo "mkmv source destination" >&2
+	elif [ -d "${@: -1}" ]; then
+		echo "\'${@: -1}' already exists, mving anyway" >&2
+		mv "$@" 
+	else
+		mkdir "${@: -1}" && mv "$@" 
+	fi
+}
+
+function mkcp {
+	if [ ! -n "${@: -1}" ]; then
+		echo "mkcp source destination" >&2
+	elif [ -d "${@: -1}" ]; then
+		echo "\'${@: -1}' already exists, cping anyway" >&2
+		cp -r "$@"
+	else
+		mkdir "${@: -1}" && cp -r "$@"
+	fi
+}
+
