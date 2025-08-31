@@ -9,7 +9,11 @@ function downhere {
 	fi
 	
 	while [[ $num -gt 0 ]]; do
-		fname="$(ls -tl "${HOME}/Downloads" | grep ^- | awk '{ print $NF }' | head -2 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
+		if [[ $num -eq 1 ]]; then
+			fname="$(ls -t "${HOME}/Downloads" | head -1 | tail -1 )"
+		else
+			fname="$(ls -tl "${HOME}/Downloads" | grep ^- | awk '{ print $NF }' | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
+		fi
 		fullpath="${HOME}/Downloads/"${fname}""
 		if [[ $( tail -c 6 <<< "$fullpath" ) == '.part' ]]; then
 			echo "Still downloading!"
@@ -209,3 +213,38 @@ function mkcp {
 	fi
 }
 
+function v {
+	if [ $# -ne 1 ]; then
+		echo "usage: v <0-100>"
+	elif ! [[ $1 =~ ^[0-9]+$ ]]; then
+		echo "volume must be a number"
+	elif [[ $1 -gt 100 || $1 -lt 0 ]]; then
+		echo "usage: v <0-100>"
+	else # idk what im doing copying from home-fs/bin/.VOLUME
+		VOLUME=~/.VOLUME
+		
+		# make sure another run of volume isn't currently in progress
+		if [[ $( cat $VOLUME ) == "IN PROGRESS" ]]; then
+			echo "you're going too fast"
+			exit 2
+		fi
+
+		# tell volume we're currently running it
+		chmod 644 $VOLUME
+		echo IN PROGRESS > $VOLUME
+		
+		# set new volume
+		amixer -q -M set Master $1%
+
+		# reload i3bar
+		sed -i "s/= \".*W:/= \"VOLUME: $1% :|: W:/" ~/.i3status.conf
+		killall i3bar
+		i3bar --bar_id=bar-0 & # this & is very necessary for some reason
+		
+		# set volume file
+		echo $1 > $VOLUME
+		# weird with permissions because i don't want this file getting messed up
+		chmod 444 $VOLUME
+		
+	fi
+}
