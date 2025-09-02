@@ -3,20 +3,29 @@
 LSCOLOUR='\033[0;32m'
 NC='\033[0m'
 
+time=0.5
+home=~
+if [ $# -gt 0 ]; then
+	if [[ "$1" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
+		time=$1
+		if [ $# -gt 1 ]; then
+			home="$2"
+		fi
+	else
+		home="$1"
+		if [ $# -gt 1 ]; then
+			if [[ "$2" =~ ^[0-9]+([.][0-9]+)?$ ]]; then
+				time=$2
+			fi
+		fi
+	fi
+fi
+
 while [ 1 -gt 0 ]; do
 	echo
-	sleep 0.5
-	numdests=$( ls -d */ 2> /dev/null | wc -l ) || 0
-	if [[ ( $( shuf -i 1-2 -n 1  ) -gt 1  || $numdests -lt 1 || $( pwd ) == "/bin"* || $( pwd ) == "/usr/bin"* ) && $( pwd ) != / ]]; then
-		# don't want to go down infinite /bin/X11s & don't want to try to go back from /
-		cd ..
-	else
-		target="lost+found/" # slightly inelegant way to prevent it from trying to go places it can't
-		while [[ "$target" == "lost+found/" || "$target" == "root/" ]]; do
-			target=$( ls -d */ 2> /dev/null | head -n $( shuf -i 1-$numdests -n 1 ) | tail -n 1 )
-		done
-		cd "$target" 2>/dev/null || cd ..
-	fi
+	sleep $time
+
+	# pretty-print directory contents
 	printf "${LSCOLOUR}$( pwd | sed "s|$HOME|~|" )${NC}\n"
 	width=$(stty -a < $( tty ) | head -n 1 | awk '{ print $7 }') || 7;
 	contents="$( ls -C -w ${width%?} 2>/dev/null )"
@@ -25,5 +34,18 @@ while [ 1 -gt 0 ]; do
 		echo ...
 	else
 		ls --color=auto 2>/dev/null
+	fi
+
+	# randomly go up or down
+	numdests=$( ls -d */ 2> /dev/null | wc -l ) || 0
+	if [[ ( $( shuf -i 1-2 -n 1  ) -gt 1  || $numdests -lt 1 || $( pwd ) == "/bin"* || $( pwd ) == "/usr/bin"* ) && $( pwd ) != "$home" ]]; then
+		# don't want to go down infinite /bin/X11s & don't want to try to go back from /
+		cd ..
+	else
+		target="lost+found/" # slightly inelegant way to prevent it from trying to go places it can't
+		while [[ "$target" == "lost+found/" || "$target" == "root/" ]]; do
+			target=$( ls -d */ 2> /dev/null | head -n $( shuf -i 1-$numdests -n 1 ) | tail -n 1 )
+		done
+		cd "$target" 2>/dev/null || cd ..
 	fi
 done 

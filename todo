@@ -1,6 +1,4 @@
 easy
-- add time and home options to rw
-		- so rw 1 ~ should have an interval of 1 second and never go further up than ~ for example
 - add -p option to mkcd, mvcd, and cpcd
 		- if specified this would create all necessary parent directories for your target to exist
 - fix volume alias: "v 39" works but you need to ctrl C twice, once after and once when you change volume or reload i3 bar

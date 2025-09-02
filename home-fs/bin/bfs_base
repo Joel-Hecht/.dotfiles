@@ -45,7 +45,7 @@ if [[ $# -gt 1 ]]; then
 		return 1
 	fi
 else
-	maxdepth=5
+	maxdepth=9
 fi
 if [[ $infinite == yes ]]; then
 	if [[ $full == no ]] ; then
