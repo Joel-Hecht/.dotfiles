@@ -222,3 +222,4 @@ condainit () {
 
 
 [ -f "/home/rui/.ghcup/env" ] && . "/home/rui/.ghcup/env" # ghcup-env
+export PATH="/usr/local/go/bin:$PATH"

@@ -158,17 +158,6 @@ function mcv {
 	fi
 }
 
-function mmc {
-	if [ ! -n "${@: -1}" ]; then
-		echo "mmc source destination" >&2
-	elif [ -d "${@: -1}" ]; then
-		echo "\'${@: -1}' already exists, mvcding anyway" >&2
-		mv "$@" && cd "${@: -1}"
-	else
-		mkdir "${@: -1}" && mv "$@" && cd "${@: -1}"
-	fi
-}
-
 function mmcv {
 	if [ $# -lt 2 ]; then
 		echo "mmcv source destination"
