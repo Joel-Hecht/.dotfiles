@@ -1,6 +1,4 @@
 #!/bin/bash
-
-
 bpath="#!/bin/bash"
 
 thispath=$(realpath $0)
@@ -10,6 +8,9 @@ aliaspath="$thispath/bin/aliases"
 $(mkdir -p $aliaspath)
 
 as=$(tail -n +2 "$HOME/.aliases_dmenu.sh" | sed -e 's/alias *//' | sed -e 's/=.*$//')
+as+='
+'
+as+=$(tail -n +2 "$HOME/.aliases_v.sh" | sed -e 's/alias *//' | sed -e 's/=.*$//')
 
 #note that we are not removing actual bash scripts stored
 #in the ~/bin/aliases folder
@@ -42,5 +43,3 @@ for k in $bins; do
 		ln "${base}$k" "${base}dmenu_specific/$k"
 	fi
 done
-
-
