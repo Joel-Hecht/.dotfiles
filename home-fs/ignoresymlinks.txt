@@ -2,6 +2,7 @@ ignoresymlinks.txt
 bins_for_dmenu.txt
 makesymlinks.sh
 makealiases.sh
+makevs.sh
 Makefile
 permission_setup.sh
 removebrokensymlinks.sh

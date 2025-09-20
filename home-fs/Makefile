@@ -1,5 +1,6 @@
 all:
 	./makealiases.sh
+	./makevs.sh
 	./makesymlinks.sh
 	./permission_setup.sh
 	./sourceab.sh

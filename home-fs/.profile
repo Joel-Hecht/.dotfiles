@@ -5,6 +5,7 @@ sh ~/bin/primarydisplay
 
 #this is what dmenu reads
 PATH="$HOME/bin/aliases:$PATH"
+PATH="$HOME/bin/valiases:$PATH"
 PATH="$HOME/bin/dmenu_specific:$PATH"
 
 # >>> juliaup initialize >>>

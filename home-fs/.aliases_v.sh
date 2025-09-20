@@ -1,3 +1,5 @@
+#!bin/bash
+
 alias v00="v 00"
 alias v01="v 01"
 alias v02="v 02"
@@ -98,5 +100,4 @@ alias v96="v 96"
 alias v97="v 97"
 alias v98="v 98"
 alias v99="v 99"
-alias v100="v 100"
 alias vmax="v 100"
