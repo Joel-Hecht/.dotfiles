@@ -254,7 +254,7 @@ bindsym Control+$alt+k exec --no-startup-id kitty calcurse
 bindsym Control+$alt+d exec --no-startup-id firefox discord.com/channels/@me
 bindsym Control+$alt+j exec --no-startup-id firefox jisho.org
 bindsym Control+$alt+o exec --no-startup-id firefox outlook.office365.com/mail 
-bindsym Control+$alt+m exec --no-startup-id firefox maps.google.com?authuser=0
+bindsym Control+$alt+m exec --no-startup-id firefox maps.google.com?authuser=1
 bindsym Control+$alt+g exec --no-startup-id firefox gmail.com
 bindsym Control+Shift+$alt+g exec --no-startup-id firefox mail.google.com/mail/u/1
 bindsym Control+$alt+t exec --no-startup-id firefox translate.google.com
