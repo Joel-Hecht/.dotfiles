@@ -1,4 +1,6 @@
 #!/bin/bash
+rm ~/.cache/dmenu_run # get rid of dmenu cache
+
 # see dhome/makealiases.sh for what the hell is going on here
 bpath="#!/bin/bash"
 
