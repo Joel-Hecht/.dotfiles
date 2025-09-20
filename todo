@@ -3,6 +3,7 @@ easy
 		- if specified this would create all necessary parent directories for your target to exist
 - fix volume alias: "v 39" works but you need to ctrl C twice, once after and once when you change volume or reload i3 bar
 - fix korean and hindi text not rendering
+- make removebrokensimlinks ignore steam files
 
 medium
 - bfsr starting from source dir

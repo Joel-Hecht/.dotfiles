@@ -63,6 +63,7 @@ alias changes="git diff --cached"
 alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitten +kitty icat"
 alias lo="libreoffice"
+alias py="python"
 
 #reload after updates	
 alias sb="source ~/.bashrc"
@@ -116,4 +117,5 @@ alias iv="pope"
 alias vm="pope"
 alias ol="pope"
 alias al="pope"
+alias yp="pope"
 alias llha="pope"
