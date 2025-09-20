@@ -203,5 +203,5 @@ function mkcp {
 }
 
 function v {
-	dc_arg $HOME/bin/v_base $1
+	dc_arg $HOME/bin/v_base $1 &>/dev/null
 }

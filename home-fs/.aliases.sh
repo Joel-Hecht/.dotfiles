@@ -87,6 +87,7 @@ alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt
 alias ssh="TERM=xterm-256color ssh" 
 # source aliases that act as applications
 source ${HOME}/.aliases_dmenu.sh 
+source ${HOME}/.aliases_v.sh 
 
 # random rui stuff
 alias zip="echo zip -r dest.zip dirToZip; zip" # remember how zip works
