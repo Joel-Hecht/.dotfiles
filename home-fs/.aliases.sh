@@ -19,6 +19,7 @@ alias logs="cd ~/proj/geyserlog/logs"
 
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
+alias todo="vim ~/.dotfiles/todo"
 alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
 alias funcs="vim ~/.dotfiles/home-fs/.funcs.sh"
 alias br="vim ~/.bashrc"

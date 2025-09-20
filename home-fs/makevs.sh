@@ -9,7 +9,6 @@ thispath=$(dirname "$thispath")
 aliaspath="$thispath/bin/valiases"
 
 $(mkdir -p $aliaspath)
-echo $aliaspath
 count=0
 
 as=$(tail -n +2 "$HOME/.aliases_v.sh" | sed -e 's/alias *//' | sed -e 's/=.*$//')
@@ -22,7 +21,7 @@ for a in $as; do
 	$bpath
 	chmod 644 $VOLUME
 	echo IN PROGRESS > $VOLUME
-	amixer -q -M set Master $count &>/dev/null
+	amixer -q -M set Master $count% &>/dev/null
 	sed -i "s/= \".*W:/= \"VOLUME: $count% :|: W:/" ~/.i3status.conf
 	killall i3bar
 	i3bar --bar_id=bar-0 & &>/dev/null 
