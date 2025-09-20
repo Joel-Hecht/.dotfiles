@@ -97,6 +97,7 @@ alias stopserver="kill $( ps aux | /usr/bin/grep http.server | head -n 1 | awk '
 alias sexy="echo sexy!"
 alias sex="sexy"
 alias bs="pope"
+alias fs="pope"
 alias pg="pope"
 alias pd="pope"
 alias as="pope"
