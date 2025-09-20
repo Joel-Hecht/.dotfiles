@@ -16,7 +16,6 @@ as=$(tail -n +2 "$HOME/.aliases_v.sh" | sed -e 's/alias *//' | sed -e 's/=.*$//'
 $(rm -rf $aliaspath/*)
 
 for a in $as; do
-	echo $a
 	p="$aliaspath/$a""-a"
 	VOLUME=~/.VOLUME
 	cat > "$p" <<- EOF
@@ -31,6 +30,5 @@ for a in $as; do
 	chmod 444 $VOLUME
 	EOF
 	chmod +x $p
-	cat $p
 	count=$(( $count + 1 ))
 done
