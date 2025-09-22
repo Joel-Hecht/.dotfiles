@@ -11,6 +11,7 @@ alias scs="cd ~/Pictures"
 alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
 alias proj="cd ~/proj"
 alias repo="firefox github.com/Joel-Hecht/.dotfiles"
+alias t="firefox www.tumblr.com/"
 alias me="echo \"$(whoami)@$(hostname)\""
 alias down="cd ~/Downloads"
 # nav for rui
