@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #navigation
+alias b="cd .."
 alias dot="cd ~/.dotfiles"
 alias dhome="cd ~/.dotfiles/home-fs"
 alias dman="cd ~/.dotfiles/man"
