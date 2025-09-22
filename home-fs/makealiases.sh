@@ -34,6 +34,7 @@ done
 bins=$(cat bins_for_dmenu.txt)
 base=$( dirname $(realpath "$0"))
 base="${base}/bin/"
+mkdir -p "${base}dmenu_specific"
 for k in $bins; do
 	p=$(ls "$base" | grep -w $k)
 	if [ -n "$p" ]; then
