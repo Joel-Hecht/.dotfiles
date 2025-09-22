@@ -11,7 +11,7 @@ shopt -s dotglob
 
 for i in $dir*; do
 	if [ -d "$i" ]; then
-		if [[ "$i" != "." ]] && [[ "$i" != ".." ]] && [[ "$i" != ".steam" ]]; then
+		if [[ "$i" != "." ]] && [[ "$i" != ".." ]] && [[ "$i" != "$dir.steam" ]]; then
 			#recrusive call for lower directories ignoring .steam
 			$0 "$i""/"
 		fi
