@@ -15,7 +15,7 @@ alias me="echo \"$(whoami)@$(hostname)\""
 alias b="cd .."
 alias bb="cd ../.."
 alias b2="cd ../.."
-alias b3="cd../../.."
+alias b3="cd ../../.."
 alias down="cd ~/Downloads"
 # nav for rui
 alias drex="cd ~/Downloads/drexel"
