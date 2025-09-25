@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #navigation
-alias b="cd .."
 alias dot="cd ~/.dotfiles"
 alias dhome="cd ~/.dotfiles/home-fs"
 alias dman="cd ~/.dotfiles/man"
@@ -13,6 +12,10 @@ alias proj="cd ~/proj"
 alias repo="firefox github.com/Joel-Hecht/.dotfiles"
 alias t="firefox www.tumblr.com/"
 alias me="echo \"$(whoami)@$(hostname)\""
+alias b="cd .."
+alias bb="cd ../.."
+alias b2="cd ../.."
+alias b3="cd ../../.."
 alias down="cd ~/Downloads"
 
 # nav for rui
@@ -125,4 +128,6 @@ alias ol="pope"
 alias al="pope"
 alias yp="pope"
 alias aw="pope"
+alias 2b="pope"
+alias 3b="pope"
 alias llha="pope"
