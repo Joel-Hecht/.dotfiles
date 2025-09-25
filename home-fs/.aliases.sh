@@ -53,6 +53,7 @@ alias lla="ls -lA"
 alias llah="ls -lAh"
 alias dush="du -sh ?(.)*/"
 alias fn="find -name"
+alias fin="find -iname"
 
 #git shortcuts
 alias gcm="git commit -m"
