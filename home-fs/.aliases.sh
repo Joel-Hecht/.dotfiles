@@ -14,6 +14,7 @@ alias repo="firefox github.com/Joel-Hecht/.dotfiles"
 alias t="firefox www.tumblr.com/"
 alias me="echo \"$(whoami)@$(hostname)\""
 alias down="cd ~/Downloads"
+
 # nav for rui
 alias drex="cd ~/Downloads/drexel"
 alias prog="cd ~/Downloads/program"
@@ -48,6 +49,7 @@ alias llh="ls -lh"
 alias lla="ls -lA"
 alias llah="ls -lAh"
 alias dush="du -sh ?(.)*/"
+alias fn="find -name"
 
 #git shortcuts
 alias gcm="git commit -m"
