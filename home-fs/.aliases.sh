@@ -70,7 +70,7 @@ alias grh="git reset --hard origin/main"
 alias changes="git diff --cached"
 
 alias chirp="sudo ~/.local/bin/chirp &"
-alias icat="kitten +kitty icat"
+alias icat="kitty +kitten icat"
 alias lo="libreoffice"
 alias py="python"
 
