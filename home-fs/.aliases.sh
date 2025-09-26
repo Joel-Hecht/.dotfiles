@@ -26,9 +26,9 @@ alias logs="cd ~/proj/geyserlog/logs"
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
 alias todo="vim ~/.dotfiles/todo"
-alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh"
-alias funcs="vim ~/.dotfiles/home-fs/.funcs.sh"
-alias br="vim ~/.bashrc"
+alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh && source ~/.aliases.sh"
+alias funcs="vim ~/.dotfiles/home-fs/.funcs.sh && source ~/.funcs.sh"
+alias br="vim ~/.bashrc && source ~/.bashrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 
 #computer control
@@ -54,6 +54,7 @@ alias llah="ls -lAh"
 alias dush="du -sh ?(.)*/"
 alias fn="find -name"
 alias fin="find -iname"
+alias ugrep="/usr/bin/grep"
 
 #git shortcuts
 alias gcm="git commit -m"
