@@ -12,11 +12,20 @@ alias proj="cd ~/proj"
 alias repo="firefox github.com/Joel-Hecht/.dotfiles"
 alias t="firefox www.tumblr.com/"
 alias me="echo \"$(whoami)@$(hostname)\""
+alias down="cd ~/Downloads"
+
+#back
 alias b="cd .."
 alias bb="cd ../.."
+alias bbb="cd ../../.."
+alias bbbb="cd ../../../.."
+alias bbbbb="cd ../../../../.."
+alias bbbbbb="cd ../../../../../.."
 alias b2="cd ../.."
 alias b3="cd ../../.."
-alias down="cd ~/Downloads"
+alias b4="cd ../../../.."
+alias b5="cd ../../../../.."
+alias b6="cd ../../../../../.."
 
 # nav for rui
 alias drex="cd ~/Downloads/drexel"
@@ -44,6 +53,7 @@ alias rmzip="rm *.zip *.tar *.gz 2> /dev/null"
 alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
 alias i3rs="i3-msg restart"
 alias i3rl="i3-msg reload"
+alias rm="rm -d"
 
 #info
 alias ll="ls -l"
@@ -69,11 +79,14 @@ alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 alias dm="curr=\"\$(pwd)\" && dot ; make ; cd \"\$curr\""
 alias grh="git reset --hard origin/main"
 alias changes="git diff --cached"
+alias submodules="git submodules update --init --recursive"
 
+#programs ig
 alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias lo="libreoffice"
 alias py="python"
+alias vpy="venv && python"
 
 #reload after updates	
 alias sb="source ~/.bashrc"
@@ -85,6 +98,10 @@ alias ms="curr=\"\$(pwd)\" && dhome && ./makesymlinks.sh; cd \"\$curr\""
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
 alias cpy="xclip -sel c"
 alias cb="xclip -sel c"
+function copy_func { 
+  cat "$1" | cb
+}
+alias copy=copy_func
 
 #hdmi projecting
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
