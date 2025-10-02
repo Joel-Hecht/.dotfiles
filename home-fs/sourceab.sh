@@ -1,4 +1,4 @@
 #!/bin/bash
 
-source ~/.aliases.sh
-source ~/.bashrc
+. ~/.aliases.sh
+. ~/.bashrc

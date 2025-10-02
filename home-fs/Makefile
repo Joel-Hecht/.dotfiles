@@ -8,7 +8,7 @@ all:
 
 sym:
 	./makesymlinks.sh
-	./source_ab.sh
+	./sourceab.sh
 
 mans:
 	./makemans.sh

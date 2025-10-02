@@ -22,6 +22,7 @@ alias down="cd ~/Downloads"
 alias drex="cd ~/Downloads/drexel"
 alias prog="cd ~/Downloads/program"
 alias logs="cd ~/proj/geyserlog/logs"
+alias testf="echo test"
 
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
@@ -74,6 +75,7 @@ alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias lo="libreoffice"
 alias py="python"
+alias vpy="venv && python"
 
 #reload after updates	
 alias sb="source ~/.bashrc"

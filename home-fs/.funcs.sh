@@ -72,7 +72,13 @@ NC='\033[0m'
 function cdls {
 	cd "$@"
 	printf "${LSCOLOUR}$( pwd | sed "s|$HOME|~|" )${NC}\n"
-	ls --color=auto
+	ls --color=yes
+}
+
+function lscd {
+	ls --color=yes
+	printf "${LSCOLOUR}$( pwd | sed "s|$HOME|~|" )/... ${NC} "
+	read -n 1
 }
 
 function mvcd {

@@ -10,6 +10,7 @@ medium
 - if rw sees a bunch of directories in a row with only one subdirectory each, it shouldn't bounce aroud within the chain. no idea how to implement this
 - keyboard shortcut to change kitty text size and reload all kitty terminals
 - make bfsfi work
+- make dh X work with files with spaces in name
 
 hard
 - bfs recursively do command
