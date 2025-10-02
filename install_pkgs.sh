@@ -36,6 +36,9 @@ ninja-build gettext cmake unzip curl `tools we need for later to install neovim`
 notepadqq \
 ascii \
 sublime-text \
+fonts-noto `display foreign language characters`\
+
+
 
 #golang `needed for some stuff` \
 

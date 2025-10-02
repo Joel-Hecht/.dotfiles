@@ -213,10 +213,10 @@ gaps outer 2px
 exec_always --no-startup-id compton
 
 
-bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/SCID$(sh ${HOME}/bin/.nextScreenShotID)_$(date).png"| xclip -selection clipboard -t image/png && bash ${HOME}/bin/.removeSC
+bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/SCID$(bash ${HOME}/bin/.nextScreenShotID)_$(date).png"| xclip -selection clipboard -t image/png && bash ${HOME}/bin/.removeSC
 
 # this will go haywire if we ever shift to $mod=$alt (alt)
-bindsym $mod+$alt+s exec --no-startup-id maim | tee "$HOME/Pictures/SCID$(sh ${HOME}/bin/.nextScreenShotID)_$(date).png" |  xclip -selection clipboard -t image/png 
+bindsym $mod+$alt+s exec --no-startup-id maim | tee "$HOME/Pictures/SCID$(bash ${HOME}/bin/.nextScreenShotID)_$(date).png" |  xclip -selection clipboard -t image/png 
 
 bindsym $mod+Control+Left resize shrink width 10 px or 10 ppt
 bindsym $mod+Control+Down resize grow height 10 px or 10 ppt
