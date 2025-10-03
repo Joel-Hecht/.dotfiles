@@ -2,13 +2,13 @@ easy
 - add -p option to mkcd, mvcd, and cpcd
 		- if specified this would create all necessary parent directories for your target to exist
 - directory history & shortcut to go back to wherever you just were
+- fix bfs aliases to include -s and -fi combinations
 
 medium
 - bfsr starting from source dir
 		- so bfsr [options] dest [source] [maxdepth] search starting from [source], bfsr dest ~ would be equivalent to current default bfsr
 - if rw sees a bunch of directories in a row with only one subdirectory each, it shouldn't bounce aroud within the chain. no idea how to implement this
 - keyboard shortcut to change kitty text size and reload all kitty terminals
-- make bfsfi work
 - make dh X work with files with spaces in name
 
 hard
@@ -17,4 +17,7 @@ hard
 		- for example bfsx vim that recursively searches for the filename you give it to edit
 		- bfsx mv would bfsx both for the thing you're moving and the place you're moving it to, maybe with different options for each tho. for example bfsx -r file -t dest
 		- would also have to know what it's actually looking for, bc for example mv's second arg is likely a filename that doesn't yet exist but it may be a directory that does exist, or be parentdirectory(exists)/file(doesn't)
-- kitty magic cursor
+
+- kitty magic cursor + bold text + transparent terminals (somehow you can have at most 2 of these)
+
+- custom command parser that does bullshit for us and makes some commands randomly pope

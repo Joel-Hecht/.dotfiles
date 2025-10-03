@@ -13,6 +13,9 @@ alias repo="firefox github.com/Joel-Hecht/.dotfiles"
 alias t="firefox www.tumblr.com/"
 alias me="echo \"$(whoami)@$(hostname)\""
 alias down="cd ~/Downloads"
+alias rt="bfs -rt"
+alias rs="bfs -rs"
+alias s="bfs -s"
 
 #back
 alias b="cd .."
@@ -87,7 +90,7 @@ alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias lo="libreoffice"
 alias py="python"
-alias vpy="venv && python"
+alias vpy="[[ -n $( echo $PATH | grep basevenv )]] && venv; python"
 
 #reload after updates	
 alias sb="source ~/.bashrc"

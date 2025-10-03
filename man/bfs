@@ -12,6 +12,7 @@
 	-f explore to maxdepth and cd to last used match (bfsf)\n
 	-t find directories starting with argument (bfst) (t as in tab, like how you can hit tab when using cd to autocomplete the start of a directory name)\n
 	-i infinite maxdepth (not compatible with -f, -f will override)
+	-s find directories containing argument (bfss) (s as in stars, like how you can do cd *something* to go to a directory with something in it
 .SH EXAMPLES
 	bfs -h home-fs     probably goes to ~/.dotfiles/home-fs
 	bfs -tf cs         starting from pwd, goes to most recently used directory starting with "cs"

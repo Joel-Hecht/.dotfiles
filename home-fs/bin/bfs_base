@@ -8,6 +8,7 @@ hidden=no
 full=no
 tab=no
 infinite=no
+stars=no
 
 # help
 if [[ $# -eq 0 || $1 == "--help" ]]; then
@@ -17,19 +18,21 @@ if [[ $# -eq 0 || $1 == "--help" ]]; then
 	echo "\t-h: explore hidden directories (also bfsh)"
 	echo "\t-r: start from root (also bfsr)"
 	echo "\t-f: explore fully and go to last used match"
-	echo "\t-t: find directory starting with argument"
+	echo "\t-t: (tab) find directory starting with argument"
 	echo "\t-i: infinite depth"
+	echo "\t-s: (stars) find directory containing argument anywhere"
 	return 0
 fi
 
 # options
-while getopts "hrfti" opt; do
+while getopts "hrftis" opt; do
 	case $opt in
 		h) hidden=yes ;;
 		r) subdirs="$HOME/" ;;
 		f) full=yes ;;
 		t) tab=yes ;;
 		i) infinite=yes ;;
+		s) stars=yes ;;
 		\?) echo "Invalid option -$OPTARG" >&2
 			return 1 ;;
 	esac
@@ -47,15 +50,37 @@ if [[ $# -gt 1 ]]; then
 else
 	maxdepth=9
 fi
+
 if [[ $infinite == yes ]]; then
-	if [[ $full == no ]] ; then
-		maxdepth=999
+	maxdepth=999
+	if [[ $full == yes ]]; then
+		# HORRIBLE terrible stopgap to make bfsfi work for now
+		testdepth=0
+		testsubdirs="./"
+		while [[ $testdepth -lt $maxdepth ]]; do
+			[[ $hidden == yes ]] && testsubdirs+="?(.)*/" || testsubdirs+="*/"
+
+			testdepth=$(( $testdepth + 1))
+
+			# list all targets
+			targets=$( ls -dt $testsubdirs --color=no 2> /dev/null )
+			if [[ -z $targets ]]; then
+				maxdepth=$(( $testdepth ))
+			fi
+		done
 	fi
 fi
 
 # -f 
 if [[ $full == yes ]]; then
-	[[ $tab == yes ]] && search_term="(^|/)$1[^/]*/$" || search_term="(^|/)$1/$"
+	if [[ $stars == yes ]]; then
+		search_term="(^|/)[^/]*$1[^/]*/$"
+	elif [[ $tabs == yes ]]; then
+		search_term="(^|/)$1[^/]*/$"
+	else
+		search_term="(^|/)$1/$"
+	fi
+
 	current="$( pwd )"
 	cd "$subdirs"
 	for (( i=1; i<=$maxdepth; i++ )); do
@@ -76,6 +101,13 @@ if [[ $full == yes ]]; then
 fi
 
 [[ $tab == yes ]] && search_term="/$1.*/" || search_term="/$1/"
+if [[ $stars == yes ]]; then
+	search_term="/.*$1.*/"
+elif [[ $tabs == yes ]]; then
+	search_term="/$1.*/"
+else
+	search_term="/$1/"
+fi
 
 # main loop
 while [[ $depth -lt $maxdepth ]]; do
@@ -87,7 +119,7 @@ while [[ $depth -lt $maxdepth ]]; do
 	targets=$( ls -dt $subdirs --color=no 2> /dev/null )
 	if [[ -z $targets ]]; then
 		echo "no more subdirectories at depth=$depth" >&2
-		return 2 
+		return $(( $depth + 1 ))
 	fi
 
 	# look for directory

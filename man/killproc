@@ -5,14 +5,14 @@
 .SH SYNOPSIS
 	killproc processname
 .SH DESCRIPTION
-	iteratively kills all processes in ps aux that contain the given name. often throws an error, ignore this
+	iteratively kills all processes in ps aux that contain the given name. 
 .SH OPTIONS
 	there probably should be some
 .SH EXAMPLES
 	killproc discord
 	killproc http.server (equivalent to stopserver alias)
 .SH BUGS
-	probably none??
+	sometimes throws an error and kills itself maybe
 .SH AUTHOR
 	written by rui zhao 
 .SH REPORTING BUGS

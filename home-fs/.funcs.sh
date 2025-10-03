@@ -1,5 +1,15 @@
 #!/bin/bash
 
+function findproc {
+	if [[ $# -eq 0 ]]; then
+		echo "findproc [procname]" >&2
+		return 1
+	fi
+
+	ps aux | ugrep $1 | ugrep -v grep | ugrep -v findproc
+}
+alias fp="findproc"
+
 function downhere {
 	[[ $# -eq 0 ]] && num=1 || num="$1"
 

@@ -35,6 +35,7 @@ lua5.4 `lua language` \
 ninja-build gettext cmake unzip curl `tools we need for later to install neovim` \
 notepadqq \
 ascii \
+python-is-python3 \
 sublime-text \
 fonts-noto `display foreign language characters`\
 
