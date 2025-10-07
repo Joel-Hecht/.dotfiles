@@ -6,7 +6,7 @@ if [ $# -lt 1 ]; then
 fi
 
 output=$( ps aux | /usr/bin/grep "$1" | /usr/bin/grep -v grep | /usr/bin/grep -v killproc )
-while [ $( wc -l <<< "$output" ) -gt 1 ]; do 
+while [ $( wc -l <<< "$output" ) -gt 0 -a -n "$output" ]; do 
 	echo kill $( tail -n 1 <<< "$output" | awk '{ $1=$3=$4=$5=$6=$7=$8=$9=$10=""; print $0 }' )
 	kill $( tail -n 1 <<< "$output" | awk '{ print $2 }' )
 	output=$( ps aux | /usr/bin/grep "$1" | /usr/bin/grep -v grep | /usr/bin/grep -v killproc )
