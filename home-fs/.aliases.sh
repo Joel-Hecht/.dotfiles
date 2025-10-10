@@ -102,7 +102,7 @@ alias ms="curr=\"\$(pwd)\" && dhome && ./makesymlinks.sh; cd \"\$curr\""
 function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.bashrc ; }
 function pathhome { echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.bashrc  ; }
 function pathhere { echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.bashrc ; }
-function v { dc_arg $HOME/bin/v_base $1 &>/dev/null }
+function v { dc_arg $HOME/bin/v_base $1 &>/dev/null; }
 
 #clipboard
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
