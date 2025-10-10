@@ -1,5 +1,12 @@
 #!/bin/bash
 
+function lockin {
+	conf=$( cat $HOME/.i3status.conf | /usr/bin/grep -v 'order += "tztime local"' )
+	echo "$conf" > $HOME/.i3status.conf
+	i3rs &>/dev/null
+}
+alias lockout='echo "order += \"tztime local\"" >> $HOME/.i3status.conf && i3rs &>/dev/null'
+
 function findproc {
 	if [[ $# -eq 0 ]]; then
 		echo "findproc [procname]" >&2
@@ -36,17 +43,6 @@ function downhere {
 	done
 }
 alias dh="downhere"
-
-function path {
-   	echo "export PATH=\""$1":\$PATH\"" >> ~/.bashrc 
-}
-function pathhome { 
-	echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.bashrc 
-}
-function pathhere {
-	here=$( pwd | sed "s!$HOME!\$HOME!g" )
-	echo "export PATH=\""$here":\$PATH\"" >> ~/.bashrc
-}
 
 function dc {
 	if [[ $# -eq 0 ]]; then
@@ -85,6 +81,7 @@ function cdls {
 	ls --color=yes
 }
 
+# WIP
 function lscd {
 	ls --color=yes
 	printf "${LSCOLOUR}$( pwd | sed "s|$HOME|~|" )/... ${NC} "
@@ -216,8 +213,4 @@ function mkcp {
 	else
 		mkdir "${@: -1}" && cp -r "$@"
 	fi
-}
-
-function v {
-	dc_arg $HOME/bin/v_base $1 &>/dev/null
 }
