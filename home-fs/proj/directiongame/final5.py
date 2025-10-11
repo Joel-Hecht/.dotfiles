@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# Author: Allen Han 
+
 import pygame
 import random
 import time
