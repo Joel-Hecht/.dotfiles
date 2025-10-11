@@ -92,7 +92,9 @@ alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias lo="libreoffice"
 alias py="python"
-alias vpy="[[ -n $( echo $PATH | grep basevenv )]] && venv; python"
+alias vpy="[ -n $( echo $PATH | grep basevenv ) ] && venv; python"
+alias directiongame="vpy ~/proj/directiongame/final5.py"
+alias dg="directiongame"
 
 #reload after updates	
 alias sb="source ~/.bashrc"
