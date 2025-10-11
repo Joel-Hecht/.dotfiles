@@ -34,7 +34,6 @@ alias b6="cd ../../../../../.."
 alias drex="cd ~/Downloads/drexel"
 alias prog="cd ~/Downloads/program"
 alias logs="cd ~/proj/geyserlog/logs"
-alias testf="echo test"
 
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
@@ -58,6 +57,7 @@ alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
 alias i3rs="i3-msg restart"
 alias i3rl="i3-msg reload"
 alias rm="rm -d"
+alias kms="sudo pkill -u $(whoami)"
 
 #info
 alias ll="ls -l"
@@ -68,7 +68,8 @@ alias llah="ls -lAh"
 alias dush="du -sh ?(.)*/"
 alias fn="find -name"
 alias fin="find -iname"
-alias ugrep="/usr/bin/grep"
+alias ugrep="/usr/bin/grep -P"
+alias cgrep="clear; grep -P"
 
 #git shortcuts
 alias gcm="git commit -m"
@@ -84,6 +85,7 @@ alias dm="curr=\"\$(pwd)\" && dot ; make ; cd \"\$curr\""
 alias grh="git reset --hard origin/main"
 alias changes="git diff --cached"
 alias submodules="git submodules update --init --recursive"
+alias gitbranch="git checkout -b"
 
 #programs ig
 alias chirp="sudo ~/.local/bin/chirp &"
