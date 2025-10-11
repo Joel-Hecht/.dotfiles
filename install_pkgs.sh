@@ -35,11 +35,12 @@ lua5.4 `lua language` \
 ninja-build gettext cmake unzip curl `tools we need for later to install neovim` \
 notepadqq \
 ascii \
+sl \
 python-is-python3 \
 sublime-text \
 fonts-noto `display foreign language characters`\
 
-
+[[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
 
 #golang `needed for some stuff` \
 

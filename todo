@@ -2,7 +2,7 @@ easy
 - add -p option to mkcd, mvcd, and cpcd
 		- if specified this would create all necessary parent directories for your target to exist
 - directory history & shortcut to go back to wherever you just were
-- fix bfs aliases to include -s and -fi combinations
+- fix bfs aliases to include -s and -fi combinations 
 
 medium
 - bfsr starting from source dir

@@ -165,6 +165,7 @@ if ! [ -d  "${HOME}/${VENVNAME}" ]; then
 	python3 -m venv "${VENVNAME}"
 	cd "$curr"
 fi
+
 alias venv="source \"${HOME}/${VENVNAME}/bin/activate\""
 alias venvl="deactivate"
 alias pip="${HOME}/${VENVNAME}/bin/pip"
