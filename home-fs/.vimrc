@@ -29,3 +29,14 @@ autocmd BufReadPost *
 " Save '+' vim register to clipboard when we leave 
 autocmd VimLeave * call system("xclip -sel c ", getreg('+'))
 
+" Ctrl+Y to copy last yanked text to clipboard ('+' register)
+nnoremap <C-y> :let @+=@"<CR>
+
+set undodir=~/.vimundo
+set undofile
+set undolevels=1000
+set undoreload=10000
+set viminfo+=<500
+
+nnoremap ^ 0
+nnoremap 0 ^
