@@ -60,6 +60,7 @@ alias i3rs="i3-msg restart"
 alias i3rl="i3-msg reload"
 alias rm="rm -d"
 alias kms="sudo pkill -u $(whoami)"
+alias dup='dc kitty $( pwd ) 2>/dev/null' # make new terminal in this directory
 
 #info
 alias ll="ls -l"
