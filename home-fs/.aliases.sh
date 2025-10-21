@@ -16,19 +16,10 @@ alias down="cd ~/Downloads"
 alias rt="bfs -rt"
 alias rs="bfs -rs"
 alias s="bfs -s"
-
-#back
+alias p="cd - >/dev/null" #go to most recent directory in this terminal
 alias b="cd .."
-alias bb="cd ../.."
-alias bbb="cd ../../.."
-alias bbbb="cd ../../../.."
-alias bbbbb="cd ../../../../.."
-alias bbbbbb="cd ../../../../../.."
-alias b2="cd ../.."
-alias b3="cd ../../.."
-alias b4="cd ../../../.."
-alias b5="cd ../../../../.."
-alias b6="cd ../../../../../.."
+alias bb="cd ../.." # bbb, etc. also work, 
+alias b2="cd ../.." # b3, b4, etc. also work
 
 # nav for rui
 alias drex="cd ~/Downloads/drexel"
@@ -89,6 +80,9 @@ alias grh="git reset --hard origin/main"
 alias changes="git diff --cached"
 alias submodules="git submodules update --init --recursive"
 alias gitbranch="git checkout -b"
+#copy github access token to authenticate on tux
+alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
+alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt | cpy ; cd \"\$curr\""
 
 #programs ig
 alias chirp="sudo ~/.local/bin/chirp &"
@@ -109,40 +103,39 @@ alias ms="curr=\"\$(pwd)\" && dhome && ./makesymlinks.sh; cd \"\$curr\""
 function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.bashrc ; }
 function pathhome { echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.bashrc  ; }
 function pathhere { echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.bashrc ; }
-function v { dc_arg $HOME/bin/v_base $1 &>/dev/null; }
+function v { dc_arg $HOME/bin/v_base $1 &>/dev/null ; }
 
 #clipboard
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
 alias cpy="xclip -sel c"
 alias cb="xclip -sel c"
-function copy_func { 
-  cat "$1" | cb
-}
-alias copy=copy_func
+function copy {   cat "$1" | cb ; }
 
-#hdmi projecting
+# misc
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
 alias unhdmi="xrandr --auto"
+alias ssh="TERM=xterm-256color ssh" # make ssh kitty-friendly
+alias zip="echo zip -r dest.zip dirToZip; zip" # remember how zip works
+alias vix="vi -X" # use if vim is slow due to x11 issues
+alias sexy="echo sexy!"
+alias sex="sexy"
 
-#copy github access token to authenticate on tux
-alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
-alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt | cpy ; cd \"\$curr\""
-
-# make ssh kitty-friendly
-alias ssh="TERM=xterm-256color ssh" 
 # source aliases that act as applications
 source ${HOME}/.aliases_dmenu.sh 
 source ${HOME}/.aliases_v.sh 
 
-# random rui stuff
-alias zip="echo zip -r dest.zip dirToZip; zip" # remember how zip works
-alias vix="vi -X" # use if vim is slow due to x11 issues
-alias fixcurse="rm ${HOME}/.local/share/calcurse/.calcurse.pid"  #reset calcurse
-alias stopserver="kill $( ps aux | /usr/bin/grep http.server | head -n 1 | awk '{ print $2 }' )"
+#more back aliases
+alias bbb="cd ../../.."
+alias bbbb="cd ../../../.."
+alias bbbbb="cd ../../../../.."
+alias bbbbbb="cd ../../../../../.."
+alias b3="cd ../../.."
+alias b4="cd ../../../.."
+alias b5="cd ../../../../.."
+alias b6="cd ../../../../../.."
 
-# fun
-alias sexy="echo sexy!"
-alias sex="sexy"
+# pope
+alias sl="[[ $(( $RANDOM % 2 )) -eq 0 ]] && /usr/games/sl-1 || pope"
 alias bs="pope"
 alias md="pope"
 alias fs="pope"
@@ -152,7 +145,6 @@ alias as="pope"
 alias sm="pope"
 alias rb="pope"
 alias em="pope"
-alias sl="[[ $(( $RANDOM % 2 )) -eq 0 ]] && /usr/games/sl-1 || pope"
 alias bc="pope"
 alias fk="pope"
 alias hd="pope"
