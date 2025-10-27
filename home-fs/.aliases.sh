@@ -36,8 +36,10 @@ alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 
 #computer control
 alias eep="systemctl suspend"
+alias eepy="systemctl suspend"
 alias hibernate="systemctl hibernate"
 alias reboot="systemctl reboot"
+alias kys="systemctl poweroff"
 alias update="sudo apt update"
 alias upgrade="sudo apt update && sudo apt upgrade"
 alias pids="ps aux"
