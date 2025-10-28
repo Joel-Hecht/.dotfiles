@@ -40,8 +40,7 @@ alias eepy="systemctl suspend"
 alias hibernate="systemctl hibernate"
 alias reboot="systemctl reboot"
 alias kys="systemctl poweroff"
-alias update="sudo apt update"
-alias upgrade="sudo apt update && sudo apt upgrade"
+alias kms="sudo pkill -u $(whoami)"
 alias pids="ps aux"
 alias killpid="kill -9"
 alias kf="keyboard_firmware"
@@ -52,8 +51,10 @@ alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
 alias i3rs="i3-msg restart"
 alias i3rl="i3-msg reload"
 alias rm="rm -d"
-alias kms="sudo pkill -u $(whoami)"
+alias rmr="rm -rd"
 alias dup='dc kitty $( pwd ) 2>/dev/null' # make new terminal in this directory
+alias update="sudo apt update"
+alias upgrade="sudo apt update && sudo apt upgrade"
 
 #info
 alias ll="ls -l"
