@@ -273,7 +273,7 @@ bindsym Control+Shift+$alt+a exec --no-startup-id firefox drive.google.com/drive
 bindsym Control+$alt+y exec --no-startup-id firefox music.youtube.com
 bindsym Control+Shift+$alt+y exec --no-startup-id firefox youtube.com
 bindsym Control+$alt+c exec --no-startup-id firefox calendar.google.com/u/1
-bindsym Control+Shift+$alt+c exec --no-startup-id firefox canvas.vt.edu/calendar
+bindsym Control+Shift+$alt+c exec --no-startup-id firefox canvas.vt.edu
 bindsym Control+Shift+$alt+s exec --no-startup-id firefox spotify.com
 bindsym Control+Shift+$alt+l exec --no-startup-id firefox linkedin.com
 
