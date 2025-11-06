@@ -146,11 +146,11 @@ export PROMPT_COMMAND='history -a'
 # !! Contents within this block are managed by juliaup !!
 
 case ":$PATH:" in
-    *:$HOME/.juliaup/bin:*)
+    *:/home/pi/.juliaup/bin:*)
         ;;
 
     *)
-        export PATH=$HOME/.juliaup/bin${PATH:+:${PATH}}
+        export PATH=/home/pi/.juliaup/bin${PATH:+:${PATH}}
         ;;
 esac
 
