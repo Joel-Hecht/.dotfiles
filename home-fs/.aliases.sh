@@ -18,6 +18,7 @@ alias rt="bfs -rt"
 alias rs="bfs -rs"
 alias s="bfs -s"
 alias p="cd - >/dev/null" #go to most recent directory in this terminal
+alias P="firefox https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
 alias b="cd .."
 alias bb="cd ../.." # bbb, etc. also work, 
 alias b2="cd ../.." # b3, b4, etc. also work
