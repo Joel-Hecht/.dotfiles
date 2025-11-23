@@ -88,7 +88,7 @@ if [ -x /usr/bin/dircolors ]; then
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
-    alias grep='kitty +kitten hyperlinked_grep --smart-case'
+    alias grep='kitty +kitten hyperlinked_grep --smart-case -L'
     #alias fgrep='fgrep --color=auto'
     #alias egrep='egrep --color=auto'
 fi

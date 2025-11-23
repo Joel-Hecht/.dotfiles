@@ -16,6 +16,8 @@ alias down="cd ~/Downloads"
 alias rt="bfs -rt"
 alias rs="bfs -rs"
 alias s="bfs -s"
+alias o="cd - >/dev/null"
+alias p="cd .."
 
 #back
 alias b="cd .."
@@ -68,6 +70,8 @@ alias llah="ls -lAh"
 alias dush="du -sh ?(.)*/"
 alias fn="find -name"
 alias fin="find -iname"
+alias fr="find -regex"
+alias fir="find -iregex"
 alias ugrep="/usr/bin/grep -P"
 alias cgrep="clear; grep -P"
 

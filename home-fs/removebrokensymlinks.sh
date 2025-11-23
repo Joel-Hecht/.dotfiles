@@ -24,5 +24,3 @@ for i in $dir*; do
 		fi
 	fi
 done
-
-
