@@ -3,9 +3,24 @@
 function lockin {
 	conf=$( cat $HOME/.i3status.conf | /usr/bin/grep -v 'order += "tztime local"' )
 	echo "$conf" > $HOME/.i3status.conf
+	echo "# $( date +%s )" >> $HOME/.i3status.conf
 	i3rs &>/dev/null
 }
-alias lockout='echo "order += \"tztime local\"" >> $HOME/.i3status.conf && i3rs &>/dev/null'
+
+function lockout {
+	since=$( cat $HOME/.i3status.conf | /usr/bin/grep -oP '\d{4,}$' ) # it has been much more than 9999 seconds since epoch
+	conf=$( cat $HOME/.i3status.conf | /usr/bin/grep -vP '# \d{4,}' )
+	echo "$conf" > $HOME/.i3status.conf
+	echo "order += \"tztime local\"" >> $HOME/.i3status.conf 
+	i3rs &>/dev/null
+
+	rn=$( date +%s )
+	diff=$(( $rn - $since ))
+	hrs=$(( $diff / 3600 ))
+	min=$(( $(( $diff % 3600 )) / 60 ))
+	sec=$(( $diff % 60 ))
+	echo "locked in for $hrs h $min m $sec s"
+}
 
 function findproc {
 	if [[ $# -eq 0 ]]; then
