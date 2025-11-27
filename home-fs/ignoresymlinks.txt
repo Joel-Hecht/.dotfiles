@@ -11,3 +11,4 @@ sourceab.sh
 bin/testignored
 bin/testignored2
 bin/testignored3
+.config/nitrogen/*
