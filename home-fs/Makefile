@@ -5,6 +5,7 @@ all:
 	./permission_setup.sh
 	./sourceab.sh
 	./makemans.sh
+	./makenitrogenconfig.sh
 
 sym:
 	./makesymlinks.sh
