@@ -39,6 +39,8 @@ sl \
 python-is-python3 \
 sublime-text \
 fonts-noto `display foreign language characters`\
+gcc `put this here again so ALL PRECVIUS can have escaped newlines`
+
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
 
