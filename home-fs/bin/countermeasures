@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in {1..100}; do
+	pope &
+	sleep 0.06
+done
