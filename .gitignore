@@ -12,3 +12,7 @@ home-fs/.gitconfig
 **~
 
 home-fs/.VOLUME
+home-fs/.config/nitrogen/**
+home-fs/.config/nitrogen/*
+home-fs/.config/nitrogen
+
