@@ -129,7 +129,7 @@ alias vix="vi -X" # use if vim is slow due to x11 issues
 alias sexy="echo sexy!"
 alias sex="sexy"
 #fixes pdfs and excel spreadsheets becoming transparent
-alias helpme="killall compton && setsid /usr/bin/compton > /dev/null 2>&1 &"
+alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 2>&1 &"
 
 # source aliases that act as applications
 source ${HOME}/.aliases_dmenu.sh 
