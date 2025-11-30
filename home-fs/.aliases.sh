@@ -19,7 +19,7 @@ alias rs="bfs -rs"
 alias s="bfs -s"
 
 alias o="cd - >/dev/null" # go to Older directory in this terminal
-alias p="cd .." 		  # go to Parent directory
+alias p="cd .." 		  # go to Parent directory (p2, p3 etc also work)
 alias P="firefox https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
 alias b="cd .."
 alias bb="cd ../.." # bbb, etc. also work, 
@@ -144,6 +144,12 @@ alias b3="cd ../../.."
 alias b4="cd ../../../.."
 alias b5="cd ../../../../.."
 alias b6="cd ../../../../../.."
+alias p2="cd ../.."
+alias p3="cd ../../.."
+alias p4="cd ../../../.."
+alias p5="cd ../../../../.."
+alias p6="cd ../../../../../.."
+
 
 # pope
 alias sl="[[ $(( $RANDOM % 2 )) -eq 0 ]] && /usr/games/sl-1 || pope"
