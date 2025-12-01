@@ -107,6 +107,7 @@ alias sb="source ~/.bashrc"
 alias sa="source ~/.aliases.sh"
 alias sf="source ~/.funcs.sh"
 alias ms="curr=\"\$(pwd)\" && dhome && ./makesymlinks.sh; cd \"\$curr\""
+alias reload="sb && sa && sf && ms"
 
 # path
 function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.bashrc ; }
