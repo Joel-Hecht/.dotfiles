@@ -16,7 +16,9 @@ alias me="echo \"$(whoami)@$(hostname)\""
 alias down="cd ~/Downloads"
 alias rt="bfs -rt"
 alias rs="bfs -rs"
+alias hs="bfs -hs"
 alias s="bfs -s"
+alias h="bfs -h"
 
 alias o="cd - >/dev/null" # go to Older directory in this terminal
 alias p="cd .." 		  # go to Parent directory (p2, p3 etc also work)
@@ -73,6 +75,8 @@ alias fr="find -regex"
 alias fir="find -iregex"
 alias ugrep="/usr/bin/grep -P"
 alias cgrep="clear; grep -P"
+alias dl="ls ~/Downloads"
+alias dll="ll ~/Downloads"
 
 #git shortcuts
 alias gcm="git commit -m"
