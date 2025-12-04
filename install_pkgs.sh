@@ -24,21 +24,21 @@ nitrogen `desktop background manager` \
 wget sed grep `cant believe this isnt default`\
 gcc make cmake vim ripgrep  `general tools` \
 fdisk `volume viwer thats worst than lsblk but i like it`\
-git gh `if you got this far you should already have this` \
+git gh `_if you got this far you should already have this` \
 libx11-dev `x11 support, needed for multi-monitor config` \
 calcurse `in-terminal calendar` \
 policykit-1-gnome polkitd `polkit needed to authenticate as root from i3wm` \
-vim-gtk3 `install graphical vim, installation gives vim access to system clipboard register`\
+vim-gtk3 `_install graphical vim, installation gives vim access to system clipboard register`\
 python3-venv pip `needed to use pip`\
 kitty `new termianl emulator` \
-lua5.4 `lua language` \
+lua5.4 `_lua language` \
 ninja-build gettext cmake unzip curl `tools we need for later to install neovim` \
 notepadqq \
 ascii \
 sl \
 python-is-python3 \
 sublime-text \
-fonts-noto `display foreign language characters`\
+fonts-noto `_display foreign language characters`\
 gcc `put this here again so ALL PRECVIUS can have escaped newlines`
 
 
