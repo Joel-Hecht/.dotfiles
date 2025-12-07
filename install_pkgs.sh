@@ -41,6 +41,8 @@ sublime-text \
 fonts-noto `_display foreign language characters`\
 gcc `put this here again so ALL PRECVIUS can have escaped newlines`
 
+#refresh font cache to allow i3 to detect nerd fonts
+fc-cache -fv
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
 
