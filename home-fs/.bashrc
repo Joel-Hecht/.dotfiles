@@ -21,9 +21,7 @@ HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# If set, the pattern "**" used in a pathname expansion context will
+shopt -s checkwinsize # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
@@ -225,3 +223,12 @@ condainit () {
 
 [ -f "/home/rui/.ghcup/env" ] && . "/home/rui/.ghcup/env" # ghcup-env
 export PATH="/usr/local/go/bin:$PATH"
+
+#start ssh for this terminal and add all keys that end in rsa (omits .pub and known_hosts)
+for key in ${HOME}/.ssh/*rsa; do 
+	eval $(keychain -q --eval "$key" )
+done
+
+
+#have a terminal exit script, in case we started processes here that i want to remove
+trap "${HOME}/.bash_exit.sh" EXIT

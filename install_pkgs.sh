@@ -39,6 +39,7 @@ sl \
 python-is-python3 \
 sublime-text \
 fonts-noto `_display foreign language characters`\
+keychain `_ssh-agent / key manager used in bashrc` \
 gcc `put this here again so ALL PRECVIUS can have escaped newlines`
 
 #refresh font cache to allow i3 to detect nerd fonts
