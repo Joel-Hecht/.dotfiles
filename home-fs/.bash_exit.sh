@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pope
+pope -t 0.5
