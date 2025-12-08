@@ -7,7 +7,7 @@ sleeptime=1.5
 float_regex="^[0-9]*\.?[0-9]*$"
 
 #overkill handler but I want to be conventional
-while getopts 'lft:' flag; do
+while getopts ':lft:' flag; do
 	case "${flag}" in 
 		f) hasold="_old" ;;
 		l) hasold="" ;;
@@ -16,6 +16,12 @@ while getopts 'lft:' flag; do
 				echo "invalid time entered - please use a float!"
 				exit 1
 			fi
+			;;
+		:) echo "Error: option -${OPTARG} requires an argument" >&2
+			exit 1
+			;;
+		\?) echo "Error: invalid operation -${OPTARG}" >&2
+			exit 1
 			;;
 	esac
 done

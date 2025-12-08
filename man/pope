@@ -9,6 +9,7 @@
 .SH OPTIONS
 	-l for pope leo (default)\n
 	-f for pope francis\n
+	-t <time> to specify persistence of the pope, where time is a float or int
 	no backwards compatibility for pope benedict, etc.
 .SH EXAMPLES
 	pope
