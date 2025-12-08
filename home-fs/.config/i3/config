@@ -74,23 +74,21 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# workspaces
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
+bindsym $mod+Shift+Left move container to workspace prev
+bindsym $mod+Shift+Right move container to workspace next
+
+# switch between the current and the previously focused one
+bindsym $mod+o workspace back_and_forth
+bindsym $mod+Shift+o move container to workspace back_and_forth
 
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -223,11 +221,6 @@ bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/SCID$(bash ${HOME}
 # this will go haywire if we ever shift to $mod=$alt (alt)
 bindsym $mod+$alt+s exec --no-startup-id maim | tee "$HOME/Pictures/SCID$(bash ${HOME}/bin/.nextScreenShotID)_$(date).png" |  xclip -selection clipboard -t image/png 
 
-bindsym $mod+Control+Left resize shrink width 10 px or 10 ppt
-bindsym $mod+Control+Down resize grow height 10 px or 10 ppt
-bindsym $mod+Control+Up resize shrink height 10 px or 10 ppt
-bindsym $mod+Control+Right resize grow width 10 px or 10 ppt
-
 bindsym $mod+Control+h resize shrink width 10 px or 10 ppt
 bindsym $mod+Control+j resize grow height 10 px or 10 ppt
 bindsym $mod+Control+k resize shrink height 10 px or 10 ppt
@@ -270,7 +263,7 @@ bindsym Control+$alt+q exec --no-startup-id firefox learn.dcollege.net/ultra/cou
 bindsym Control+$alt+a exec --no-startup-id firefox drive.google.com/drive/u/1/my-drive
 bindsym Control+Shift+$alt+a exec --no-startup-id firefox drive.google.com/drive/u/0/my-drive
 bindsym Control+$alt+y exec --no-startup-id firefox music.youtube.com
-bindsym Control+Shift+$alt+y exec --no-startup-id firefox youtube.com
+bindsym Control+Shift+$alt+y exec --no-startup-id firefox youtube.com/feed/subscriptions
 bindsym Control+$alt+c exec --no-startup-id firefox calendar.google.com/u/1
 bindsym Control+Shift+$alt+c exec --no-startup-id firefox canvas.vt.edu
 bindsym Control+Shift+$alt+s exec --no-startup-id firefox spotify.com
