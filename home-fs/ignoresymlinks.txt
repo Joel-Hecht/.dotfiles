@@ -3,6 +3,7 @@ bins_for_dmenu.txt
 makesymlinks.sh
 makealiases.sh
 makevs.sh
+makenitrogenconfig.sh
 Makefile
 permission_setup.sh
 removebrokensymlinks.sh
@@ -11,3 +12,5 @@ sourceab.sh
 bin/testignored
 bin/testignored2
 bin/testignored3
+.config/.nitrogen_helper/*
+.config/.nitrogen_helper

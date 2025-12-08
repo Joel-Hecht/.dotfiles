@@ -24,21 +24,26 @@ nitrogen `desktop background manager` \
 wget sed grep `cant believe this isnt default`\
 gcc make cmake vim ripgrep  `general tools` \
 fdisk `volume viwer thats worst than lsblk but i like it`\
-git gh `if you got this far you should already have this` \
+git gh `_if you got this far you should already have this` \
 libx11-dev `x11 support, needed for multi-monitor config` \
 calcurse `in-terminal calendar` \
 policykit-1-gnome polkitd `polkit needed to authenticate as root from i3wm` \
-vim-gtk3 `install graphical vim, installation gives vim access to system clipboard register`\
+vim-gtk3 `_install graphical vim, installation gives vim access to system clipboard register`\
 python3-venv pip `needed to use pip`\
 kitty `new termianl emulator` \
-lua5.4 `lua language` \
+lua5.4 `_lua language` \
 ninja-build gettext cmake unzip curl `tools we need for later to install neovim` \
 notepadqq \
 ascii \
 sl \
 python-is-python3 \
 sublime-text \
-fonts-noto `display foreign language characters`\
+fonts-noto `_display foreign language characters`\
+keychain `_ssh-agent / key manager used in bashrc` \
+gcc `put this here again so ALL PRECVIUS can have escaped newlines`
+
+#refresh font cache to allow i3 to detect nerd fonts
+fc-cache -fv
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
 
@@ -79,20 +84,20 @@ fi
 #we need to build from source
 #Solution from https://www.reddit.com/r/debian/comments/188d3wc/neovim_on_debian/ 
 #
-##here I should check if neovim exists or if the version is less than 0.9.0
-#nvim_version=$(nvim --version | head -1 | sed "s/[^\.]*\.//" | sed "s/\..*//")
-#if [[ $nvim_version -lt 9 ||  -z $(command -v nvim)  ]]; then
-#	sudo apt remove neovim
-#	currentdir = $(pwd)
-#	mkdir -p "${HOME}/apps"
-#	cd "${HOME}/apps"
-#	git clone https://github.com/neovim/neovim
-#	cd neovim
-#	make CMAKE_BUILD_TYPE=RelWithDebInfo
-#	cd build
-#	cpack -G DEB
-#	sudo dpkg -i --force-overwrite  nvim-linux*.deb
-#	cd "$currentdir"
-#else
-#	echo "latest neovim already installed"	
-#fi
+#here I should check if neovim exists or if the version is less than 0.9.0
+nvim_version=$(nvim --version | head -1 | sed "s/[^\.]*\.//" | sed "s/\..*//")
+if [[ $nvim_version -lt 9 ||  -z $(command -v nvim)  ]]; then
+	sudo apt remove neovim
+	currentdir = $(pwd)
+	mkdir -p "${HOME}/apps"
+	cd "${HOME}/apps"
+	git clone https://github.com/neovim/neovim
+	cd neovim
+	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	cd build
+	cpack -G DEB
+	sudo dpkg -i --force-overwrite  nvim-linux*.deb
+	cd "$currentdir"
+else
+	echo "latest neovim already installed"	
+fi

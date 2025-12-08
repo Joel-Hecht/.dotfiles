@@ -2,11 +2,27 @@
 
 hasold=""
 
+sleeptime=1.5
+
+float_regex="^[0-9]*\.?[0-9]*$"
+
 #overkill handler but I want to be conventional
-while getopts 'lf' flag; do
+while getopts ':lft:' flag; do
 	case "${flag}" in 
 		f) hasold="_old" ;;
 		l) hasold="" ;;
+		t) sleeptime=${OPTARG}
+			if ! [[ "$sleeptime" =~ $float_regex ]]; then
+				echo "invalid time entered - please use a float!"
+				exit 1
+			fi
+			;;
+		:) echo "Error: option -${OPTARG} requires an argument" >&2
+			exit 1
+			;;
+		\?) echo "Error: invalid operation -${OPTARG}" >&2
+			exit 1
+			;;
 	esac
 done
 
@@ -15,6 +31,6 @@ popeaddress="${HOME}/img/pope${hasold}.jpg"
 eog "$popeaddress" &
 
 killme=$!
-sleep 1.5
+sleep $sleeptime
 
 kill -9 $killme

@@ -10,16 +10,19 @@ alias scs="cd ~/Pictures"
 alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
 alias proj="cd ~/proj"
 alias repo="firefox github.com/Joel-Hecht/.dotfiles"
+alias clanker="firefox chatgpt.com"
 alias t="firefox www.tumblr.com/"
 alias kb="chromium launcher.keychron.com"
 alias me="echo \"$(whoami)@$(hostname)\""
 alias down="cd ~/Downloads"
 alias rt="bfs -rt"
 alias rs="bfs -rs"
+alias hs="bfs -hs"
 alias s="bfs -s"
+alias h="bfs -h"
 
 alias o="cd - >/dev/null" # go to Older directory in this terminal
-alias p="cd .." 		  # go to Parent directory
+alias p="cd .." 		  # go to Parent directory (p2, p3 etc also work)
 alias P="firefox https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
 alias b="cd .."
 alias bb="cd ../.." # bbb, etc. also work, 
@@ -73,6 +76,8 @@ alias fr="find -regex"
 alias fir="find -iregex"
 alias ugrep="/usr/bin/grep -P"
 alias cgrep="clear; grep -P"
+alias dl="ls ~/Downloads"
+alias dll="ll ~/Downloads"
 
 #git shortcuts
 alias gcm="git commit -m"
@@ -107,6 +112,7 @@ alias sb="source ~/.bashrc"
 alias sa="source ~/.aliases.sh"
 alias sf="source ~/.funcs.sh"
 alias ms="curr=\"\$(pwd)\" && dhome && ./makesymlinks.sh; cd \"\$curr\""
+alias reload="sb && sa && sf"
 
 # path
 function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.bashrc ; }
@@ -129,7 +135,7 @@ alias vix="vi -X" # use if vim is slow due to x11 issues
 alias sexy="echo sexy!"
 alias sex="sexy"
 #fixes pdfs and excel spreadsheets becoming transparent
-alias helpme="killall compton && setsid /usr/bin/compton > /dev/null 2>&1 &"
+alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 2>&1 &"
 
 # source aliases that act as applications
 source ${HOME}/.aliases_dmenu.sh 
@@ -144,6 +150,12 @@ alias b3="cd ../../.."
 alias b4="cd ../../../.."
 alias b5="cd ../../../../.."
 alias b6="cd ../../../../../.."
+alias p2="cd ../.."
+alias p3="cd ../../.."
+alias p4="cd ../../../.."
+alias p5="cd ../../../../.."
+alias p6="cd ../../../../../.."
+
 
 # pope
 alias sl="[[ $(( $RANDOM % 2 )) -eq 0 ]] && /usr/games/sl-1 || pope"
