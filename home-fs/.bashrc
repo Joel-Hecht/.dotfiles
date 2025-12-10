@@ -226,10 +226,11 @@ condainit () {
 export PATH="/usr/local/go/bin:$PATH"
 
 #start ssh for this terminal and add all keys that end in rsa (omits .pub and known_hosts)
-for key in ${HOME}/.ssh/*rsa; do 
-	eval $(keychain -q --eval "$key" )
-done
-
+if [[ -f ${HOME}/.ssh/*rsa ]]; then
+	for key in ${HOME}/.ssh/*rsa; do 
+		eval $(keychain -q --eval "$key" )
+	done
+fi
 
 #have a terminal exit script, in case we started processes here that i want to remove
 trap "${HOME}/.bash_exit.sh" EXIT
