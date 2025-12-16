@@ -14,3 +14,6 @@ sym:
 mans:
 	cd home-fs && make $@
 
+.PHONY: font
+font:
+	./fontsetup.sh
