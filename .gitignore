@@ -16,3 +16,10 @@ home-fs/.config/nitrogen/**
 home-fs/.config/nitrogen/*
 home-fs/.config/nitrogen
 
+#initial ignores from kickstart.nvim
+home-fs/.config/nvim/tags
+home-fs/.config/nvim/test.sh
+home-fs/.config/nvim/.luarc.json
+home-fs/.config/nvim/nvim
+home-fs/.config/nvim/spell/
+
