@@ -1,0 +1,26 @@
+./" Manpage for brightness
+.TH man 1 "17 Dec 2025" "1.0" "User Commands"
+.SH NAME
+	brightess - brightness change tool
+.SH SYNOPSIS 
+	brightness [-r | -f <change> ]
+.SH DESCRIPTION
+	Allows you to change or reset brightness, and synchronizes brightness between displays
+.SH OPTIONS
+	-r to reset to default brightness (1)
+
+	-f <change> to change the brightness to <current brightness> + change.  Change can be negative to decrease the brightness
+.SH EXAMPLES
+	brightness -r
+
+	brightness -f -0.1
+
+	brightness -f 0.3
+.SH BUGS
+	undefined behavior if no arg is provided
+.SH AUTHOR
+	written by joel hecht joel@hechts.org
+.SH COPYRIGHT
+	This is free software, you are fre to change and redistribute it, there is no warranty
+
+
