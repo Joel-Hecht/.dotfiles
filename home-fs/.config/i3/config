@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 exec_always --no-startup-id source ~/.bashrc
+exec_always --no-startup-id source ~/.profile
 
 # $mod is windows
 set $mod Mod4
@@ -54,7 +55,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec kitty
-#bindsym $mod+Return exec $HOME/kitty/kitty/launcher/kitty
+#bindsym $mod+Return exec $HOME/.kitty/kitty/launcher/kitty
 
 # kill focused window
 bindsym $mod+q kill

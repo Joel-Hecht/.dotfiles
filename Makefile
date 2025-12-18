@@ -1,6 +1,7 @@
 .PHONY: all
 all:
 	./install_pkgs.sh
+	./build_kitty_source.sh
 #	./home-fs/makealiases.sh
 #	./home-fs/makesymlinks.sh
 #	source ./home-fs/.bashrc

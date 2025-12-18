@@ -30,7 +30,6 @@ calcurse `in-terminal calendar` \
 policykit-1-gnome polkitd `polkit needed to authenticate as root from i3wm` \
 vim-gtk3 `_install graphical vim, installation gives vim access to system clipboard register`\
 python3-venv pip `needed to use pip`\
-kitty `new termianl emulator` \
 lua5.4 `_lua language` \
 ninja-build gettext cmake unzip curl `tools we need for later to install neovim` \
 notepadqq \
@@ -40,12 +39,12 @@ python-is-python3 \
 sublime-text \
 fonts-noto `_display foreign language characters`\
 keychain `_ssh-agent / key manager used in bashrc` \
-clangd `for cpp in nvim` \
+clangd `_for cpp in nvim` \
+fd-find `_for nvim ` \
 gcc `put this here again so ALL PRECVIUS can have escaped newlines`
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
 
-#golang `needed for some stuff` \
 
 #flatpaks
 sudo apt install flatpak
@@ -77,6 +76,9 @@ if ! [ -f "${HOME}/.elan/bin/lean" ]; then
 else
 	echo "lean installed already"
 fi
+
+dotdir=$(dirname $(realpath "$0"))
+bash "$dotdir"/build_kitty_source.sh
 
 #neovim version 0.8 isnt in apt
 #we need to build from source

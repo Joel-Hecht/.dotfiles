@@ -29,6 +29,8 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 #[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+export PATH="${HOME}/.kitty/kitty/kitty/launcher/:$PATH" #mine
+
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
@@ -198,7 +200,7 @@ esac
 # pnpm end
 
 # extra path things
-export PATH="$HOME/kitty/kitty/launcher/:$PATH"
+export PATH="$HOME/kitty/kitty/launcher/:$PATH" #rui's
 export PATH="/usr/local/.go/bin:$PATH"
 export PATH="nowhere:$PATH"
 export PATH="log:$PATH"
@@ -223,6 +225,8 @@ condainit () {
 
 
 [ -f "/home/rui/.ghcup/env" ] && . "/home/rui/.ghcup/env" # ghcup-env
+
+#for manually installed go
 export PATH="/usr/local/go/bin:$PATH"
 
 #start ssh for this terminal and add all keys that end in rsa (omits .pub and known_hosts)
