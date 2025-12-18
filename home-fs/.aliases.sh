@@ -81,6 +81,7 @@ alias dll="ll ~/Downloads"
 
 #git shortcuts
 alias gcm="git commit -m"
+alias diff="git diff"
 alias staged="git diff --name-only --staged"
 alias gaa="git add --all && git diff --name-only --staged | sed 's/^/staged: /' "
 alias names="git diff --name-only"
