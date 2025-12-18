@@ -1,0 +1,53 @@
+#!/bin/bash
+
+#program assumes all displays have the same brightness
+
+usage() {
+	echo "Usage: $0 [-f <brightness_delta> | -r]" >&2
+	echo "-f <brightness_delta>	Changes the brightness of all displays by <brightness_delta>" >&2
+	echo "-r			Resets the brightness to 1"
+	exit 1 
+}
+
+#check if arg is a float later
+floatregex="^[+-]?[0-9]*\.?[0-9]*$"
+
+#brightnessdelta
+b="-1"
+
+#to determine if we got an arg at all
+gotarg=0
+
+while getopts ":c:r" opt; do
+	case ${opt} in 
+		c)
+			#check optarg is a float/integer
+			if [[ "${OPTARG}" =~ $floatregex ]]; then
+				#assumes all diplays have equal brightness, and we only check the first one
+				b=$(echo $(xrandr --verbose --current | grep Brightness | sed 's/.*\ //' | head -1)"+(${OPTARG})" | bc )
+			else
+				echo "Parameter ${OPTARG} was not a float"
+				usage
+			fi
+			gotarg=1
+			;;
+		r)
+			b="1"
+			gotarg=1
+			;;
+		?)
+			echo "Invalid option: -${OPTARG}."
+			usage
+			;;
+	esac
+done
+
+#command requires an arg
+if [ $gotarg -eq 0 ]; then 
+	usage
+fi
+
+for disp in $(xrandr -q | grep " connected" | sed -e 's/ .*$//' ); do
+	xrandr --output "$disp" --brightness "$b"
+done
+
