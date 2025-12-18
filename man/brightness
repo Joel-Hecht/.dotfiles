@@ -3,19 +3,19 @@
 .SH NAME
 	brightess - brightness change tool
 .SH SYNOPSIS 
-	brightness [-r | -f <change> ]
+	brightness [-r | -c <change> ]
 .SH DESCRIPTION
 	Allows you to change or reset brightness, and synchronizes brightness between displays
 .SH OPTIONS
 	-r to reset to default brightness (1)
 
-	-f <change> to change the brightness to <current brightness> + change.  Change can be negative to decrease the brightness
+	-c <change> to change the brightness to <current brightness> + change.  Change can be negative to decrease the brightness
 .SH EXAMPLES
 	brightness -r
 
-	brightness -f -0.1
+	brightness -c -0.1
 
-	brightness -f 0.3
+	brightness -c 0.3
 .SH BUGS
 	undefined behavior if no arg is provided
 .SH AUTHOR
