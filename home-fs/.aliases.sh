@@ -133,7 +133,7 @@ alias unhdmi="xrandr --auto"
 alias ssh="TERM=xterm-256color ssh" # make ssh kitty-friendly
 alias zip="echo zip -r dest.zip dirToZip; zip" # remember how zip works
 alias vix="vi -X" # use if vim is slow due to x11 issues
-alias sexy="echo sexy!"
+alias sexy="cowsay sexy!"
 alias sex="sexy"
 #fixes pdfs and excel spreadsheets becoming transparent
 alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 2>&1 &"
