@@ -79,6 +79,11 @@ alias cgrep="clear; grep -P"
 alias dl="ls ~/Downloads"
 alias dll="ll ~/Downloads"
 
+
+#vims
+alias v="vim"
+alias nv="nvim"
+
 #git shortcuts
 alias gcm="git commit -m"
 alias diff="git diff"
