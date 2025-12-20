@@ -79,8 +79,7 @@ alias cgrep="clear; grep -P"
 alias dl="ls ~/Downloads"
 alias dll="ll ~/Downloads"
 
-
-#vims
+#vim aliases
 alias v="vim"
 alias nv="nvim"
 
