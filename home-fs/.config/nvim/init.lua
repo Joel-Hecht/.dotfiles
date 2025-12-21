@@ -134,9 +134,8 @@ vim.o.undofile = true
 vim.o.shadafile = vim.fn.expand("~/.local/state/nvim/shada/main.shada")
 
 -- Make line numbers default
--- vim.o.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
+-- both need to be on for relative, or else the line number is always 0
+vim.o.number = true
 vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -1008,7 +1007,7 @@ require("lazy").setup({
 			require("mini.surround").setup()
 
 			-- Added to highlight word instead of line
-			require("mini.cursorword").setup({ delay = 50 })
+			require("mini.cursorword").setup({ delay = 100 })
 
 			-- Simple and easy statusline.
 			--  You could remove this setup call if you don't like it,
@@ -1058,14 +1057,38 @@ require("lazy").setup({
 				additional_vim_regex_highlighting = { "ruby" },
 			},
 			indent = { enable = true, disable = { "ruby" } },
+
+			-- Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					--start an incremental selection
+					init_selection = "<leader>o",
+					--go out by one node
+					node_incremental = "<leader>o",
+					--go out by ENTIRE SCOPE (for this file, this is the whole file!
+					scope_incremental = "<leader>O",
+					--go in by one node
+					node_decremental = "<leader>i",
+				},
+			},
 		},
 		-- There are additional nvim-treesitter modules that you can use to interact
 		-- with nvim-treesitter. You should go explore a few and see what interests you:
 		--
-		--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	},
+
+	--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			--use default config options
+			require("treesitter-context").setup({})
+		end,
+	},
+
+	--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
 	-- init.lua. If you want these files, they are in the repository, so you can just download them and
