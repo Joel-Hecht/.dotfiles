@@ -8,7 +8,9 @@ else
 	" set backupdir=~/.vim/backup//
 end
 set undofile
-
+set undolevels=1000
+set undoreload=10000
+set viminfo+=<500
 
 :set number relativenumber
 :set is | "incremental searching
@@ -41,12 +43,6 @@ autocmd VimLeave * call system("xclip -sel c ", getreg('+'))
 
 " Ctrl+Y to copy last yanked text to clipboard ('+' register)
 nnoremap <C-y> :let @+=@"<CR>
-
-set undodir=~/.vimundo
-set undofile
-set undolevels=1000
-set undoreload=10000
-set viminfo+=<500
 
 nnoremap ^ 0
 nnoremap 0 ^
