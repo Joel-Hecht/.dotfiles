@@ -96,6 +96,22 @@ vim.g.maplocalleader = " "
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+----------------VIMPLUG PACKAGES----------------
+local Plug = vim.fn["plug#"]
+vim.call("plug#begin")
+
+--plug itself
+Plug("junegunn/vim-plug")
+
+--Git commands, I do not know how to use this
+Plug("tpope/vim-fugitive")
+
+--this plugin just doesnt work, removing for now and using nvim version
+--Plug("farmergreg/vim-lastplace")
+
+vim.call("plug#end")
+----------------END VIMPLUG----------------
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -107,12 +123,15 @@ vim.g.have_nerd_font = true
 -- thus, we will tell it to take this dir if nvim is active, and then
 -- have seperate options in vimrc for regular vim
 if vim.fn.has("nvim") == 1 then
-	vim.o.undodir = "~/.config/nvim/undo/"
+	vim.o.undodir = vim.fn.expand("~/.config/nvim/undo/")
 	--vim.o.dir = "~/.config/nvim/swap//"
 	--vim.o.backupdir = "~/.config/nvim/backup//"
 end
 -- Save undo history
 vim.o.undofile = true
+
+-- shadafile not found by default, not sure what was up wioth that
+vim.o.shadafile = vim.fn.expand("~/.local/state/nvim/shada/main.shada")
 
 -- Make line numbers default
 -- vim.o.number = true
@@ -1085,6 +1104,5 @@ require("lazy").setup({
 		},
 	},
 })
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
