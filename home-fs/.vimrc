@@ -28,13 +28,10 @@ set viminfo+=<500
 
 call plug#begin()
 
-Plug 'farmergrep/vim-lastplace'
+Plug 'farmergreg/vim-lastplace'
 
 call plug#end()
 " end vimplug stuff
-
-
-
 
 " langauge dependant indents
 filetype plugin indent on 
@@ -46,11 +43,11 @@ autocmd FileType text setlocal textwidth=78
 set mouse=a
 
 "  automatically restore to last edited location
- autocmd BufReadPost *
-   \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-   \ |   exe "normal! g`\""
-   \ | endif
- 
+" autocmd BufReadPost *
+"   \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+"   \ |   exe "normal! g`\""
+"   \ | endif
+" 
 " Save '+' vim register to clipboard when we leave 
 autocmd VimLeave * call system("xclip -sel c ", getreg('+'))
 
