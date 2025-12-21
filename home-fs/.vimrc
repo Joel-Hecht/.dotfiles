@@ -43,6 +43,7 @@ autocmd FileType text setlocal textwidth=78
 set mouse=a
 
 "  automatically restore to last edited location
+"  Replaced by vim-lastplace in vimrc
 " autocmd BufReadPost *
 "   \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
 "   \ |   exe "normal! g`\""

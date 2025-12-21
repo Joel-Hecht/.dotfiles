@@ -101,7 +101,7 @@ local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
 
 --plug itself
-Plug("junegunn/vim-plug")
+--Plug("junegunn/vim-plug")
 
 --Git commands, I do not know how to use this
 Plug("tpope/vim-fugitive")
@@ -965,9 +965,19 @@ require("lazy").setup({
 	-- future we should use vim-lastplace
 	-- installed with vimplug
 	{
-		"ethanholz/nvim-lastplace",
+		"nxhung2304/lastplace.nvim",
 		config = function()
-			require("nvim-lastplace").setup()
+			require("lastplace").setup({
+				-- your configuration here
+				ignore_filetypes = {
+					"gitcommit",
+					"gitrebase",
+					"svn",
+					"hgcommit",
+					"xxd",
+					"COMMIT_EDITMSG",
+				},
+			})
 		end,
 	},
 
