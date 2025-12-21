@@ -1,5 +1,15 @@
 set nocompatible | "use vim instead of vi, even when launching as vi
 
+if has("nvim")
+	" we are nvim, do nothing here
+else
+	set undodir=~/.vim/undo/
+	" set dir=~/.vim/swap//
+	" set backupdir=~/.vim/backup//
+end
+set undofile
+
+
 :set number relativenumber
 :set is | "incremental searching
 :set hls

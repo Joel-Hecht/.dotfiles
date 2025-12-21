@@ -101,6 +101,19 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Undo files previously were stored in the same dir for vim and nvim
+-- Due to incopmpatibility between these two files, we need to keep them
+-- in seperate places
+-- thus, we will tell it to take this dir if nvim is active, and then
+-- have seperate options in vimrc for regular vim
+if vim.fn.has("nvim") == 1 then
+	vim.o.undodir = "~/.config/nvim/undo/"
+	--vim.o.dir = "~/.config/nvim/swap//"
+	--vim.o.backupdir = "~/.config/nvim/backup//"
+end
+-- Save undo history
+vim.o.undofile = true
+
 -- Make line numbers default
 -- vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -123,9 +136,6 @@ vim.o.showmode = false
 
 -- Enable break indent
 vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.o.ignorecase = true

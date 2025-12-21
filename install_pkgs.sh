@@ -107,3 +107,9 @@ if [[ $nvim_version -lt 9 ||  -z $(command -v nvim)  ]]; then
 else
 	echo "latest neovim already installed"	
 fi
+
+#install vimplug if it does not exist already
+if [[ -z $(ls ~/.local/share/nvim/site/autoload/plug.vim) ]]; then
+	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+fi
