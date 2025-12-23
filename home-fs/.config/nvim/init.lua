@@ -106,6 +106,9 @@ vim.call("plug#begin")
 --Git commands, I do not know how to use this
 Plug("tpope/vim-fugitive")
 
+--'overrides' . operator fr vetter plugin map repetition
+Plug("tpope/vim-repeat")
+
 --this plugin just doesnt work, removing for now and using nvim version
 --Plug("farmergreg/vim-lastplace")
 
@@ -954,10 +957,8 @@ require("lazy").setup({
 		priority = 1000,
 		config = function()
 			---@diagnostic disable-next-line: missing-fields
-			require("tokyonight").setup({
-				styles = {
-					comments = { italic = false }, -- Disable italics in comments
-				},
+			require("catppuccin").setup({
+				--no opts at this time
 			})
 
 			-- Load the colorscheme here.
@@ -1135,7 +1136,12 @@ require("lazy").setup({
 	{
 		"tribela/transparent.nvim",
 		event = "VimEnter",
-		config = true,
+		config = function()
+			require("transparent").setup({
+				groups = { "Normal", "NormalNC" },
+				extra_groups = { "NormalFloat", "Pmenu", "FloatBorder", "StatusLineNC", "StatusLine" },
+			})
+		end,
 	},
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
