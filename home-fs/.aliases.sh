@@ -7,7 +7,6 @@ alias dman="cd ~/.dotfiles/man"
 alias dbin="cd ~/.dotfiles/home-fs/bin"
 alias dconf="cd ~/.dotfiles/home-fs/.config"
 alias scs="cd ~/Pictures"
-alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
 alias proj="cd ~/proj"
 alias repo="firefox github.com/Joel-Hecht/.dotfiles"
 alias clanker="firefox chatgpt.com"
@@ -82,6 +81,8 @@ alias dll="ll ~/Downloads"
 #vim aliases
 alias v="vim"
 alias nv="nvim"
+alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
+alias nvc="nvim ~/.dotfiles/home-fs/.config/nvim/init.lua"
 
 #git shortcuts
 alias gcm="git commit -m"

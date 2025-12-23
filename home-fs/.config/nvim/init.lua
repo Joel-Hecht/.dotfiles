@@ -138,6 +138,11 @@ vim.o.shadafile = vim.fn.expand("~/.local/state/nvim/shada/main.shada")
 vim.o.number = true
 vim.o.relativenumber = true
 
+--nerd font tab increases make me less dependant on 4 space tabs
+vim.o.shiftwidth = 2
+vim.o.tabstop = 2
+vim.o.expandtab = false --don't change files that already have tabs as 4 spaces
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = "a"
 
@@ -729,7 +734,7 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				-- C LSP
-				-- clangd = {},
+				clangd = {},
 				-- gopls = {},
 
 				-- PYTHON LSP / PY LSP
@@ -777,6 +782,7 @@ require("lazy").setup({
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"clang-format",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -829,6 +835,8 @@ require("lazy").setup({
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
+				cpp = { "clang-format" },
+				c = { "clang-format" },
 				-- Conform can also run multiple formatters sequentially
 				-- python = { "isort", "black" },
 				--
@@ -1088,7 +1096,13 @@ require("lazy").setup({
 		end,
 	},
 
+	-- TODO: Configure this shit
 	--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+		config = function() end,
+	},
 
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
 	-- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -1102,9 +1116,21 @@ require("lazy").setup({
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',
 	-- require 'kickstart.plugins.lint',
-	-- require 'kickstart.plugins.autopairs',
-	-- require 'kickstart.plugins.neo-tree',
-	-- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+
+	--auto-add closing parens, quotes, etc
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {},
+	},
+
+	-- filesystem browser configured with default opts.
+	-- open with :Neotree
+	-- can also do :Neotree, can claose with \\
+	require("kickstart.plugins.neo-tree"),
+
+	-- keymaps created by kickstart.nvim creators,, which I have no good reason to not use.  Haven't tested them yet
+	require("kickstart.plugins.gitsigns"), -- adds gitsigns recommend keymaps
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.

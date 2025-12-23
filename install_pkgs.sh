@@ -41,6 +41,7 @@ fonts-noto `_display foreign language characters`\
 keychain `_ssh-agent / key manager used in bashrc` \
 clangd `_for cpp in nvim` \
 fd-find fzf `_for nvim ` \
+clang-format `_cpp in nvim` \
 kitty-terminfo `tells nvim about kitty for terminal mode` \
 gcc `put this here again so ALL PRECVIUS can have escaped newlines`
 
