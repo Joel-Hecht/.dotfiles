@@ -1007,12 +1007,13 @@ require("lazy").setup({
 			--  - ci'  - [C]hange [I]nside [']quote
 			require("mini.ai").setup({ n_lines = 500 })
 
+			--  REMOVED BECAUSE KEYBINDS CONFLICTED WITH LEAP AND I DIDN'T WANT TO CHANGE THEM
 			-- Add/delete/replace surroundings (brackets, quotes, etc.)
 			--
 			-- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
 			-- - sd'   - [S]urround [D]elete [']quotes
 			-- - sr)'  - [S]urround [R]eplace [)] [']
-			require("mini.surround").setup()
+			--require("mini.surround").setup()
 
 			-- Added to highlight word instead of line
 			require("mini.cursorword").setup({ delay = 100 })
@@ -1140,6 +1141,40 @@ require("lazy").setup({
 			require("transparent").setup({
 				groups = { "Normal", "NormalNC" },
 				extra_groups = { "NormalFloat", "Pmenu", "FloatBorder", "StatusLineNC", "StatusLine" },
+			})
+		end,
+	},
+
+	--leap provides easier navigation and is basically cheating
+	{
+		"https://codeberg.org/andyg/leap.nvim.git",
+		config = function()
+			local leap = require("leap")
+			--leap.create_default_mappings()
+			leap.opts.case_sensitive = true
+			vim.keymap.set("n", "s", "<Plug>(leap-forward)", { desc = "Leap Forward" })
+			vim.keymap.set("n", "S", "<Plug>(leap-backward)", { desc = "Leap Backward" })
+			vim.keymap.set("n", "gs", "<Plug>(leap-from-window)", { desc = "Leap From Window" })
+		end,
+	},
+
+	--helps find free keys to bind to!
+	--Both of these suck so bad its not even funny
+	{
+		"meznaric/key-analyzer.nvim",
+		config = function()
+			require("key-analyzer").setup({
+				command_name = "KeyAnalyzer",
+				layout = "qwerty",
+			})
+		end,
+	},
+	{
+		"jokajak/keyseer.nvim",
+		version = "*",
+		config = function()
+			require("keyseer").setup({
+				command_name = "KeySeer",
 			})
 		end,
 	},
