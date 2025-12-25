@@ -43,6 +43,7 @@ clangd `_for cpp in nvim` \
 fd-find fzf `_for nvim ` \
 clang-format clang-tidy `_cpp in nvim` \
 pylint `python linter for no good reason` \
+xsnow `merry christmas` \
 kitty-terminfo `tells nvim about kitty for terminal mode` \
 gcc `put this here again so ALL PRECVIUS can have escaped newlines`
 
