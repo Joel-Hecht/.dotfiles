@@ -1123,9 +1123,6 @@ require("lazy").setup({
 	-- Include debuggers/debug adapters.  Currently only go and cpp(?) supported,untested
 	require("kickstart.plugins.debug"),
 
-	-- Shows vertical lines for different indentation levels - just like reddit or whatever
-	require("kickstart.plugins.indent_line"),
-
 	-- Auto formatting and bug detection, etc.  Like LSP-lite but works in conjunction with LSP
 	require("kickstart.plugins.lint"),
 
@@ -1134,6 +1131,17 @@ require("lazy").setup({
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		opts = {},
+	},
+
+	-- Shows vertical lines for different indentation levels - just like reddit or whatever
+	{
+		{ -- Add indentation guides even on blank lines
+			"lukas-reineke/indent-blankline.nvim",
+			-- Enable `lukas-reineke/indent-blankline.nvim`
+			-- See `:help ibl`
+			main = "ibl",
+			opts = {},
+		},
 	},
 
 	-- filesystem browser configured with default opts.
