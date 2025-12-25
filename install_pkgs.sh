@@ -40,11 +40,19 @@ sublime-text \
 fonts-noto `_display foreign language characters`\
 keychain `_ssh-agent / key manager used in bashrc` \
 clangd `_for cpp in nvim` \
-fd-find `_for nvim ` \
+fd-find fzf `_for nvim ` \
+clang-format clang-tidy `_cpp in nvim` \
+pylint `python linter for no good reason` \
+kitty-terminfo `tells nvim about kitty for terminal mode` \
 gcc `put this here again so ALL PRECVIUS can have escaped newlines`
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
 
+#alias fdfind to fd because that is how i will use if
+if [[ -n $(command -v fdfind) && -z $(command -v fd) ]]; then 
+	mkdir -p ~/.local/bin/
+	ln -s $(which fdfind) ~/.local/bin/fd
+fi
 
 #flatpaks
 sudo apt install flatpak
@@ -100,4 +108,16 @@ if [[ $nvim_version -lt 9 ||  -z $(command -v nvim)  ]]; then
 	cd "$currentdir"
 else
 	echo "latest neovim already installed"	
+fi
+
+#instal vimplug for vim if it does not exist already
+if [[ -z $(ls ~/.vim/autoload/plug.vim) ]]; then
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
+#install vimplug for nvim if it does not exist already
+if [[ -z $(ls ~/.local/share/nvim/site/autoload/plug.vim) ]]; then
+	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 fi

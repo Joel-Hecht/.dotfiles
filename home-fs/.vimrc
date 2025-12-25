@@ -1,5 +1,17 @@
 set nocompatible | "use vim instead of vi, even when launching as vi
 
+if has("nvim")
+	" we are nvim, do nothing here
+else
+	set undodir=~/.vim/undo/
+	" set dir=~/.vim/swap//
+	" set backupdir=~/.vim/backup//
+end
+set undofile
+set undolevels=1000
+set undoreload=10000
+set viminfo+=<500
+
 :set number relativenumber
 :set is | "incremental searching
 :set hls
@@ -12,6 +24,15 @@ set nocompatible | "use vim instead of vi, even when launching as vi
 :set showcmd | "show incomplete commands (should be on by default) 
 :syntax enable
 
+" vimplug stuff - doesnt work at all right now
+
+call plug#begin()
+
+Plug 'farmergreg/vim-lastplace'
+
+call plug#end()
+" end vimplug stuff
+
 " langauge dependant indents
 filetype plugin indent on 
 
@@ -21,22 +42,18 @@ autocmd FileType text setlocal textwidth=78
 "explit mouse enable
 set mouse=a
 
-autocmd BufReadPost *
-  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-  \ |   exe "normal! g`\""
-  \ | endif
-
+"  automatically restore to last edited location
+"  Replaced by vim-lastplace in vimrc
+" autocmd BufReadPost *
+"   \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+"   \ |   exe "normal! g`\""
+"   \ | endif
+" 
 " Save '+' vim register to clipboard when we leave 
 autocmd VimLeave * call system("xclip -sel c ", getreg('+'))
 
 " Ctrl+Y to copy last yanked text to clipboard ('+' register)
 nnoremap <C-y> :let @+=@"<CR>
-
-set undodir=~/.vimundo
-set undofile
-set undolevels=1000
-set undoreload=10000
-set viminfo+=<500
 
 nnoremap ^ 0
 nnoremap 0 ^
