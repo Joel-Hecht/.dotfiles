@@ -61,7 +61,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
- bindsym $mod+d exec --no-startup-id dmenu_run -fn "DejaVu:size=12"
+bindsym $mod+d exec --no-startup-id dmenu_run -fn "DejaVu:size=12"
 # A more modern dmenu replacement is rofi:
 # bindsym $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -199,7 +199,7 @@ bar {
         status_command i3status --config ~/.i3status.conf
 		tray_padding 2
 		tray_output primary
-		font pango:JetBrainsMono Nerd Font 9
+		font pango:JetBrainsMono Nerd Font 8
 		separator_symbol ":|:"
 		workspace_min_width 40
 		#binding_mode_indicator yes
