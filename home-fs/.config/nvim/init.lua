@@ -737,7 +737,13 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				-- C LSP
-				clangd = {},
+				clangd = {
+					cmd = {
+						"clangd",
+						"background_index", -- use mutliple cores for indexing files other than the current file
+						"--pch-storage=memory", -- store precompiled headers in memory not on disk to improve performance
+					},
+				},
 				-- gopls = {},
 
 				-- PYTHON LSP / PY LSP
@@ -1114,9 +1120,14 @@ require("lazy").setup({
 	--  Here are some example plugins that I've included in the Kickstart repository.
 	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
 	--
-	-- require 'kickstart.plugins.debug',
-	-- require 'kickstart.plugins.indent_line',
-	-- require 'kickstart.plugins.lint',
+	-- Include debuggers/debug adapters.  Currently only go and cpp(?) supported,untested
+	require("kickstart.plugins.debug"),
+
+	-- Shows vertical lines for different indentation levels - just like reddit or whatever
+	require("kickstart.plugins.indent_line"),
+
+	-- Auto formatting and bug detection, etc.  Like LSP-lite but works in conjunction with LSP
+	require("kickstart.plugins.lint"),
 
 	--auto-add closing parens, quotes, etc
 	{
