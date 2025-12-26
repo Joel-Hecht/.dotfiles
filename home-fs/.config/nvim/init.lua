@@ -263,6 +263,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+--command :DiffOrig shows diff with the latest saved version of the file
+vim.api.nvim_create_user_command(
+	"DiffOrig",
+	[[ vert new | set buftype=nofile | read ++edit # | 0d_ | diffthis | wincmd p | diffthis ]],
+	{
+		desc = "diff current file with last saved version in new window",
+	}
+)
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
