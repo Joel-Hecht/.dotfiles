@@ -13,6 +13,7 @@ return {
 				cpp = { "clangtidy" },
 				c = { "clangtidy" },
 				python = { "pylint" },
+				janet = { "janet" },
 			}
 
 			-- To allow other plugins to add linters to require('lint').linters_by_ft,
@@ -26,7 +27,6 @@ return {
 			--   clojure = { "clj-kondo" },
 			--   dockerfile = { "hadolint" },
 			--   inko = { "inko" },
-			--   janet = { "janet" },
 			--   json = { "jsonlint" },
 			--   markdown = { "vale" },
 			--   rst = { "vale" },

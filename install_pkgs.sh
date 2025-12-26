@@ -111,6 +111,28 @@ else
 	echo "latest neovim already installed"	
 fi
 
+if [[ -z $(command -v janet) || -z $(command -v jpm) ]]; then
+	echo "Installing Janet"
+	currentdir = $(pwd)
+	mkdir -p "${HOME}/apps"
+	cd "${HOME}/apps"
+	git clone https://github.com/janet-lang/janet.git
+	cd janet
+	make
+	make test
+	#make repl
+	sudo make install
+	sudo make install-jpm-git
+	cd "${HOME}/apps"
+	sudo rm -rf janet #clean up
+	cd "$currentdir"
+else 
+	echo "Janet already installed"
+fi
+
+#Janet Packages
+sudo jpm install sh
+
 #instal vimplug for vim if it does not exist already
 if [[ -z $(ls ~/.vim/autoload/plug.vim) ]]; then
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
