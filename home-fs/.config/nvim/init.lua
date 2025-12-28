@@ -96,10 +96,6 @@ vim.g.maplocalleader = " "
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
--- Specify filetype-specific options in the after/<ft>.lua file
--- indent also because I like it
-vim.cmd("filetype plugin indent on")
-
 ----------------VIMPLUG PACKAGES----------------
 local Plug = vim.fn["plug#"]
 vim.call("plug#begin")
