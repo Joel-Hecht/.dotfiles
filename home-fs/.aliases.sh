@@ -37,6 +37,9 @@ alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh && source ~/.aliases.sh"
 alias funcs="vim ~/.dotfiles/home-fs/.funcs.sh && source ~/.funcs.sh"
 alias br="vim ~/.bashrc && source ~/.bashrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
+#for testing c bullshit
+alias c="[[ -f $HOME/.test.c ]] || cp $HOME/.template.c $HOME/.test.c ; vi $HOME/.test.c && gcc $HOME/.test.c && ./a.out && rm ./a.out"
+alias d="rm $HOME/.test.c"
 
 #computer control
 alias eep="systemctl suspend"
