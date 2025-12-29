@@ -78,6 +78,13 @@ alias ugrep="/usr/bin/grep -P"
 alias cgrep="clear; grep -P"
 alias dl="ls ~/Downloads"
 alias dll="ll ~/Downloads"
+alias difff="kitten diff"
+alias mypy="~/.basevenv/bin/mypy"
+function findproc { ps aux | ugrep "$@" --color=yes | ugrep -v grep --color=yes ; }
+function ref { grep '\<'$1'\>' ; }
+function def { grep '^[\s]*([^\s=@\\/\\"]+[\s\*]+)*\\<'$1'\\>' ; }
+# start of line, any whitespace, then any amount of words with nothing weird going on
+# should match anything like unsigned int* $1=...
 
 #vim aliases
 alias v="vim"
@@ -90,6 +97,7 @@ alias gcm="git commit -m"
 alias dif="git diff"
 alias staged="git diff --name-only --staged"
 alias gaa="git add --all && git diff --name-only --staged | sed 's/^/staged: /' "
+alias gaap="git add --all --patch"
 alias names="git diff --name-only"
 alias gp="git pull"
 alias pull="git pull"
@@ -99,18 +107,22 @@ alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 alias dm="curr=\"\$(pwd)\" && dot ; make ; cd \"\$curr\""
 alias grh="git reset --hard origin/main"
 alias changes="git diff --cached"
-alias submodules="git submodules update --init --recursive"
-alias gitbranch="git checkout -b"
+alias submodules="git submodules update --init --recursive && git submodule update --recursive"
+alias unpushed="git log --branches --not --remotes"
+alias unadd="git restore --staged"
+alias untrack="git rm --cached"
+alias amend="git commit --amend"
 #copy github access token to authenticate on tux
 alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
 alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt | cpy ; cd \"\$curr\""
 
-#programs ig
+#programs 
 alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias lo="libreoffice"
 alias py="python"
-alias vpy="[ -n $( echo $PATH | grep basevenv ) ] && venv; python"
+alias vpy="[ -n $( echo $PATH | grep basevenv ) ] && venv; python; venvl"
+alias jpnb="venv && dc jupyter-notebook && venvl"
 alias directiongame="vpy ~/proj/directiongame/final5.py ; venvl"
 alias dg="directiongame"
 
@@ -131,7 +143,7 @@ function v { dc_arg $HOME/bin/v_base $1 &>/dev/null ; }
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
 alias cpy="xclip -sel c"
 alias cb="xclip -sel c"
-function copy {   cat "$1" | cb ; }
+function copy { cat "$1" | cb ; }
 
 # misc
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"

@@ -170,7 +170,6 @@ fi
 alias venv="source \"${HOME}/${VENVNAME}/bin/activate\""
 alias venvl="deactivate"
 alias pip="${HOME}/${VENVNAME}/bin/pip"
-alias jpnb="venv && jupyter-notebook"
 . "$HOME/.cargo/env"
 export TERM=xterm-256color
 
