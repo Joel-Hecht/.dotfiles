@@ -121,7 +121,11 @@ alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias lo="libreoffice"
 alias py="python"
-alias vpy="[ -n $( echo $PATH | grep basevenv ) ] && venv; python; venvl"
+function vpy {
+	[[ -n $( echo $PATH | ugrep venv ) ]] || venv
+	python "$@"
+	deactivate
+}
 alias jpnb="venv && dc jupyter-notebook && venvl"
 alias directiongame="vpy ~/proj/directiongame/final5.py ; venvl"
 alias dg="directiongame"
