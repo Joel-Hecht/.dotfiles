@@ -21,9 +21,7 @@ alias s="bfs -s"
 alias h="bfs -h"
 
 alias o="cd - >/dev/null" # go to Older directory in this terminal
-alias p="cd .." 		  # go to Parent directory (p2, p3 etc also work)
 alias P="firefox https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
-alias b="cd .."
 alias bb="cd ../.." # bbb, etc. also work, 
 alias b2="cd ../.." # b3, b4, etc. also work
 
@@ -151,23 +149,11 @@ source ${HOME}/.aliases_v.sh
 alias bbb="cd ../../.."
 alias bbbb="cd ../../../.."
 alias bbbbb="cd ../../../../.."
-alias bbbbbb="cd ../../../../../.."
-alias b3="cd ../../.."
-alias b4="cd ../../../.."
-alias b5="cd ../../../../.."
-alias b6="cd ../../../../../.."
-alias p2="cd ../.."
-alias p3="cd ../../.."
-alias p4="cd ../../../.."
-alias p5="cd ../../../../.."
-alias p6="cd ../../../../../.."
-
 
 # pope
 alias sl="[[ $(( $RANDOM % 2 )) -eq 0 ]] && /usr/games/sl-1 || pope"
 alias bs="pope"
 alias md="pope"
-alias fs="pope"
 alias pg="pope"
 alias pd="pope"
 alias as="pope"

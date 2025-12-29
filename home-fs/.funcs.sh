@@ -1,5 +1,18 @@
 #!/bin/bash
 
+function p {
+	if [[ $# -lt 1 ]]; then
+		cd ..
+	else
+		target=""
+		for ((i=1; i<=$1; i++)); do
+			target+="../"
+		done
+		cd "$target"
+	fi
+}
+alias b="p"
+
 function lockin {
 	conf=$( cat $HOME/.i3status.conf | /usr/bin/grep -v 'order += "tztime local"' )
 	echo "$conf" > $HOME/.i3status.conf
