@@ -130,7 +130,7 @@ else
 fi
 
 #Janet Packages
-sudo jpm install sh
+sudo jpm install sh spork
 
 #instal vimplug for vim if it does not exist already
 if [[ -z $(ls ~/.vim/autoload/plug.vim) ]]; then
