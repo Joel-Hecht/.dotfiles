@@ -200,7 +200,6 @@ esac
 # pnpm end
 
 # extra path things
-export PATH="$HOME/kitty/kitty/launcher/:$PATH" #rui's
 export PATH="/usr/local/.go/bin:$PATH"
 export PATH="nowhere:$PATH"
 export PATH="log:$PATH"
