@@ -14,6 +14,7 @@ set viminfo+=<500
 
 :set number relativenumber
 :set is | "incremental searching
+:set wildmenu
 :set hls
 :set ic
 :set tabstop=4
@@ -27,9 +28,10 @@ set viminfo+=<500
 " vimplug stuff - doesnt work at all right now
 
 call plug#begin()
-
 Plug 'farmergreg/vim-lastplace'
-
+Plug 'kshenoy/vim-signature'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/a.vim'
 call plug#end()
 " end vimplug stuff
 
@@ -54,6 +56,22 @@ autocmd VimLeave * call system("xclip -sel c ", getreg('+'))
 
 " Ctrl+Y to copy last yanked text to clipboard ('+' register)
 nnoremap <C-y> :let @+=@"<CR>
-
 nnoremap ^ 0
 nnoremap 0 ^
+
+" use space as leader key for custom commands
+let g:mapleader="\Space>"
+nnoremap <SPACE> <Nop>
+
+" copy to clipboard again
+nnoremap <Leader>y :let @+=@"<CR> 
+" go between buffers and save
+nnoremap <Leader>n :w<CR>:bn<CR>
+nnoremap <Leader>p :w<CR>:bp<CR>
+nnoremap <Leader>a :w<CR>:A<CR>
+" edit and source vimrc
+nnoremap <Leader>v :e $MYVIMRC<CR>
+nnoremap <Leader>r :source $MYVIMRC<CR>:noh<CR>
+" shortcut for find-replace
+nnoremap <Leader>s :%s//g<Left<Left<BS>/
+vnoremap <Leader>s :s//g<Left<Left<BS>/
