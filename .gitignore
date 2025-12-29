@@ -9,7 +9,9 @@ home-fs/.gitconfig
 
 # ignore swapfiles
 **.swp
+**.swo
 **~
+elan-init.sh
 
 home-fs/.VOLUME
 home-fs/.config/nitrogen/**
@@ -22,4 +24,3 @@ home-fs/.config/nvim/test.sh
 home-fs/.config/nvim/.luarc.json
 home-fs/.config/nvim/nvim
 home-fs/.config/nvim/spell/
-
