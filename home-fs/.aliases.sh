@@ -124,7 +124,7 @@ alias py="python"
 function vpy {
 	[[ -n $( echo $PATH | ugrep venv ) ]] || venv
 	python "$@"
-	deactivate
+	venvl
 }
 alias jpnb="venv && dc jupyter-notebook && venvl"
 alias directiongame="vpy ~/proj/directiongame/final5.py ; venvl"

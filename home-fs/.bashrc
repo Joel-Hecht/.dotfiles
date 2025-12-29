@@ -120,10 +120,6 @@ fi
 #generate random color/image when we start a terminal window
 #colorscript random
 
-#import all aliases
-source ~/.aliases.sh
-source ~/.funcs.sh
-source ~/.aliases_bfs.sh
 
 #MOVED TO I3CONFIG
 #needed to source i3bar tray to primary monitor on multi-monitor setup
@@ -172,6 +168,11 @@ alias venvl="deactivate"
 alias pip="${HOME}/${VENVNAME}/bin/pip"
 . "$HOME/.cargo/env"
 export TERM=xterm-256color
+
+#import all aliases
+source ~/.aliases.sh
+source ~/.funcs.sh
+source ~/.aliases_bfs.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
