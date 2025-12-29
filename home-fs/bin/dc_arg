@@ -1,19 +1,22 @@
 #!/bin/bash
 
-[[ $# -gt 0 && $1 == '-q' ]] && quit=yes || quit=no
+[[ $# -gt 0 && $1 == '-q' ]] && { quit=yes; shift ;} || quit=no
+[[ ! -d ~/.dclog ]] && mkdir $HOME/.dclog
+file=$HOME/.dclog/"$( basename "$1" )"
 
 if [[ $quit == yes ]]; then
-	shift
 	if [[ $# -gt 0 ]]; then
-		"$@" &
-		disown %1
+		date >> "$file"
+		"$@" &>>"$file" &
+		#disown %1
 		xdotool getactivewindow windowkill
 	else
 		echo "need an argument to run"
 	fi
 else
 	if [[ $# -gt 0 ]]; then
-		"$@" &
+		date >> "$file"
+		"$@" &>>"$file" &
 	else
 		echo "need an argument to run"
 	fi
