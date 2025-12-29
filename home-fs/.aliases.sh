@@ -8,9 +8,9 @@ alias dbin="cd ~/.dotfiles/home-fs/bin"
 alias dconf="cd ~/.dotfiles/home-fs/.config"
 alias scs="cd ~/Pictures"
 alias proj="cd ~/proj"
-alias repo="firefox github.com/Joel-Hecht/.dotfiles"
-alias clanker="firefox chatgpt.com"
-alias t="firefox www.tumblr.com/"
+alias repo="dc firefox github.com/Joel-Hecht/.dotfiles"
+alias clanker="dc firefox chatgpt.com"
+alias t="dc firefox www.tumblr.com/"
 alias kb="chromium launcher.keychron.com"
 alias me="echo \"$(whoami)@$(hostname)\""
 alias down="cd ~/Downloads"
@@ -21,7 +21,7 @@ alias s="bfs -s"
 alias h="bfs -h"
 
 alias o="cd - >/dev/null" # go to Older directory in this terminal
-alias P="firefox https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
+alias P="dc firefox https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
 alias bb="cd ../.." # bbb, etc. also work, 
 alias b2="cd ../.." # b3, b4, etc. also work
 
