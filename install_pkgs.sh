@@ -117,8 +117,8 @@ if [[ -z $(command -v janet) || -z $(command -v jpm) ]]; then
 	cd "${HOME}/apps"
 	git clone https://github.com/janet-lang/janet.git
 	cd janet
-	make
-	make test
+	sudo make
+	sudo make test
 	#make repl
 	sudo make install
 	sudo make install-jpm-git

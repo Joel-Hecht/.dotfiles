@@ -1108,7 +1108,10 @@ require("lazy").setup({
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 		config = function()
 			--use default config options
-			require("treesitter-context").setup({})
+			require("treesitter-context").setup({
+				max_lines = 5, --only show 5 context lines
+				min_window_height = 10, --only show context on windows with >= 10 lines
+			})
 		end,
 	},
 
