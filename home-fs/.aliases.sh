@@ -30,6 +30,11 @@ alias drex="cd ~/Downloads/drexel"
 alias prog="cd ~/Downloads/program"
 alias logs="cd ~/proj/geyserlog/logs"
 
+#buoy navigation
+alias m="buoy -m"
+alias e="buoy -e"
+alias c="buoy -c"
+
 #files
 alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
 alias todo="vim ~/.dotfiles/todo"
@@ -38,8 +43,8 @@ alias funcs="vim ~/.dotfiles/home-fs/.funcs.sh && source ~/.funcs.sh"
 alias br="vim ~/.bashrc && source ~/.bashrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 #for testing c bullshit
-alias c="[[ -f $HOME/.test.c ]] || cp $HOME/.template.c $HOME/.test.c ; vi $HOME/.test.c && gcc $HOME/.test.c && ./a.out && rm ./a.out"
-alias d="rm $HOME/.test.c"
+alias ct="[[ -f $HOME/.test.c ]] || cp $HOME/.template.c $HOME/.test.c ; vi $HOME/.test.c && gcc $HOME/.test.c && ./a.out && rm ./a.out"
+alias dt="rm $HOME/.test.c"
 
 #computer control
 alias eep="systemctl suspend"

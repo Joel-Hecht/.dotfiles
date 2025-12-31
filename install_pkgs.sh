@@ -129,8 +129,19 @@ else
 	echo "Janet already installed"
 fi
 
-#Janet Packages
-sudo jpm install sh spork
+#install buoy - no routine to update of yet
+if [[ -z $(command -v buoy) || -z $(command -v buoy-client)  ]]; then
+	currentdir = $(pwd)
+	mkdir -p "${HOME}/apps"
+	cd "${HOME}/apps"
+	git clone https://github.com/Joel-Hecht/buoy
+	cd buoy
+	make
+	cd "${HOME}/apps"
+	rm -rf buoy #clean up
+	cd "$currentdir"
+fi
+
 
 #instal vimplug for vim if it does not exist already
 if [[ -z $(ls ~/.vim/autoload/plug.vim) ]]; then

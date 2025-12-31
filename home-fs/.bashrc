@@ -239,3 +239,9 @@ done
 
 #have a terminal exit script, in case we started processes here that i want to remove
 trap "${HOME}/.bash_exit.sh" EXIT
+
+# >>>>> source file for buoy >>>>>
+# !! Contents within this block are managed by buoy
+source ${HOME}/.local/share/buoy/buoy-interface.sh
+# <<<<< source file for buoy <<<<<
+
