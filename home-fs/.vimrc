@@ -61,7 +61,7 @@ nnoremap ^ 0
 nnoremap 0 ^
 
 " use space as leader key for custom commands
-let g:mapleader="\Space>"
+let g:mapleader="\<Space>"
 nnoremap <SPACE> <Nop>
 
 " copy to clipboard again
