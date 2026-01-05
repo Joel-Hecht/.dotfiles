@@ -170,6 +170,7 @@ alias pip="${HOME}/${VENVNAME}/bin/pip"
 export TERM=xterm-256color
 
 #import all aliases
+source ~/.bash_profile
 source ~/.aliases.sh
 source ~/.funcs.sh
 source ~/.aliases_bfs.sh
@@ -232,7 +233,7 @@ export PATH="/usr/local/go/bin:$PATH"
 #start ssh for this terminal and add all keys that end in rsa (omits .pub and known_hosts)
 for key in ${HOME}/.ssh/*; do 
 	fname=$(basename $key)
-	if  [[ ! "$fname" =~ .*\.pub$ && ! "$fname" =~ ^known_hosts.* && ! "$fname" =~ ^config$ ]]; then
+	if  [[ ! "$fname" =~ .*\.pub$ && ! "$fname" =~ ^known_hosts.* && ! "$fname" =~ ^config$ && ! "$fname" =~ ^authorized_keys.* ]]; then
 		eval $(keychain -q --eval "$key" )
 	fi
 done
