@@ -87,7 +87,8 @@ else
 fi
 
 dotdir=$(dirname $(realpath "$0"))
-bash "$dotdir"/build_kitty_source.sh
+cd dotdir
+./build_kitty_source.sh
 
 #neovim version 0.8 isnt in apt
 #we need to build from source
