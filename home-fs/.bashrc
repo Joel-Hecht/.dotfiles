@@ -244,4 +244,3 @@ trap "${HOME}/.bash_exit.sh" EXIT
 # !! Contents within this block are managed by buoy
 source ${HOME}/.local/share/buoy/buoy-interface.sh
 # <<<<< source file for buoy <<<<<
-

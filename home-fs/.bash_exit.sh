@@ -1,3 +1,3 @@
 #!/bin/bash
 
-pope -t 0.5
+[[ $( whoami ) -ne zhao ]] && pope -t 0.5
