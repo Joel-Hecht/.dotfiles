@@ -8,9 +8,10 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
+# don't lines starting with space in the history.
+# put duplicate lines for preexec
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignorespace
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -247,3 +248,25 @@ trap "${HOME}/.bash_exit.sh" EXIT
 # !! Contents within this block are managed by buoy
 source ${HOME}/.local/share/buoy/buoy-interface.sh
 # <<<<< source file for buoy <<<<<
+
+# >>> bash-preexec >>>
+# define functions and add to precmd_functions to have them execute before prompt display,
+# 					 or to preexec_functions to have them execute before command execution
+shopt -s extdebug
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+function precmd_1 {
+	history -a
+	return 0
+}
+function preexec_1 {
+	[[ $HISTCMD -eq $(( $HISTFILESIZE + 1 )) || $HISTCMD -le $LASTCMD ]] && return 0
+	export LASTCMD=$HISTCMD
+	cmd=$( awk '{ print $1 }' <<< "$1" )
+	[[ -d $cmd ]] && return 0 
+	if [[ -z $( 'type' -t $cmd ) ]]; then
+	   	source bfs_base -rt $cmd 5 &>/dev/null && return 1
+	fi
+	return 0
+}
+precmd_functions+=(precmd_1)
+preexec_functions+=(preexec_1)
