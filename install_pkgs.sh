@@ -157,4 +157,7 @@ if [[ -z $(ls ~/.local/share/nvim/site/autoload/plug.vim) ]]; then
 fi
 
 # install bash-preexec
-curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
+if ! [[ -e ~/.bash-preexec.sh ]]; then
+	echo "installing bash preexec"
+	curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
+fi
