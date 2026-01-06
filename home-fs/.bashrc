@@ -175,11 +175,11 @@ alias pip="${HOME}/${VENVNAME}/bin/pip"
 export TERM=xterm-256color
 
 #import all aliases
-source ~/.aliases.sh
-source ~/.funcs.sh
-source ~/.aliases_bfs.sh
-source ~/.path.sh
-source ~/.bash_profile
+source ~/.aliases.sh || touch ~/.aliases.sh
+source ~/.funcs.sh || touch ~/.funcs.sh
+source ~/.aliases_bfs.sh || touch ~/.aliases_bfs.sh
+source ~/.path.sh || touch ~/.path.sh
+source ~/.bash_profile || touch ~/.bash_profile
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
