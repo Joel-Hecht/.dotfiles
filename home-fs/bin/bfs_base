@@ -100,10 +100,9 @@ if [[ $full == yes ]]; then
 	return 1
 fi
 
-[[ $tab == yes ]] && search_term="/$1.*/" || search_term="/$1/"
 if [[ $stars == yes ]]; then
 	search_term="/.*$1.*/"
-elif [[ $tabs == yes ]]; then
+elif [[ $tab == yes ]]; then
 	search_term="/$1.*/"
 else
 	search_term="/$1/"

@@ -1,6 +1,6 @@
 alias dfs="source dfs_base"
-alias bfs="cowsay oui oui baguette"
-#alias bfs="source bfs_base"
+#alias bfs="cowsay oui oui baguette"
+alias bfs="source bfs_base"
 alias bfsh="source bfs_base -h"
 alias bfsr="source bfs_base -r"
 alias bfst="source bfs_base -t"
