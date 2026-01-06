@@ -116,6 +116,7 @@ alias submodules="git submodule update --init --recursive && git submodule updat
 alias unpushed="git log --branches --not --remotes"
 alias unadd="git restore --staged"
 alias untrack="git rm --cached"
+alias uncommit="git reset --mixed HEAD~1"
 alias amend="git commit --amend"
 #copy github access token to authenticate on tux
 alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
