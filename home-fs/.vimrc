@@ -71,8 +71,8 @@ nnoremap <Leader>n :w<CR>:bn<CR>
 nnoremap <Leader>p :w<CR>:bp<CR>
 nnoremap <Leader>a :w<CR>:A<CR>
 " edit and source vimrc
-nnoremap <Leader>v :e $MYVIMRC<CR>
+nnoremap <Leader>v :w<CR>:e $MYVIMRC<CR>
 nnoremap <Leader>r :source $MYVIMRC<CR>:noh<CR>
 " shortcut for find-replace
-nnoremap <Leader>s :%s//g<Left<Left<BS>/
-vnoremap <Leader>s :s//g<Left<Left<BS>/
+nnoremap <Leader>s :%s//g<Left><Left><BS>/
+vnoremap <Leader>s :s//g<Left><Left><BS>/
