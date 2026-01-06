@@ -143,9 +143,9 @@ alias ms="curr=\"\$(pwd)\" && dhome && ./makesymlinks.sh; cd \"\$curr\""
 alias reload="sb && sa && sf"
 
 # path
-function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.bashrc ; }
-function pathhome { echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.bashrc  ; }
-function pathhere { echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.bashrc ; }
+function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh ; }
+function pathhome { echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.path.sh  ; }
+function pathhere { echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.path.sh ; }
 function v { dc_arg $HOME/bin/v_base $1 &>/dev/null ; }
 
 #clipboard

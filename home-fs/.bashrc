@@ -187,7 +187,8 @@ export PATH="$HOME/bin/valiases:$PATH"
 export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="/usr/local/MuseScore4:$PATH"
+
+# remove evil musescore directory
 rm -rf "$HOME/MuseScore4/"
 
 #add permissions so chirp can access radios over usb port0
