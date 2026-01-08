@@ -45,6 +45,8 @@ clang-format clang-tidy `_cpp in nvim` \
 pylint `_python linter for no good reason` \
 kitty-terminfo `tells nvim about kitty for terminal mode` \
 cowsay \
+build-essential gdb debhelper ` prob alr have these` \
+libudev-dev libinput-dev libpugixml-dev libcairo2-dev libx11-dev libxtst-dev libxrandr-dev libxi-dev libglib2.0-dev libgtk-3-dev `for touchegg, prob alr have these` \
 gcc `put this here again so ALL PRECVIUS can have escaped newlines`
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
@@ -144,6 +146,25 @@ if [[ -z $(command -v buoy) || -z $(command -v buoy-client)  ]]; then
 	cd "$currentdir"
 fi
 
+#install touchegg
+if [[ -z $(command -v touchegg) ]]; then
+	currentdir = $(pwd)
+	mkdir -p "${HOME}/apps"
+	cd "${HOME}/apps"
+	git clone https://github.com/JoseExposito/touchegg.git
+	cd touchegg
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+	make -j$(nproc)
+	cd build
+	sudo make install
+	sudo systemctl daemon-reload && sudosystemctl restart touchegg
+	touchegg &
+	cd "${HOME}/apps"
+	rm -rf touchegg #clean up
+	cd "$currentdir"
+fi
 
 #instal vimplug for vim if it does not exist already
 if [[ -z $(ls ~/.vim/autoload/plug.vim) ]]; then
