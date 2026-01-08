@@ -25,11 +25,6 @@ alias P="dc firefox https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
 alias bb="cd ../.." # bbb, etc. also work, 
 alias b2="cd ../.." # b3, b4, etc. also work
 
-# nav for rui
-alias drex="cd ~/Downloads/drexel"
-alias prog="cd ~/Downloads/program"
-alias logs="cd ~/proj/geyserlog/logs"
-
 #buoy navigation
 alias m="buoy -m"
 alias e="buoy -e"
@@ -87,8 +82,7 @@ alias difff="kitten diff"
 alias mypy="~/.basevenv/bin/mypy"
 function findproc { ps aux | ugrep "$@" --color=yes | ugrep -v grep --color=yes ; }
 function ref { grep '\<'$1'\>' ; }
-function def { grep '^[\s]*([^\s=@\\/\\"]+[\s\*]+)*\\<'$1'\\>' ; }
-# start of line, any whitespace, then any amount of words with nothing weird going on
+function def { grep '^[\s]*([^\s=@\\/\\"]+[\s\*]+)*\\<'$1'\\>' ; } # start of line, any whitespace, then any amount of words with nothing weird going on
 # should match anything like unsigned int* $1=...
 
 #vim aliases
@@ -135,6 +129,8 @@ function vpy {
 alias jpnb="venv && dc jupyter-notebook && venvl"
 alias directiongame="vpy ~/proj/directiongame/final5.py ; venvl"
 alias dg="directiongame"
+alias mse="dc wine $HOME/Downloads/mse/mse.exe"
+alias ardour="dc Ardour8"
 
 #reload after updates	
 alias sb="source ~/.bashrc"
