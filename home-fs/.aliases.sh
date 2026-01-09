@@ -36,6 +36,7 @@ alias todo="vim ~/.dotfiles/todo"
 alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh && source ~/.aliases.sh"
 alias funcs="vim ~/.dotfiles/home-fs/.funcs.sh && source ~/.funcs.sh"
 alias br="vim ~/.bashrc && source ~/.bashrc"
+alias vr="vim ~/.vimrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 #for testing c bullshit
 alias ct="[[ -f $HOME/.test.c ]] || cp $HOME/.template.c $HOME/.test.c ; vi $HOME/.test.c && gcc $HOME/.test.c && ./a.out && rm ./a.out"
@@ -86,7 +87,7 @@ function def { grep '^[\s]*([^\s=@\\/\\"]+[\s\*]+)*\\<'$1'\\>' ; } # start of li
 # should match anything like unsigned int* $1=...
 
 #vim aliases
-alias v="vim"
+#alias v="vim"
 alias nv="nvim"
 alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
 alias nvc="nvim ~/.dotfiles/home-fs/.config/nvim/init.lua"

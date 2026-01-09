@@ -45,6 +45,12 @@ autocmd FileType text setlocal textwidth=78
 "explit mouse enable
 set mouse=a
 
+set foldmethod=indent   " fold based on indent
+set foldlevelstart=99
+autocmd FileType c,cpp,h,hpp setlocal foldmethod=syntax
+autocmd BufWinEnter * if &foldmethod !=# 'manual' | silent! loadview | endif
+autocmd BufWinLeave * silent! mkview
+
 "  automatically restore to last edited location
 "  Replaced by vim-lastplace in vimrc
 " autocmd BufReadPost *
