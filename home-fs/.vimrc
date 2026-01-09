@@ -59,6 +59,8 @@ autocmd VimLeave * call system("xclip -sel c ", getreg('+'))
 nnoremap <C-y> :let @+=@"<CR>
 nnoremap ^ 0
 nnoremap 0 ^
+onoremap ^ 0
+onoremap 0 ^
 
 " use space as leader key for custom commands
 let g:mapleader="\<Space>"

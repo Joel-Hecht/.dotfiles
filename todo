@@ -1,15 +1,16 @@
 easy
 - add -p option to mkcd, mvcd, and cpcd
 		- if specified this would create all necessary parent directories for your target to exist
-- directory history & shortcut to go back to wherever you just were
+- add directory history to o alias so it works more than once
 
 medium
 - bfsr starting from source dir
 		- so bfsr [options] dest [source] [maxdepth] search starting from [source], bfsr dest ~ would be equivalent to current default bfsr
-- if rw sees a bunch of directories in a row with only one subdirectory each, it shouldn't bounce aroud within the chain. no idea how to implement this
 - keyboard shortcut to change kitty text size and reload all kitty terminals
 - make dh X work with files with spaces in name
-- optimize bfs with find
+- optimize bfs with find 
+- look into kitty history preexec
+- add timeout to bfs
 
 hard
 - bfs recursively do command
@@ -17,5 +18,3 @@ hard
 		- for example bfsx vim that recursively searches for the filename you give it to edit
 		- bfsx mv would bfsx both for the thing you're moving and the place you're moving it to, maybe with different options for each tho. for example bfsx -r file -t dest
 		- would also have to know what it's actually looking for, bc for example mv's second arg is likely a filename that doesn't yet exist but it may be a directory that does exist, or be parentdirectory(exists)/file(doesn't)
-
-- custom command parser that does bullshit for us and makes some commands randomly pope
