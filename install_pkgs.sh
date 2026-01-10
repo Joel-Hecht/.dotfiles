@@ -100,7 +100,7 @@ cd dotdir
 nvim_version=$(nvim --version | head -1 | sed "s/[^\.]*\.//" | sed "s/\..*//")
 if [[ $nvim_version -lt 9 ||  -z $(command -v nvim)  ]]; then
 	sudo apt remove neovim
-	currentdir = $(pwd)
+	currentdir=$('pwd')
 	mkdir -p "${HOME}/apps"
 	cd "${HOME}/apps"
 	git clone https://github.com/neovim/neovim
@@ -116,7 +116,7 @@ fi
 
 if [[ -z $(command -v janet) || -z $(command -v jpm) ]]; then
 	echo "Installing Janet"
-	currentdir = $(pwd)
+	currentdir=$('pwd')
 	mkdir -p "${HOME}/apps"
 	cd "${HOME}/apps"
 	git clone https://github.com/janet-lang/janet.git
@@ -135,7 +135,7 @@ fi
 
 #install buoy - no routine to update of yet
 if [[ -z $(command -v buoy) || -z $(command -v buoy-client)  ]]; then
-	currentdir = $(pwd)
+	currentdir=$('pwd')
 	mkdir -p "${HOME}/apps"
 	cd "${HOME}/apps"
 	git clone https://github.com/Joel-Hecht/buoy
@@ -148,7 +148,7 @@ fi
 
 #install touchegg
 if [[ -z $(command -v touchegg) ]]; then
-	currentdir = $(pwd)
+	currentdir=$('pwd')
 	mkdir -p "${HOME}/apps"
 	cd "${HOME}/apps"
 	git clone https://github.com/JoseExposito/touchegg.git
@@ -159,7 +159,7 @@ if [[ -z $(command -v touchegg) ]]; then
 	make -j$(nproc)
 	cd build
 	sudo make install
-	sudo systemctl daemon-reload && sudosystemctl restart touchegg
+	sudo systemctl daemon-reload && sudo systemctl restart touchegg
 	touchegg &
 	cd "${HOME}/apps"
 	rm -rf touchegg #clean up
