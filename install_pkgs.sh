@@ -147,23 +147,12 @@ if [[ -z $(command -v buoy) || -z $(command -v buoy-client)  ]]; then
 fi
 
 #install touchegg
-if [[ -z $(command -v touchegg) ]]; then
-	currentdir=$('pwd')
-	mkdir -p "${HOME}/apps"
-	cd "${HOME}/apps"
-	git clone https://github.com/JoseExposito/touchegg.git
-	cd touchegg
-	mkdir build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
-	make -j$(nproc)
-	cd build
-	sudo make install
-	sudo systemctl daemon-reload && sudo systemctl restart touchegg
+if [[ -z $( pgrep -a touchegg ) ]]; then
+	sudo rm -rf $( command -v touchegg ) $( which touchegg ) $( whereis touchegg )
+	sudo add-apt-repository ppa:touchegg/stable
+	sudo apt update
+	sudo apt install touchegg
 	touchegg &
-	cd "${HOME}/apps"
-	rm -rf touchegg #clean up
-	cd "$currentdir"
 fi
 
 #instal vimplug for vim if it does not exist already
