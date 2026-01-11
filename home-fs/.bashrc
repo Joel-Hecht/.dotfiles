@@ -263,29 +263,31 @@ function precmd_1 {
 	return 0
 }
 function preexec_1 {
-	# don't preexec on terminal startup or on things in this script
-	# probably should be 
-	# if (( __bp_inside_preexec > 0 )); then
-	# 	return
-	# fi
-	[[ $HISTCMD -eq $(( $HISTFILESIZE + 1 )) || $HISTCMD -le $LASTCMD ]] && return 0
-	export LASTCMD=$HISTCMD
-
-	# 1/256 chance to replace commands with pope unless you are rui's job
-	if [[ $( whoami ) -ne zhao && $RANDOM -lt 128 ]]; then
-		pope
-		return 1
+	# don't preexec on terminal startup
+	if [[ $HISTCMD -le $(( $HISTFILESIZE + 1 )) ]] ; then
+		return 0 
 	fi
 
-	# get command name
-	cmd=$( awk '{ print $1 }' <<< "$1" )
+	# don't preexec on automatic kitty history functions
+	[[ $HISTCMD -lt $LASTHISTCMD ]] && return 0
+	export LASTHISTCMD=$HISTCMD
 
-	# if you can just cd there, default to shopt autocd and leave
-	[[ -d $cmd ]] && return 0 
+	# 1/256 chance to replace commands with pope unless you are rui's job
+	[[ $( whoami ) -ne zhao && $RANDOM -lt 128 ]] && pope && return 1
+
+	# get command name
+	# TODO: treat quoted name w/ spaces as one thing instead of multiple
+	arg0=$( awk '{ print $1 }' <<< "$1" )
+
+	# if multiple arguments, assume you were trying to run a command that DNE
+	[[ "$arg0" != "$BASH_COMMAND" ]] && return 0
+
+	# if you can just cd there, default to autocd and leave
+	[[ -d $arg0 ]] && return 0 
 
 	# if command doesn't exist, try bfsrt
-	if [[ -z $( 'type' -t $cmd ) ]]; then
-	   	source bfs_base -rt $cmd 5 &>/dev/null && return 1
+	if [[ -z $( 'type' -t $arg0 ) ]]; then
+	   	source bfs_base -rt $arg0 6 &>/dev/null && return 1
 	fi
 
 	# all else fails, run default command not found behaviour
