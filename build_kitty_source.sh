@@ -69,5 +69,4 @@ cd kitty
 #only remove those ones
 #sudo apt remove "$deps" -y
 
-
 cd "$curr"

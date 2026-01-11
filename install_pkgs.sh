@@ -66,6 +66,8 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 flatpak install flathub com.github.PintaProject.Pinta
 #discord
 flatpak install flathub com.discordapp.Discord
+#touche for touchegg
+flatpak install flathub com.github.joseexposito.touche
 
 #rust stuff
 if ! [ -d ~/.cargo ]; then 
