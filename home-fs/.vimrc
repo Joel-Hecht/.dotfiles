@@ -36,7 +36,7 @@ Plug 'vim-scripts/a.vim'
 call plug#end()
 " end vimplug stuff
 
-" langauge dependant indents
+" language dependent indents
 filetype plugin indent on 
 
 "defualt vimrc textwidth
@@ -84,3 +84,12 @@ nnoremap <Leader>r :source $MYVIMRC<CR>:noh<CR>
 " shortcut for find-replace
 nnoremap <Leader>s :%s//g<Left><Left><BS>/
 vnoremap <Leader>s :s//g<Left><Left><BS>/
+
+" toggle fold
+nnoremap <Leader>f za
+" get last session's folds
+nnoremap <leader>F :silent! loadview<CR>
+" fold everything
+nnoremap <Leader>z zM
+" unfold everything
+nnoremap <Leader>Z zR
