@@ -61,6 +61,8 @@ autocmd BufWinLeave * silent! mkview
 " Save '+' vim register to clipboard when we leave 
 autocmd VimLeave * call system("xclip -sel c ", getreg('+'))
 
+command DiffOrig let g:diffline = line('.') | vert new | set bt=nofile | r # | 0d_ | diffthis | :exe "norm! ".g:diffline."G" | wincmd p | diffthis | wincmd p
+
 " Ctrl+Y to copy last yanked text to clipboard ('+' register)
 nnoremap <C-y> :let @+=@"<CR>
 nnoremap ^ 0
@@ -93,3 +95,7 @@ nnoremap <leader>F :silent! loadview<CR>
 nnoremap <Leader>z zM
 " unfold everything
 nnoremap <Leader>Z zR
+
+" shortcut for  difforig
+nnoremap <Leader>do :DiffOrig<cr>
+nnoremap <leader>dc :q<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>k
