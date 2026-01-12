@@ -285,9 +285,10 @@ function preexec_1 {
 	# if you can just cd there, default to autocd and leave
 	[[ -d $arg0 ]] && return 0 
 
-	# if command doesn't exist, try bfsrt
+	# if command doesn't exist, try bfs
 	if [[ -z $( 'type' -t $arg0 ) ]]; then
-	   	source bfs_base -rt $arg0 6 &>/dev/null && return 1
+		source bfs_base -t $arg0 6 &>/dev/null && return 1  # try starting from here first
+		source bfs_base -rt $arg0 6 &>/dev/null && return 1	# next try from root
 	fi
 
 	# all else fails, run default command not found behaviour
