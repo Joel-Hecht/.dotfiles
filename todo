@@ -7,7 +7,6 @@ medium
 - bfsr starting from source dir
 		- so bfsr [options] dest [source] [maxdepth] search starting from [source], bfsr dest ~ would be equivalent to current default bfsr
 - keyboard shortcut to change kitty text size and reload all kitty terminals
-- make dh X work with files with spaces in name
 - optimize bfs with find 
 - look into kitty history preexec
 - add timeout to bfs

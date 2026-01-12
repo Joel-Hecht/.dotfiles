@@ -45,6 +45,11 @@ function findproc {
 }
 alias fp="findproc"
 
+# from https://unix.stackexchange.com/a/561579
+function awkn {
+	awk -v n=$1 '{ for (i=n; i<=NF; i++) printf "%s%s", $i, (i<NF ? OFS : ORS)}' "$2"
+}
+
 function downhere {
 	[[ $# -eq 0 ]] && num=1 || num="$1"
 
@@ -57,7 +62,7 @@ function downhere {
 		if [[ $num -eq 1 ]]; then
 			fname="$(ls -t "${HOME}/Downloads" | head -1 | tail -1 )"
 		else
-			fname="$(ls -tl "${HOME}/Downloads" | /usr/bin/grep ^- | awk '{ print $NF }' | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
+			fname="$(ls -tl "${HOME}/Downloads" | /usr/bin/grep ^- | awkn 9 | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
 		fi
 		fullpath="${HOME}/Downloads/"${fname}""
 		if [[ $( tail -c 6 <<< "$fullpath" ) == '.part' ]]; then
@@ -65,7 +70,7 @@ function downhere {
 			return 1
 		else
 			echo "$fullpath"
-			mv "$fullpath" "./$fname"
+			mv "$fullpath" ./"$fname"
 		fi
 		num=$(( $num - 1 ))
 	done
