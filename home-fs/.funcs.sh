@@ -77,6 +77,11 @@ function downhere {
 }
 alias dh="downhere"
 
+function vm {
+	mv "$1" ~/vm/fusion_share/in/
+}
+
+
 function dc {
 	if [[ $# -eq 0 ]]; then
 		bg 2> /dev/null
