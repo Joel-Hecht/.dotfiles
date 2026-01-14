@@ -50,8 +50,11 @@ function awkn {
 	awk -v n=$1 '{ for (i=n; i<=NF; i++) printf "%s%s", $i, (i<NF ? OFS : ORS)}' "$2"
 }
 
-function downhere {
-	[[ $# -eq 0 ]] && num=1 || num="$1"
+
+function bdh {
+	[[ $# -lt 1 ]] && echo "bdh: no location provided" && return
+
+	[[ $# -lt 2 ]] && num=1 || num="$2"
 
 	if ! [[ "$num" =~ ^[0-9]+$ ]]; then
 		echo "dh [X] to move the last X downloaded files, X must be a number" >&2
@@ -60,12 +63,14 @@ function downhere {
 	
 	while [[ $num -gt 0 ]]; do
 		if [[ $num -eq 1 ]]; then
-			fname="$(ls -t "${HOME}/Downloads" | head -1 | tail -1 )"
+			fname="$(buoy -e ls -t "$1" | head -1 | tail -1 )"
 		else
-			fname="$(ls -tl "${HOME}/Downloads" | /usr/bin/grep ^- | awkn 9 | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
+			#fname="$(buoy -e ls -tl "$1" | /usr/bin/grep ^- | awkn 9 | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
+			fname="$(buoy -e ls -tl "$1" | awkn 9 | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
 		fi
-		fullpath="${HOME}/Downloads/"${fname}""
-		if [[ $( tail -c 6 <<< "$fullpath" ) == '.part' ]]; then
+		# fullpath="${1}/""\"${fname}"
+		fullpath="$(buoy -e echo "${1}/$fname")"
+		if [[ $( tail -c 6 <<< "${fullpath}" ) == '.part' ]]; then
 			echo "Still downloading!"
 			return 1
 		else
@@ -75,12 +80,13 @@ function downhere {
 		num=$(( $num - 1 ))
 	done
 }
+		
+alias downhere="bdh \"${HOME}/Downloads/\""
 alias dh="downhere"
 
 function vm {
 	mv "$1" ~/vm/fusion_share/in/
 }
-
 
 function dc {
 	if [[ $# -eq 0 ]]; then
