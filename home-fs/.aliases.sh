@@ -124,6 +124,7 @@ alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias lo="libreoffice"
 alias py="python"
+alias bat="batcat"
 function vpy {
 	[[ -n $( echo $PATH | ugrep venv ) ]] || venv
 	python "$@"

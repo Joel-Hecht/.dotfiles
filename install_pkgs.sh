@@ -46,8 +46,9 @@ pylint `_python linter for no good reason` \
 kitty-terminfo `tells nvim about kitty for terminal mode` \
 cowsay \
 build-essential gdb debhelper ` prob alr have these` \
-libudev-dev libinput-dev libpugixml-dev libcairo2-dev libx11-dev libxtst-dev libxrandr-dev libxi-dev libglib2.0-dev libgtk-3-dev `for touchegg, prob alr have these` \
-gcc `put this here again so ALL PRECVIUS can have escaped newlines`
+bat \
+gcc `put this here again so ALL PREVIOUS can have escaped newlines`
+#libudev-dev libinput-dev libpugixml-dev libcairo2-dev libx11-dev libxtst-dev libxrandr-dev libxi-dev libglib2.0-dev libgtk-3-dev `for touchegg, prob alr have these` \
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
 
@@ -67,7 +68,7 @@ flatpak install flathub com.github.PintaProject.Pinta
 #discord
 flatpak install flathub com.discordapp.Discord
 #touche for touchegg
-flatpak install flathub com.github.joseexposito.touche
+#flatpak install flathub com.github.joseexposito.touche
 
 #rust stuff
 if ! [ -d ~/.cargo ]; then 
@@ -149,13 +150,13 @@ if [[ -z $(command -v buoy) || -z $(command -v buoy-client)  ]]; then
 fi
 
 #install touchegg
-if [[ -z $( pgrep -a touchegg ) ]]; then
-	sudo rm -rf $( command -v touchegg ) $( which touchegg ) $( whereis touchegg )
-	sudo add-apt-repository ppa:touchegg/stable
-	sudo apt update
-	sudo apt install touchegg
-	touchegg &
-fi
+#if [[ -z $( pgrep -a touchegg ) ]]; then
+#	sudo rm -rf $( command -v touchegg ) $( which touchegg ) $( whereis touchegg )
+#	sudo add-apt-repository ppa:touchegg/stable
+#	sudo apt update
+#	sudo apt install touchegg
+#	touchegg &
+#fi
 
 #instal vimplug for vim if it does not exist already
 if [[ -z $(ls ~/.vim/autoload/plug.vim) ]]; then
