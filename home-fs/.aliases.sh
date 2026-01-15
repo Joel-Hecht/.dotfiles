@@ -142,6 +142,7 @@ alias sa="source ~/.aliases.sh"
 alias sf="source ~/.funcs.sh"
 alias ms="curr=\"\$(pwd)\" && dhome && ./makesymlinks.sh; cd \"\$curr\""
 alias reload="sb && sa && sf"
+function unfunc { orig=$( type -a $1 ) && unset -f "$1" && echo "was $orig" ; }
 
 # path
 function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh ; }
@@ -200,3 +201,5 @@ alias 4b="pope"
 alias 5b="pope"
 alias 6b="pope"
 alias llha="pope"
+alias :w="cowsay hi i am vim"
+alias :wq="cowsay hi i am vim && sleep 2 && exit"
