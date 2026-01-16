@@ -112,7 +112,14 @@ alias unadd="git restore --staged"
 alias ungaa="git reset --mixed"
 alias untrack="git rm --cached"
 alias uncommit="git reset --soft HEAD~1"
-alias amend="git commit --amend"
+function amend {
+	if [[ -z "$( git diff --staged )" ]]; then
+		git commit --amend
+	else
+		echo You have staged changes, git commit --amend will merge them into the last commit
+		echo If you just want to rewrite your commit message, unstage your changes first
+	fi
+}
 #copy github access token to authenticate on tux
 alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
 alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt | cpy ; cd \"\$curr\""
