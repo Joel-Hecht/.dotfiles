@@ -83,8 +83,6 @@ alias difff="kitten diff"
 alias mypy="~/.basevenv/bin/mypy"
 function findproc { ps aux | ugrep "$@" --color=yes | ugrep -v grep --color=yes ; }
 function ref { grep '\<'$1'\>' ; }
-function def { grep '^[\s]*([^\s=@\\/\\"]+[\s\*]+)*\\<'$1'\\>' ; } # start of line, any whitespace, then any amount of words with nothing weird going on
-# should match anything like unsigned int* $1=...
 
 #vim aliases
 #alias v="vim"

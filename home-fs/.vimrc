@@ -23,7 +23,6 @@ set viminfo+=<500
 ":set clipboard=unnamedplus | " default vim clipbaord is system clipboard
 :set ruler | "always show cursor
 :set showcmd | "show incomplete commands (should be on by default) 
-:color lunaperche
 :syntax enable
 
 " vimplug stuff - doesnt work at all right now
