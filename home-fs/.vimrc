@@ -23,6 +23,7 @@ set viminfo+=<500
 ":set clipboard=unnamedplus | " default vim clipbaord is system clipboard
 :set ruler | "always show cursor
 :set showcmd | "show incomplete commands (should be on by default) 
+:color lunaperche
 :syntax enable
 
 " vimplug stuff - doesnt work at all right now
@@ -48,16 +49,15 @@ set mouse=a
 set foldmethod=indent   " fold based on indent
 set foldlevelstart=99
 autocmd FileType c,cpp,h,hpp setlocal foldmethod=syntax
-autocmd BufWinEnter * if &foldmethod !=# 'manual' | silent! loadview | endif
 autocmd BufWinLeave * silent! mkview
 
 "  automatically restore to last edited location
-"  Replaced by vim-lastplace in vimrc
-" autocmd BufReadPost *
-"   \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-"   \ |   exe "normal! g`\""
-"   \ | endif
-" 
+"  should be replaced by vim-lastplace in vimrc but it doesnt work
+ autocmd BufReadPost *
+  \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+  \ |   exe "normal! g`\""
+  \ | endif
+
 " Save '+' vim register to clipboard when we leave 
 autocmd VimLeave * call system("xclip -sel c ", getreg('+'))
 
@@ -86,15 +86,16 @@ nnoremap <Leader>r :source $MYVIMRC<CR>:noh<CR>
 " shortcut for find-replace
 nnoremap <Leader>s :%s//g<Left><Left><BS>/
 vnoremap <Leader>s :s//g<Left><Left><BS>/
+nnoremap <Leader># #:%s//g<Left><Left><BS>/<C-R>//
 
 " toggle fold
 nnoremap <Leader>f za
-" get last session's folds
-nnoremap <leader>F :silent! loadview<CR>
-" fold everything
-nnoremap <Leader>z zM
-" unfold everything
-nnoremap <Leader>Z zR
+" [L]oad last session's folds
+nnoremap <leader>FL :silent! loadview<CR>
+" [F]old everything
+nnoremap <Leader>FF zM
+" [U]nfold everything
+nnoremap <Leader>FU zR
 
 " shortcut for  difforig
 nnoremap <Leader>do :DiffOrig<cr>
