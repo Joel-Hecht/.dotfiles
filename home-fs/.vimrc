@@ -96,6 +96,11 @@ nnoremap <Leader>FF zM
 " [U]nfold everything
 nnoremap <Leader>FU zR
 
+if &diff
+	nnoremap sp :.diffput<CR>0j
+	nnoremap wo :q!<CR>:wq<CR>
+endif
+
 " shortcut for  difforig
-nnoremap <Leader>do :DiffOrig<cr>
-nnoremap <leader>dc :q<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>k
+" nnoremap <Leader>do :DiffOrig<cr>
+" nnoremap <leader>dc :q<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>k
