@@ -97,7 +97,10 @@ nnoremap <Leader>FF zM
 nnoremap <Leader>FU zR
 
 if &diff
+	" [s]ingle [p]ut
 	nnoremap sp :.diffput<CR>0j
+
+	" [w]rite [o]ther only
 	nnoremap wo :q!<CR>:wq<CR>
 endif
 
