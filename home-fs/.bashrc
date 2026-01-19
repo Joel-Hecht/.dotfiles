@@ -253,6 +253,14 @@ trap "${HOME}/.bash_exit.sh" EXIT
 source ${HOME}/.local/share/buoy/buoy-interface.sh
 # <<<<< source file for buoy <<<<<
 
+# fill bash_history to max so bash-preexec checks will work
+if [[ $( wc -l "$HISTFILE" | awk '{ print $1 }' ) -lt $HISTFILESIZE ]]; then
+	echo "Setting up bash-preexec..."
+	while [[ $( wc -l "$HISTFILE" | awk '{ print $1 }' ) -lt $HISTFILESIZE ]]; do
+		echo ls >> "$HISTFILE"
+	done
+fi
+
 # >>> bash-preexec >>>
 # define functions and add to precmd_functions to have them execute before prompt display,
 # 					 or to preexec_functions to have them execute before command execution
