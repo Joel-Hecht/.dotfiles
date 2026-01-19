@@ -81,7 +81,7 @@ function bdh {
 	done
 }
 		
-alias downhere="bdh \"${HOME}/Downloads/\""
+alias downhere="bdh \"@/Downloads/\""
 alias dh="downhere"
 
 function vm {
