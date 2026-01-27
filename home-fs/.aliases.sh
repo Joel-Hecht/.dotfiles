@@ -128,8 +128,15 @@ alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt
 alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias lo="libreoffice"
-alias py="python"
 alias bat="batcat"
+alias ipython="ipython3"
+function py {
+	if [[ -z $1 ]]; then
+		ipython3
+	else
+		python $@
+	fi
+}
 function vpy {
 	[[ -n $( echo $PATH | ugrep venv ) ]] || venv
 	python "$@"
