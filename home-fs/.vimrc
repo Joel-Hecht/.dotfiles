@@ -87,6 +87,21 @@ nnoremap <Leader>s :%s//g<Left><Left><BS>/
 vnoremap <Leader>s :s//g<Left><Left><BS>/
 nnoremap <Leader># #:%s//g<Left><Left><BS>/<C-R>//
 
+" move by 5
+nnoremap <Leader>j 5j
+nnoremap <Leader>k 5k
+vnoremap <Leader>j 5j
+vnoremap <Leader>k 5k
+onoremap <Leader>j 5j
+onoremap <Leader>k 5k
+" move by 10
+nnoremap <C-j> 10j
+nnoremap <C-k> 10k
+vnoremap <C-j> 10j
+vnoremap <C-k> 10k
+onoremap <C-j> 10j
+onoremap <C-k> 10k
+
 " toggle fold
 nnoremap <Leader>f za
 " [L]oad last session's folds
