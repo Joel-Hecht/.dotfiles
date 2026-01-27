@@ -29,12 +29,10 @@ HISTFILESIZE=2000
 shopt -s checkwinsize 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+# shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-export PATH="${HOME}/.kitty/kitty/kitty/launcher/:$PATH" #mine
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -46,37 +44,11 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/' | sed -e 's/$/ /'
 }
 
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;37m\]$(parse_git_branch)\[\033[00m\]\[\033[01;32m\]\w\[\033[00m\] '
-
-#if [ "$color_prompt" = yes ]; then
-#   	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\w\[\033[00m\] '
-##   PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-#else
-#   	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\w\[\033[00m\] '
-#	#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\[\e[1m\]\w\[\e[0m\]\[\033[01;32m\] '
-#    #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-#fi
-#unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -91,24 +63,8 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto --hyperlink=auto' 
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
     alias grep='kitty +kitten hyperlinked_grep --smart-case -L'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
-fi
-
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+	alias ugrep='/usr/bin/grep --color=auto' # [u]sr/bin grep instead of kitty grep
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -121,27 +77,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-#generate random color/image when we start a terminal window
-#colorscript random
-
-
-#MOVED TO I3CONFIG
-#needed to source i3bar tray to primary monitor on multi-monitor setup
-#should work dynamically with laptop and PC systems
-#install xrandr with sudo apt install libx11-dev
-#get first available display
-#disp=$(xrandr -q | grep " connected" | sed -e 's/ .*$//' | head -1)
-#xrandr --output $disp --primary
-
-#append to bash history for this terminal live, instead of when file ends
-#useful for copying last command
-#When each command is executed, this will append the contents to the active
-#bash history list for the current terminal (-a), then pull all history from 
-#other terminals (-c), and add the current termianls history tot that file (-r)
-#this allows bash (which is a seperate, noninteractable terminal) to read 
-#the history live
-export PROMPT_COMMAND='history -a'
 
 # >>> juliaup initialize >>>
 
@@ -174,18 +109,19 @@ alias pip="${HOME}/${VENVNAME}/bin/pip"
 . "$HOME/.cargo/env"
 export TERM=xterm-256color
 
-#import all aliases
-source ~/.aliases.sh || touch ~/.aliases.sh
-source ~/.funcs.sh || touch ~/.funcs.sh
-source ~/.aliases_bfs.sh || touch ~/.aliases_bfs.sh
-source ~/.path.sh || touch ~/.path.sh
-source ~/.bash_profile || touch ~/.bash_profile
+# import all aliases
+source ~/.aliases.sh || touch ~/.aliases.sh && source ~/.aliases.sh
+source ~/.funcs.sh || touch ~/.funcs.sh && source ~/.funcs.sh
+source ~/.aliases_bfs.sh || touch ~/.aliases_bfs.sh && source ~/.aliases_bfs.sh
+source ~/.path.sh || touch ~/.path.sh && source ~/.path.sh
+source ~/.bash_profile || touch ~/.bash_profile && source ~/.bash_profile
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-#add my custom commands to path
+# add things to path
+export PATH="${HOME}/.kitty/kitty/kitty/launcher/:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/lib/qt6/bin:$PATH"
 export PATH="$HOME/bin/aliases:$PATH"
