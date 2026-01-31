@@ -4,19 +4,19 @@ colorscheme default
 
 highlight! SpecialKey ctermfg=cyan
 highlight! Search ctermfg=black ctermbg=yellow
-highlight! LineNr ctermfg=yellow
-highlight! CursorLineNr cterm=underline ctermfg=yellow
+highlight! LineNr ctermfg=lightyellow
 highlight! Folded ctermfg=cyan ctermbg=grey
 highlight! FoldColumn ctermfg=cyan ctermbg=grey
 highlight! DiffAdd ctermbg=darkblue
 highlight! DiffChange ctermbg=darkmagenta
 highlight! SignColumn ctermfg=cyan ctermbg=grey
+highlight! Normal ctermfg=white
 
 highlight! MatchParen ctermbg=magenta
 highlight! Special ctermfg=lightred
 highlight! Comment ctermfg=grey
-highlight! Identifier ctermfg=grey
+highlight! Identifier cterm=bold ctermfg=216
 highlight! Constant ctermfg=magenta
-highlight! Statement ctermfg=yellow
-highlight! PreProc ctermfg=lightblue
-highlight! Type ctermfg=lightgreen
+highlight! Statement ctermfg=lightblue
+highlight! PreProc ctermfg=156
+highlight! Type ctermfg=lightmagenta
