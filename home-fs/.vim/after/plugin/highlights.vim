@@ -4,6 +4,7 @@ colorscheme default
 
 highlight! SpecialKey ctermfg=cyan
 highlight! Search ctermfg=black ctermbg=yellow
+highlight! CurSearch ctermfg=black ctermbg=magenta
 highlight! LineNr ctermfg=lightyellow
 highlight! Folded ctermfg=cyan ctermbg=grey
 highlight! FoldColumn ctermfg=cyan ctermbg=grey
@@ -20,3 +21,5 @@ highlight! Constant ctermfg=magenta
 highlight! Statement ctermfg=lightblue
 highlight! PreProc ctermfg=156
 highlight! Type ctermfg=lightmagenta
+
+highlight! SignatureMarkText ctermfg=grey ctermbg=lightyellow
