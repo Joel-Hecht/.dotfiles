@@ -130,16 +130,14 @@ alias icat="kitty +kitten icat"
 alias lo="libreoffice"
 alias bat="batcat"
 alias ipython="ipython3"
-function py {
+alias py="python"
+function vpy {
+	[[ -n $( echo $PATH | ugrep venv ) ]] || venv
 	if [[ -z $1 ]]; then
 		ipython3
 	else
-		python $@
+		python "$@"
 	fi
-}
-function vpy {
-	[[ -n $( echo $PATH | ugrep venv ) ]] || venv
-	python "$@"
 	venvl
 }
 alias jpnb="venv && dc jupyter-notebook && venvl"
