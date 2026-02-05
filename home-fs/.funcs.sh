@@ -1,5 +1,20 @@
 #!/bin/bash
 
+function repo {
+	url=$( git remote get-url origin 2> /dev/null )
+	if [[ -z "$url" ]]; then
+		dc firefox github.com/Joel-Hecht/.dotfiles
+	elif [[ "$url" == https* ]]; then
+		dc firefox "$url"
+	else
+		ssh_url=${url#*@%} # Delete leading *@
+		ssh_home=${ssh_url%:*} # Delete trailing :*
+		ssh_name=${ssh_url#*:} # Delete leading *:
+		ssh_name=${ssh_name%.*} # Delete trailing .*
+		dc firefox "$ssh_home/$ssh_name"
+	fi
+}
+
 function p {
 	if [[ $# -lt 1 ]]; then
 		cd ..
