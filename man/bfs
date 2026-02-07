@@ -1,24 +1,27 @@
-./" Manpage for bfs 
-.TH man 1 "21 June 2025" "1.0" "User Commands"
+./" Manpage for bfs
+.TH man 1 "07 Feb 2026" "1.0" "User Commands"
 .SH NAME 
 	bfs - breadth-first search 
 .SH SYNOPSIS
-	bfs [OPTION] dirname [maxdepth (default=5)]
+	bfs {OPTIONS} dirname
+	bfs {OPTIONS} cmd *args
 .SH DESCRIPTION
-	recursive cd that goes layer-by-layer until a maxdepth through the subdirectory tree until it finds a match and then sends you there
+	bfs is a wrapper for executing commands with breadth-first searched arguments. If only one argument is supplied, it will search for a directory and cd there. Otherwise, it will take the first argument as a literal command, search for the other arguments, and execute the created command. If the first arg is not a command, bfs can search for it too.
+.SH NOTES
+	Use _ before an argument to match it literally, e.g. bfs mv old _new. Use __ if you need to match something with an underscore (so bfs ___pycache__ with three underscores if you want to go there for whatever reason)
 .SH OPTIONS
-	-h explore hidden directories (bfsh)\n
-	-r start from root (bfsr)\n
-	-f explore to maxdepth and cd to last used match (bfsf)\n
-	-t find directories starting with argument (bfst) (t as in tab, like how you can hit tab when using cd to autocomplete the start of a directory name)\n
-	-i infinite maxdepth (not compatible with -f, -f will override)
-	-s find directories containing argument (bfss) (s as in stars, like how you can do cd *something* to go to a directory with something in it
+	-h explore hidden directories (bfsh)\n\n
+	-r start from root (bfsr)\n|n
+	-f explore to maxdepth and cd to last used match (bfsf)\n\n
+	-t find directories starting with argument (bfst)\n\n
+	-i infinite maxdepth (bfsi)\n\n
+	-s find directories containing argument (bfss)\n\n
+	-d only match directories, not files (bfsd)\n\n
 .SH EXAMPLES
-	bfs -h home-fs     probably goes to ~/.dotfiles/home-fs
-	bfs -tf cs         starting from pwd, goes to most recently used directory starting with "cs"
-	bfs -hrf bin       starting from root, goes to most recently used "bin" directory including hidden files (probably dbin)
-.SH BUGS
-	-f and -i do not work together and i am not sure how to make them work
+	bfs src					starting from pwd, go to closest directory named src
+	bfs -tf cs          	starting from pwd, goes to most recently used directory starting with cs
+	bfs -rs vi .py			starting from root, edit closest file containing .py with vim
+	bfs git _add main.c		starting from pwd, git add closest file named main.c
 .SH AUTHOR
 	written by rui zhao 
 .SH REPORTING BUGS
@@ -26,4 +29,4 @@
 .SH COPYRIGHT
 	This is free software, you are free to change and redistribute it, there is no warranty
 .SH ALIASES
-	all of them
+	-d compound aliases don't work for now but it is a useless option so who cares

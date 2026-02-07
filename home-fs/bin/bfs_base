@@ -1,18 +1,24 @@
 #!/bin/bash
 
 function helpmsg {
-	echo "bfs: breadth first recursive cd"
-	echo "syntax: bfs [OPTION] dirname [maxdepth (default=5)]"
+	echo "bfs: breadth first find wrapper"
+	echo ""
+	echo "syntax: bfs {OPTIONS} dirname"
+	echo "syntax: bfs {OPTIONS} cmd *args"
+	echo "if only one arg, bfs will find a directory and cd there"
+	echo "otherwise, bfs will find any filetype and run \$1 on it "
+	echo "use _ before an argument to leave it exact (e.g. bfs mv old _new )"
+	echo ""
 	echo "options:"
-	echo "\t-h: explore hidden directories (also bfsh)"
-	echo "\t-r: start from root (also bfsr)"
-	echo "\t-f: explore fully and go to last used match"
-	echo "\t-t: (tab) find directory starting with argument"
-	echo "\t-i: infinite depth"
-	echo "\t-s: (stars) find directory containing argument anywhere"
+	echo "	-h: explore hidden directories"
+	echo "	-r: start from ~ instead of pwd"
+	echo "	-f: explore fully and pick last used match"
+	echo "	-t: match anything starting with argument"
+	echo "	-i: infinite depth"
+	echo "	-s: match anything containing argument"
+	echo "	-d: match only directories"
 }
 
-# help
 if [[ $# -eq 0 || $1 == "--help" ]]; then
 	helpmsg
 	return 0
@@ -20,12 +26,7 @@ fi
 
 # options
 OPTIND=1
-hidden=""
-root=""
-full=""
-tab=""
-infinite=""
-stars=""
+hidden="" root="" full="" tab="" infinite="" stars="" dirs=""
 while getopts "hrftis" opt; do
 	case $opt in
 		h) hidden=yes ;;
@@ -34,34 +35,57 @@ while getopts "hrftis" opt; do
 		t) tab=yes ;;
 		i) infinite=yes ;;
 		s) stars=yes ;;
+		d) dirs=yes ;;
 		\?) echo "Invalid option -$OPTARG" >&2
 			return 1 ;;
 	esac
 done
 shift $(( OPTIND - 1 ))
+
 if [[ $# -eq 0 ]]; then
 	helpmsg
 	return 0
+elif [[ $# -eq 1 ]]; then
+	args=("cd")
+	type="-type d"
+else
+	type=""
+	if [[ -n $( 'type' -t "$1" ) ]]; then
+		args=("$1")
+		shift
+	else
+		args=()
+	fi
 fi
 
-[[ $hidden ]] || prune=( -type d -path '*/.*' -prune -o )
+if [[ $hidden ]]; then
+	prune=()
+	maxdepth=7
+else
+	prune=( -type d -path '*/.*' -prune -o )
+	maxdepth=9
+fi
 [[ $root ]] && path="$HOME" || path='.'
-
-[[ $# -gt 1 ]] && maxdepth="$2" || maxdepth=9
-[[ "$maxdepth" =~ ^[0-9]+$ ]] || { echo "maxdepth must be a number" >&2 ;
-									return 1; }
 [[ $infinite ]] && maxdepth=999
+[[ $dirs ]] && type="-type d"
 
-arg="$1"
-[[ $stars ]] && arg="*$arg*"
-[[ $tab ]] && arg="$arg*"
+for arg in "$@"; do
+	if [[ "$arg" == __* ]]; then
+		arg=${arg#_}
+	elif [[ "$arg" == _* ]]; then
+		args+= ("${arg#_}")
+		continue
+	fi
 
-targets="$( /usr/bin/bfs $path "${prune[@]}" \
-			-type d -name "$arg" -printf "%T@ %p\n" )"
+	[[ $stars ]] && arg="*$arg*"
+	[[ $tab ]] && arg="$arg*"
 
-[[ $full ]] && targets="$( echo "$targets" | sort -nr )"
+	targets="$( /usr/bin/bfs $path "${prune[@]}" $type -name "$arg" -printf "%T@ %p\n" )"
+	[[ $full ]] && targets="$( echo "$targets" | sort -nr )"
+	line="$( echo "$targets" | head -n 1 )"
+	found="${line#* }" # remove first word
+	[[ $found ]] || { echo "$arg not found!" ; return 1; }
+	args+=("$found")
+done
 
-dest="$( echo "$targets" | head -n 1 | awk '{ for (i = 2; i < NF; i++) \
-											printf "%s ", $i; print $NF }' )"
-[[ $dest ]] && cd "$dest" || { echo "Destination not found!" >&2; return 1; }
-return 0
+"${args[@]}"
