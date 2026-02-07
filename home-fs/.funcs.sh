@@ -7,7 +7,7 @@ function repo {
 	elif [[ "$url" == https* ]]; then
 		dc firefox "$url"
 	else
-		ssh_url=${url#*@%} # Delete leading *@
+		ssh_url=${url#*@} # Delete leading *@
 		ssh_home=${ssh_url%:*} # Delete trailing :*
 		ssh_name=${ssh_url#*:} # Delete leading *:
 		ssh_name=${ssh_name%.*} # Delete trailing .*
