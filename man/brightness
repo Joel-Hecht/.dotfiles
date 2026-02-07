@@ -8,13 +8,13 @@
 	Allows you to change or reset brightness, and synchronizes brightness between displays
 .SH OPTIONS
 	-r to reset to default brightness (1)
-
+.br
 	-c <change> to change the brightness to <current brightness> + change.  Change can be negative to decrease the brightness
 .SH EXAMPLES
 	brightness -r
-
+.br
 	brightness -c -0.1
-
+.br
 	brightness -c 0.3
 .SH BUGS
 	undefined behavior if no arg is provided
@@ -22,5 +22,3 @@
 	written by joel hecht joel@hechts.org
 .SH COPYRIGHT
 	This is free software, you are fre to change and redistribute it, there is no warranty
-
-

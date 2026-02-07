@@ -6,12 +6,15 @@
 	mcv source destination
 .SH DESCRIPTION
 	does mv, cds to wherever it is now, then edits the file in vim
+.br
 	only edits the last file if you give multiple
 .SH OPTIONS
 	mv default options work, so -i to prompt before overwrite, -n to not overwrite, -b to make backups, -u for update, -v for verbose
+.br
 	vim default options do not work
 .SH EXAMPLES
 	mcv hi.csv csvs
+.br
 	mcv sdifji.py ../../ijsdif/jsissbsbbsb.py
 .SH BUGS
 	probably none

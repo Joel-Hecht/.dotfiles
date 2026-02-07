@@ -8,6 +8,7 @@
 	confelinenate files to standard output (print their contents)
 .SH EXAMPLES
 	feline file1.txt file2.txt file3.txt\n
+.br
 	echo "------" | feline file1.txt - file2.txt         will print the dashes between the two files
 .SH AUTHOR
 	pretty much copied from David Thrane Christainsen https://lean-lang.org/functional_programming_in_lean/Hello___-World___/Worked-Example___--cat/#Functional-Programming-in-Lean--Hello___-World___--Worked-Example___--cat

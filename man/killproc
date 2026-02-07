@@ -10,6 +10,7 @@
 	there probably should be some
 .SH EXAMPLES
 	killproc discord
+.br
 	killproc http.server (equivalent to stopserver alias)
 .SH BUGS
 	sometimes throws an error and kills itself maybe

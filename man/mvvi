@@ -8,10 +8,13 @@
 	does mv then edits the file in vim
 .SH OPTIONS
 	mv default options work, so -i to prompt before overwrite, -n to not overwrite, -b to make backups, -u for update, -v for verbose
+.br
 	vim default options do not work
 .SH EXAMPLES
 	mvvi hi.csv csvs
+.br
 	mvvi sdifji.py ../../ijsdif/jsissbsbbsb.py
+.br
 	mvvi 1.txt 2.txt
 .SH BUGS
 	probably none

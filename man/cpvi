@@ -11,7 +11,9 @@
 	vim default options do not work
 .SH EXAMPLES
 	cpvi hi.csv csvs
+.br
 	cpvi sdifji.py ../../ijsdif/jsissbsbbsb.py
+.br
 	cpvi 1.txt 2.txt
 .SH BUGS
 	probably none

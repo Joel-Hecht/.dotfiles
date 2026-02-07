@@ -8,9 +8,11 @@
 	makes the destination directory. then moves the files there. if dest already exists it's just mv.
 .SH OPTIONS
 	mv default options work, so -i to prompt before overwrite, -n to not overwrite, -b to make backups, -u for update, -v for verbose\n\n
+.br
 	mkdir default options do not work because mkdir only uses the last argument
 .SH EXAMPLES
 	mkmv *.csv csvs
+.br
 	mkmv sdifji.py ../../ijsdif
 .SH BUGS
 	probably none

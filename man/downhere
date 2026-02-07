@@ -8,6 +8,7 @@
 	moves the X most recent regular file in ~/Downloads, which is probably whatever you just downloaded from your browser, to the pwd. ignores directories
 .SH EXAMPLES
 	downhere
+.br
 	dh 5
 .SH BUGS
 	unlikely

@@ -6,21 +6,38 @@
 	bfs {OPTIONS} dirname
 	bfs {OPTIONS} cmd *args
 .SH DESCRIPTION
-	bfs is a wrapper for executing commands with breadth-first searched arguments. If only one argument is supplied, it will search for a directory and cd there. Otherwise, it will take the first argument as a literal command, search for the other arguments, and execute the created command. If the first arg is not a command, bfs can search for it too.
+	bfs is a wrapper for executing commands with breadth-first searched arguments.
+.br
+	If only one argument is supplied, it will search for a directory and cd there.
+.br
+	Otherwise, it will take the first argument as a literal command, search for the other arguments, and execute the created command.
+.br
+	If the first arg is not a command, bfs can search for it too.
 .SH NOTES
-	Use _ before an argument to match it literally, e.g. bfs mv old _new. Use __ if you need to match something with an underscore (so bfs ___pycache__ with three underscores if you want to go there for whatever reason)
+	Use _ before an argument to match it literally, e.g. bfs mv old _new.
+.br
+	Use __ if you need to match something with an underscore (so bfs ___pycache__ with three underscores if you want to go there for whatever reason)
 .SH OPTIONS
-	-h explore hidden directories (bfsh)\n\n
-	-r start from root (bfsr)\n|n
-	-f explore to maxdepth and cd to last used match (bfsf)\n\n
-	-t find directories starting with argument (bfst)\n\n
-	-i infinite maxdepth (bfsi)\n\n
-	-s find directories containing argument (bfss)\n\n
-	-d only match directories, not files (bfsd)\n\n
+	-h explore hidden directories (bfsh)
+.br
+	-r start from root (bfsr)
+.br
+	-f explore to maxdepth and cd to last used match (bfsf)
+.br
+	-t find directories starting with argument (bfst)
+.br
+	-i infinite maxdepth (bfsi)
+.br
+	-s find directories containing argument (bfss)
+.br
+	-d only match directories, not files (bfsd)
 .SH EXAMPLES
-	bfs src					starting from pwd, go to closest directory named src
+	bfs src				starting from pwd, go to closest directory named src
+.br
 	bfs -tf cs          	starting from pwd, goes to most recently used directory starting with cs
+.br
 	bfs -rs vi .py			starting from root, edit closest file containing .py with vim
+.br
 	bfs git _add main.c		starting from pwd, git add closest file named main.c
 .SH AUTHOR
 	written by rui zhao 
