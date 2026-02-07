@@ -198,8 +198,8 @@ if [[ $( wc -l "$HISTFILE" | awk '{ print $1 }' ) -lt $HISTFILESIZE ]]; then
 fi
 
 # >>> bash-preexec >>>
-# define functions and add to precmd_functions to have them execute before prompt display,
-# 					 or to preexec_functions to have them execute before command execution
+# define functions and add to precmd_functions to execute before prompt display,
+# 					 or to preexec_functions to execute before command execution
 shopt -s extdebug
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 function precmd_1 {
@@ -208,12 +208,10 @@ function precmd_1 {
 }
 function preexec_1 {
 	# don't preexec on terminal startup
-	if [[ $HISTCMD -le $(( $HISTFILESIZE + 1 )) ]] ; then
-		return 0 
-	fi
+	[[ $HISTCMD -lt $(( $HISTFILESIZE )) ]] && return 0
 
 	# don't preexec on automatic kitty history functions
-	[[ $HISTCMD -lt $LASTHISTCMD ]] && return 0
+	[[ $HISTCMD -le $LASTHISTCMD ]] && return 0
 	export LASTHISTCMD=$HISTCMD
 
 	# 1/256 chance to replace commands with pope unless you are rui's job
@@ -231,8 +229,11 @@ function preexec_1 {
 
 	# if command doesn't exist, try bfs
 	if [[ -z $( 'type' -t $arg0 ) ]]; then
-		source bfs_base -t $arg0 6 &>/dev/null && return 1  # try starting from here first
-		source bfs_base -rt $arg0 6 &>/dev/null && return 1	# next try from root
+		# try starting from here first
+		source bfs_base -t $arg0 9 &>/dev/null && return 1
+
+		# next try from root
+		source bfs_base -rt $arg0 9 &>/dev/null && return 1
 	fi
 
 	# all else fails, run default command not found behaviour
