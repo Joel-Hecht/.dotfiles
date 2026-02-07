@@ -1,18 +1,7 @@
 #!/bin/bash
 
-OPTIND=1
-subdirs="./"
-depth=0
-
-hidden=no
-full=no
-tab=no
-infinite=no
-stars=no
-
-# help
-if [[ $# -eq 0 || $1 == "--help" ]]; then
-	echo "breadth first recursive cd"
+function helpmsg {
+	echo "bfs: breadth first recursive cd"
 	echo "syntax: bfs [OPTION] dirname [maxdepth (default=5)]"
 	echo "options:"
 	echo "\t-h: explore hidden directories (also bfsh)"
@@ -21,14 +10,26 @@ if [[ $# -eq 0 || $1 == "--help" ]]; then
 	echo "\t-t: (tab) find directory starting with argument"
 	echo "\t-i: infinite depth"
 	echo "\t-s: (stars) find directory containing argument anywhere"
+}
+
+# help
+if [[ $# -eq 0 || $1 == "--help" ]]; then
+	helpmsg
 	return 0
 fi
 
 # options
+OPTIND=1
+hidden=""
+root=""
+full=""
+tab=""
+infinite=""
+stars=""
 while getopts "hrftis" opt; do
 	case $opt in
 		h) hidden=yes ;;
-		r) subdirs="$HOME/" ;;
+		r) root=yes ;;
 		f) full=yes ;;
 		t) tab=yes ;;
 		i) infinite=yes ;;
@@ -37,97 +38,30 @@ while getopts "hrftis" opt; do
 			return 1 ;;
 	esac
 done
-
 shift $(( OPTIND - 1 ))
-
-# default maxdepth
-if [[ $# -gt 1 ]]; then
-	maxdepth=$2
-	if ! [[ "$maxdepth" =~ ^[0-9]+$ ]]; then
-		echo "maxdepth (arg 2) must be a number" >&2
-		return 1
-	fi
-else
-	maxdepth=9
+if [[ $# -eq 0 ]]; then
+	helpmsg
+	return 0
 fi
 
-if [[ $infinite == yes ]]; then
-	maxdepth=999
-	if [[ $full == yes ]]; then
-		# HORRIBLE terrible stopgap to make bfsfi work for now
-		testdepth=0
-		testsubdirs="./"
-		while [[ $testdepth -lt $maxdepth ]]; do
-			[[ $hidden == yes ]] && testsubdirs+="?(.)*/" || testsubdirs+="*/"
+[[ $hidden ]] || prune=( -type d -path '*/.*' -prune -o )
+[[ $root ]] && path="$HOME" || path='.'
 
-			testdepth=$(( $testdepth + 1))
+[[ $# -gt 1 ]] && maxdepth="$2" || maxdepth=9
+[[ "$maxdepth" =~ ^[0-9]+$ ]] || { echo "maxdepth must be a number" >&2 ;
+									return 1; }
+[[ $infinite ]] && maxdepth=999
 
-			# list all targets
-			targets=$( ls -dt $testsubdirs --color=no 2> /dev/null )
-			if [[ -z $targets ]]; then
-				maxdepth=$(( $testdepth ))
-			fi
-		done
-	fi
-fi
+arg="$1"
+[[ $stars ]] && arg="*$arg*"
+[[ $tab ]] && arg="$arg*"
 
-# -f 
-if [[ $full == yes ]]; then
-	if [[ $stars == yes ]]; then
-		search_term="(^|/)[^/]*$1[^/]*/$"
-	elif [[ $tabs == yes ]]; then
-		search_term="(^|/)$1[^/]*/$"
-	else
-		search_term="(^|/)$1/$"
-	fi
+targets="$( /usr/bin/bfs $path "${prune[@]}" \
+			-type d -name "$arg" -printf "%T@ %p\n" )"
 
-	current="$( pwd )"
-	cd "$subdirs"
-	for (( i=1; i<=$maxdepth; i++ )); do
-		for (( j=0; j<$i; j++ )); do
-			[[ $hidden == yes ]] && subdirs+="?(.)*/" || subdirs+="*/"
-		done
-		subdirs+=" "
-	done
+[[ $full ]] && targets="$( echo "$targets" | sort -nr )"
 
-	top_dir=$( ls -dt $subdirs --color=no 2> /dev/null | egrep "$search_term" | head -n 1 )
-	if [[ -n "$top_dir" ]]; then
-		cd "$top_dir"
-		return 0
-	fi
-	echo "failed to find!" >&2
-	cd "$current"
-	return 1
-fi
-
-if [[ $stars == yes ]]; then
-	search_term="/.*$1.*/"
-elif [[ $tab == yes ]]; then
-	search_term="/$1.*/"
-else
-	search_term="/$1/"
-fi
-
-# main loop
-while [[ $depth -lt $maxdepth ]]; do
-	[[ $hidden == yes ]] && subdirs+="?(.)*/" || subdirs+="*/"
-
-	depth=$(( $depth + 1))
-
-	# list all targets
-	targets=$( ls -dt $subdirs --color=no 2> /dev/null )
-	if [[ -z $targets ]]; then
-		echo "no more subdirectories at depth=$depth" >&2
-		return $(( $depth + 1 ))
-	fi
-
-	# look for directory
-	matched_dir=$( egrep "$search_term" <<< $targets )
-	if [[ -n "$matched_dir" ]]; then
-		cd "$( head -n 1 <<< "$matched_dir" )"
-		return 0
-	fi
-done
-
-echo "hit maxdepth ($maxdepth)!" >&2
-return 1 
+dest="$( echo "$targets" | head -n 1 | awk '{ for (i = 2; i < NF; i++) \
+											printf "%s ", $i; print $NF }' )"
+[[ $dest ]] && cd "$dest" || { echo "Destination not found!" >&2; return 1; }
+return 0
