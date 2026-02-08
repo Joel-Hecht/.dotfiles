@@ -230,10 +230,10 @@ function preexec_1 {
 	# if command doesn't exist, try bfs
 	if [[ -z $( 'type' -t $arg0 ) ]]; then
 		# try starting from here first
-		source bfs_base -t $arg0 9 &>/dev/null && return 1
+		source bfs_base -t $arg0 &>/dev/null && return 1
 
 		# next try from root
-		source bfs_base -rt $arg0 9 &>/dev/null && return 1
+		source bfs_base -rt $arg0 &>/dev/null && return 1
 	fi
 
 	# all else fails, run default command not found behaviour
