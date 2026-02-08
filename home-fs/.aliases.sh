@@ -144,6 +144,7 @@ alias directiongame="vpy ~/proj/directiongame/final5.py ; venvl"
 alias dg="directiongame"
 alias mse="dc wine $HOME/Downloads/mse/mse.exe"
 alias ardour="dc Ardour8"
+alias judgel="./jpm_tree/bin/judge"
 
 #reload after updates	
 alias sb="source ~/.bashrc"
