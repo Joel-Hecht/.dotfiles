@@ -13,11 +13,6 @@ alias t="dc firefox www.tumblr.com/"
 alias kb="chromium launcher.keychron.com"
 alias me="echo \"$(whoami)@$(hostname)\""
 alias down="cd ~/Downloads"
-alias rt="bfs -rt"
-alias rs="bfs -rs"
-alias hs="bfs -hs"
-alias s="bfs -s"
-alias h="bfs -h"
 
 alias o="cd - >/dev/null" # go to Older directory in this terminal
 alias P="dc firefox https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
