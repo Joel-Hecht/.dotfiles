@@ -44,20 +44,25 @@ alias hibernate="systemctl hibernate"
 alias reboot="systemctl reboot"
 alias kys="systemctl poweroff"
 alias kms="sudo pkill -u $(whoami)"
-alias pids="ps aux"
-alias killpid="kill -9"
 alias kf="keyboard_firmware"
-alias kp="killproc"
-alias rmswp="rm *.swp *~ 2> /dev/null"
-alias rmzip="rm *.zip *.tar *.gz 2> /dev/null"
-alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
 alias i3rs="i3-msg restart"
 alias i3rl="i3-msg reload"
-alias rm="rm -d"
-alias rmr="rm -rd"
 alias dup='dc kitty $( pwd ) 2>/dev/null' # make new terminal in this directory
 alias update="sudo apt update"
 alias upgrade="sudo apt update && sudo apt upgrade"
+
+# remove things
+alias rmswp="rm *.swp *~ 2> /dev/null"
+alias rmzip="rm *.zip *.tar *.gz 2> /dev/null"
+alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
+alias rm="rm -d"
+alias rmr="rm -rd"
+
+#process control
+alias pids="ps aux"
+alias killproc="killall"
+alias kp="killproc"
+alias killpid="kill -9"
 
 #info
 alias ll="ls -l"
