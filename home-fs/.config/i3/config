@@ -220,7 +220,6 @@ gaps outer 2px
 #enable transparent windows
 exec_always --no-startup-id compton
 
-
 bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/SCID$(bash ${HOME}/bin/.nextScreenShotID)_$(date).png"| xclip -selection clipboard -t image/png && bash ${HOME}/bin/.removeSC
 
 # this will go haywire if we ever shift to $mod=$alt (alt)
