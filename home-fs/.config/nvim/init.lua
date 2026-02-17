@@ -1211,6 +1211,15 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{
+		"jakobknauer/cppswitch",
+		config = function()
+			require("cppswitch").setup()
+			vim.keymap.set("n", "<leader>S", "<cmd>CppswitchSwitch<CR>", { desc = "Toggle header/source file" })
+			vim.keymap.set("n", "<leader>c", "<cmd>CppswitchGotoImpl<CR>")
+			vim.keymap.set("n", "<leader>h", "<cmd>CppswitchGotoHeader<CR>")
+		end,
+	},
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
