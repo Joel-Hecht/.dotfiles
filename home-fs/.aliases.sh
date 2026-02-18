@@ -215,3 +215,6 @@ alias :w="cowsay hi i am vim"
 alias :wq="cowsay hi i am vim && sleep 2 && exit"
 alias :q=":wq"
 alias :q!=":wq"
+
+
+alias judgel="./jpm_tree/bin/judge"
