@@ -256,7 +256,7 @@ bindsym Control+$alt+k exec --no-startup-id kitty calcurse
 
 #website shortcuts
 bindsym Control+$alt+d exec --no-startup-id firefox discord.com/channels/@me
-bindsym Control+Shift+$alt+d exec --no-startup-id firefox virginiatech-my.sharepoint.com/my
+bindsym Control+Shift+$alt+d exec --no-startup-id chromium virginiatech-my.sharepoint.com/my
 bindsym Control+$alt+j exec --no-startup-id firefox jisho.org
 bindsym Control+$alt+o exec --no-startup-id firefox outlook.office365.com/mail 
 bindsym Control+$alt+m exec --no-startup-id firefox maps.google.com?authuser=1
