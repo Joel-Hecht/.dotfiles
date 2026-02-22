@@ -37,7 +37,7 @@ ascii \
 sl \
 python-is-python3 ipython3 \
 sublime-text \
-fonts-noto `_display foreign language characters`\
+# fonts-noto `_display foreign language characters`\
 keychain `_ssh-agent / key manager used in bashrc` \
 clangd `_for cpp in nvim` \
 fd-find fzf `_for nvim ` \
