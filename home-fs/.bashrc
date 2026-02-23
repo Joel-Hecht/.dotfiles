@@ -63,7 +63,9 @@ esac
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto --hyperlink=auto' 
-    alias grep='kitty +kitten hyperlinked_grep --smart-case -L'
+	if [[ ! -z $(which kitty) ]]; then
+    	alias grep='kitty +kitten hyperlinked_grep --smart-case -L'
+	fi
 	alias ugrep='/usr/bin/grep --color=auto' # [u]sr/bin grep instead of kitty grep
 fi
 
