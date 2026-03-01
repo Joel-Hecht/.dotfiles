@@ -2,6 +2,14 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+# For profiling bashrc
+# If profiling, need to also remove "exec {BASH_XTACEFD}>/dev/null"
+# We use it so autocd does not output, but we need it to spit out timestamps
+# Make sure to also comment out end profiling at bottom of bashrc
+#PS4='+ $EPOCHREALTIME\011 '
+#exec 3>&2 2>/tmp/bashstart.$$.log
+#set -x
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -112,11 +120,11 @@ alias pip="${HOME}/${VENVNAME}/bin/pip"
 export TERM=xterm-256color
 
 # import all aliases
-source ~/.aliases.sh || touch ~/.aliases.sh && source ~/.aliases.sh
-source ~/.funcs.sh || touch ~/.funcs.sh && source ~/.funcs.sh
-source ~/.aliases_bfs.sh || touch ~/.aliases_bfs.sh && source ~/.aliases_bfs.sh
-source ~/.path.sh || touch ~/.path.sh && source ~/.path.sh
-source ~/.bash_profile || touch ~/.bash_profile && source ~/.bash_profile
+source ~/.aliases.sh || { touch ~/.aliases.sh && source ~/.aliases.sh ;}
+source ~/.funcs.sh || { touch ~/.funcs.sh && source ~/.funcs.sh ;}
+source ~/.aliases_bfs.sh || { touch ~/.aliases_bfs.sh && source ~/.aliases_bfs.sh ;}
+source ~/.path.sh || { touch ~/.path.sh && source ~/.path.sh ;}
+source ~/.bash_profile || { touch ~/.bash_profile && source ~/.bash_profile ;}
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -131,6 +139,7 @@ export PATH="$HOME/bin/valiases:$PATH"
 export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/.go/bin:$PATH"
 
 # remove evil musescore directory
 rm -rf "$HOME/MuseScore4/"
@@ -145,12 +154,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-# extra path things
-export PATH="/usr/local/.go/bin:$PATH"
-export PATH="nowhere:$PATH"
-export PATH="log:$PATH"
-export PATH=":$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -168,9 +171,6 @@ condainit () {
 	unset __conda_setup
 }
 # <<< conda initialize <<<
-
-
-[ -f "/home/rui/.ghcup/env" ] && . "/home/rui/.ghcup/env" # ghcup-env
 
 #for manually installed go
 export PATH="/usr/local/go/bin:$PATH"
@@ -235,3 +235,12 @@ function preexec_1 {
 }
 precmd_functions+=(precmd_1)
 preexec_functions+=(preexec_1)
+
+# >>>>> RUI >>>>>
+# !! Contents within this block are managed by RUI
+alias rui="/home/rui/python/bin/python /home/rui/proj/rui/rui.py"
+# <<<<< RUI <<<<<
+
+# End profiling
+#set +x
+#exec 2>&3 3>&-
