@@ -36,6 +36,7 @@ alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 #for testing c
 alias C="[[ -f $HOME/.test.c ]] || cp $HOME/.template.c $HOME/.test.c ; vi $HOME/.test.c && gcc $HOME/.test.c && ./a.out && rm ./a.out"
 alias D="rm $HOME/.test.c"
+alias cgb="cargo build"
 
 #computer control
 alias eep="systemctl suspend"
@@ -158,7 +159,7 @@ function unfunc { orig=$( type -a $1 ) && unset -f "$1" && echo "was $orig" ; }
 function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh ; }
 function pathhome { echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.path.sh  ; }
 function pathhere { echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.path.sh ; }
-function v { dc_arg $HOME/bin/v_base $1 &>/dev/null ; }
+function v { $HOME/bin/v_base $1 >/dev/null ; }
 
 #clipboard
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
