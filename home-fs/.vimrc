@@ -15,6 +15,7 @@ set viminfo+=<500
 :set number relativenumber
 :set is | "incremental searching
 :set wildmenu
+:set wildmode=longest:full
 :set hls
 :set ic
 :set tabstop=4
@@ -61,6 +62,10 @@ autocmd BufWinLeave * silent! mkview
 autocmd VimLeave * call system("xclip -sel c ", getreg('+'))
 
 command DiffOrig let g:diffline = line('.') | vert new | set bt=nofile | r # | 0d_ | diffthis | :exe "norm! ".g:diffline."G" | wincmd p | diffthis | wincmd p
+
+" Don't copy on x
+nnoremap x "_x
+nnoremap X "_X
 
 " Ctrl+Y to copy last yanked text to clipboard ('+' register)
 nnoremap <C-y> :let @+=@"<CR>
