@@ -51,6 +51,7 @@ alias i3rl="i3-msg reload"
 alias dup='dc kitty $( pwd ) 2>/dev/null' # make new terminal in this directory
 alias update="sudo apt update"
 alias upgrade="sudo apt update && sudo apt upgrade"
+alias autopurge="sudo apt autopurge"
 
 # remove things
 alias rmswp="rm *.swp *~ 2> /dev/null"
@@ -58,6 +59,7 @@ alias rmzip="rm *.zip *.tar *.gz 2> /dev/null"
 alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
 alias rm="rm -d"
 alias rmr="rm -rd"
+alias rmrf="rm -rfd"
 
 #process control
 alias pids="ps aux"
