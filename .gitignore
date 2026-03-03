@@ -1,10 +1,6 @@
-home-fs/bin/aliases/**
-home-fs/bin/aliases/*
-home-fs/bin/valiases/*
-home-fs/bin/aliases
-home-fs/bin/valiases
-home-fs/bin/dmenu_specific/*
-home-fs/bin/dmenu_specific/**
+home-fs/bin/aliases/
+home-fs/bin/valiases/
+home-fs/bin/dmenu_specific/
 home-fs/.gitconfig
 home-fs/.path.sh
 
@@ -15,9 +11,7 @@ home-fs/.path.sh
 elan-init.sh
 
 home-fs/.VOLUME
-home-fs/.config/nitrogen/**
-home-fs/.config/nitrogen/*
-home-fs/.config/nitrogen
+home-fs/.config/nitrogen/
 
 #initial ignores from kickstart.nvim
 home-fs/.config/nvim/tags
