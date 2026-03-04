@@ -27,7 +27,7 @@ fi
 # options
 OPTIND=1
 hidden="" root="" full="" tab="" infinite="" stars="" dirs=""
-while getopts "hrftis" opt; do
+while getopts "hrftisd" opt; do
 	case $opt in
 		h) hidden=yes ;;
 		r) root=yes ;;
