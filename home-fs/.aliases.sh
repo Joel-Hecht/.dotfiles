@@ -34,7 +34,7 @@ alias vr="vim ~/.vimrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 
 #for testing c
-alias C="[[ -f $HOME/.test.c ]] || cp $HOME/.template.c $HOME/.test.c ; vi $HOME/.test.c && gcc $HOME/.test.c && ./a.out && rm ./a.out"
+alias C="[[ -f $HOME/.test.c ]] || cp $HOME/.template.c $HOME/.test.c ; vi $HOME/.test.c && gcc $HOME/.test.c -lm && ./a.out && rm ./a.out"
 alias D="rm $HOME/.test.c"
 alias cgb="cargo build"
 

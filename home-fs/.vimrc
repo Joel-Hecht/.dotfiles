@@ -98,13 +98,18 @@ nnoremap <Leader>y :let @+=@"<CR>
 nnoremap <Leader>n :bn<CR>
 nnoremap <Leader>p :bp<CR>
 nnoremap <Leader>a :A<CR>
-" edit and source vimrc
+" edit vimrc
 nnoremap <Leader>v :e $MYVIMRC<CR>
-nnoremap <Leader>r :source $MYVIMRC<CR>:noh<CR>
 " shortcut for find-replace
 nnoremap <Leader>s :%s//g<Left><Left><BS>/
 vnoremap <Leader>s :s//g<Left><Left><BS>/
 nnoremap <Leader># #:%s//g<Left><Left><BS>/<C-R>//
+
+" underscore-sensitive w/b
+nnoremap <Leader>w :set isk-=_<CR>w:set isk+=_<CR>
+nnoremap <Leader>b :set isk-=_<CR>b:set isk+=_<CR>
+nnoremap <Leader>e :set isk-=_<CR>e:set isk+=_<CR>
+" can't get it to work in visual/operator mode
 
 " move by 5
 nnoremap <Leader>j 5j
