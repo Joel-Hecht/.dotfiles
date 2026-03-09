@@ -3,10 +3,12 @@ easy
 		- if specified this would create all necessary parent directories for your target to exist
 - add directory history to o alias so it works more than once
 - configure battery popup https://github.com/rjekker/i3-battery-popup/blob/master/i3-battery-popup
+- configure bashhub (bash history on the cloud) https://github.com/rcaloras/bashhub-client
 
 medium
-- bfsr starting from source dir
-		- so bfsr [options] dest [source] [maxdepth] search starting from [source], bfsr dest ~ would be equivalent to current default bfsr
+- bfs early exit if not -f
+- bfs -a to work more like find for simple cases
+		- "bfsa rm *.swp" as less syntactically demanding "find -name *.swp -exec rm {} \;"
 - keyboard shortcut to change kitty text size and reload all kitty terminals
 - set up fzf/fdfind defaults
 - look into kitty history preexec

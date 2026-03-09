@@ -116,6 +116,13 @@ alias gaa="git add --all && git diff --name-only --staged | sed 's/^/staged: /' 
 alias gaap="git add --all --patch"
 alias names="git diff --name-only"
 alias staged="git diff --name-only --staged"
+function pull {
+	if [[ -n $( git log --branches --not --remotes ) ]]; then
+		echo You are ahead of origin, you might want to git pull --rebase
+	else
+		git pull
+	fi
+}
 alias gp="git pull"
 alias pull="git pull"
 alias push="git push"
@@ -123,21 +130,25 @@ alias pp="git pull && git push"
 alias dp="curr=\"\$(pwd)\" && dot && gp ; make ; cd \"\$curr\""
 alias dm="curr=\"\$(pwd)\" && dot ; make ; cd \"\$curr\""
 alias grh="git reset --hard origin/main"
-alias changes="git diff --cached"
+alias changes="git diff --staged"
 alias submodules="git submodule update --init --recursive && git submodule update --recursive"
 alias unpushed="git log --branches --not --remotes"
 alias unadd="git restore --staged"
 alias ungaa="git reset --mixed"
-alias untrack="git rm --cached"
+alias untrack="git rm --staged"
 alias uncommit="git reset --soft HEAD~1"
 function amend {
-	if [[ -z "$( git diff --staged )" ]]; then
-		git commit --amend
-	else
+	if [[ -n "$( git diff --staged )" ]]; then
 		echo You have staged changes, git commit --amend will merge them into the last commit
 		echo If you just want to rewrite your commit message, unstage your changes first
+	elif [[ -z $( git status | grep "ahead" ) ]]; then
+		echo You are up to date with origin, git commit --amend will rewrite history
+		echo You probably dont want to do that
+	else
+		git commit --amend
 	fi
 }
+
 #copy github access token to authenticate on tux
 alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
 alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt | cpy ; cd \"\$curr\""
