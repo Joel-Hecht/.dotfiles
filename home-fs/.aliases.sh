@@ -33,9 +33,25 @@ alias br="vim ~/.bashrc && source ~/.bashrc"
 alias vr="vim ~/.vimrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
 
-#for testing c
+#for testing
 alias C="[[ -f $HOME/.test.c ]] || cp $HOME/.template.c $HOME/.test.c ; vi $HOME/.test.c && gcc $HOME/.test.c -lm && ./a.out && rm ./a.out"
 alias D="rm $HOME/.test.c"
+alias cpp="[[ -f $HOME/.test.cpp ]] || cp $HOME/.template.cpp $HOME/.test.cpp ; vi $HOME/.test.cpp && g++ $HOME/.test.cpp && ./a.out && rm ./a.out"
+alias Cpp="cpp"
+alias dpp="rm $HOME/.test.cpp"
+alias Dpp="rm $HOME/.test.cpp"
+function rust {
+	[[ -d $HOME/.test-rust ]] || cp -rL $HOME/.template-rust $HOME/.test-rust
+	cd $HOME/.test-rust
+	if [[ -n $1 ]]; then
+		cargo $@
+	else
+		vi src/main.rs
+		cargo run
+	fi
+	cd - >/dev/null
+}
+alias dust="rm -rf $HOME/.test-rust"
 alias cgb="cargo build"
 
 #computer control
