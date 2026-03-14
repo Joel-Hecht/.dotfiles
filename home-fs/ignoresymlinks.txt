@@ -4,6 +4,7 @@ makesymlinks.sh
 makealiases.sh
 makevs.sh
 makenitrogenconfig.sh
+makebfsaliases.py
 Makefile
 permission_setup.sh
 removebrokensymlinks.sh
