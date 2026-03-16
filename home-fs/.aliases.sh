@@ -43,6 +43,7 @@ alias Dpp="rm $HOME/.test.cpp"
 function rust {
 	[[ -d $HOME/.test-rust ]] || cp -rL $HOME/.template-rust $HOME/.test-rust
 	cd $HOME/.test-rust
+	sed -i 's/template/test/' Cargo.toml
 	if [[ -n $1 ]]; then
 		cargo $@
 	else
