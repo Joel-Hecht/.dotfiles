@@ -80,7 +80,7 @@ for arg in "$@"; do
 	[[ $stars ]] && arg="*$arg*"
 	[[ $tab ]] && arg="$arg*"
 
-	targets="$( /usr/bin/bfs $path -maxdepth $maxdepth "${prune[@]}" "${type[@]}" -path "*/$arg" -printf "%T@ %p\n" )"
+	targets="$( /usr/bin/bfs $path -maxdepth $maxdepth "${prune[@]}" "${type[@]}" -name "$arg" -printf "%T@ %p\n" )"
 	[[ $full ]] && targets="$( echo "$targets" | sort -nr )"
 	line="$( echo "$targets" | head -n 1 )"
 	found="${line#* }" # remove first word
