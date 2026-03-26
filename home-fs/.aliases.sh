@@ -182,6 +182,9 @@ alias dg="directiongame"
 alias mse="dc wine $HOME/Downloads/mse/mse.exe"
 alias ardour="dc Ardour8"
 alias judgel="./jpm_tree/bin/judge"
+alias fileshere="nautilus . &"
+alias fh="fileshere"
+alias f="fh"
 
 #reload after updates	
 alias sb="source ~/.bashrc"
@@ -253,5 +256,3 @@ alias :wq="cowsay hi i am vim && sleep 2 && exit"
 alias :q=":wq"
 alias :q!=":wq"
 
-
-alias judgel="./jpm_tree/bin/judge"
