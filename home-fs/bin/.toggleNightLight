@@ -1,0 +1,32 @@
+#!/bin/bash
+
+function getTemp {
+	k="$(xsct | sed 's/.*temperature ~ //' | sed 's/ .*$//')"
+	echo "$k"
+}
+
+function getBrightness {
+	b="$(xrandr --verbose --current | grep Brightness | sed 's/.*\ //' | head -1)"
+	echo "$b"
+}
+
+night=3500
+day=4500
+
+if [[ "$(getTemp)" == "$night" ]]; then
+	xsct "$day" "$(getBrightness)"
+else
+	xsct "$night" "$(getBrightness)"
+fi
+
+#x="$(redshift -p | grep "Color temperature" | sed "s/Color temperature: //")"
+#echo $x
+#if [[ "$x" == "4500K" ]]; then
+#	killall redshift
+#	redshift & > /dev/null
+#else 
+#	redshift -x
+#fi
+
+
+

@@ -96,6 +96,15 @@ dotdir=$(dirname $(realpath "$0"))
 cd dotdir
 ./build_kitty_source.sh
 
+# set color temperature (nightlight)
+if [[ -z $(command -v xsct) ]]; then 
+	git clone https://github.com/faf0/sct.git
+	cd sct
+	sudo make install
+	cd ..
+	rm -rf sct
+fi
+
 #neovim version 0.8 isnt in apt
 #we need to build from source
 #Solution from https://www.reddit.com/r/debian/comments/188d3wc/neovim_on_debian/ 

@@ -9,6 +9,7 @@ usage() {
 	exit 1 
 }
 
+
 #check if arg is a float later
 floatregex="^[+-]?[0-9]*\.?[0-9]*$"
 
@@ -47,7 +48,11 @@ if [ $gotarg -eq 0 ]; then
 	usage
 fi
 
+# this gets reset when we do xrandr, so we have to set it explcitly here
+temp="$(xsct | sed 's/.*temperature ~ //' | sed 's/ .*$//')"
+
 for disp in $(xrandr -q | grep " connected" | sed -e 's/ .*$//' ); do
 	xrandr --output "$disp" --brightness "$b"
 done
 
+xsct "$temp" "$b"
