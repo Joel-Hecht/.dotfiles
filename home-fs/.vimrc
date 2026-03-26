@@ -106,9 +106,8 @@ vnoremap <Leader>s :s//g<Left><Left><BS>/
 nnoremap <Leader># #:%s//g<Left><Left><BS>/<C-R>//
 
 " underscore-sensitive w/b
-nnoremap <Leader>w :set isk-=_<CR>w:set isk+=_<CR>
-nnoremap <Leader>b :set isk-=_<CR>b:set isk+=_<CR>
-nnoremap <Leader>e :set isk-=_<CR>e:set isk+=_<CR>
+nnoremap <Leader>w :set isk-=_<CR>el:set isk+=_<CR>
+nnoremap <Leader>b :set isk-=_<CR>bh:set isk+=_<CR>
 " can't get it to work in visual/operator mode
 
 " move by 5
