@@ -116,6 +116,7 @@ fi
 alias venv="source \"${HOME}/${VENVNAME}/bin/activate\""
 alias venvl="deactivate"
 alias pip="${HOME}/${VENVNAME}/bin/pip"
+alias pipx="${HOME}/${VENVNAME}/bin/pipx"
 . "$HOME/.cargo/env"
 export TERM=xterm-256color
 
@@ -235,11 +236,6 @@ function preexec_1 {
 }
 precmd_functions+=(precmd_1)
 preexec_functions+=(preexec_1)
-
-# >>>>> RUI >>>>>
-# !! Contents within this block are managed by RUI
-alias rui="/home/rui/python/bin/python /home/rui/proj/rui/rui.py"
-# <<<<< RUI <<<<<
 
 # End profiling
 #set +x
