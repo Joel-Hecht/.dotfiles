@@ -103,6 +103,10 @@ function vm {
 	mv "$1" ~/vm/fusion_share/in/
 }
 
+function getvm {
+	bdh ~/vm/fusion_share/out/ 
+}
+
 function dc {
 	if [[ $# -eq 0 ]]; then
 		bg 2> /dev/null
@@ -273,3 +277,4 @@ function mkcp {
 		mkdir "${@: -1}" && cp -r "$@"
 	fi
 }
+
