@@ -146,6 +146,10 @@ vim.o.shiftwidth = 2
 vim.o.tabstop = 2
 vim.o.expandtab = false --don't change files that already have tabs as 4 spaces
 
+--disable this horrible thing
+vim.o.wrap = true
+vim.o.textwidth = 0
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = "a"
 
