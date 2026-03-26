@@ -6,17 +6,25 @@ file=$HOME/.dclog/"$( basename "$1" )"
 
 if [[ $quit == yes ]]; then
 	if [[ $# -gt 0 ]]; then
-		date >> "$file"
-		"$@" &>>"$file" &
-		#disown %1
-		xdotool getactivewindow windowkill
+		if [[ $( type -a "$1" 2>/dev/null ) ]]; then
+			date >> "$file"
+			"$@" &>>"$file" &
+			#disown %1
+			xdotool getactivewindow windowkill
+		else
+			echo "can't run $1"
+		fi
 	else
 		echo "need an argument to run"
 	fi
 else
 	if [[ $# -gt 0 ]]; then
-		date >> "$file"
-		"$@" &>>"$file" &
+		if [[ $( type -a "$1" 2>/dev/null ) ]]; then
+			date >> "$file"
+			"$@" &>>"$file" &
+		else
+			echo "can't run $1"
+		fi
 	else
 		echo "need an argument to run"
 	fi
