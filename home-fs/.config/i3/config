@@ -147,7 +147,7 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 # special hidden floating workspace
-bindsym $mod+minus scratchpad show 
+bindsym $mod+minus scratchpad show
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -210,14 +210,14 @@ bar {
 		padding 5px
 
 		# turn this off if having difficulty with chinese
-		strip_workspace_numbers yes 
+		strip_workspace_numbers yes
 }
 
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id autotiling --limit 2
 
 #GAPS CONFIG
-gaps inner 7px 
+gaps inner 7px
 gaps outer 2px
 
 #enable transparent windows
@@ -226,7 +226,7 @@ exec_always --no-startup-id compton
 bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/SCID$(bash ${HOME}/bin/.nextScreenShotID)_$(date).png"| xclip -selection clipboard -t image/png && bash ${HOME}/bin/.removeSC
 
 # this will go haywire if we ever shift to $mod=$alt (alt)
-bindsym $mod+$alt+s exec --no-startup-id maim | tee "$HOME/Pictures/SCID$(bash ${HOME}/bin/.nextScreenShotID)_$(date).png" |  xclip -selection clipboard -t image/png 
+bindsym $mod+$alt+s exec --no-startup-id maim | tee "$HOME/Pictures/SCID$(bash ${HOME}/bin/.nextScreenShotID)_$(date).png" |  xclip -selection clipboard -t image/png
 
 bindsym $mod+Control+h resize shrink width 10 px or 10 ppt
 bindsym $mod+Control+j resize grow height 10 px or 10 ppt
@@ -243,42 +243,41 @@ focus_follows_mouse no
 # workspace_auto_back_and_forth yes
 
 #keybinds, this works better than the .Xmodmap file i think
-exec --no-startup-id xmodmap -e "keycode 62 = Escape NoSymbol" 
+exec --no-startup-id xmodmap -e "keycode 62 = Escape NoSymbol"
 exec --no-startup-id xmodmap -e "remove shift = Escape"
-exec --no-startup-id xmodmap -e "keycode 108 = Multi_key Alt_R" 
+exec --no-startup-id xmodmap -e "keycode 108 = Multi_key Alt_R"
 exec --no-startup-id xmodmap -e "remove mod1 = Alt_R"
 exec --no-startup-id bash ${HOME}/bin/fix_volume
 
 #program shortcuts
 bindsym Control+$alt+f exec --no-startup-id firefox
 bindsym Control+$alt+c exec --no-startup-id chromium
-bindsym Control+$alt+n exec --no-startup-id notepadqq
-bindsym Control+Shift+$alt+n exec --no-startup-id subl
-bindsym Control+$alt+p exec --no-startup-id flatpak run com.github.PintaProject.Pinta & 
+bindsym Control+$alt+n exec --no-startup-id subl
+bindsym Control+$alt+p exec --no-startup-id flatpak run com.github.PintaProject.Pinta &
 bindsym Control+$alt+k exec --no-startup-id kitty calcurse
 
 #website shortcuts
-bindsym Control+$alt+d exec --no-startup-id firefox discord.com/channels/@me
+bindsym Control+$alt+d       exec --no-startup-id firefox discord.com/channels/@me
 bindsym Control+Shift+$alt+d exec --no-startup-id chromium virginiatech-my.sharepoint.com/my
-bindsym Control+$alt+j exec --no-startup-id firefox jisho.org
-bindsym Control+$alt+o exec --no-startup-id firefox outlook.office365.com/mail 
-bindsym Control+$alt+m exec --no-startup-id firefox maps.google.com?authuser=1
-bindsym Control+$alt+g exec --no-startup-id firefox gmail.com
+bindsym Control+$alt+j       exec --no-startup-id firefox jisho.org
+bindsym Control+$alt+o       exec --no-startup-id firefox outlook.office365.com/mail
+bindsym Control+$alt+m       exec --no-startup-id firefox maps.google.com?authuser=1
+bindsym Control+$alt+g       exec --no-startup-id firefox gmail.com
 bindsym Control+Shift+$alt+g exec --no-startup-id firefox mail.google.com/mail/u/1
-bindsym Control+$alt+t exec --no-startup-id firefox translate.google.com
-bindsym Control+$alt+x exec --no-startup-id firefox one.drexel.edu
+bindsym Control+$alt+t       exec --no-startup-id firefox translate.google.com
+bindsym Control+$alt+x       exec --no-startup-id firefox one.drexel.edu
 bindsym Control+Shift+$alt+x exec --no-startup-id firefox calendar.google.com/calendar/u/1/r
-bindsym Control+$alt+q exec --no-startup-id firefox learn.dcollege.net/ultra/course
-bindsym Control+$alt+a exec --no-startup-id firefox drive.google.com/drive/u/1/my-drive
+bindsym Control+$alt+q       exec --no-startup-id firefox learn.dcollege.net/ultra/course
+bindsym Control+Shift+$alt+q exec --no-startup-id firefox drexel.instructure.com/courses
+bindsym Control+$alt+a       exec --no-startup-id firefox drive.google.com/drive/u/1/my-drive
 bindsym Control+Shift+$alt+a exec --no-startup-id firefox drive.google.com/drive/u/0/my-drive
-bindsym Control+$alt+y exec --no-startup-id firefox music.youtube.com
-bindsym Control+Shift+$alt+y exec --no-startup-id firefox youtube.com/feed/subscriptions
+bindsym Control+$alt+y       exec --no-startup-id firefox youtube.com/feed/subscriptions
 bindsym Control+Shift+$alt+c exec --no-startup-id firefox canvas.vt.edu
 bindsym Control+Shift+$alt+s exec --no-startup-id firefox spotify.com
 bindsym Control+Shift+$alt+l exec --no-startup-id firefox linkedin.com
-bindsym Control+$alt+i exec --no-startup-id firefox instagram.com
-bindsym Control+$alt+s exec --no-startup-id firefox docs.google.com/spreadsheets/d/1XUmurBMg0Zmd--QApo49J7yvUWF4IAfexJhuBa1Q9WU/edit?gid=1565386317#gid=1565386317 
-bindsym Control+$alt+h exec --no-startup-id bash ${HOME}/bin/.toggleScrollDirection 
+bindsym Control+$alt+i       exec --no-startup-id firefox instagram.com
+bindsym Control+$alt+s       exec --no-startup-id firefox docs.google.com/spreadsheets/d/1XUmurBMg0Zmd--QApo49J7yvUWF4IAfexJhuBa1Q9WU
+bindsym Control+$alt+h       exec --no-startup-id bash ${HOME}/bin/.toggleScrollDirection
 
 # fix broken right shift
 bindsym Control+Shift+$alt+h exec --no-startup-id bash $( xmodmap -e "keycode 62 = Escape NoSymbol" && xmodmap -e "remove shift = Escape" )
