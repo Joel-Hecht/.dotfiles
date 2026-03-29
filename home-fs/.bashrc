@@ -127,9 +127,9 @@ source ~/.aliases_bfs.sh || { touch ~/.aliases_bfs.sh && source ~/.aliases_bfs.s
 source ~/.path.sh || { touch ~/.path.sh && source ~/.path.sh ;}
 source ~/.bash_profile || { touch ~/.bash_profile && source ~/.bash_profile ;}
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # add things to path
 export PATH="${HOME}/.kitty/kitty/kitty/launcher/:$PATH"
