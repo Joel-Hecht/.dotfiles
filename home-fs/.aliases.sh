@@ -225,6 +225,9 @@ source ${HOME}/.aliases_v.sh
 alias bbb="cd ../../.."
 alias bbbb="cd ../../../.."
 alias bbbbb="cd ../../../../.."
+alias b2="cd ../../.."
+alias b3="cd ../../../.."
+alias b4="cd ../../../../.."
 
 # pope
 alias sl="[[ $(( $RANDOM % 2 )) -eq 0 ]] && /usr/games/sl-1 || pope"
