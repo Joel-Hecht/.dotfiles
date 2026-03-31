@@ -2,7 +2,7 @@
 bpath="#!/bin/bash"
 
 thispath=$(realpath $0)
-thispath=$(dirname "$thispath")
+thispath=$(dirname $(dirname "$thispath"))
 aliaspath="$thispath/bin/aliases"
 
 $(mkdir -p $aliaspath)
@@ -32,7 +32,7 @@ done
 #makealiases.sh executes before makesymlinks.sh in normal run order, so we need to make all the files here that will be symlinked in the future.  The issue then is that all the symlinks will not be made, so we need to reference the dotfiles filesystem
 #IMPORTANT - for autocomplete to work, you may need to delete ~/.cache/dmenu_cache
 bins=$(cat bins_for_dmenu.txt)
-base=$( dirname $(realpath "$0"))
+base=$(dirname $(dirname $(realpath "$0")))
 base="${base}/bin/"
 mkdir -p "${base}dmenu_specific"
 for k in $bins; do

@@ -1,16 +1,15 @@
 all:
-	./makealiases.sh
-	./makevs.sh
-	./makenitrogenconfig.sh
-	./makesymlinks.sh
-	./permission_setup.sh
-	./sourceab.sh
-	./makemans.sh
+	scripts/makealiases.sh
+	scripts/makebfsaliases.py
+	scripts/makevs.sh
+	scripts/makenitrogenconfig.sh
+	scripts/makesymlinks.sh
+	scripts/permission_setup.sh
+	scripts/makemans.sh
 
 sym:
-	./makesymlinks.sh
-	./sourceab.sh
+	scripts/makesymlinks.sh
+	scripts/sourceab.sh
 
 mans:
-	./makemans.sh
-
+	scripts/makemans.sh

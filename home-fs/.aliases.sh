@@ -190,7 +190,7 @@ alias f="fh"
 alias sb="source ~/.bashrc"
 alias sa="source ~/.aliases.sh"
 alias sf="source ~/.funcs.sh"
-alias ms="curr=\"\$(pwd)\" && dhome && ./makesymlinks.sh; cd \"\$curr\""
+alias ms="curr=\"\$(pwd)\" && dhome && scripts/makesymlinks.sh; cd \"\$curr\""
 alias reload="sb && sa && sf"
 function unfunc { orig=$( type -a $1 ) && unset -f "$1" && echo "was $orig" ; }
 
@@ -258,4 +258,3 @@ alias :w="cowsay hi i am vim"
 alias :wq="cowsay hi i am vim && sleep 2 && exit"
 alias :q=":wq"
 alias :q!=":wq"
-

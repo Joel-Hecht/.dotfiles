@@ -1,11 +1,9 @@
 #!/bin/bash
-rm ~/.cache/dmenu_run # get rid of dmenu cache
+rm "$HOME/.cache/dmenu_run" 2>/dev/null # get rid of dmenu cache
 
 # see dhome/makealiases.sh for what the hell is going on here
-bpath="#!/bin/bash"
-
 thispath=$(realpath $0)
-thispath=$(dirname "$thispath")
+thispath=$(dirname $(dirname "$thispath"))
 aliaspath="$thispath/bin/valiases"
 
 $(mkdir -p $aliaspath)
@@ -16,13 +14,13 @@ $(rm -rf $aliaspath/*)
 
 for a in $as; do
 	p="$aliaspath/$a""-a"
-	VOLUME=~/.VOLUME
+	VOLUME="$HOME/.VOLUME"
 	cat > "$p" <<- EOF
 	$bpath
 	chmod 644 $VOLUME
 	echo IN PROGRESS > $VOLUME
 	amixer -q -M set Master $count% &>/dev/null
-	sed -i "s/= \".*W:/= \"VOLUME: $count% :|: W:/" ~/.i3status.conf
+	sed -i "s/= \".*W:/= \"VOLUME: $count% :|: W:/" $HOME/.i3status.conf
 	killall i3bar
 	i3bar --bar_id=bar-0 & &>/dev/null 
 	echo $count > $VOLUME

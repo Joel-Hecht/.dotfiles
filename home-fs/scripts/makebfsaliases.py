@@ -24,7 +24,7 @@ for c1 in chars:
                         
 list.sort(key=len)
 
-with open(".aliases_bfs.sh", "w") as file:
+with open(os.path.expanduser("~/.aliases_bfs.sh"), "w") as file:
     file.write('alias dfs="source dfs_base"\n')
     file.write('alias bfs="source bfs_base"\n')
     for l in list:
