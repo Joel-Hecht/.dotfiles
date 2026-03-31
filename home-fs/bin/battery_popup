@@ -3,7 +3,7 @@
 time_between_checks="20"
 warn_at_percent="10"
 
-bats=( /sys/class/power_supply/BAT*/uevent )
+batpath="/sys/class/power_supply/BAT*/uevent"
 
 # from https://github.com/rjekker/i3-battery-popup/blob/master/i3-battery-popup
 get_awk_source() {
@@ -48,13 +48,13 @@ show_alert() {
 	i3-msg sticky enable >/dev/null
 }
 
-bat="${bats[@]}"
-echo "$bat"
-if [ -z "$bat" ]; then
+if ! compgen -G "$batpath" >/dev/null ; then
+	echo "you are a pc"
 	#no batteries - we are probably Joel's PC
 	exit 0
 fi
 
+bats=( $batpath )
 warned=""
 while true; do
 	perc=$(get_percentage)
