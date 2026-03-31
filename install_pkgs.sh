@@ -47,6 +47,7 @@ cowsay \
 build-essential gdb debhelper ` prob alr have these` \
 bat \
 bfs ` breadth-first _find that we build our bfs on top of ` \
+feh `_lightter weight than eog for pope` \
 gcc `put this here again so ALL PREVIOUS can have escaped newlines`
 # fonts-noto `_display foreign language characters`\
 #libudev-dev libinput-dev libpugixml-dev libcairo2-dev libx11-dev libxtst-dev libxrandr-dev libxi-dev libglib2.0-dev libgtk-3-dev `for touchegg, prob alr have these` \

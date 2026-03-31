@@ -28,7 +28,7 @@ done
 
 popeaddress="${HOME}/img/pope${hasold}.jpg"
 
-eog "$popeaddress" &
+feh "$popeaddress" &
 
 killme=$!
 sleep $sleeptime
