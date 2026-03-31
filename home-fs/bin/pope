@@ -4,17 +4,19 @@
 popeid="267" 
 
 dosleep="yes"
+dorandom=""
 sleeptime=1.5
 
 float_regex="^[0-9]*\.?[0-9]*$"
 negative_float_regex="^-[0-9]*\.?[0-9]*$"
 
 #overkill handler but I want to be conventional
-while getopts ':lfpst:' flag; do
+while getopts ':lfpsrt:' flag; do
 	case "${flag}" in 
 		f) popeid="266" ;; #Francis I, the 266th pope
 		l) popeid="267" ;; #Leo XIV, the 267th pope
 		p) popeid="260" ;; #Pius XII, the 260th pope
+		r) random="yes" ;;
 		t) sleeptime=${OPTARG}
 			if ! [[ "$sleeptime" =~ $float_regex ]]; then
 				if  [[ "$sleeptime" =~ $negative_float_regex ]]; then
@@ -53,7 +55,12 @@ done
 wmctrl -ia "${winid}"
 
 i3-msg floating enable > /dev/null 
-i3-msg move position center > /dev/null 
+if [[ "$random" ]]; then
+	#these are probably your monitor dimensions??
+	i3-msg move position $(($RANDOM % 1000)) $(($RANDOM % 600)) >/dev/null
+else
+	i3-msg move position center > /dev/null 
+fi
 
 if [[ "$dosleep" ]]; then
 	#pope is fleeting
