@@ -28,9 +28,24 @@ done
 
 popeaddress="${HOME}/img/pope${hasold}.jpg"
 
-feh "$popeaddress" &
+feh -Z "$popeaddress" &
 
-killme=$!
+pid=$!
+
+# From https://unix.stackexchange.com/questions/450700/opening-a-programme-in-a-floating-window-in-i3
+# Wait for the window to open and grab its window ID
+winid=''
+while : ; do
+    winid="`wmctrl -lp | awk -vpid=$pid '$3==pid {print $1; exit}'`"
+    [[ -z "${winid}" ]] || break
+done
+
+#focus on pope 
+wmctrl -ia "${winid}"
+
+i3-msg floating enable > /dev/null;
+i3-msg move position center > /dev/null;
+
 sleep $sleeptime
 
-kill -9 $killme
+kill -9 $pid
