@@ -1,21 +1,29 @@
 #!/bin/bash
 
-popeid=""
+#default is Leo XIV, who is alive
+popeid="267" 
 
+dosleep="yes"
 sleeptime=1.5
 
 float_regex="^[0-9]*\.?[0-9]*$"
+negative_float_regex="^-[0-9]*\.?[0-9]*$"
 
 #overkill handler but I want to be conventional
-while getopts ':lfpt:' flag; do
+while getopts ':lfpst:' flag; do
 	case "${flag}" in 
 		f) popeid="266" ;; #Francis I, the 266th pope
 		l) popeid="267" ;; #Leo XIV, the 267th pope
 		p) popeid="260" ;; #Pius XII, the 260th pope
 		t) sleeptime=${OPTARG}
 			if ! [[ "$sleeptime" =~ $float_regex ]]; then
-				echo "invalid time entered - please use a float!"
-				exit 1
+				if  [[ "$sleeptime" =~ $negative_float_regex ]]; then
+					# negative sleep time means persist forever
+					dosleep=""		
+				else
+					echo "invalid time entered - please use a float!"
+					exit 1
+				fi
 			fi
 			;;
 		:) echo "Error: option -${OPTARG} requires an argument" >&2
@@ -47,6 +55,12 @@ wmctrl -ia "${winid}"
 i3-msg floating enable > /dev/null;
 i3-msg move position center > /dev/null;
 
-sleep $sleeptime
+if [[ "$dosleep" ]]; then
+	#pope is fleeting
+	sleep $sleeptime
 
-kill -9 $pid
+	kill -9 $pid
+else
+	#pope is persistant
+	wait "${pid}";	
+fi
