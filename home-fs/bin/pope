@@ -37,7 +37,7 @@ done
 
 popeaddress="${HOME}/img/pope${popeid}.jpg"
 
-feh -Z "$popeaddress" &
+setsid feh -Z "$popeaddress" >/dev/null 2>&1 < /dev/null & 
 
 pid=$!
 
@@ -52,8 +52,8 @@ done
 #focus on pope 
 wmctrl -ia "${winid}"
 
-i3-msg floating enable > /dev/null;
-i3-msg move position center > /dev/null;
+i3-msg floating enable > /dev/null 
+i3-msg move position center > /dev/null 
 
 if [[ "$dosleep" ]]; then
 	#pope is fleeting
@@ -62,5 +62,8 @@ if [[ "$dosleep" ]]; then
 	kill -9 $pid
 else
 	#pope is persistant
-	wait "${pid}";	
+	# wait "${pid}";	
+	
+	#we will echo out the window id, so that another process could use it
+	echo "${winid}";
 fi

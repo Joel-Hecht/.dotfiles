@@ -1,0 +1,78 @@
+#!/bin/bash
+
+time_between_checks="20"
+warn_at_percent="10"
+
+bats=( /sys/class/power_supply/BAT*/uevent )
+
+# from https://github.com/rjekker/i3-battery-popup/blob/master/i3-battery-popup
+get_awk_source() {
+    cat <<EOF
+BEGIN {
+    FS="=";
+}
+\$1 ~ /ENERGY_FULL$/ {
+    f += \$2;
+}
+\$1 ~ /ENERGY_NOW\$/ {
+    n += \$2;
+}
+\$1 ~ /CHARGE_FULL$/ {
+    f += \$2;
+}
+\$1 ~ /CHARGE_NOW\$/ {
+    n += \$2;
+}
+END {
+    print int(100*n/f);
+}
+EOF
+}
+
+get_percentage(){
+	awk -f <(get_awk_source) "${bats[@]}"	
+}
+
+is_discharging() {
+	grep STATUS=Discharging "${bats[@]}" && return 0
+  return 1
+} >/dev/null
+
+show_alert() {
+	winid=$(pope -p -t -1)
+	
+	#focus window
+	wmctrl -ia "${winid}"
+
+	#make sticky
+	i3-msg sticky enable >/dev/null
+}
+
+bat="${bats[@]}"
+echo "$bat"
+if [ -z "$bat" ]; then
+	#no batteries - we are probably Joel's PC
+	exit 0
+fi
+
+warned=""
+while true; do
+	perc=$(get_percentage)
+	echo "current percent: $perc"
+
+	# show a warning if
+	# 	We are below the threshold
+	#		We have not shown a warning since we were above the threshold
+	if [[ $perc -le $warn_at_percent ]]; then
+		if is_discharging; then
+			if [ -z "$warned" ]; then
+				warned="yes"
+				show_alert
+			fi
+		fi
+	else 
+		warned=""
+	fi
+
+	sleep "$time_between_checks" 
+done
