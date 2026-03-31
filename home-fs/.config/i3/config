@@ -40,7 +40,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 #if battery below threshold, show a pope to warn you
-exec --no-startup-id battery_popup
+exec_always --no-startup-id bash ${HOME}/bin/battery_popup
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
