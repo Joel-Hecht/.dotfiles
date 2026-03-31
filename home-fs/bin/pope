@@ -1,16 +1,17 @@
 #!/bin/bash
 
-hasold=""
+popeid=""
 
 sleeptime=1.5
 
 float_regex="^[0-9]*\.?[0-9]*$"
 
 #overkill handler but I want to be conventional
-while getopts ':lft:' flag; do
+while getopts ':lfpt:' flag; do
 	case "${flag}" in 
-		f) hasold="_old" ;;
-		l) hasold="" ;;
+		f) popeid="266" ;; #Francis I, the 266th pope
+		l) popeid="267" ;; #Leo XIV, the 267th pope
+		p) popeid="260" ;; #Pius XII, the 260th pope
 		t) sleeptime=${OPTARG}
 			if ! [[ "$sleeptime" =~ $float_regex ]]; then
 				echo "invalid time entered - please use a float!"
@@ -26,7 +27,7 @@ while getopts ':lft:' flag; do
 	esac
 done
 
-popeaddress="${HOME}/img/pope${hasold}.jpg"
+popeaddress="${HOME}/img/pope${popeid}.jpg"
 
 feh -Z "$popeaddress" &
 
