@@ -38,6 +38,7 @@ mkdir -p "${base}dmenu_specific"
 for k in $bins; do
 	p=$(ls "$base" | grep -w $k)
 	if [ -n "$p" ]; then
-		ln "${base}$k" "${base}dmenu_specific/$k"
+		rm "${base}dmenu_specific/$k"
+		ln -s "${base}$k" "${base}dmenu_specific/$k"
 	fi
 done
