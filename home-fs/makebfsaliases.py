@@ -1,6 +1,7 @@
+#!/usr/bin/python
 import os
 
-chars = ["h", "r", "f", "t", "i", "s", "d"]
+chars = ["h", "r", "f", "t", "i", "s", "d", "l"]
 list = []
 
 for c1 in chars:
@@ -28,4 +29,3 @@ with open(".aliases_bfs.sh", "w") as file:
     file.write('alias bfs="source bfs_base"\n')
     for l in list:
         file.write(l+"\n")
-

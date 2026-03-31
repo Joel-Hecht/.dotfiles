@@ -17,6 +17,7 @@ function helpmsg {
 	echo "	-i: infinite depth"
 	echo "	-s: match anything containing argument"
 	echo "	-d: match only directories"
+	echo "  -l: match locations of files rather than files"
 }
 
 if [[ $# -eq 0 || $1 == "--help" ]]; then
@@ -26,8 +27,8 @@ fi
 
 # options
 OPTIND=1
-hidden="" root="" full="" tab="" infinite="" stars="" dirs=""
-while getopts "hrftisd" opt; do
+hidden="" root="" full="" tab="" infinite="" stars="" dir="" loc=""
+while getopts "hrftisdl" opt; do
 	case $opt in
 		h) hidden=yes ;;
 		r) root=yes ;;
@@ -35,7 +36,8 @@ while getopts "hrftisd" opt; do
 		t) tab=yes ;;
 		i) infinite=yes ;;
 		s) stars=yes ;;
-		d) dirs=yes ;;
+		d) dir=yes ;;
+		l) loc=yes ;;
 		\?) echo "Invalid option -$OPTARG" >&2
 			return 1 ;;
 	esac
@@ -47,7 +49,7 @@ if [[ $# -eq 0 ]]; then
 	return 0
 elif [[ $# -eq 1 ]]; then
 	args=("cd")
-	type=( -type d )
+	[[ $loc ]] && type=() || type=( -type d )
 else
 	type=()
 	if [[ -n $( 'type' -t "$1" ) ]]; then
@@ -67,7 +69,7 @@ else
 fi
 [[ $root ]] && path="$HOME" || path='.'
 [[ $infinite ]] && maxdepth=999
-[[ $dirs ]] && type=( -type d )
+[[ $dir ]] && type=( -type d )
 
 for arg in "$@"; do
 	if [[ "$arg" == __* ]]; then
@@ -85,6 +87,7 @@ for arg in "$@"; do
 	line="$( echo "$targets" | head -n 1 )"
 	found="${line#* }" # remove first word
 	[[ $found ]] || { echo "$arg not found!" ; return 1; }
+	[[ $loc ]] && found=("$( dirname "$found" )")
 	args+=("$found")
 done
 
