@@ -224,9 +224,9 @@ source ${HOME}/.aliases_dmenu.sh
 alias bbb="cd ../../.."
 alias bbbb="cd ../../../.."
 alias bbbbb="cd ../../../../.."
-alias b2="cd ../../.."
-alias b3="cd ../../../.."
-alias b4="cd ../../../../.."
+alias b3="cd ../../.."
+alias b4="cd ../../../.."
+alias b5="cd ../../../../.."
 
 # pope
 alias sl="[[ $(( $RANDOM % 2 )) -eq 0 ]] && /usr/games/sl-1 || pope"
