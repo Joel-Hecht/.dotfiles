@@ -3,6 +3,7 @@ home-fs/bin/valiases/
 home-fs/bin/dmenu_specific/
 home-fs/.gitconfig
 home-fs/.path.sh
+home-fs/.aliases_bfs.sh
 
 # ignore swapfiles
 **.swp
