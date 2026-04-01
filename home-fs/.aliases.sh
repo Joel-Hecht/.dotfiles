@@ -219,7 +219,6 @@ alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 
 
 # source aliases that act as applications
 source ${HOME}/.aliases_dmenu.sh 
-source ${HOME}/.aliases_v.sh 
 
 #more back aliases
 alias bbb="cd ../../.."
