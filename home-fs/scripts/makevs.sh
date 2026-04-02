@@ -7,25 +7,19 @@ thispath=$(dirname $(dirname "$thispath"))
 aliaspath="$thispath/bin/valiases"
 
 $(mkdir -p $aliaspath)
-count=0
-
-as=$(tail -n +2 "$HOME/.aliases_v.sh" | sed -e 's/alias *//' | sed -e 's/=.*$//')
 $(rm -rf $aliaspath/*)
 
-for a in $as; do
-	p="$aliaspath/$a""-a"
-	VOLUME="$HOME/.VOLUME"
+function _mkv {
+	p="$aliaspath/v$1-a"
+	#echo "Making valias $p"
 	cat > "$p" <<- EOF
-	$bpath
-	chmod 644 $VOLUME
-	echo IN PROGRESS > $VOLUME
-	amixer -q -M set Master $count% &>/dev/null
-	sed -i "s/= \".*W:/= \"VOLUME: $count% :|: W:/" $HOME/.i3status.conf
-	killall i3bar
-	i3bar --bar_id=bar-0 & &>/dev/null 
-	echo $count > $VOLUME
-	chmod 444 $VOLUME
+	#!/bin/bash
+	$HOME/bin/v_base $2 > /dev/null
 	EOF
 	chmod +x $p
-	count=$(( $count + 1 ))
+}
+
+for i in {0..99}; do
+	_mkv $( printf '%02d' $i ) $i
 done
+_mkv "max" 100
