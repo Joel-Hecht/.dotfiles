@@ -1,5 +1,32 @@
 #!/bin/bash
 
+function rmx {
+	mkdir /tmp/old 2>/dev/null
+	mv /tmp/trash/* /tmp/old 2>/dev/null
+	mkdir /tmp/trash 2>/dev/null
+
+	for a; do
+		if [[ -f ${a} ]]; then
+			mv ${a} /tmp/trash
+		elif [[ -d ${a} ]]; then
+			read -p "Remove directory ${a}? [Y]/n " yn
+			case $yn in
+				[Yy]* ) mv ${a} /tmp/trash ;;
+				[^Yy]* ) ;;
+				* ) mv ${a} /tmp/trash ;;
+			esac
+		else
+			if ls *.${a} >/dev/null; then
+				mv *.${a} /tmp/trash
+			elif ls .*.${a} >/dev/null; then
+				mv .*.${a} /tmp/trash
+			else
+				echo "${a}: didn't remove anything" >&2
+			fi
+		fi
+	done
+}
+
 function repo {
 	url=$( git remote get-url origin 2> /dev/null )
 	if [[ -z "$url" ]]; then
