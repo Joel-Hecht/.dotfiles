@@ -210,7 +210,6 @@ function copy { cat "$1" | cb ; }
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
 alias unhdmi="xrandr --auto"
 alias ssh="TERM=xterm-256color ssh" # make ssh kitty-friendly
-alias zip="echo zip -r dest.zip dirToZip; zip" # remember how zip works
 alias vix="vi -X" # use if vim is slow due to x11 issues
 alias sexy="cowsay sexy!"
 alias sex="sexy"

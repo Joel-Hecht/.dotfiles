@@ -1,5 +1,13 @@
 #!/bin/bash
 
+function zipdir {
+	if [[ -n ${1} ]]; then
+		zip -r ${1}.zip ${1}
+	else
+		echo "usage: zipdir {directory} [options]"
+	fi
+}
+
 function rmx {
 	mkdir /tmp/old 2>/dev/null
 	mv /tmp/trash/* /tmp/old 2>/dev/null
