@@ -16,10 +16,8 @@ function rmx {
 				* ) mv ${a} /tmp/trash ;;
 			esac
 		else
-			if ls *.${a} >/dev/null; then
-				mv *.${a} /tmp/trash
-			elif ls .*.${a} >/dev/null; then
-				mv .*.${a} /tmp/trash
+			if find -maxdepth 1 -type f -name "*.${a}" >/dev/null; then
+				find -maxdepth 1 -type f -name "*.${a}" -exec mv {} /tmp/trash \;
 			else
 				echo "${a}: didn't remove anything" >&2
 			fi
