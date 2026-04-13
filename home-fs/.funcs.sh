@@ -164,7 +164,7 @@ function mkcd {
 	elif [ -d "$1" ]; then
 		echo "\'$1' already exists" >&2
 	else
-		mkdir "$1" && cd "$1"
+		mkdir "$@" && cd "$1" 2>/dev/null || cd "${@: -1}"
 	fi
 }
 
