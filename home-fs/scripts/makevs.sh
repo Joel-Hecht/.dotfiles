@@ -14,7 +14,7 @@ function _mkv {
 	#echo "Making valias $p"
 	cat > "$p" <<- EOF
 	#!/bin/bash
-	$HOME/bin/v_base $2 > /dev/null
+	$HOME/bin/v $2 > /dev/null
 	EOF
 	chmod +x $p
 }
