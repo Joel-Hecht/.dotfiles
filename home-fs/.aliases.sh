@@ -195,10 +195,9 @@ alias reload="sb && sa && sf"
 function unfunc { orig=$( type -a $1 ) && unset -f "$1" && echo "was $orig" ; }
 
 # path
-function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh ; }
-function pathhome { echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.path.sh  ; }
-function pathhere { echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.path.sh ; }
-function v { $HOME/bin/v_base $1 >/dev/null ; }
+function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
+function pathhome { echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
+function pathhere { echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
 
 #clipboard
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"

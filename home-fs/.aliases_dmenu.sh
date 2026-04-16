@@ -23,4 +23,5 @@ alias prusaslicer="flatpak run com.prusa3d.PrusaSlicer &"
 alias rpi="flatpak run org.raspberrypi.rpi-imager &"
 alias whatsapp="flatpak run com.rtosta.zapzap"
 alias wa="flatpak run com.rtosta.zapzap"
+alias gradescope="dc firefox https://www.gradescope.com/"
 
