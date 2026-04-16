@@ -1,18 +1,12 @@
 #!/bin/bash
 
-firefox google.com &
-
 if [ $# -ne 1 ]; then
-	echo first >>~/v
 	echo "usage: v <0-100>" 1>&2
 elif ! [[ $1 =~ ^[0-9]+$ ]]; then
-	echo second >>~/v
 	echo "volume must be a number"
 elif [[ $1 -gt 100 || $1 -lt 0 ]]; then
-	echo third >>~/v
 	echo "usage: v <0-100>"
 else # idk what im doing copying from home-fs/bin/.VOLUME
-	echo fourth >>~/v
 	VOLUME=~/.VOLUME
 	
 	# make sure another run of volume isn't currently in progress
