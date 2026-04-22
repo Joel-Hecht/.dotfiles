@@ -33,7 +33,7 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'kshenoy/vim-signature'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'vim-scripts/a.vim'
+Plug 'Joel-Hecht/a.vim'
 call plug#end()
 " end vimplug stuff
 
