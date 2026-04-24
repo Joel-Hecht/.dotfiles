@@ -3,8 +3,8 @@
 #program assumes all displays have the same brightness
 
 usage() {
-	echo "Usage: $0 [-f <brightness_delta> | -r]" >&2
-	echo "-f <brightness_delta>	Changes the brightness of all displays by <brightness_delta>" >&2
+	echo "Usage: $0 [-c <brightness_delta> | -r]" >&2
+	echo "-c <brightness_delta>	Changes the brightness of all displays by <brightness_delta>" >&2
 	echo "-r			Resets the brightness to 1"
 	exit 1 
 }
@@ -55,4 +55,7 @@ for disp in $(xrandr -q | grep " connected" | sed -e 's/ .*$//' ); do
 	xrandr --output "$disp" --brightness "$b"
 done
 
-xsct "$temp" "$b"
+# xsct doesn't work with >1.0 brightnesses
+if (( $(echo "$b <= 1.0" | bc -l) )); then
+	xsct "$temp" "$b"
+fi
