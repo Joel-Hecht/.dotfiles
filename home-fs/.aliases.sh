@@ -54,6 +54,9 @@ function rust {
 }
 alias dust="rm -rf $HOME/.test-rust"
 alias cgb="cargo build"
+alias cdb="cmake -DCMAKE_BUILD_TYPE=Debug"
+alias cbd="cdb" # as funny as it is I find myself typing this all the time instead so whatever
+alias crel="cmake -DCMAKE_BUILD_TYPE=Release"
 
 #computer control
 alias eep="systemctl suspend"
