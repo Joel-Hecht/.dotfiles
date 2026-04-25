@@ -311,3 +311,7 @@ function mkcp {
 	fi
 }
 
+function lo {
+	libreoffice "$@" &
+}
+

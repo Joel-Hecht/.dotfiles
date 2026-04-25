@@ -166,7 +166,6 @@ alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt
 #programs 
 alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
-alias lo="libreoffice"
 alias bat="batcat"
 alias ipython="ipython3"
 alias py="python"
