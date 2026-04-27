@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#general
+alias me="echo \"$(whoami)@$(hostname)\""
+alias dup='dc kitty $( pwd ) 2>/dev/null' # make new terminal in this directory
+
 #navigation
 alias dot="cd ~/.dotfiles"
 alias dhome="cd ~/.dotfiles/home-fs"
@@ -8,14 +12,9 @@ alias dbin="cd ~/.dotfiles/home-fs/bin"
 alias dconf="cd ~/.dotfiles/home-fs/.config"
 alias scs="cd ~/Pictures"
 alias proj="cd ~/proj"
-alias clanker="dc firefox claude.ai"
-alias t="dc firefox www.tumblr.com/"
-alias kb="chromium launcher.keychron.com"
-alias me="echo \"$(whoami)@$(hostname)\""
 alias down="cd ~/Downloads"
 
 alias o="cd - >/dev/null" # go to Older directory in this terminal
-alias P="dc firefox https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
 alias bb="cd ../.." # bbb, etc. also work, 
 alias b2="cd ../.." # b3, b4, etc. also work
 
@@ -32,6 +31,13 @@ alias funcs="vim ~/.dotfiles/home-fs/.funcs.sh && source ~/.funcs.sh"
 alias br="vim ~/.bashrc && source ~/.bashrc"
 alias vr="vim ~/.vimrc"
 alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
+
+# websites
+alias md="dc firefox markdownlivepreview.com"
+alias clanker="dc firefox claude.ai"
+alias t="dc firefox www.tumblr.com/"
+alias kb="chromium launcher.keychron.com"
+alias P="dc firefox https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
 
 #for testing
 alias C="[[ -f $HOME/.test.c ]] || cp $HOME/.template.c $HOME/.test.c ; vi $HOME/.test.c && gcc $HOME/.test.c -lm && ./a.out && rm ./a.out"
@@ -68,14 +74,11 @@ alias kms="sudo pkill -u $(whoami)"
 alias kf="keyboard_firmware"
 alias i3rs="i3-msg restart"
 alias i3rl="i3-msg reload"
-alias dup='dc kitty $( pwd ) 2>/dev/null' # make new terminal in this directory
 alias update="sudo apt update"
 alias upgrade="sudo apt update && sudo apt upgrade"
 alias autopurge="sudo apt autopurge"
 
 # remove things
-alias rmswp="rm *.swp *~ 2> /dev/null"
-alias rmzip="rm *.zip *.tar *.gz 2> /dev/null"
 alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
 alias rm="rm -d"
 alias rmr="rm -rd"
@@ -83,6 +86,7 @@ alias rmrf="rm -rfd"
 
 #process control
 alias pids="ps aux"
+function findproc { ps aux | ugrep "$@" --color=yes | ugrep -v grep --color=yes ; }
 alias killproc="killall"
 alias kp="killproc"
 alias killpid="kill -9"
@@ -106,9 +110,6 @@ alias cgrep="clear; grep -P"
 alias dl="ls ~/Downloads"
 alias dll="ll ~/Downloads"
 alias difff="kitten diff"
-alias mypy="~/.basevenv/bin/mypy"
-function findproc { ps aux | ugrep "$@" --color=yes | ugrep -v grep --color=yes ; }
-function ref { grep '\<'$1'\>' ; }
 
 #vim aliases
 #alias v="vim"
@@ -232,7 +233,6 @@ alias b5="cd ../../../../.."
 # pope
 alias sl="[[ $(( $RANDOM % 2 )) -eq 0 ]] && /usr/games/sl-1 || pope"
 alias bs="pope"
-alias md="pope"
 alias pg="pope"
 alias pd="pope"
 alias as="pope"
