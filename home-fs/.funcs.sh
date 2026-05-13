@@ -139,6 +139,7 @@ function vm {
 function getvm {
 	bdh ~/vm/fusion_share/out/ 
 }
+alias vmget="getvm"
 
 function dc {
 	if [[ $# -eq 0 ]]; then
