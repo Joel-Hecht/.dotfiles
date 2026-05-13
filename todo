@@ -1,6 +1,7 @@
 easy
 - add directory history to o alias so it works more than once
 - configure bashhub (bash history on the cloud) https://github.com/rcaloras/bashhub-client
+- nitrogen -> feh for background, which sets up on initial build 
 
 medium
 - bfs early exit if not -f

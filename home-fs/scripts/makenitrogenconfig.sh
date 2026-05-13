@@ -9,8 +9,8 @@ symtofile() {
 	fi
 }
 
-#assuming this script continues to be kept in dhome
-dhome="$(dirname "${BASH_SOURCE[0]}")"
+#assuming this script continues to be kept in dhome/scripts
+dhome="$(dirname "${BASH_SOURCE[0]}")/.."
 
 pattern_string="{REPLACE_ME_WITH_HOME_REALPATH}"
 #home realpath with all / escaped
@@ -23,7 +23,7 @@ home_conf="$(realpath ~)/.config/nitrogen"
 #ignoresymlinked - these files exist in the repo, but should never be deployed
 from_location="$dhome/.config/.nitrogen_helper"
 
-#make dotfiles nitrogen directory if it doesn't exist
+#make dotfiles itrogen directory if it doesn't exist
 #this is in gitignore
 if [[ ! -d "$move_location" ]]; then
 	mkdir "$move_location"
