@@ -126,6 +126,8 @@ source ~/.funcs.sh || { touch ~/.funcs.sh && source ~/.funcs.sh ;}
 source ~/.aliases_bfs.sh || { touch ~/.aliases_bfs.sh && source ~/.aliases_bfs.sh ;}
 source ~/.path.sh || { touch ~/.path.sh && source ~/.path.sh ;}
 source ~/.bash_profile || { touch ~/.bash_profile && source ~/.bash_profile ;}
+#file not under version control
+source ~/.work.sh || { touch ~/.work.sh && source ~/.work.sh ;}
 
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
