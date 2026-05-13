@@ -1,6 +1,4 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
 
 # For profiling bashrc
 # If profiling, need to also remove "exec {BASH_XTACEFD}>/dev/null"
@@ -110,16 +108,17 @@ esac
 export TERM=xterm-256color
 
 # import all aliases
-# TODO: make this a function on a filename instead of this messy garbage
-source ~/.aliases.sh || { touch ~/.aliases.sh && source ~/.aliases.sh ;}
-source ~/.funcs.sh || { touch ~/.funcs.sh && source ~/.funcs.sh ;}
-source ~/.aliases_bfs.sh || { touch ~/.aliases_bfs.sh && source ~/.aliases_bfs.sh ;}
-source ~/.bash_profile || { touch ~/.bash_profile && source ~/.bash_profile ;}
-source ~/.pyenv.sh || { touch ~/.pyenv.sh && source ~/.pyenv.sh ;}
+function _src {
+	source $1 2>/dev/null || { touch $1 && source $1 ;}
+}
+_src ~/.aliases.sh
+_src ~/.funcs.sh
+_src ~/.aliases_bfs.sh
+_src ~/.pyenv.sh
 
 #files not under version control
-source ~/.path.sh || { touch ~/.path.sh && source ~/.path.sh ;}
-source ~/.work.sh || { touch ~/.work.sh && source ~/.work.sh ;}
+_src ~/.path.sh
+_src ~/.work.sh
 
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
