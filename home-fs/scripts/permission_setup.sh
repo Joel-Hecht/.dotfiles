@@ -9,7 +9,7 @@ for f in "$bindir"* ; do
 	fi
 done
 
-chmod +x "$homedir/.bash_exit.sh"
+chmod +x "$HOME/.bash_exit.sh"
 
 ##make keyboard firmware executable without password for keyboard shortcut
 #kf="$bindir"/keyboard_firmware
