@@ -170,18 +170,6 @@ alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt
 alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias bat="batcat"
-alias ipython="ipython3"
-alias py="python"
-function vpy {
-	[[ -n $( echo $PATH | ugrep venv ) ]] || venv
-	if [[ -z $1 ]]; then
-		ipython3
-	else
-		python "$@"
-	fi
-	venvl
-}
-alias jpnb="venv && dc jupyter-notebook && venvl"
 alias directiongame="vpy ~/proj/directiongame/final5.py ; venvl"
 alias dg="directiongame"
 alias mse="dc wine $HOME/Downloads/mse/mse.exe"

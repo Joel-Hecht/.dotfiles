@@ -103,30 +103,22 @@ esac
 
 # <<< juliaup initialize <<<
 
-#stay in a base venv always
-#we also make an alias for pip here because im a fuck
-VENVNAME=".basevenv"
-if ! [ -d  "${HOME}/${VENVNAME}" ]; then
-	curr=$(pwd)
-	cd "${HOME}"
-	python3 -m venv "${VENVNAME}"
-	cd "$curr"
-fi
-
-alias venv="source \"${HOME}/${VENVNAME}/bin/activate\""
-alias venvl="deactivate"
-alias pip="${HOME}/${VENVNAME}/bin/pip"
-alias pipx="${HOME}/${VENVNAME}/bin/pipx"
+# rust environment setup
 . "$HOME/.cargo/env"
+
+#kitty colors yayyy!Q!!!
 export TERM=xterm-256color
 
 # import all aliases
+# TODO: make this a function on a filename instead of this messy garbage
 source ~/.aliases.sh || { touch ~/.aliases.sh && source ~/.aliases.sh ;}
 source ~/.funcs.sh || { touch ~/.funcs.sh && source ~/.funcs.sh ;}
 source ~/.aliases_bfs.sh || { touch ~/.aliases_bfs.sh && source ~/.aliases_bfs.sh ;}
-source ~/.path.sh || { touch ~/.path.sh && source ~/.path.sh ;}
 source ~/.bash_profile || { touch ~/.bash_profile && source ~/.bash_profile ;}
-#file not under version control
+source ~/.pyenv.sh || { touch ~/.pyenv.sh && source ~/.pyenv.sh ;}
+
+#files not under version control
+source ~/.path.sh || { touch ~/.path.sh && source ~/.path.sh ;}
 source ~/.work.sh || { touch ~/.work.sh && source ~/.work.sh ;}
 
 #export NVM_DIR="$HOME/.nvm"
