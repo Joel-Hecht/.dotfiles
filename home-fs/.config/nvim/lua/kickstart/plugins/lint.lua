@@ -12,7 +12,7 @@ return {
 				bash = { "bash" },
 				cpp = { "clangtidy" },
 				c = { "clangtidy" },
-				python = { "pylint" },
+				-- python = { "pylint" },
 				janet = { "janet" },
 			}
 
