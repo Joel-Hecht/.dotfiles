@@ -33,9 +33,6 @@ HISTFILESIZE=2000
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-# shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -45,87 +42,51 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
-
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/' | sed -e 's/$/ /'
-}
-
-PS1='${debian_chroot:+($debian_chroot)}\[\033[01;37m\]$(parse_git_branch)\[\033[00m\]\[\033[01;32m\]\w\[\033[00m\] '
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto --hyperlink=auto' 
-	if [[ ! -z $(which kitty) ]]; then
-    	alias grep='kitty +kitten hyperlinked_grep --smart-case -L'
-	fi
+fi
+
+# kitty colors yayyy!Q!!!
+export TERM=xterm-256color
+
+# kitty grep
+if [[ ! -z $(which kitty) ]]; then
+	alias grep='kitty +kitten hyperlinked_grep --smart-case -L'
 	alias ugrep='/usr/bin/grep --color=auto' # [u]sr/bin grep instead of kitty grep
 fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-
-# >>> juliaup initialize >>>
-
-# !! Contents within this block are managed by juliaup !!
-
-case ":$PATH:" in
-    *:/home/pi/.juliaup/bin:*)
-        ;;
-
-    *)
-        export PATH=/home/pi/.juliaup/bin${PATH:+:${PATH}}
-        ;;
-esac
-
-# <<< juliaup initialize <<<
-
-# rust environment setup
-. "$HOME/.cargo/env"
-
-#kitty colors yayyy!Q!!!
-export TERM=xterm-256color
 
 # import all aliases
 function _src {
 	source $1 2>/dev/null || { touch $1 && source $1 ;}
 }
-_src ~/.aliases.sh
-_src ~/.funcs.sh
-_src ~/.aliases_bfs.sh
-_src ~/.pyenv.sh
+_src ${HOME}/.aliases.sh
+_src ${HOME}/.funcs.sh
+_src ${HOME}/.aliases_bfs.sh
+_src ${HOME}/.pyenv.sh
 
 #files not under version control
-_src ~/.path.sh
-_src ~/.work.sh
+_src ${HOME}/.path.sh
+_src ${HOME}/.work.sh
+
+# rust environment setup
+_src ${HOME}/.cargo/env
+
+# shell prompt (PS1)
+_src ${HOME}/.fancy_prompt.sh
+
+# enable programmable completion features
+_src /usr/share/bash-completion/bash_completion
+_src /etc/bash_completion
 
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 #[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # add things to path
-export PATH="${HOME}/.kitty/kitty/kitty/launcher/:$PATH"
+export PATH="${HOME}/.juliaup/bin:$PATH"
+export PATH="${HOME}/.kitty/kitty/kitty/launcher:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/lib/qt6/bin:$PATH"
 export PATH="$HOME/bin/aliases:$PATH"
@@ -134,9 +95,7 @@ export PATH="/usr/local/MATLAB/R2025a/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/.go/bin:$PATH"
-
-# remove evil musescore directory
-rm -rf "$HOME/MuseScore4/"
+export PATH="/usr/local/go/bin:$PATH"
 
 #add permissions so chirp can access radios over usb port0
 #sudo usermod -a -G $(stat -c %G /dev/ttyUSB0) $USER
@@ -148,26 +107,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-condainit () {
-	__conda_setup="$("/usr/local/miniconda3/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
-	if [ $? -eq 0 ]; then
-		eval "$__conda_setup"
-	else
-		if [ -f "/usr/local/miniconda3/etc/profile.d/conda.sh" ]; then
-			. "/usr/local/miniconda3/etc/profile.d/conda.sh"
-		else
-			export PATH="/usr/local/miniconda3/bin:$PATH"
-		fi
-	fi
-	unset __conda_setup
-}
-# <<< conda initialize <<<
-
-#for manually installed go
-export PATH="/usr/local/go/bin:$PATH"
 
 #start ssh for this terminal and add all keys that end in rsa (omits .pub and known_hosts)
 for key in ${HOME}/.ssh/*; do 
