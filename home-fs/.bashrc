@@ -59,7 +59,7 @@ fi
 
 # import all aliases
 function _src {
-	source $1 2>/dev/null || { touch $1 && source $1 ;}
+	source $1 || { touch $1 && source $1 ;}
 }
 _src ${HOME}/.aliases.sh
 _src ${HOME}/.funcs.sh
@@ -81,7 +81,7 @@ _src /usr/share/bash-completion/bash_completion
 _src /etc/bash_completion
 
 # bash-preexec
-_src ~/.prexec-setup.sh
+_src ${HOME}/.preexec-setup.sh
 
 #export NVM_DIR="$HOME/.nvm"
 #[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

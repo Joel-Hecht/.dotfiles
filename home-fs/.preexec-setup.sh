@@ -3,11 +3,11 @@
 # 					 or to preexec_functions to execute before command execution
 shopt -s extdebug
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-function precmd_1 {
+function precmd {
 	history -a
 	return 0
 }
-function preexec_1 {
+function preexec {
 	# don't preexec on automatic kitty history functions
 	[[ $HISTCMD -le $LASTHISTCMD ]] && return 0
 	export LASTHISTCMD=$HISTCMD
@@ -40,5 +40,3 @@ function preexec_1 {
 	# all else fails, run default command not found behaviour
 	return 0
 }
-precmd_functions+=(precmd_1)
-preexec_functions+=(preexec_1)
