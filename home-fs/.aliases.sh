@@ -175,9 +175,10 @@ alias mse="dc wine $HOME/Downloads/mse/mse.exe"
 alias ardour="dc Ardour8"
 alias judgel="./jpm_tree/bin/judge"
 alias dds="docker desktop start"
-alias fileshere="nautilus . &"
+alias fileshere="dc nautilus ."
 alias fh="fileshere"
 alias f="fh"
+alias dfh="dc nautilus $HOME/Downloads"
 
 #reload after updates	
 alias sb="source ~/.bashrc"
