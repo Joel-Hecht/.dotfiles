@@ -614,6 +614,9 @@ require("lazy").setup({
 					--  To jump back, press <C-t>.
 					map("grd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
+					-- Show LSP "fix available"
+					map("grf", vim.lsp.buf.code_action(), "[G]oto [F]ix")
+
 					-- WARN: This is not Goto Definition, this is Goto Declaration.
 					--  For example, in C this would take you to the header.
 					map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -708,16 +711,14 @@ require("lazy").setup({
 				severity_sort = true,
 				float = { border = "rounded", source = "if_many" },
 				underline = { severity = vim.diagnostic.severity.ERROR },
-				signs = vim.g.have_nerd_font
-						and { --this short circuit is bullshit lua syntax that basically works like a?b:c in other langauges
-							text = {
-								[vim.diagnostic.severity.ERROR] = "󰅚 ",
-								[vim.diagnostic.severity.WARN] = "󰀪 ",
-								[vim.diagnostic.severity.INFO] = "󰋽 ",
-								[vim.diagnostic.severity.HINT] = "󰌶 ",
-							},
-						}
-					or {},
+				signs = vim.g.have_nerd_font and { --this short circuit is bullshit lua syntax that basically works like a?b:c in other langauges
+					text = {
+						[vim.diagnostic.severity.ERROR] = "󰅚 ",
+						[vim.diagnostic.severity.WARN] = "󰀪 ",
+						[vim.diagnostic.severity.INFO] = "󰋽 ",
+						[vim.diagnostic.severity.HINT] = "󰌶 ",
+					},
+				} or {},
 				virtual_text = {
 					source = "if_many",
 					spacing = 2,
