@@ -254,6 +254,7 @@ exec --no-startup-id bash ${HOME}/bin/fix_volume
 
 #program shortcuts
 bindsym Control+$alt+f exec --no-startup-id firefox
+bindsym Control+Shift+f exec --no-startup-id nautilus 
 bindsym Control+$alt+c exec --no-startup-id chromium
 bindsym Control+$alt+n exec --no-startup-id subl
 bindsym Control+$alt+p exec --no-startup-id flatpak run com.github.PintaProject.Pinta &
