@@ -9,7 +9,7 @@ i3-wm `_necessary for i3`\
 i3lock \
 i3blocks \
 suckless-tools \
-konsole `_my preferred terminal emulator`\
+konsole `_backup terminal emulator, we dont use this anymore`\
 compton `_allows transparent terminals` \
 maim `_needed for screenshots` \
 xclip \
@@ -19,6 +19,8 @@ libx11-dev `_x11 support, needed for multi-monitor config` \
 policykit-1-gnome polkitd `_polkit needed to authenticate as root from i3wm` \
 feh `_lighter weight than eog for pope` \
 wmctrl `_to target x11 windows by pid` \
+kitty-terminfo `_tells nvim about kitty for terminal mode` \
+notepadqq \
 
 #flatpak setup
 sudo apt install flatpak
@@ -30,6 +32,7 @@ flatpak install flathub com.github.PintaProject.Pinta
 #discord
 flatpak install flathub com.discordapp.Discord
 
+# kitty terminal emulator, this is what we use now
 dotdir=$(dirname $(realpath "$0"))
 cd $dotdir
 ./build_kitty_source.sh

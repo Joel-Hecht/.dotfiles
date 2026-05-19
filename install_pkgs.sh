@@ -16,7 +16,6 @@ vim-gtk3 `_install graphical vim, installation gives vim access to system clipbo
 python3-venv pip `_needed to use pip`\
 lua5.4 `_lua language` \
 ninja-build gettext cmake unzip curl `_tools we need for later to install neovim` \
-notepadqq \
 ascii \
 sl \
 python-is-python3 ipython3 \
@@ -26,7 +25,6 @@ clangd `_for cpp in nvim` \
 fd-find fzf `_for nvim ` \
 clang-format clang-tidy `_cpp in nvim` \
 pylint `_python linter for no good reason` \
-kitty-terminfo `_tells nvim about kitty for terminal mode` \
 cowsay \
 build-essential gdb debhelper `_prob alr have these` \
 bat \
