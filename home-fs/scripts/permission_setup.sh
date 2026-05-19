@@ -1,7 +1,8 @@
 #!/bin/bash
-thispath=$(realpath $0)
-thispath=$(dirname $(dirname "$thispath"))
-bindir="$thispath/bin/"
+thispath=$(realpath "${BASH_SOURCE[0]}")
+thisdir=$(dirname "$thispath")
+dhome=$(dirname $(dirname "$thispath"))
+bindir="$dhome/bin/"
 
 for f in "$bindir"* ; do
 	if [ -f f ]; then
@@ -11,11 +12,6 @@ done
 
 chmod +x "$HOME/.bash_exit.sh"
 
-##make keyboard firmware executable without password for keyboard shortcut
-#kf="$bindir"/keyboard_firmware
-##make root owner and change setUID so it can exectue without password
-#sudo chown root:root "$kf"
-#sudo chmod 4755 "$kf"
-
-#give pinta home directory access
-sudo flatpak override com.github.PintaProject.Pinta --filesystem=~/ && echo "pinta permissions added"
+if [ "$DISPLAY" == ":1" ]; then 
+	bash "$thisdir"/permission_setup_desktop.sh
+fi
