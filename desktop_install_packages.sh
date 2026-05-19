@@ -5,18 +5,18 @@ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/ap
 echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
 
 sudo apt install \
-i3-wm `necessary for i3`\
+i3-wm `_necessary for i3`\
 i3lock \
 i3blocks \
 suckless-tools \
-konsole `my preferred terminal emulator`\
-compton `allows transparent terminals` \
-maim `needed for screenshots` \
+konsole `_my preferred terminal emulator`\
+compton `_allows transparent terminals` \
+maim `_needed for screenshots` \
 xclip \
 xdotool \
-nitrogen `desktop background manager` \
-libx11-dev `x11 support, needed for multi-monitor config` \
-policykit-1-gnome polkitd `polkit needed to authenticate as root from i3wm` \
+nitrogen `_desktop background manager` \
+libx11-dev `_x11 support, needed for multi-monitor config` \
+policykit-1-gnome polkitd `_polkit needed to authenticate as root from i3wm` \
 feh `_lighter weight than eog for pope` \
 wmctrl `_to target x11 windows by pid` \
 
@@ -31,7 +31,7 @@ flatpak install flathub com.github.PintaProject.Pinta
 flatpak install flathub com.discordapp.Discord
 
 dotdir=$(dirname $(realpath "$0"))
-cd dotdir
+cd $dotdir
 ./build_kitty_source.sh
 
 # set color temperature (nightlight)

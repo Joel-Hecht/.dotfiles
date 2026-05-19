@@ -4,18 +4,18 @@
 sudo apt update
 #sudo apt upgrade -y
 sudo apt install \
-fonts-jetbrains-mono `fonts`\
+fonts-jetbrains-mono `_fonts`\
 fonts-font-awesome \
 fonts-powerline \
-wget sed grep `cant believe this isnt default`\
-gcc make cmake vim ripgrep  `general tools` \
-fdisk `volume viwer thats worst than lsblk but i like it`\
+wget sed grep `_cant believe this isnt default`\
+gcc make cmake vim ripgrep  `_general tools` \
+fdisk `_volume viwer thats worst than lsblk but i like it`\
 git gh `_if you got this far you should already have this` \
-calcurse `in-terminal calendar` \
+calcurse `_in-terminal calendar` \
 vim-gtk3 `_install graphical vim, installation gives vim access to system clipboard register`\
-python3-venv pip `needed to use pip`\
+python3-venv pip `_needed to use pip`\
 lua5.4 `_lua language` \
-ninja-build gettext cmake unzip curl `tools we need for later to install neovim` \
+ninja-build gettext cmake unzip curl `_tools we need for later to install neovim` \
 notepadqq \
 ascii \
 sl \
@@ -26,12 +26,12 @@ clangd `_for cpp in nvim` \
 fd-find fzf `_for nvim ` \
 clang-format clang-tidy `_cpp in nvim` \
 pylint `_python linter for no good reason` \
-kitty-terminfo `tells nvim about kitty for terminal mode` \
+kitty-terminfo `_tells nvim about kitty for terminal mode` \
 cowsay \
-build-essential gdb debhelper ` prob alr have these` \
+build-essential gdb debhelper `_prob alr have these` \
 bat \
-bfs ` breadth-first _find that we build our bfs on top of ` \
-gcc `put this here again so ALL PREVIOUS can have escaped newlines`
+bfs `_breadth-first _find that we build our bfs on top of ` \
+gcc `_put this here again so ALL PREVIOUS can have escaped newlines`
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
 
@@ -115,6 +115,8 @@ if [[ -z $(command -v buoy-client) ]]; then
 	cd "${HOME}/apps"
 	rm -rf buoy #clean up
 	cd "$currentdir"
+else
+	echo "buoy already installed"
 fi
 
 #install vimplug for vim if it does not exist already
