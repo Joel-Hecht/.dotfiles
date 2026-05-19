@@ -98,7 +98,7 @@ else
 fi
 
 #install buoy - no routine to update of yet
-if [[ -z $(command -v buoy) || -z $(command -v buoy-client)  ]]; then
+if [[ -z $(command -v buoy-client) ]]; then
 	currentdir=$('pwd')
 	mkdir -p "${HOME}/apps"
 	cd "${HOME}/apps"
