@@ -43,23 +43,30 @@ setsid feh -Z "$popeaddress" >/dev/null 2>&1 < /dev/null &
 
 pid=$!
 
-# From https://unix.stackexchange.com/questions/450700/opening-a-programme-in-a-floating-window-in-i3
-# Wait for the window to open and grab its window ID
-winid=''
-while : ; do
-    winid="`wmctrl -lp | awk -vpid=$pid '$3==pid {print $1; exit}'`"
-    [[ -z "${winid}" ]] || break
-done
+hasDisplay=false;
+if [ "$DISPLAY" == ":1" ]; then 
+	hasDisplay=true;
+fi
 
-#focus on pope 
-wmctrl -ia "${winid}"
+if $hasDisplay; then
+	# From https://unix.stackexchange.com/questions/450700/opening-a-programme-in-a-floating-window-in-i3
+	# Wait for the window to open and grab its window ID
+	winid=''
+	while : ; do
+			winid="`wmctrl -lp | awk -vpid=$pid '$3==pid {print $1; exit}'`"
+			[[ -z "${winid}" ]] || break
+	done
 
-i3-msg floating enable > /dev/null 
-if [[ "$random" ]]; then
-	#these are probably your monitor dimensions??
-	i3-msg move position $(($RANDOM % 1000)) $(($RANDOM % 600)) >/dev/null
-else
-	i3-msg move position center > /dev/null 
+	#focus on pope 
+	wmctrl -ia "${winid}"
+
+	i3-msg floating enable > /dev/null 
+	if [[ "$random" ]]; then
+		#these are probably your monitor dimensions??
+		i3-msg move position $(($RANDOM % 1000)) $(($RANDOM % 600)) >/dev/null
+	else
+		i3-msg move position center > /dev/null 
+	fi
 fi
 
 if [[ "$dosleep" ]]; then
@@ -72,5 +79,7 @@ else
 	# wait "${pid}";	
 	
 	#we will echo out the window id, so that another process could use it
-	echo "${winid}";
+	if $hasDisplay;then
+		echo "${winid}";
+	fi
 fi
