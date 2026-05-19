@@ -39,7 +39,7 @@ dotdir=$(dirname $(realpath "${BASH_SOURCE[0]}"))
 ############# DESKTOP/GRAPHICAL PACKAGES  ###########
 ####### UNNEEDED IF NOT IN A GRAPHICAL SETTING ######
 #####################################################
-if [ "$DISPLAY" == ":1" ]; then 
+if [ -n "$XDG_CURRENT_DESKTOP" ]; then 
 	bash "$dotdir"/desktop_install_packages.sh
 fi
 #####################################################

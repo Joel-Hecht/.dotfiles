@@ -12,6 +12,6 @@ done
 
 chmod +x "$HOME/.bash_exit.sh"
 
-if [ "$DISPLAY" == ":1" ]; then 
+if [ -n "$XDG_CURRENT_DESKTOP" ]; then 
 	bash "$thisdir"/permission_setup_desktop.sh
 fi
