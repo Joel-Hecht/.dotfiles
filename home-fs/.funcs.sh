@@ -11,7 +11,13 @@ function unfunc {
 }
 
 # path stuff i always forget to use
-function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
+function path { 
+	if [ -z "$1" ];then 
+		${EDITOR} ~/.path.sh && source ~/.path.sh
+	else
+		echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; 
+	fi	
+}
 function pathhome { echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
 function pathhere { echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
 
