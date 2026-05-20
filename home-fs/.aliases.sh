@@ -15,6 +15,7 @@ alias proj="cd ~/proj"
 alias down="cd ~/Downloads"
 
 alias o="cd - >/dev/null" # go to Older directory in this terminal
+alias b="cd .." # go Back (p is better though)
 alias bb="cd ../.." # bbb, etc. also work, 
 alias b2="cd ../.." # b3, b4, etc. also work
 
@@ -46,19 +47,8 @@ alias cpp="[[ -f $HOME/.test.cpp ]] || cp $HOME/.template.cpp $HOME/.test.cpp ; 
 alias Cpp="cpp"
 alias dpp="rm $HOME/.test.cpp"
 alias Dpp="rm $HOME/.test.cpp"
-function rust {
-	[[ -d $HOME/.test-rust ]] || cp -rL $HOME/.template-rust $HOME/.test-rust
-	cd $HOME/.test-rust
-	sed -i 's/template/test/' Cargo.toml
-	if [[ -n $1 ]]; then
-		cargo $@
-	else
-		vi src/main.rs
-		cargo run
-	fi
-	cd - >/dev/null
-}
-alias dust="rm -rf $HOME/.test-rust"
+
+# build stuff
 alias cgb="cargo build"
 alias cdb="cmake -DCMAKE_BUILD_TYPE=Debug"
 alias cbd="cdb" # as funny as it is I find myself typing this all the time instead so whatever
@@ -88,9 +78,9 @@ alias rmrf="rm -rfd"
 
 #process control
 alias pids="ps aux"
-function findproc { ps aux | ugrep "$@" --color=yes | ugrep -v grep --color=yes ; }
 alias killproc="killall"
 alias kp="killproc"
+alias fp="findproc"
 alias killpid="kill -9"
 
 #info
@@ -131,13 +121,6 @@ alias gaup="git add --update --patch"
 alias gaap="git add --all --patch"
 alias names="git diff --name-only"
 alias staged="git diff --name-only --staged"
-function pull {
-	if [[ -n $( git log --branches --not --remotes ) ]]; then
-		echo You are ahead of origin, you might want to git pull --rebase
-	else
-		git pull
-	fi
-}
 alias gp="git pull"
 alias pull="git pull"
 alias push="git push"
@@ -152,17 +135,6 @@ alias unadd="git restore --staged"
 alias ungaa="git reset --mixed"
 alias untrack="git rm --staged"
 alias uncommit="git reset --soft HEAD~1"
-function amend {
-	if [[ -n "$( git diff --staged )" ]]; then
-		echo You have staged changes, git commit --amend will merge them into the last commit
-		echo If you just want to rewrite your commit message, unstage your changes first
-	elif [[ -z $( git status | grep "ahead" ) ]]; then
-		echo You are up to date with origin, git commit --amend will rewrite history
-		echo You probably dont want to do that
-	else
-		git commit --amend
-	fi
-}
 
 #copy github access token to authenticate on tux
 alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
@@ -189,18 +161,11 @@ alias sa="source ~/.aliases.sh"
 alias sf="source ~/.funcs.sh"
 alias ms="curr=\"\$(pwd)\" && dhome && scripts/makesymlinks.sh; cd \"\$curr\""
 alias reload="sb && sa && sf"
-function unfunc { orig=$( type -a $1 ) && unset -f "$1" && echo "was $orig" ; }
-
-# path
-function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
-function pathhome { echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
-function pathhere { echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
 
 #clipboard
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
 alias cpy="xclip -sel c"
 alias cb="xclip -sel c"
-function copy { cat "$1" | cb ; }
 
 # misc
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
@@ -211,6 +176,7 @@ alias sexy="cowsay sexy!"
 alias sex="sexy"
 #fixes pdfs and excel spreadsheets becoming transparent
 alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 2>&1 &"
+alias ea="edita"
 
 # source aliases that act as applications
 source ${HOME}/.aliases_dmenu.sh 

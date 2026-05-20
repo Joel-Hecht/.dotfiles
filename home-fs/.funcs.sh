@@ -1,5 +1,54 @@
 #!/bin/bash
 
+function copy {
+	cat "$1" | cb
+}
+
+function unfunc { 
+	orig=$( type -a $1 ) 
+	unset -f "$1" 
+	echo "was $orig"
+}
+
+# path stuff i always forget to use
+function path { echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
+function pathhome { echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
+function pathhere { echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
+
+# make git a little nicer
+function pull {
+	if [[ -n $( git log --branches --not --remotes ) ]]; then
+		echo You are ahead of origin, you might want to git pull --rebase
+	else
+		git pull
+	fi
+}
+function amend {
+	if [[ -n "$( git diff --staged )" ]]; then
+		echo You have staged changes, git commit --amend will merge them into the last commit
+		echo If you just want to rewrite your commit message, unstage your changes first
+	elif [[ -z $( git status | grep "ahead" ) ]]; then
+		echo You are up to date with origin, git commit --amend will rewrite history
+		echo You probably dont want to do that
+	else
+		git commit --amend
+	fi
+}
+
+function rust {
+	[[ -d $HOME/.test-rust ]] || cp -rL $HOME/.template-rust $HOME/.test-rust
+	cd $HOME/.test-rust
+	sed -i 's/template/test/' Cargo.toml
+	if [[ -n $1 ]]; then
+		cargo $@
+	else
+		vi src/main.rs
+		cargo run
+	fi
+	cd - >/dev/null
+}
+function dust { rm -rf $HOME/.test-rust; }
+
 function rmscs {
 	mkdir /tmp/old 2> /dev/null
 	mv /tmp/trash/* /tmp/old 2> /dev/null
@@ -23,7 +72,7 @@ function sc {
 
 function _scname {
 	lastID=$(.lastScreenShotID)
-	fname="$(ls ${HOME}/Pictures | ugrep ^SCID"$lastID"_.*.png)"
+	fname="$(ls ${HOME}/Pictures | grep ^SCID"$lastID"_.*.png)"
 	echo ${HOME}/Pictures/"$fname"
 }
 
@@ -86,7 +135,6 @@ function p {
 		cd "$target"
 	fi
 }
-alias b="p"
 
 function lockin {
 	conf=$( cat $HOME/.i3status.conf | /usr/bin/grep -v 'order += "tztime local"' )
@@ -116,9 +164,8 @@ function findproc {
 		return 1
 	fi
 
-	ps aux | ugrep $1 | ugrep -v grep | ugrep -v findproc
+	ps aux | grep $1 | grep -v grep | grep -v findproc
 }
-alias fp="findproc"
 
 # from https://unix.stackexchange.com/a/561579
 function awkn {
@@ -378,5 +425,3 @@ function edita {
 
 	${EDITOR} "+$linenumber" "$fname"
 }
-alias ea="edita"
-
