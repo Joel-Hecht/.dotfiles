@@ -403,12 +403,9 @@ function edita {
 		linenumber=$(echo "$cut" | sed "s/ .*$//")
 		fname=$(echo "$cut" | sed "s/^[0-9]* //")
 	else 
-		aliasedto=$(command -v "$target")
-		whichedto=$(which "$target")
-		# aliases are found by command but not by which
-		# all others will be found by both
-		# could also run 'alias $target' which would do the same thing
-		if [[ -n "$aliasedto" && -z "$whichedto" ]]; then
+		aliasresult=$(alias "$target")
+		pat="^alias\ ${target}='.*"
+		if [[ "$aliasresult" =~ $pat ]]; then
 			# make line tell source file and line number with this format
 			export PS4='(${BASH_SOURCE} :::: ${LINENO}) '
 			line=$(bash -xci : 2>&1 | /usr/bin/grep "alias '${target}=" )
