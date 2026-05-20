@@ -1,12 +1,23 @@
 set nocompatible | "use vim instead of vi, even when launching as vi
 
-if has("nvim")
-	" we are nvim, do nothing here
+if has("nvim") || exists('$NVIM') || exists('$VIMRUNTIME')
+	 " THIS DOESN'T WORK BUT IT SHOULD IT ACTUALLY DOESNT EFFECT ANYTHING THOUGH
+	 
+	 "if we opened vim in a vim/nvim terminal by accident, set these so that it
+	 "opens up in the parent nvim instance
+	 "This won't affect anything else
+	let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+	let $VISUAL = 'nvr -cc split --remote'
+	let $EDITOR = 'nvr -cc split --remote'
+
+	" we also want to delete git buffers so that remote-wait can exit
+	autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
 else
 	set undodir=~/.vim/undo/
 	" set dir=~/.vim/swap//
 	" set backupdir=~/.vim/backup//
 end
+
 set undofile
 set undolevels=1000
 set undoreload=10000

@@ -13,7 +13,7 @@ fdisk `_volume viwer thats worst than lsblk but i like it`\
 git gh `_if you got this far you should already have this` \
 calcurse `_in-terminal calendar` \
 vim-gtk3 `_install graphical vim, installation gives vim access to system clipboard register`\
-python3-venv pip `_needed to use pip`\
+python3-venv python3-pip pipx `_needed to use pip`\
 lua5.4 `_lua language` \
 ninja-build gettext cmake unzip curl `_tools we need for later to install neovim` \
 ascii \
@@ -30,6 +30,9 @@ build-essential gdb debhelper `_prob alr have these` \
 bat \
 bfs `_breadth-first _find that we build our bfs on top of ` \
 gcc `_put this here again so ALL PREVIOUS can have escaped newlines`
+
+# _opening neovim in a neovim terminal pane can communicate with neovim parent instance
+pipx install neovim-remote 
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
 

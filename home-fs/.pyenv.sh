@@ -27,7 +27,8 @@ function venv {
 #
 alias venvl="deactivate"
 alias pip="${HOME}/${VENVNAME}/bin/pip"
-alias pipx="${HOME}/${VENVNAME}/bin/pipx"
+# use pipx from apt instead
+# alias pipx="${HOME}/${VENVNAME}/bin/pipx"
 
 function vpy {
 	[[ -n $( echo $PATH | ugrep venv ) ]] || venv
