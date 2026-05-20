@@ -45,15 +45,16 @@ fi
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto --hyperlink=auto' 
+	alias grep='/usr/bin/grep --color=auto'
 fi
+alias ugrep='grep' # old stuff might use this idk
 
 # kitty colors yayyy!Q!!!
 export TERM=xterm-256color
 
 # kitty grep
 if [[ ! -z $(which kitty) ]]; then
-	alias grep='kitty +kitten hyperlinked_grep --smart-case -L'
-	alias ugrep='/usr/bin/grep --color=auto' # [u]sr/bin grep instead of kitty grep
+	alias rg='kitty +kitten hyperlinked_grep --smart-case -L'
 fi
 
 # import all aliases
