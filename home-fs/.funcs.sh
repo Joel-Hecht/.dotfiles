@@ -343,3 +343,40 @@ function lo {
 	libreoffice "$@" &
 }
 
+#this needs to be a function so that it has the current context
+#running from a file will make a new shell, which doesn't share the 
+#environment we are looking to analyze
+function edita {
+	target="$1"
+
+	decl=$(declare -F "$target")
+	if [ -n "$decl" ];then
+		#functions have builtin functionality!  Yay!
+		cut=$(echo "$decl" | sed "s/^$target //")
+		linenumber=$(echo "$cut" | sed "s/ .*$//")
+		fname=$(echo "$cut" | sed "s/^[0-9]* //")
+	else 
+		aliasedto=$(command -v "$target")
+		whichedto=$(which "$target")
+		# aliases are found by command but not by which
+		# all others will be found by both
+		# could also run 'alias $target' which would do the same thing
+		if [[ -n "$aliasedto" && -z "$whichedto" ]]; then
+			# make line tell source file and line number with this format
+			export PS4='(${BASH_SOURCE} :::: ${LINENO}) '
+			line=$(bash -xci : 2>&1 | /usr/bin/grep "alias '${target}=" )
+
+			#for some reason I can't trim off these end parens in the same sed.  Whatever
+			trim=$(echo "$line" | sed 's/^[0-9]*\:(*//' | sed "s/^(*//") 
+			fname=$(echo "$trim" | sed "s/ ::::.*//")
+			linenumber=$(echo "$trim" | sed "s/^.* :::: //" | sed "s/).*$//")
+		else
+			echo "No function or alias in current env named $target"
+			return 1
+		fi
+	fi
+
+	vim "+$linenumber" "$fname"
+}
+alias ea="edita"
+
