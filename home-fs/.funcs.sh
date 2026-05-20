@@ -1,5 +1,32 @@
 #!/bin/bash
 
+function rmscs {
+	mkdir /tmp/old 2> /dev/null
+	mv /tmp/trash/* /tmp/old 2> /dev/null
+	mkdir /tmp/trash 2> /dev/null
+	mv ${HOME}/Pictures/SCID* /tmp/trash
+}
+
+function scshow {
+	kitty +kitten icat "$( _scname )"
+}
+
+function schere {
+	mv "$( _scname )" .
+}
+
+function sc {
+	file="$( _scname )"
+	# open in pinta, or feh if that doesn't work
+	( flatpak run com.github.PintaProject.Pinta "$fname" 2> /dev/null ||  feh "$fname" 2> /dev/null ) &
+}
+
+function _scname {
+	lastID=$(.lastScreenShotID)
+	fname="$(ls ${HOME}/Pictures | ugrep ^SCID"$lastID"_.*.png)"
+	echo ${HOME}/Pictures/"$fname"
+}
+
 function zipdir {
 	if [[ -n ${1} ]]; then
 		zip -r ${1}.zip ${1}
