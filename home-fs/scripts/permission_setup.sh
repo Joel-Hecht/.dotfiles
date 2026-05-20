@@ -13,5 +13,5 @@ done
 chmod +x "$HOME/.bash_exit.sh"
 
 if [ -n "$XDG_CURRENT_DESKTOP" ]; then 
-	bash "$thisdir"/permission_setup_desktop.sh
+	bash "$thisdir"/desktop_permission_setup.sh
 fi
