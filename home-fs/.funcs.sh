@@ -414,7 +414,9 @@ function edita {
 		if [[ "$aliasresult" =~ $pat ]]; then
 			# make line tell source file and line number with this format
 			export PS4='(${BASH_SOURCE} :::: ${LINENO}) '
-			line=$(bash -xci : 2>&1 | /usr/bin/grep "alias '${target}=" )
+
+			# need ? on ' because aliases to functions do not get quoted
+			line=$(bash -xci : 2>&1 | /usr/bin/grep "alias '\?${target}=" )
 
 			#for some reason I can't trim off these end parens in the same sed.  Whatever
 			trim=$(echo "$line" | sed 's/^[0-9]*\:(*//' | sed "s/^(*//") 
