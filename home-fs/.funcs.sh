@@ -376,7 +376,7 @@ function edita {
 		fi
 	fi
 
-	vim "+$linenumber" "$fname"
+	${EDITOR} "+$linenumber" "$fname"
 }
 alias ea="edita"
 

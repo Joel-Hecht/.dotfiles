@@ -24,14 +24,14 @@ alias e="buoy -e"
 alias c="buoy -c"
 
 #files
-alias config="vim ~/.dotfiles/home-fs/.config/i3/config"
-alias todo="vim ~/.dotfiles/todo"
-alias aliases="vim ~/.dotfiles/home-fs/.aliases.sh && source ~/.aliases.sh"
-alias funcs="vim ~/.dotfiles/home-fs/.funcs.sh && source ~/.funcs.sh"
-alias worksh="vim ~/.work.sh && source ~/.work.sh"
-alias br="vim ~/.bashrc && source ~/.bashrc"
-alias vr="vim ~/.vimrc"
-alias barconfig="vim ~/.dotfiles/home-fs/.i3status.conf"
+alias config="${EDITOR} ~/.dotfiles/home-fs/.config/i3/config"
+alias todo="${EDITOR} ~/.dotfiles/todo"
+alias aliases="${EDITOR} ~/.dotfiles/home-fs/.aliases.sh && source ~/.aliases.sh"
+alias funcs="${EDITOR} ~/.dotfiles/home-fs/.funcs.sh && source ~/.funcs.sh"
+alias worksh="${EDITOR} ~/.work.sh && source ~/.work.sh"
+alias br="${EDITOR} ~/.bashrc && source ~/.bashrc"
+alias vr="${EDITOR} ~/.vimrc"
+alias barconfig="${EDITOR} ~/.dotfiles/home-fs/.i3status.conf"
 
 # websites
 alias md="dc firefox markdownlivepreview.com"
@@ -119,7 +119,7 @@ alias difff="kitten diff"
 #alias v="vim"
 alias nv="nvim"
 alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
-alias nvc="nvim ~/.dotfiles/home-fs/.config/nvim/init.lua"
+alias nvc="${EDITOR} ~/.dotfiles/home-fs/.config/nvim/init.lua"
 
 #git shortcuts
 alias gcm="git commit -m"

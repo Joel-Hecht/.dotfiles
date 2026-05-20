@@ -30,6 +30,9 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize 
 
+# set default editor to vim - if you'd rather nvim or emacs, put redefinition in ~/.work.sh
+export EDITOR=vim
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
