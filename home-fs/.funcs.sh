@@ -67,7 +67,9 @@ function scshow {
 }
 
 function schere {
-	mv "$( _scname )" .
+	[[ -n "$1" ]] && dest="$1" || dest="."
+	echo "$( _scname )"
+	mv "$( _scname )" "$dest"
 }
 
 function sc {
