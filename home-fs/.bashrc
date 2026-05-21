@@ -96,6 +96,9 @@ if [ -n "$NVIM" ]; then
 	export VISUAL='nvr -cc vsplit --remote'
 	export EDITOR='nvr -cc vsplit --remote'
 	export GIT_EDITOR='nvr -cc vsplit --remote-wait'
+	alias vi="nvr -cc vsplit --remote-wait" # don't let us open vi sessions nested in nvim
+	#I made vi wait becuase the C alias uses vi for some reason, which is convenient for me personally
+	#note that you will need to manually buffer delete these files.  Whatever.
 	alias vim="nvr -cc vsplit --remote" # don't let us open vim sessions nested in nvim
 	alias nvim="nvr -cc vsplit --remote" # " " " nvim
 else 
