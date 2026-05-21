@@ -13,6 +13,7 @@ alias dconf="cd ~/.dotfiles/home-fs/.config"
 alias scs="cd ~/Pictures"
 alias proj="cd ~/proj"
 alias down="cd ~/Downloads"
+alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
 
 alias o="cd - >/dev/null" # go to Older directory in this terminal
 alias b="cd .." # go Back (p is better though)
@@ -30,8 +31,11 @@ alias todo="${EDITOR} ~/.dotfiles/todo"
 alias aliases="${EDITOR} ~/.dotfiles/home-fs/.aliases.sh && source ~/.aliases.sh"
 alias funcs="${EDITOR} ~/.dotfiles/home-fs/.funcs.sh && source ~/.funcs.sh"
 alias worksh="${EDITOR} ~/.work.sh && source ~/.work.sh"
+alias wrk="worksh"
+alias wr="worksh"
 alias br="${EDITOR} ~/.bashrc && source ~/.bashrc"
 alias vr="${EDITOR} ~/.vimrc"
+alias nvc="${EDITOR} ~/.dotfiles/home-fs/.config/nvim/init.lua"
 alias barconfig="${EDITOR} ~/.dotfiles/home-fs/.i3status.conf"
 
 # websites
@@ -108,8 +112,6 @@ alias difff="kitten diff"
 #vim aliases
 #alias v="vim"
 alias nv="nvim"
-alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
-alias nvc="${EDITOR} ~/.dotfiles/home-fs/.config/nvim/init.lua"
 
 #git shortcuts
 alias gcm="git commit -m"
@@ -176,7 +178,6 @@ alias sexy="cowsay sexy!"
 alias sex="sexy"
 #fixes pdfs and excel spreadsheets becoming transparent
 alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 2>&1 &"
-alias ea="edita"
 
 # source aliases that act as applications
 source ${HOME}/.aliases_dmenu.sh 

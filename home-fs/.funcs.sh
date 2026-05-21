@@ -208,7 +208,6 @@ function bdh {
 		num=$(( $num - 1 ))
 	done
 }
-		
 alias downhere="bdh \"@/Downloads/\""
 alias dh="downhere"
 
@@ -430,3 +429,4 @@ function edita {
 
 	${EDITOR} "+$linenumber" "$fname"
 }
+alias ea="edita"
