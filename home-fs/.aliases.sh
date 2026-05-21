@@ -146,7 +146,7 @@ alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt
 alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias bat="batcat"
-alias directiongame="vpy ~/proj/directiongame/final5.py ; venvl"
+alias directiongame="vpy ~/bin/directiongame/final5.py"
 alias dg="directiongame"
 alias mse="dc wine $HOME/Downloads/mse/mse.exe"
 alias ardour="dc Ardour8"
