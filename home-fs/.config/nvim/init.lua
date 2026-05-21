@@ -88,9 +88,9 @@ P.S. You can delete this when you're done too. It's your config now! :)
 --vim.cmd("source ~/.vimrc")
 
 -- nested instances of vim should use neovim-remote to attach to parent session
-vim.fn.setenv("VISUAL", "nvr -cc split --remote")
-vim.fn.setenv("EDITOR", "nvr -cc split --remote")
-vim.fn.setenv("GIT_EDITOR", "nvr -cc split --remote-wait")
+vim.fn.setenv("VISUAL", "nvr -cc vsplit --remote")
+vim.fn.setenv("EDITOR", "nvr -cc vsplit --remote")
+vim.fn.setenv("GIT_EDITOR", "nvr -cc vsplit --remote-wait")
 
 -- We also want to automatically delete git buffers so that remote-wait can exit
 vim.api.nvim_create_autocmd("FileType", {

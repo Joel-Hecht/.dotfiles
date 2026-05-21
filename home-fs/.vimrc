@@ -6,9 +6,9 @@ if has("nvim") || exists('$NVIM') || exists('$VIMRUNTIME')
 	 "if we opened vim in a vim/nvim terminal by accident, set these so that it
 	 "opens up in the parent nvim instance
 	 "This won't affect anything else
-	let $GIT_EDITOR = 'nvr -cc split --remote-wait'
-	let $VISUAL = 'nvr -cc split --remote'
-	let $EDITOR = 'nvr -cc split --remote'
+	let $GIT_EDITOR = 'nvr -cc vsplit --remote-wait'
+	let $VISUAL = 'nvr -cc vsplit --remote'
+	let $EDITOR = 'nvr -cc vsplit --remote'
 
 	" we also want to delete git buffers so that remote-wait can exit
 	autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete

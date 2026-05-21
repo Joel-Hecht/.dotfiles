@@ -93,11 +93,11 @@ _src ${HOME}/.work.sh
 # Git editor also needs to be redefined here, because it somehow gets sourced as vim again.  Others get changed in init.lua, but I've changed them here too because it doesn't hurt
 if [ -n "$NVIM" ]; then 
 	# these 
-	export VISUAL='nvr -cc split --remote'
-	export EDITOR='nvr -cc split --remote'
-	export GIT_EDITOR='nvr -cc split --remote-wait'
-	alias vim="nvr -cc split --remote" # don't let us open vim sessions nested in nvim
-	alias nvim="nvr -cc split --remote" # " " " nvim
+	export VISUAL='nvr -cc vsplit --remote'
+	export EDITOR='nvr -cc vsplit --remote'
+	export GIT_EDITOR='nvr -cc vsplit --remote-wait'
+	alias vim="nvr -cc vsplit --remote" # don't let us open vim sessions nested in nvim
+	alias nvim="nvr -cc vsplit --remote" # " " " nvim
 else 
 	# each nvim opens a unique socket, needed to attach others using nvim-remote 
 	alias nvim='nvim --listen /tmp/nvim-$(date +%s).sock' 
