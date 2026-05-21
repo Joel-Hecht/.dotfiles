@@ -41,7 +41,6 @@ elif len(l) > 1:
         print("x out of range")
         print("-1")
         exit()
-    print(l[x][1])
+    #print(l[x][1])
 else:
     print(l[0][1])
-
