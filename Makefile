@@ -16,4 +16,4 @@ mans:
 
 .PHONY: font
 font:
-	./fontsetup.sh
+	cd home-fs && make $@
