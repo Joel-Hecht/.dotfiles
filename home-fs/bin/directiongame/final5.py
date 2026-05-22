@@ -45,7 +45,7 @@ def compare_lists(list1, list2, opts):
             for i in range(random.randint(3, 6)):
                 list1.append(directions[random.randrange(0, 3)])
         else:
-            print()
+            print("",end="")
             
 def main(argv): 
     def show_opening_screen(screen):
