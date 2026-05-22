@@ -86,7 +86,17 @@ function _scname {
 
 function zipdir {
 	if [[ -n ${1} ]]; then
-		zip -r ${1}.zip ${1}
+		fname="${1}"
+		
+		# check if tab-completed dir ends in '/'
+		fname=$(echo "$fname" | sed 's#/$##')
+
+		# we should also chop off dirnames before the last filename
+		# if your dir name contains the '/' character, tough luck
+		dirname="$fname"
+		fname=$(echo "$fname" | sed 's#.*/##')
+
+		zip -r "${fname}.zip" "${dirname}"
 	else
 		echo "usage: zipdir {directory} [options]"
 	fi
