@@ -25,14 +25,6 @@ If you experience any errors while trying to install kickstart, run `:checkhealt
 --source my existing vimrc.  For right now, get rid of this
 --vim.cmd("source ~/.vimrc")
 
--- source external vim plugins
--- vim.cmd("source ~/.config/nvim/lua/vimplugin/sourceall.vim")
-vim.cmd([[
-for fpath in split(globpath('~/.config/nvim/vimplugin', '*.vim'), '\n')
-		exe 'source' fpath
-endfor
-]])
-
 -- nested instances of vim should use neovim-remote to attach to parent session
 vim.fn.setenv("VISUAL", "nvr -cc vsplit --remote")
 vim.fn.setenv("EDITOR", "nvr -cc vsplit --remote")
@@ -54,25 +46,6 @@ vim.g.maplocalleader = " "
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
-
-----------------VIMPLUG PACKAGES----------------
-local Plug = vim.fn["plug#"]
-vim.call("plug#begin")
-
---plug itself
---Plug("junegunn/vim-plug")
-
---Git commands, I do not know how to use this
-Plug("tpope/vim-fugitive")
-
---'overrides' . operator fr vetter plugin map repetition
-Plug("tpope/vim-repeat")
-
---this plugin just doesnt work, removing for now and using nvim version
---Plug("farmergreg/vim-lastplace")
-
-vim.call("plug#end")
-----------------END VIMPLUG----------------
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -241,9 +214,11 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command("Tterm", "tabnew | term", {})
 vim.api.nvim_create_user_command("Vterm", "vs | term", {})
 
---fun plugin to make user commands that dont need to start with a capital
-vim.call("CmdAlias", "tterm", "Tterm")
-vim.call("CmdAlias", "vterm", "Vterm")
+-- schedule aliasing these to lowercase until after CmdAlias plugin has been loaded
+vim.schedule(function()
+	vim.call("CmdAlias", "tterm", "Tterm")
+	vim.call("CmdAlias", "vterm", "Vterm")
+end)
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -1194,6 +1169,13 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>h", "<cmd>CppswitchGotoHeader<CR>")
 		end,
 	},
+
+	---------------- VIM PLUGINS ----------------
+	{ "tpope/vim-fugitive", lazy = false },
+	{ "tpope/vim-repeat", lazy = false },
+	{ "vim-scripts/cmdalias.vim", lazy = false },
+
+	-------------- END VIM PLUGINS --------------
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
