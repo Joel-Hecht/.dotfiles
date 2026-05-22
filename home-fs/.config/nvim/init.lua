@@ -25,6 +25,14 @@ If you experience any errors while trying to install kickstart, run `:checkhealt
 --source my existing vimrc.  For right now, get rid of this
 --vim.cmd("source ~/.vimrc")
 
+-- source external vim plugins
+-- vim.cmd("source ~/.config/nvim/lua/vimplugin/sourceall.vim")
+vim.cmd([[
+for fpath in split(globpath('~/.config/nvim/vimplugin', '*.vim'), '\n')
+		exe 'source' fpath
+endfor
+]])
+
 -- nested instances of vim should use neovim-remote to attach to parent session
 vim.fn.setenv("VISUAL", "nvr -cc vsplit --remote")
 vim.fn.setenv("EDITOR", "nvr -cc vsplit --remote")
@@ -219,6 +227,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- [[ User Commands ]]
+-- :h lua-guide-commands-create
+
 --command :DiffOrig shows diff with the latest saved version of the file
 vim.api.nvim_create_user_command(
 	"DiffOrig",
@@ -227,6 +238,12 @@ vim.api.nvim_create_user_command(
 		desc = "diff current file with last saved version in new window",
 	}
 )
+vim.api.nvim_create_user_command("Tterm", "tabnew | term", {})
+vim.api.nvim_create_user_command("Vterm", "vs | term", {})
+
+--fun plugin to make user commands that dont need to start with a capital
+vim.call("CmdAlias", "tterm", "Tterm")
+vim.call("CmdAlias", "vterm", "Vterm")
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
