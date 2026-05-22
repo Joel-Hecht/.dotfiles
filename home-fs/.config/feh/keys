@@ -1,0 +1,13 @@
+#feh key configuration
+# For an example config, use https://feh.finalrewind.org/examples/mxey/keys 
+# To see all rebindable keys, see "keys section" of FEH(1) man page
+# To rebind a key, use [action] [keyID] 
+# EX:
+# prev_image s Left BackSpace
+
+# to disable a key, we can say the name of the binding and set it to no key
+#ex: to disable saving the image with the 's' key:
+save_image
+
+#also this one
+save_filelist
