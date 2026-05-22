@@ -629,7 +629,7 @@ require("lazy").setup({
 					map("grd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 
 					-- Show LSP "fix available"
-					map("grf", vim.lsp.buf.code_action(), "[G]oto [F]ix")
+					map("grf", vim.lsp.buf.code_action, "[G]oto [F]ix")
 
 					-- WARN: This is not Goto Definition, this is Goto Declaration.
 					--  For example, in C this would take you to the header.
