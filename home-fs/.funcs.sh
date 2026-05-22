@@ -256,7 +256,7 @@ function mkcd {
 	elif [ -d "$1" ]; then
 		echo "\'$1' already exists" >&2
 	else
-		mkdir "$@" && cd "$1" 2>/dev/null || cd "${@: -1}"
+		mkdir -p "$@" && cd "$1" 2>/dev/null || cd "${@: -1}"
 	fi
 }
 
@@ -440,5 +440,6 @@ function edita {
 	fi
 
 	${EDITOR} "+$linenumber" "$fname"
+	sb
 }
 alias ea="edita"
