@@ -40,6 +40,9 @@ function amend {
 		git commit --amend
 	fi
 }
+function clone {
+	git clone git@github.com:"$1".git
+}
 
 function rust {
 	[[ -d $HOME/.test-rust ]] || cp -rL $HOME/.template-rust $HOME/.test-rust
