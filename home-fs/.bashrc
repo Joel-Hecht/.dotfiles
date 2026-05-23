@@ -30,7 +30,6 @@ shopt -s histappend
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize 
 
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -55,6 +54,30 @@ if [[ ! -z $(which kitty) ]]; then
 	alias rg='kitty +kitten hyperlinked_grep --smart-case -L'
 fi
 
+# set default editor to vim - if you'd rather nvim, put redefinition in ~/.work.sh (sourced below)
+export VISUAL='vim'
+export EDITOR='vim'
+export GIT_EDITOR='vim'
+# load settings specific to when an interactive terminal is opened within nvim
+# in this case, overwrite any editor preference from bashrc or .work.sh
+
+# make sure that, from nvim terminal sessions, we cannot open nested nvim/vim isntances (they will be opened in parent instead)
+# Git editor also needs to be redefined here, because it somehow gets sourced as vim again.  Others get changed in init.lua, but I've changed them here too because it doesn't hurt
+if [ -n "$NVIM" ]; then 
+	# these 
+	export VISUAL='nvr -cc vsplit --remote'
+	export EDITOR='nvr -cc vsplit --remote'
+	export GIT_EDITOR='nvr -cc vsplit --remote-wait'
+	alias vi="nvr -cc vsplit --remote-wait" # don't let us open vi sessions nested in nvim
+	#I made vi wait becuase the C alias uses vi for some reason, which is convenient for me personally
+	#note that you will need to manually buffer delete these files.  Whatever.
+	alias vim="nvr -cc vsplit --remote" # don't let us open vim sessions nested in nvim
+	alias nvim="nvr -cc vsplit --remote" # " " " nvim
+else 
+	# each nvim opens a unique socket, needed to attach others using nvim-remote 
+	alias nvim='nvim --listen /tmp/nvim-$(date +%s).sock' 
+fi
+
 # import all aliases
 function _src {
 	source $1 || { touch $1 && source $1 ;}
@@ -77,34 +100,9 @@ _src /etc/bash_completion
 # bash-preexec
 _src ${HOME}/.preexec-setup.sh
 
-# set default editor to vim - if you'd rather nvim, put redefinition in ~/.work.sh (sourced below)
-export VISUAL='vim'
-export EDITOR='vim'
-export GIT_EDITOR='vim'
-
 #files not under version control
 _src ${HOME}/.path.sh
 _src ${HOME}/.work.sh
-
-# load settings specific to when an interactive terminal is opened within nvim
-# in this case, overwrite any editor preference from bashrc or .work.sh
-
-# make sure that, from nvim terminal sessions, we cannot open nested nvim/vim isntances (they will be opened in parent instead)
-# Git editor also needs to be redefined here, because it somehow gets sourced as vim again.  Others get changed in init.lua, but I've changed them here too because it doesn't hurt
-if [ -n "$NVIM" ]; then 
-	# these 
-	export VISUAL='nvr -cc vsplit --remote'
-	export EDITOR='nvr -cc vsplit --remote'
-	export GIT_EDITOR='nvr -cc vsplit --remote-wait'
-	alias vi="nvr -cc vsplit --remote-wait" # don't let us open vi sessions nested in nvim
-	#I made vi wait becuase the C alias uses vi for some reason, which is convenient for me personally
-	#note that you will need to manually buffer delete these files.  Whatever.
-	alias vim="nvr -cc vsplit --remote" # don't let us open vim sessions nested in nvim
-	alias nvim="nvr -cc vsplit --remote" # " " " nvim
-else 
-	# each nvim opens a unique socket, needed to attach others using nvim-remote 
-	alias nvim='nvim --listen /tmp/nvim-$(date +%s).sock' 
-fi
 
 # add things to path
 export PATH="${HOME}/.juliaup/bin:$PATH"
