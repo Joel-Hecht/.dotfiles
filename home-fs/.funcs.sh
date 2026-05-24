@@ -74,7 +74,16 @@ function scshow {
 }
 
 function schere {
-	[[ -n "$1" ]] && dest="$1" || dest="."
+	if [[ -n "$1" ]];then
+		# you don't need to add .png when doing schere, but you can if you want
+		if [[ "$1" =~ .*\.png$ ]];then
+			dest="$1" 
+		else
+			dest="${1}.png"
+		fi
+	else
+		dest="."
+	fi
 	echo "$( _scname )"
 	mv "$( _scname )" "$dest"
 }
