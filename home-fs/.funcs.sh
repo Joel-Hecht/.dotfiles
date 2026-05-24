@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function editor {
+	${EDITOR} "$@"
+}
+
 function copy {
 	cat "$1" | cb
 }
@@ -13,7 +17,7 @@ function unfunc {
 # path stuff i always forget to use
 function path { 
 	if [ -z "$1" ];then 
-		${EDITOR} ~/.path.sh && source ~/.path.sh
+		editor ~/.path.sh && source ~/.path.sh
 	else
 		echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; 
 	fi	
@@ -442,7 +446,7 @@ function edita {
 		fi
 	fi
 
-	${EDITOR} "+$linenumber" "$fname"
+	editor "+$linenumber" "$fname"
 	sb
 }
 alias ea="edita"
