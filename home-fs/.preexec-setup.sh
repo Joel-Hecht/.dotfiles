@@ -22,14 +22,14 @@ function preexec {
 	# if multiple arguments, assume you were trying to run a command that DNE
 	[[ "$arg0" != "$BASH_COMMAND" ]] && return 0
 
-	# if you can just cd there, do that
-	[[ -d "$arg0" ]] && cd "$arg0" && return 1
-
 	# if only one letter, probably a typo
 	[[ ${#arg0} -eq 1 ]] && return 0
 
-	# if command doesn't exist, try bfs
+	# if command doesn't exist, try nav
 	if [[ -z $( 'type' -t $arg0 ) ]]; then
+		# if you can just cd there, do that
+		[[ -d "$arg0" ]] && cd "$arg0" && return 1
+
 		# try starting from here first
 		source bfs_base -t $arg0 &>/dev/null && return 1
 
