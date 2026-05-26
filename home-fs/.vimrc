@@ -1,6 +1,6 @@
 set nocompatible | "use vim instead of vi, even when launching as vi
 
-if has("nvim") || exists('$NVIM') || exists('$VIMRUNTIME')
+if has("nvim") || exists('$NVIM')
 	 " THIS DOESN'T WORK BUT IT SHOULD IT ACTUALLY DOESNT EFFECT ANYTHING THOUGH
 	 
 	 "if we opened vim in a vim/nvim terminal by accident, set these so that it
