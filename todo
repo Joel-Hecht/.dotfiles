@@ -4,6 +4,7 @@ easy
 - configure bashhub (bash history on the cloud) https://github.com/rcaloras/bashhub-client
 	- what
 - nitrogen -> feh for background, which sets up on initial build 
+- Run fontsetup.sh automaticall IF you don't already have the font installed/configured
 
 medium
 - bfs early exit if not -f
