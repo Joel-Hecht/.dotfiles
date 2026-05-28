@@ -31,12 +31,12 @@ alias pip="${HOME}/${VENVNAME}/bin/pip"
 # alias pipx="${HOME}/${VENVNAME}/bin/pipx"
 
 function vpy {
-	[[ -n $( echo $PATH | ugrep venv ) ]] || venv
+	[[ -n $( echo $PATH | grep .basevenv ) ]] || venv
 	if [[ -z $1 ]]; then
 		ipython3
 	else
 		python "$@"
 	fi
-	venvl
+	deactivate
 }
 alias jpnb="venv && dc jupyter-notebook && venvl"
