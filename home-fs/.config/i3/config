@@ -245,11 +245,9 @@ focus_follows_mouse no
 # cant decide if i want this, read i3 manual 4.28
 # workspace_auto_back_and_forth yes
 
-#keybinds, this works better than the .Xmodmap file i think
-exec --no-startup-id xmodmap -e "keycode 62 = Escape NoSymbol"
-exec --no-startup-id xmodmap -e "remove shift = Escape"
-exec --no-startup-id xmodmap -e "keycode 108 = Multi_key Alt_R"
-exec --no-startup-id xmodmap -e "remove mod1 = Alt_R"
+# keybinds, this works better than the .Xmodmap file i think
+# rebind caps lock to fun stuff, see file for details
+exec --no-startup-id bash ${HOME}/bin/remap 
 exec --no-startup-id bash ${HOME}/bin/fix_volume
 
 #program shortcuts
@@ -283,9 +281,6 @@ bindsym Control+Shift+$alt+l exec --no-startup-id firefox linkedin.com
 bindsym Control+$alt+i       exec --no-startup-id firefox instagram.com
 bindsym Control+$alt+s       exec --no-startup-id firefox docs.google.com/spreadsheets/d/1XUmurBMg0Zmd--QApo49J7yvUWF4IAfexJhuBa1Q9WU
 bindsym Control+$alt+h       exec --no-startup-id bash ${HOME}/bin/.toggleScrollDirection
-
-# fix broken right shift
-bindsym Control+Shift+$alt+h exec --no-startup-id bash $( xmodmap -e "keycode 62 = Escape NoSymbol" && xmodmap -e "remove shift = Escape" )
 
 # audio buttons
 bindsym F1 exec --no-startup-id bash ${HOME}/bin/.mute_unmute

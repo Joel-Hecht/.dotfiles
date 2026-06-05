@@ -14,6 +14,7 @@ compton `_allows transparent terminals` \
 maim `_needed for screenshots` \
 xclip \
 xdotool \
+xcape `_multiple remapping for tap caps lock = escape` \
 nitrogen `_desktop background manager` \
 libx11-dev `_x11 support, needed for multi-monitor config` \
 policykit-1-gnome polkitd `_polkit needed to authenticate as root from i3wm` \

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# remap capslock to control
+setxkbmap -option caps:nocaps 
+
+# in case of i3 reload
+killall -q xcape
+
+# if tapped, caps lock is escape
+xcape  -e 'Caps_Lock=Escape'
