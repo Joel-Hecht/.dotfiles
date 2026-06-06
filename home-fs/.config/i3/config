@@ -181,16 +181,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -231,10 +231,10 @@ bindsym $mod+Shift+s exec maim --select | tee "$HOME/Pictures/SCID$(bash ${HOME}
 # this will go haywire if we ever shift to $mod=$alt (alt)
 bindsym $mod+$alt+s exec --no-startup-id maim | tee "$HOME/Pictures/SCID$(bash ${HOME}/bin/.nextScreenShotID)_$(date).png" |  xclip -selection clipboard -t image/png
 
-bindsym $mod+Control+h resize shrink width 10 px or 10 ppt
-bindsym $mod+Control+j resize grow height 10 px or 10 ppt
-bindsym $mod+Control+k resize shrink height 10 px or 10 ppt
-bindsym $mod+Control+l resize grow width 10 px or 10 ppt
+bindsym $mod+Control+h resize shrink width 5 px or 5 ppt
+bindsym $mod+Control+j resize grow height 5 px or 5 ppt
+bindsym $mod+Control+k resize shrink height 5 px or 5 ppt
+bindsym $mod+Control+l resize grow width 5 px or 5 ppt
 
 #controls moving workspaces between monitors
 bindsym $mod+Control+Shift+h move workspace to output left
