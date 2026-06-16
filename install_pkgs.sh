@@ -29,6 +29,7 @@ cowsay \
 build-essential gdb debhelper `_prob alr have these` \
 bat \
 bfs `_breadth-first _find that we build our bfs on top of ` \
+pipx `_python _cli installer` \
 gcc `_put this here again so ALL PREVIOUS can have escaped newlines`
 
 # _opening neovim in a neovim terminal pane can communicate with neovim parent instance
@@ -131,3 +132,6 @@ if ! [[ -e ~/.bash-preexec.sh ]]; then
 	echo "installing bash preexec"
 	curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
 fi
+
+# pipx installs
+pipx install thefuck
