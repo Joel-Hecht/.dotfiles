@@ -22,6 +22,7 @@ feh `_lighter weight than eog for pope` \
 wmctrl `_to target x11 windows by pid` \
 kitty-terminfo `_tells nvim about kitty for terminal mode` \
 notepadqq \
+chromium `_needed for microsoft crap that doesnt play nice with firefox`\ 
 
 #flatpak setup
 sudo apt install flatpak
