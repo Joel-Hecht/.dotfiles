@@ -143,7 +143,7 @@ trap "${HOME}/.bash_exit.sh" EXIT
 source ${HOME}/.local/share/buoy/buoy-interface.sh
 # <<<<< source file for buoy <<<<<
 
-if command -v thefuck; then
+if [[ $( command -v thefuck ) ]]; then
 	eval "$(thefuck --alias)"
 fi
 
