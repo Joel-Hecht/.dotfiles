@@ -130,7 +130,7 @@ esac
 #start ssh for this terminal and add all keys that end in rsa (omits .pub and known_hosts)
 for key in ${HOME}/.ssh/*; do
 	fname=$(basename $key)
-	if  [[ -f "$fname" && ! "$fname" =~ .*\.pub$ && ! "$fname" =~ ^known_hosts.* && ! "$fname" =~ ^config$ && ! "$fname" =~ ^authorized_keys.* ]]; then
+	if  [[ -f "$key" && ! "$fname" =~ .*\.pub$ && ! "$fname" =~ ^known_hosts.* && ! "$fname" =~ ^config$ && ! "$fname" =~ ^authorized_keys.* ]]; then
 		eval $(keychain -q --eval "$key" )
 	fi
 done
