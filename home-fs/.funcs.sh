@@ -19,11 +19,18 @@ function path {
 	if [ -z "$1" ];then 
 		editor ~/.path.sh && source ~/.path.sh
 	else
-		echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; 
+		echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh
+		echo "export PATH=\""$1":\$PATH\""
 	fi	
 }
-function pathhome { echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
-function pathhere { echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.path.sh && source ~/.path.sh ; }
+function pathhome {
+	echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh
+	echo "export PATH=\"\$HOME/"$1":\$PATH\""
+}
+function pathhere {
+	echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\"" >> ~/.path.sh && source ~/.path.sh
+	echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\""
+}
 
 # make git a little nicer
 function pull {
