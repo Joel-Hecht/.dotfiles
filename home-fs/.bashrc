@@ -143,7 +143,9 @@ trap "${HOME}/.bash_exit.sh" EXIT
 source ${HOME}/.local/share/buoy/buoy-interface.sh
 # <<<<< source file for buoy <<<<<
 
-eval "$(thefuck --alias)"
+if command -v thefuck; then
+	eval "$(thefuck --alias)"
+fi
 
 # End profiling
 #set +x
