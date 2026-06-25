@@ -1,7 +1,7 @@
 #!bin/bash
 
 alias outlook="firefox --new-window  https://outlook.office365.com/mail &"
-alias teams="chromium --new-window  https://teams.microsoft.com/v2/ &"
+alias teams="chromium --app=https://teams.microsoft.com &"
 alias onedrive="chromium --new-window https://teams.microsoft.com/v2/ &"
 alias tumblr="firefox --new-window  https://www.tumblr.com &"
 alias fencing="firefox --new-window -P \"Drexel Fencing\""
