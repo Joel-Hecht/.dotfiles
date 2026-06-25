@@ -1,11 +1,11 @@
 #!bin/bash
 
-alias outlook="firefox --new-window  https://outlook.office365.com/mail &"
-alias teams="chromium --app=https://teams.microsoft.com &"
+alias outlook="launch-chromium-default --app=https://outlook.office365.com/mail"
+alias teams="launch-chromium-default --app=https://teams.microsoft.com"
 alias onedrive="chromium --new-window https://teams.microsoft.com/v2/ &"
 alias tumblr="firefox --new-window  https://www.tumblr.com &"
 alias fencing="firefox --new-window -P \"Drexel Fencing\""
-alias hemail="firefox --new-window -P \"hechts\" https://outlook.office365.com/mail"
+alias hemail="launch-chromium-profile hechts --app=https://outlook.office365.com/mail"
 alias keychron="chromium 'https://launcher.keychron.com' &"
 alias slack="flatpak run com.slack.Slack &"
 alias spotify="flatpak run com.spotify.Client"
