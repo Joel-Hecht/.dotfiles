@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source "$HOME"/.funcs_dmenu.sh
+
 function editor {
 	${EDITOR} "$@"
 }
