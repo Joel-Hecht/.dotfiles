@@ -207,14 +207,14 @@ function findproc {
 		return 1
 	fi
 
-	ps aux | grep $1 | grep -v grep | grep -v findproc
+	#this shouldnt need to be quoted but its messing with my treesitter so im doing it anyway
+	eval "ps aux | grep $1 | grep -v grep | grep -v findproc"
 }
 
 # from https://unix.stackexchange.com/a/561579
 function awkn {
 	awk -v n=$1 '{ for (i=n; i<=NF; i++) printf "%s%s", $i, (i<NF ? OFS : ORS)}' "$2"
 }
-
 
 function bdh {
 	[[ $# -lt 1 ]] && echo "bdh: no location provided" && return
@@ -233,8 +233,8 @@ function bdh {
 			#fname="$(buoy -e ls -tl "$1" | /usr/bin/grep ^- | awkn 9 | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
 			fname="$(buoy -e ls -tl "$1" | awkn 9 | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
 		fi
-		# fullpath="${1}/""\"${fname}"
-		fullpath="$(buoy -e echo "${1}/$fname")"
+
+		fullpath=$(buoy -e echo ${1}/"$fname")
 		if [[ $( tail -c 6 <<< "${fullpath}" ) == '.part' ]]; then
 			echo "Still downloading!"
 			return 1
@@ -245,7 +245,7 @@ function bdh {
 		num=$(( $num - 1 ))
 	done
 }
-alias downhere="bdh \"@/Downloads/\""
+alias downhere="bdh \"@/Downloads\""
 alias dh="downhere"
 
 function vm {
