@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import os
 
 chars = ["h", "r", "f", "t", "i", "s", "d", "l"]
