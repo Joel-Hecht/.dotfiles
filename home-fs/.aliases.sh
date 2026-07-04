@@ -171,9 +171,12 @@ alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$/
 alias cpy="xclip -sel c"
 alias cb="xclip -sel c"
 
-# misc
+# xrandr
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
 alias unhdmi="xrandr --auto"
+alias ruimon="xrandr --output HDMI-1 --right-of eDP-1 --mode 1680x1050"
+
+# misc
 alias ssh="TERM=xterm-256color ssh" # make ssh kitty-friendly
 alias vix="vi -X" # use if vim is slow due to x11 issues
 alias sexy="cowsay sexy!"
