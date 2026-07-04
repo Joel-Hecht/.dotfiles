@@ -40,3 +40,11 @@ function vpy {
 	deactivate
 }
 alias jpnb="venv && dc jupyter-notebook && venvl"
+
+function thisvenv {
+	# assume you have something named like this in this directory
+	source .*venv/bin/activate
+
+	# don't want basevenv pip
+	unalias pip
+}
