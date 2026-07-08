@@ -33,8 +33,10 @@ function preexec {
 		# try starting from here first
 		source bfs_base -t $arg0 &>/dev/null && return 1
 
-		# next try from root
-		source bfs_base -rt $arg0 &>/dev/null && return 1
+		# next try from root unless we're there
+		if [[ "$( 'pwd' )" != "$HOME" ]]; then
+			source bfs_base -rt $arg0 &>/dev/null && return 1
+		fi
 	fi
 
 	# all else fails, run default command not found behaviour
