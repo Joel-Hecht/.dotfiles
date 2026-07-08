@@ -34,7 +34,6 @@ gcc `_put this here again so ALL PREVIOUS can have escaped newlines`
 
 # pipx installs
 pipx install thefuck
-pipx install howdoi
 pipx install neovim-remote #_opening neovim in a neovim terminal pane can communicate with neovim parent instance
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
