@@ -11,4 +11,4 @@ end
 # suppress [new thread created...] and [thread terminated ...] messages
 set print thread-events off
 
-set debuginfod enabled on
+set debuginfod enabled off 
