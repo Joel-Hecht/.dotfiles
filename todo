@@ -5,7 +5,7 @@ easy
 	- what
 - nitrogen -> feh for background, which sets up on initial build 
 - Run fontsetup.sh automaticall IF you don't already have the font installed/configured
-- make all 'firefox' aliases instead use ${BROWSER}
+- make edita also open files that are in path, provided that the file is text and not a binary (i.e. is shebanged)
 
 medium
 - bfs early exit if not -f

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# we need quotes here because path to WSL windows has "/Program Files/" which needs to be escaped
+"${BROWSER}" "$@"

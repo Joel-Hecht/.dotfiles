@@ -39,10 +39,10 @@ alias nvc="editor ~/.dotfiles/home-fs/.config/nvim/init.lua"
 alias barconfig="editor ~/.dotfiles/home-fs/.i3status.conf"
 
 # websites
-alias md="dc firefox markdownlivepreview.com"
-alias t="dc firefox www.tumblr.com/"
+alias md="dc browser markdownlivepreview.com"
+alias t="dc browser www.tumblr.com/"
 alias kb="chromium launcher.keychron.com"
-alias P="dc firefox https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
+alias P="dc browser https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
 
 #for testing
 alias C="[[ -f $HOME/.test.c ]] || cp $HOME/.template.c $HOME/.test.c ; vi $HOME/.test.c && gcc $HOME/.test.c -lm && ./a.out && rm ./a.out"

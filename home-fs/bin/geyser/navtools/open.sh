@@ -8,4 +8,4 @@ fi
 s="$@"
 p=$(python3 id_from_name.py "$s" | tee /dev/tty)
 p=$(echo "$p" | tail -1 )
-firefox --new-tab "https://www.geysertimes.org/geyser.php?id=$p" &
+browser --new-tab "https://www.geysertimes.org/geyser.php?id=$p" &

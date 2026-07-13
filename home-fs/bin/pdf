@@ -11,7 +11,7 @@ prove_ext=$(grep -e '\.pdf$' "$file")
 
 if [[ -z "$prove_ext" ]]; then
 	if  [[ -e "$file" ]]; then
-		$(firefox "$file")
+		$(browser --new-tab "$file")
 	else
 		echo "file $file does not exist" >&2
 	fi	
