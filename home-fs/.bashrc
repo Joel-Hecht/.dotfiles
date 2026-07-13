@@ -59,6 +59,9 @@ export VISUAL='vim'
 export EDITOR='vim'
 export GIT_EDITOR='vim'
 
+# default browser option, allow redefinition in ~/.work.sh
+export BROWSER='firefox'
+
 # import all aliases
 function _src {
 	source $1 || { touch $1 && source $1 ;}

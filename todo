@@ -5,6 +5,7 @@ easy
 	- what
 - nitrogen -> feh for background, which sets up on initial build 
 - Run fontsetup.sh automaticall IF you don't already have the font installed/configured
+- make all 'firefox' aliases instead use ${BROWSER}
 
 medium
 - bfs early exit if not -f

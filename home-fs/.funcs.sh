@@ -3,7 +3,13 @@
 source "$HOME"/.funcs_dmenu.sh
 
 function editor {
+	# do not quote $EDITOR since the command takes actual args.  Maybe in the future have an additional $EDITOR_ARGS if we ever need to access an editor executable that is behind a path that needs escaping
 	${EDITOR} "$@"
+}
+
+function browser {
+	# we need quotes here because path to WSL windows has "/Program Files/" which needs to be escaped
+	"${BROWSER}" "$@"
 }
 
 function copy {
