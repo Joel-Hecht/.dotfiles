@@ -34,6 +34,8 @@ gcc `_put this here again so ALL PREVIOUS can have escaped newlines`
 
 # pipx installs
 pipx install thefuck
+pipx inject thefuck setuptools #distutils compatibility to allow thefuck to work out of the box
+pipx inject thefuck zombie-imp #we need to add these hack layers to allow deprecated python 3.11 features	
 pipx install neovim-remote #_opening neovim in a neovim terminal pane can communicate with neovim parent instance
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
