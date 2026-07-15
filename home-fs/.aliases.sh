@@ -14,11 +14,9 @@ alias scs="cd ~/Pictures"
 alias proj="cd ~/proj"
 alias down="cd ~/Downloads"
 alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
+alias b="cd build"
 
 alias o="cd - >/dev/null" # go to Older directory in this terminal
-alias b="cd .." # go Back (p is better though)
-alias bb="cd ../.." # bbb, etc. also work, 
-alias b2="cd ../.." # b3, b4, etc. also work
 
 #buoy navigation
 alias m="buoy -m"
