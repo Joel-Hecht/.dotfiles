@@ -185,14 +185,6 @@ alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 
 # source aliases that act as applications
 source ${HOME}/.aliases_dmenu.sh 
 
-#more back aliases
-alias bbb="cd ../../.."
-alias bbbb="cd ../../../.."
-alias bbbbb="cd ../../../../.."
-alias b3="cd ../../.."
-alias b4="cd ../../../.."
-alias b5="cd ../../../../.."
-
 # pope
 alias sl="[[ $(( $RANDOM % 2 )) -eq 0 ]] && /usr/games/sl-1 || pope"
 alias bs="pope"
