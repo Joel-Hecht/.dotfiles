@@ -173,6 +173,9 @@ alias cb="xclip -sel c"
 alias hdmi="xrandr --output HDMI-1 --mode 1680x1050 --same-as eDP-1 --mode 1680x1050"
 alias unhdmi="xrandr --auto"
 alias ruimon="xrandr --output HDMI-1 --right-of eDP-1 --mode 1680x1050"
+alias monoff="xrandr --output HDMI-1 --off"
+alias ruimain="xrandr --output eDP-1 --left-of HDMI-1 --mode 1920x1080"
+alias mainoff="xrandr --output HDMI-1 --off"
 
 # misc
 alias ssh="TERM=xterm-256color ssh" # make ssh kitty-friendly
