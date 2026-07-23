@@ -35,6 +35,22 @@ function pathhere {
 	echo "export PATH=\""$( pwd | sed "s!$HOME!\$HOME!g" )":\$PATH\""
 }
 
+#execute python, importing entire file so you can work with its context
+function from {
+	#make it work if you include the tab, as completion would
+	fname=$(echo "$1" | sed 's/.py$//')
+	command="
+try: 
+	from $fname import *
+except ModuleNotFoundError:
+	print(f'no such module ${fname}')
+	#make sure we don't exit into the repl, since the user will always want to be back in the cli
+	import os 
+	os._exit(0)
+	"
+	python -i -c "$command"
+}
+
 # make git a little nicer
 function pull {
 	if [[ -n $( git log --branches --not --remotes ) ]]; then

@@ -15,6 +15,7 @@ alias proj="cd ~/proj"
 alias down="cd ~/Downloads"
 alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
 alias b="cd build"
+alias bd="cd build.debug"
 
 alias o="cd - >/dev/null" # go to Older directory in this terminal
 
