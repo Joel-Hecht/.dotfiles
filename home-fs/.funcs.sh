@@ -38,12 +38,13 @@ function pathhere {
 #execute python, importing entire file so you can work with its context
 function from {
 	#make it work if you include the tab, as completion would
-	fname=$(echo "$1" | sed 's/.py$//')
+	#also replace slashes with dots
+	fname=$(echo "$1" | sed 's/.py$//' | sed 's!/!.!g')
 	command="
 try: 
 	from $fname import *
-except ModuleNotFoundError:
-	print(f'no such module ${fname}')
+except Exception as e:
+	print(f'{type(e).__name__}: {e}')
 	#make sure we don't exit into the repl, since the user will always want to be back in the cli
 	import os 
 	os._exit(0)
