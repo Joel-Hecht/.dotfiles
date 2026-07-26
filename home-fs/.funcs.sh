@@ -486,3 +486,20 @@ function edita {
 	sb
 }
 alias ea="edita"
+
+# will need to be run with sudo
+# if you would like to mount /sdc1, you would run 
+# $sudo dev c1 <mountpoint>
+# if run without args, will list all possible drives to mount
+function dev {
+	if [[ -z "$1" ]];then
+		# echo $(ls /dev/sd* | grep -s "/dev/sd[a-z][0-9]" | sed -s 's|/dev/sd||')
+		lsblk #this is just better honestly
+		return
+	elif [[ ! "$1" =~ [a-z][0-9] ]];then 
+		echo "no such filesystem /dev/sd${1}"
+		return
+	fi
+
+	sudo mount /dev/sd"$1" "$2"
+}
