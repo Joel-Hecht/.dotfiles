@@ -7,6 +7,14 @@ function editor {
 	${EDITOR} "$@"
 }
 
+function emv {
+	if [[ -z "$1" ]]; then
+		e mv @a .
+	else
+		e mv @"$1" .
+	fi
+}
+
 function copy {
 	cat "$1" | cb
 }
