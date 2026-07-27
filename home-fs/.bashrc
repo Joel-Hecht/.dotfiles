@@ -150,6 +150,10 @@ if [[ $( command -v thefuck ) ]]; then
 	eval "$(thefuck --alias)"
 fi
 
+# remove error bells in less (git diff, man pages, etc)
+# This is basically only useful in wsl where this sucks
+export LESS="$LESS -R -Q"
+
 # End profiling
 #set +x
 #exec 2>&3 3>&-

@@ -52,6 +52,11 @@ vim.g.have_nerd_font = true
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- disable error bells (wsl)
+vim.opt.visualbell = false
+vim.opt.errorbells = false
+-- vim.opt.t_vb = false
+
 -- Undo files previously were stored in the same dir for vim and nvim
 -- Due to incopmpatibility between these two files, we need to keep them
 -- in seperate places
@@ -655,14 +660,16 @@ require("lazy").setup({
 				severity_sort = true,
 				float = { border = "rounded", source = "if_many" },
 				underline = { severity = vim.diagnostic.severity.ERROR },
-				signs = vim.g.have_nerd_font and { --this short circuit is bullshit lua syntax that basically works like a?b:c in other langauges
-					text = {
-						[vim.diagnostic.severity.ERROR] = "󰅚 ",
-						[vim.diagnostic.severity.WARN] = "󰀪 ",
-						[vim.diagnostic.severity.INFO] = "󰋽 ",
-						[vim.diagnostic.severity.HINT] = "󰌶 ",
-					},
-				} or {},
+				signs = vim.g.have_nerd_font
+						and { --this short circuit is bullshit lua syntax that basically works like a?b:c in other langauges
+							text = {
+								[vim.diagnostic.severity.ERROR] = "󰅚 ",
+								[vim.diagnostic.severity.WARN] = "󰀪 ",
+								[vim.diagnostic.severity.INFO] = "󰋽 ",
+								[vim.diagnostic.severity.HINT] = "󰌶 ",
+							},
+						}
+					or {},
 				virtual_text = {
 					source = "if_many",
 					spacing = 2,

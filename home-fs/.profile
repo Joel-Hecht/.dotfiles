@@ -33,3 +33,7 @@ esac
 export PATH="$HOME/.elan/bin:$PATH"
 
 [ -f "$HOME/.ghcup/env" ] && . "$HOME/.ghcup/env" # ghcup-env
+
+# remove error bells in less (git diff, man pages, etc)
+# This is basically only useful in wsl where this sucks
+export LESS="$LESS -R -Q"

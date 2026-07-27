@@ -57,6 +57,10 @@ autocmd FileType text setlocal textwidth=78
 "explit mouse enable
 set mouse=a
 
+" disable bell sounds from vim (wsl)
+set visualbell
+set t_vb=
+
 set foldmethod=indent   " fold based on indent
 set foldlevelstart=99
 autocmd FileType c,cpp,h,hpp setlocal foldmethod=syntax
