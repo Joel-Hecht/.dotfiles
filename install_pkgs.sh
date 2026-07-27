@@ -19,7 +19,6 @@ ninja-build gettext cmake unzip curl `_tools we need for later to install neovim
 ascii \
 sl \
 python-is-python3 ipython3 \
-sublime-text \
 keychain `_ssh-agent / key manager used in bashrc` \
 clangd `_for cpp in nvim` \
 fd-find fzf `_for nvim ` \

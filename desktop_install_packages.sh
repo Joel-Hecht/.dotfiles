@@ -9,6 +9,7 @@ i3-wm `_necessary for i3`\
 i3lock \
 i3blocks \
 suckless-tools \
+libx11-dev libxrandr-dev `_x11 support`  \
 konsole `_backup terminal emulator, we dont use this anymore`\
 compton `_allows transparent terminals` \
 maim `_needed for screenshots` \
@@ -16,13 +17,12 @@ xclip \
 xdotool \
 xcape `_multiple remapping for tap caps lock = escape` \
 nitrogen `_desktop background manager` \
-libx11-dev `_x11 support, needed for multi-monitor config` \
-policykit-1-gnome polkitd `_polkit needed to authenticate as root from i3wm` \
+polkitd `_polkit needed to authenticate as root from i3wm` \
 feh `_lighter weight than eog for pope` \
 wmctrl `_to target x11 windows by pid` \
 kitty-terminfo `_tells nvim about kitty for terminal mode` \
 notepadqq \
-chromium `_needed for microsoft crap that doesnt play nice with firefox`\ 
+chromium `_needed for microsoft crap that doesnt play nice with firefox`
 
 #flatpak setup
 sudo apt install flatpak
