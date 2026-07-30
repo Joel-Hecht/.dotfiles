@@ -183,7 +183,7 @@ alias ssh="TERM=xterm-256color ssh" # make ssh kitty-friendly
 alias vix="vi -X" # use if vim is slow due to x11 issues
 alias sexy="cowsay sexy!"
 alias sex="sexy"
-alias whitespace="fd -t f -X grep -lI . \; -X sed -i 's/\s\+$//'"
+alias whitespace="sed -i 's/\s\+$//' \$(fd -t f -X grep -lI .)"
 # fixes pdfs and excel spreadsheets becoming transparent
 alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 2>&1 &"
 
