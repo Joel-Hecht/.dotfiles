@@ -7,7 +7,17 @@ function editor {
 	${EDITOR} "$@"
 }
 
-function emv {
+# buoy vim
+function bv {
+	if [[ -z "$1" ]]; then
+		e editor @a .
+	else
+		e editor @"$1" .
+	fi
+}
+
+# buoy mv
+function bmv {
 	if [[ -z "$1" ]]; then
 		e mv @a .
 	else
