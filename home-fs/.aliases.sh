@@ -58,7 +58,7 @@ alias cdb="cmake -DCMAKE_BUILD_TYPE=Debug"
 alias cbd="cdb" # as funny as it is I find myself typing this all the time instead so whatever
 alias crel="cmake -DCMAKE_BUILD_TYPE=Release"
 
-#computer control
+# computer control
 alias eep="systemctl suspend"
 alias eepy="systemctl suspend"
 alias hibernate="systemctl hibernate"
@@ -81,14 +81,14 @@ alias rm="rm -d"
 alias rmr="rm -rd"
 alias rmrf="rm -rfd"
 
-#process control
+# process control
 alias pids="ps aux"
 alias killproc="killall"
 alias kp="killproc"
 alias fp="findproc"
 alias killpid="kill -9"
 
-#info
+# info
 alias ll="ls -l"
 alias la="ls -A"
 alias lt="ls -t"
@@ -110,11 +110,11 @@ alias dl="ls ~/Downloads"
 alias dll="ll ~/Downloads"
 alias difff="kitten diff"
 
-#vim aliases
+# vim aliases
 #alias v="vim"
 alias nv="nvim"
 
-#git shortcuts
+# git shortcuts
 alias gcm="git commit -m"
 alias dif="git diff"
 alias staged="git diff --name-only --staged"
@@ -139,11 +139,11 @@ alias ungaa="git reset --mixed"
 alias untrack="git rm --staged"
 alias uncommit="git reset --soft HEAD~1"
 
-#copy github access token to authenticate on tux
+# copy github access token to authenticate on tux
 alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
 alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt | cpy ; cd \"\$curr\""
 
-#programs 
+# programs 
 alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias bat="batcat"
@@ -158,14 +158,14 @@ alias fh="fileshere"
 alias f="fh"
 alias dfh="dc nautilus $HOME/Downloads"
 
-#reload after updates	
+# reload after updates	
 alias sb="source ~/.bashrc"
 alias sa="source ~/.aliases.sh"
 alias sf="source ~/.funcs.sh"
 alias ms="curr=\"\$(pwd)\" && dhome && scripts/makesymlinks.sh; cd \"\$curr\""
 alias reload="sb && sa && sf"
 
-#clipboard
+# clipboard
 alias cplast="fc -ln -1 | xargs -d'\n' | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//' | tr -d '\n' |  xclip -sel c"
 alias cpy="xclip -sel c"
 alias cb="xclip -sel c"
@@ -183,7 +183,8 @@ alias ssh="TERM=xterm-256color ssh" # make ssh kitty-friendly
 alias vix="vi -X" # use if vim is slow due to x11 issues
 alias sexy="cowsay sexy!"
 alias sex="sexy"
-#fixes pdfs and excel spreadsheets becoming transparent
+alias whitespace="fd --type file --exec sed -i 's/\s\+$//' {}"
+# fixes pdfs and excel spreadsheets becoming transparent
 alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 2>&1 &"
 
 # source aliases that act as applications
