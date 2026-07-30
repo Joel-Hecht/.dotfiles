@@ -1,6 +1,6 @@
-./" Manpage for pdf 
+./" Manpage for pdf
 .TH man 1 "22 June 2025" "1.0" "User Commands"
-.SH NAME 
+.SH NAME
 	pdf - open pdf
 .SH SYNOPSIS
 	pdf [filename]
@@ -11,7 +11,7 @@
 .SH BUGS
 	doesn't actually handle file not existing or not having a readable extension
 .SH AUTHOR
-	written by joel hecht 
+	written by joel hecht
 .SH REPORTING BUGS
 	email catboyjoel@catboyjoel.com
 .SH COPYRIGHT

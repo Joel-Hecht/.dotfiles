@@ -29,13 +29,13 @@ function dfs_rec {
 	[[ $depth -le $maxdepth ]] || return 1
 
 	# check if target found
-	ls -dt $next_level | egrep "(^|/)$1/" && cd "$( ls -dt $next_level | egrep "(^|/)$1/" | head -n 1)" && return 0	
+	ls -dt $next_level | egrep "(^|/)$1/" && cd "$( ls -dt $next_level | egrep "(^|/)$1/" | head -n 1)" && return 0
 
 	# recurse through subdirectories
 	depth=$(( $depth + 1 ))
 	for i in $( ls -dt $next_level ); do
 		echo "$next_level"
-		next_level="$i*/"	
+		next_level="$i*/"
 		dfs_rec "$1" && return 0
 	done
 	depth=$(( $depth - 1 ))

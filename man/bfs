@@ -1,7 +1,7 @@
 ./" Manpage for bfs
 .TH man 1 "07 Feb 2026" "1.0" "User Commands"
-.SH NAME 
-	bfs - breadth-first search 
+.SH NAME
+	bfs - breadth-first search
 .SH SYNOPSIS
 	bfs {OPTIONS} dirname
 	bfs {OPTIONS} cmd *args
@@ -40,7 +40,7 @@
 .br
 	bfs git _add main.c		starting from pwd, git add closest file named main.c
 .SH AUTHOR
-	written by rui zhao 
+	written by rui zhao
 .SH REPORTING BUGS
 	tell me in person
 .SH COPYRIGHT

@@ -13,7 +13,7 @@ echoargs () {
 	done
 }
 
-# for recursive calls, get the current dir that we 
+# for recursive calls, get the current dir that we
 # are working on
 if [ -z "$1" ]; then
 	#dir=$(echo $0 | sed 's/[^\/]*$//')
@@ -42,7 +42,7 @@ for i in $dir*;  do
 			#echo "directory found: $i"
 			newdirname=$(echo $i | grep -oP '[^/]*$')
 			newargs=$(echo "$nextignores" | grep "^$newdirname""/" | sed -e "s/^$newdirname\///" )
-    		echo $newargs | xargs $0 "$i""/" "$prefix" 
+    		echo $newargs | xargs $0 "$i""/" "$prefix"
 			#might want to put dotglob here too
 		fi
 	elif [ -f "$i" ]; then
@@ -52,16 +52,16 @@ for i in $dir*;  do
 
 		current="$2$r"
 		projected="$HOME$r"
-		
+
 		ignorematches=$(echo "$thisignores" | grep -w "$fname" )
 		if [ -n "$ignorematches" ]; then #if the mtaches are non-empty
 			#we do not want to make symlink of this since it is in the ignore file
 			echo "ignoring file: $r"
 			continue
 		fi
-		
+
 		echo "creating symlink $current -> $projected"
-		
+
 		#we have to make the projected dir if it doesnt already exist
 			#it is wasteful to do this on every file instead of every
 			#directory, but due to the way the program is structured
@@ -74,7 +74,7 @@ for i in $dir*;  do
 			#echo "file exists, removing now"
 			$(rm "$projected")
 		fi
-		
+
 		$(ln -s "$current" "$projected")
 
 	#else

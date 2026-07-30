@@ -1,6 +1,6 @@
 ./" Manpage for mkmv
 .TH man 1 "31 August 2025" "1.0" "User Commands"
-.SH NAME 
+.SH NAME
 	mkmv - mkdir then mv things there
 .SH SYNOPSIS
 	mkmv source[s] destination
@@ -17,7 +17,7 @@
 .SH BUGS
 	probably none
 .SH AUTHOR
-	written by rui zhao 
+	written by rui zhao
 .SH REPORTING BUGS
 	tell me in person
 .SH COPYRIGHT

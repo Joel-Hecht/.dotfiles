@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Author: Allen Han 
+# Author: Allen Han
 
 import pygame
 import random
@@ -46,8 +46,8 @@ def compare_lists(list1, list2, opts):
                 list1.append(directions[random.randrange(0, 3)])
         else:
             print("",end="")
-            
-def main(argv): 
+
+def main(argv):
     def show_opening_screen(screen):
         screen.fill((0, 0, 0))
         draw_text("Welcome to the Direction Matching Game!", pygame.font.Font(None, 36), (255, 255, 255), screen, 150, 200)

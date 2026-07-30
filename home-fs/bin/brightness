@@ -6,7 +6,7 @@ usage() {
 	echo "Usage: $0 [-c <brightness_delta> | -r]" >&2
 	echo "-c <brightness_delta>	Changes the brightness of all displays by <brightness_delta>" >&2
 	echo "-r			Resets the brightness to 1"
-	exit 1 
+	exit 1
 }
 
 
@@ -20,7 +20,7 @@ b="-1"
 gotarg=0
 
 while getopts ":c:r" opt; do
-	case ${opt} in 
+	case ${opt} in
 		c)
 			#check optarg is a float/integer
 			if [[ "${OPTARG}" =~ $floatregex ]]; then
@@ -44,7 +44,7 @@ while getopts ":c:r" opt; do
 done
 
 #command requires an arg
-if [ $gotarg -eq 0 ]; then 
+if [ $gotarg -eq 0 ]; then
 	usage
 fi
 

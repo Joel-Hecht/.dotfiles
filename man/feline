@@ -1,6 +1,6 @@
 ./" Manpage for feline
 .TH man 1 "21 June 2025" "1.0" "User Commands"
-.SH NAME 
+.SH NAME
 	feline - lean cat
 .SH SYNOPSIS
 	feline [files] [-] [more files]

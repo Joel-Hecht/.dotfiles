@@ -2,7 +2,7 @@
 .TH man 1 "17 Dec 2025" "1.0" "User Commands"
 .SH NAME
 	brightess - brightness change tool
-.SH SYNOPSIS 
+.SH SYNOPSIS
 	brightness [-r | -c <change> ]
 .SH DESCRIPTION
 	Allows you to change or reset brightness, and synchronizes brightness between displays

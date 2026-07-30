@@ -1,19 +1,19 @@
-./" Manpage for rw 
+./" Manpage for rw
 .TH man 1 "11 August 2025" "1.0" "User Commands"
-.SH NAME 
+.SH NAME
 	rw - random walk through directory tree
 .SH SYNOPSIS
 	rw (no options)
 .SH DESCRIPTION
-	flips a coin to decide whether to go to a random child directory or the parent, unless at home, in which case it only goes up. 
+	flips a coin to decide whether to go to a random child directory or the parent, unless at home, in which case it only goes up.
 .SH OPTIONS
-	might make an option for how long to wait and where home should be 
+	might make an option for how long to wait and where home should be
 .SH EXAMPLES
 	rw
 .SH BUGS
 	probably none??
 .SH AUTHOR
-	written by rui zhao 
+	written by rui zhao
 .SH REPORTING BUGS
 	tell me in person
 .SH COPYRIGHT

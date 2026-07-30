@@ -40,7 +40,7 @@ cd $dotdir
 ./build_kitty_source.sh
 
 # set color temperature (nightlight)
-if [[ -z $(command -v xsct) ]]; then 
+if [[ -z $(command -v xsct) ]]; then
 	git clone https://github.com/faf0/sct.git
 	cd sct
 	sudo make install

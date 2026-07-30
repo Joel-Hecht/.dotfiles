@@ -1,6 +1,6 @@
-./" Manpage for dfs 
+./" Manpage for dfs
 .TH man 1 "21 June 2025" "1.0" "User Commands"
-.SH NAME 
+.SH NAME
 	dfs - depth-first search
 .SH SYNOPSIS
 	dfs dirname [maxdepth (default=3)]
@@ -14,7 +14,7 @@
 .SH BUGS
 	don't use this it's horrible
 .SH AUTHOR
-	written by rui zhao 
+	written by rui zhao
 .SH REPORTING BUGS
 	tell me in person
 .SH COPYRIGHT

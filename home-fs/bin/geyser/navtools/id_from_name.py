@@ -6,7 +6,7 @@ here = Path(__file__)
 o = here.parent / "geysers.json"
 
 with open(o) as f:
-    j = json.load(f) 
+    j = json.load(f)
 
 name = sys.argv[1:]
 name = " ".join(name)

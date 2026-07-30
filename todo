@@ -1,9 +1,9 @@
 easy
 - add directory history to o alias so it works more than once
-	- would also be useful then to have an i alias which moves toward the top of the history 
+	- would also be useful then to have an i alias which moves toward the top of the history
 - configure bashhub (bash history on the cloud) https://github.com/rcaloras/bashhub-client
 	- what
-- nitrogen -> feh for background, which sets up on initial build 
+- nitrogen -> feh for background, which sets up on initial build
 - Run fontsetup.sh automaticall IF you don't already have the font installed/configured
 - make edita also open files that are in path, provided that the file is text and not a binary (i.e. is shebanged)
 

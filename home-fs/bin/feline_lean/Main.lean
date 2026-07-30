@@ -41,5 +41,5 @@ def process (exitCode : UInt32) (args : List String) : IO UInt32 := do
 def main (args : List String) : IO UInt32 :=
     match args with
     | [] => process 0 ["-"]
-    --| ["--help"] => process 0 ["--help"] 
+    --| ["--help"] => process 0 ["--help"]
     | _ => process 0 args

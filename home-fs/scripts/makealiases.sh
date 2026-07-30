@@ -23,7 +23,7 @@ for a in $as $fs; do
 	shopt -s expand_aliases
 	source $HOME/.funcs_dmenu.sh
 	source $HOME/.aliases_dmenu.sh
-	$a 
+	$a
 	EOF
 	chmod +x $p
 done

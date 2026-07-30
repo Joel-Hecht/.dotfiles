@@ -21,7 +21,7 @@ for c1 in chars:
 #                    for c6 in chars:
 #                        if c6 == c1 or c6 == c2 or c6 == c3 or c6 == c4 or c6 == c5: continue
 #                        list.append(f'alias bfs{c1}{c2}{c3}{c4}{c5}{c6}="source bfs_base -{c1}{c2}{c3}{c4}{c5}{c6}"')
-                        
+
 list.sort(key=len)
 
 with open(os.path.expanduser("~/.aliases_bfs.sh"), "w") as file:

@@ -1,6 +1,6 @@
-./" Manpage for bfs 
+./" Manpage for bfs
 .TH man 1 "21 June 2025" "1.0" "User Commands"
-.SH NAME 
+.SH NAME
 	dc - disconnect job from terminal
 .SH SYNOPSIS
 	dc [-q] [job]
@@ -17,7 +17,7 @@
 .SH BUGS
 	none that i can remember
 .SH AUTHOR
-	written by rui zhao 
+	written by rui zhao
 .SH REPORTING BUGS
 	tell me in person
 .SH COPYRIGHT

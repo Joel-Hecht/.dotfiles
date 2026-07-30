@@ -34,7 +34,7 @@ gcc `_put this here again so ALL PREVIOUS can have escaped newlines`
 # pipx installs
 pipx install thefuck
 pipx inject thefuck setuptools #distutils compatibility to allow thefuck to work out of the box
-pipx inject thefuck zombie-imp #we need to add these hack layers to allow deprecated python 3.11 features	
+pipx inject thefuck zombie-imp #we need to add these hack layers to allow deprecated python 3.11 features
 pipx install neovim-remote #_opening neovim in a neovim terminal pane can communicate with neovim parent instance
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
@@ -45,21 +45,21 @@ dotdir=$(dirname $(realpath "${BASH_SOURCE[0]}"))
 ############# DESKTOP/GRAPHICAL PACKAGES  ###########
 ####### UNNEEDED IF NOT IN A GRAPHICAL SETTING ######
 #####################################################
-if [ -n "$XDG_CURRENT_DESKTOP" ]; then 
+if [ -n "$XDG_CURRENT_DESKTOP" ]; then
 	bash "$dotdir"/desktop_install_packages.sh
 fi
 #####################################################
 #####################################################
 
 #alias fdfind to fd because that is how i will use if
-if [[ -n $(command -v fdfind) && -z $(command -v fd) ]]; then 
+if [[ -n $(command -v fdfind) && -z $(command -v fd) ]]; then
 	mkdir -p ~/.local/bin/
 	ln -s $(which fdfind) ~/.local/bin/fd
 fi
 
 #rust stuff
-if ! [ -d ~/.cargo ]; then 
-	sudo apt install cargo 
+if ! [ -d ~/.cargo ]; then
+	sudo apt install cargo
 	sudo apt autoremove rustc
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
@@ -81,7 +81,7 @@ fi
 
 #neovim version 0.8 isnt in apt
 #we need to build from source
-#Solution from https://www.reddit.com/r/debian/comments/188d3wc/neovim_on_debian/ 
+#Solution from https://www.reddit.com/r/debian/comments/188d3wc/neovim_on_debian/
 #
 #here I should check if neovim exists or if the version is less than 0.9.0
 nvim_version=$(nvim --version | head -1 | sed "s/[^\.]*\.//" | sed "s/\..*//")
@@ -98,7 +98,7 @@ if [[ $nvim_version -lt 9 ||  -z $(command -v nvim)  ]]; then
 	sudo dpkg -i --force-overwrite  nvim-linux*.deb
 	cd "$currentdir"
 else
-	echo "latest neovim already installed"	
+	echo "latest neovim already installed"
 fi
 
 #install buoy - no routine to update of yet

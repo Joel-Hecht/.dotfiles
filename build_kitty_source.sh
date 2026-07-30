@@ -7,25 +7,25 @@ if [[ -z $(command -v kitty) ]]; then
 	#if not kitty exists, isntall here
 	install=1
 	echo "no kitty installation found, installing now"
-else	
-	#we need to build kitty terminal from source 
+else
+	#we need to build kitty terminal from source
 	kitty_version=$(kitty -v | grep -o " [0-9]*\.[0-9]*\.[0-9]* ")
 	kitty_is_unstable=0
 	kitty_unstable_pattern="0\..*"
 	if [[ "$kitty_version" =~ $kitty_unstable_pattern ]]; then
 		kitty_is_unstable=1
 	fi
-	
+
 	kitty_minor_version=$(echo "$kitty_version"| grep -o "\.[0-9]*\." | sed "s/\.//g")
-	
+
 	#if we are on an unstable release below 44
 	if [[ $kitty_is_unstable -eq 1 && $kitty_minor_version -lt 43 ]]; then
 		echo "Out of date kitty $kitty_version found, updating now"
-		install=1	
-	else 
+		install=1
+	else
 		echo "kitty already installed as version $kitty_version"
 	fi
-fi 
+fi
 
 if [[ $install -eq 0 ]]; then
 	#if we shouldnt install, exit here
@@ -60,12 +60,12 @@ sudo apt install -y "${deps[@]}"
 
 #if kitty was installed with apt, get rid of it
 sudo apt remove -y kitty
-git clone https://github.com/kovidgoyal/kitty.git 
+git clone https://github.com/kovidgoyal/kitty.git
 cd kitty
 ./dev.sh build
 
 #not cleaning up for now in case user used these packages previously
-#a good implementation would track which packages were installed, and 
+#a good implementation would track which packages were installed, and
 #only remove those ones
 #sudo apt remove "$deps" -y
 

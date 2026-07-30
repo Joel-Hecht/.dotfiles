@@ -1,11 +1,11 @@
-./" Manpage for mvcd 
+./" Manpage for mvcd
 .TH man 1 "11 August 2025" "1.0" "User Commands"
-.SH NAME 
+.SH NAME
 	mvcd - mv a file then cd to where it is
 .SH SYNOPSIS
 	mvcd destination
 .SH DESCRIPTION
-	does mv then puts you there. if you specify a dirname, it moves the file there with its current name and cds to that dir. 
+	does mv then puts you there. if you specify a dirname, it moves the file there with its current name and cds to that dir.
 .br
 	if you give a filename, it moves the file to that name then cds to the directory it's in. basically same as mv but yo uend up where the file ends up
 .SH OPTIONS
@@ -17,7 +17,7 @@
 .SH BUGS
 	probably none
 .SH AUTHOR
-	written by rui zhao 
+	written by rui zhao
 .SH REPORTING BUGS
 	tell me in person
 .SH COPYRIGHT

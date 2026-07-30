@@ -4,7 +4,7 @@ if [ -z "$1" ]; then
 	dir="${HOME}"
 else
 	dir="$1"
-fi 
+fi
 
 #enable viewing hidden files
 shopt -s dotglob
@@ -17,7 +17,7 @@ for i in $dir*; do
 		fi
 	elif [[ -L "$i" ]]; then
 		if [[ -e "$i" ]]; then
-			continue	
+			continue
 		else
 			echo "removing broken symlink: $i"
 			rm "$i"

@@ -6,7 +6,7 @@ all:
 #	source ./home-fs/.bashrc
 	cd home-fs && make $@
 
-.PHONY: sym 
+.PHONY: sym
 sym:
 	cd home-fs && make $@
 

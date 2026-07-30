@@ -30,7 +30,7 @@ EOF
 }
 
 get_percentage(){
-	awk -f <(get_awk_source) "${bats[@]}"	
+	awk -f <(get_awk_source) "${bats[@]}"
 }
 
 is_discharging() {
@@ -40,7 +40,7 @@ is_discharging() {
 
 show_alert() {
 	winid=$(pope -p -t -1)
-	
+
 	#focus window
 	wmctrl -ia "${winid}"
 
@@ -70,9 +70,9 @@ while true; do
 				show_alert
 			fi
 		fi
-	else 
+	else
 		warned=""
 	fi
 
-	sleep "$time_between_checks" 
+	sleep "$time_between_checks"
 done

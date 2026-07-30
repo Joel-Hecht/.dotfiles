@@ -1,6 +1,6 @@
 ./" Manpage for pope
 .TH man 1 "12 June 2025" "1.0" "User Commands"
-.SH NAME 
+.SH NAME
 	pope - show pope (he is fleeting)
 .SH SYNOPSIS
 	pope [-l] [-f]
@@ -19,7 +19,7 @@
 .br
 	pope -f for pope francis (rip)
 .SH BUGS
-	transience lost if another instance of eog is open	
+	transience lost if another instance of eog is open
 .SH AUTHOR
 	written by joel hecht joel@hechts.org
 .SH REPORTING BUGS
