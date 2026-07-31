@@ -25,24 +25,57 @@ function bmv {
 	fi
 }
 
+# buoy downhere
+function bdh {
+	[[ $# -lt 1 ]] && echo "bdh: no location provided" && return
+
+	[[ $# -lt 2 ]] && num=1 || num="$2"
+
+	if ! [[ "$num" =~ ^[0-9]+$ ]]; then
+		echo "dh [X] to move the last X downloaded files, X must be a number" >&2
+		return 1
+	fi
+
+	while [[ $num -gt 0 ]]; do
+		if [[ $num -eq 1 ]]; then
+			fname="$(buoy -e ls -t "$1" | head -1 | tail -1 )"
+		else
+			#fname="$(buoy -e ls -tl "$1" | /usr/bin/grep ^- | awkn 9 | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
+			fname="$(buoy -e ls -tl "$1" | awkn 9 | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
+		fi
+
+		fullpath=$(buoy -e echo ${1}/"$fname")
+		if [[ $( tail -c 6 <<< "${fullpath}" ) == '.part' ]]; then
+			echo "Still downloading!"
+			return 1
+		else
+			echo "$fullpath"
+			mv "$fullpath" ./"$fname"
+		fi
+		num=$(( $num - 1 ))
+	done
+}
+alias downhere="bdh \"@/Downloads\""
+alias dh="downhere"
+
 function copy {
 	cat "$1" | cb
 }
 
-function unfunc { 
-	orig=$( type -a $1 ) 
-	unset -f "$1" 
+function unfunc {
+	orig=$( type -a $1 )
+	unset -f "$1"
 	echo "was $orig"
 }
 
 # path stuff i always forget to use
-function path { 
-	if [ -z "$1" ];then 
+function path {
+	if [ -z "$1" ];then
 		editor ~/.path.sh && source ~/.path.sh
 	else
 		echo "export PATH=\""$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh
 		echo "export PATH=\""$1":\$PATH\""
-	fi	
+	fi
 }
 function pathhome {
 	echo "export PATH=\"\$HOME/"$1":\$PATH\"" >> ~/.path.sh && source ~/.path.sh
@@ -59,12 +92,12 @@ function from {
 	#also replace slashes with dots
 	fname=$(echo "$1" | sed 's/.py$//' | sed 's!/!.!g')
 	command="
-try: 
+try:
 	from $fname import *
 except Exception as e:
 	print(f'{type(e).__name__}: {e}')
 	#make sure we don't exit into the repl, since the user will always want to be back in the cli
-	import os 
+	import os
 	os._exit(0)
 	"
 	python -i -c "$command"
@@ -122,7 +155,7 @@ function schere {
 	if [[ -n "$1" ]];then
 		# you don't need to add .png when doing schere, but you can if you want
 		if [[ "$1" =~ .*\.png$ ]];then
-			dest="$1" 
+			dest="$1"
 		else
 			dest="${1}.png"
 		fi
@@ -148,7 +181,7 @@ function _scname {
 function zipdir {
 	if [[ -n ${1} ]]; then
 		fname="${1}"
-		
+
 		# check if tab-completed dir ends in '/'
 		fname=$(echo "$fname" | sed 's#/$##')
 
@@ -226,7 +259,7 @@ function lockout {
 	since=$( cat $HOME/.i3status.conf | /usr/bin/grep -oP '\d{4,}$' ) # it has been much more than 9999 seconds since epoch
 	conf=$( cat $HOME/.i3status.conf | /usr/bin/grep -vP '# \d{4,}' )
 	echo "$conf" > $HOME/.i3status.conf
-	echo "order += \"tztime local\"" >> $HOME/.i3status.conf 
+	echo "order += \"tztime local\"" >> $HOME/.i3status.conf
 	i3rs &>/dev/null
 
 	rn=$( date +%s )
@@ -252,44 +285,12 @@ function awkn {
 	awk -v n=$1 '{ for (i=n; i<=NF; i++) printf "%s%s", $i, (i<NF ? OFS : ORS)}' "$2"
 }
 
-function bdh {
-	[[ $# -lt 1 ]] && echo "bdh: no location provided" && return
-
-	[[ $# -lt 2 ]] && num=1 || num="$2"
-
-	if ! [[ "$num" =~ ^[0-9]+$ ]]; then
-		echo "dh [X] to move the last X downloaded files, X must be a number" >&2
-		return 1
-	fi
-	
-	while [[ $num -gt 0 ]]; do
-		if [[ $num -eq 1 ]]; then
-			fname="$(buoy -e ls -t "$1" | head -1 | tail -1 )"
-		else
-			#fname="$(buoy -e ls -tl "$1" | /usr/bin/grep ^- | awkn 9 | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
-			fname="$(buoy -e ls -tl "$1" | awkn 9 | head -1 | tail -1 | sed -e 's/.*[0-9][0-9]:[0-9][0-9] //')"
-		fi
-
-		fullpath=$(buoy -e echo ${1}/"$fname")
-		if [[ $( tail -c 6 <<< "${fullpath}" ) == '.part' ]]; then
-			echo "Still downloading!"
-			return 1
-		else
-			echo "$fullpath"
-			mv "$fullpath" ./"$fname"
-		fi
-		num=$(( $num - 1 ))
-	done
-}
-alias downhere="bdh \"@/Downloads\""
-alias dh="downhere"
-
 function vm {
 	mv "$1" ~/vm/fusion_share/in/
 }
 
 function getvm {
-	bdh ~/vm/fusion_share/out/ 
+	bdh ~/vm/fusion_share/out/
 }
 alias vmget="getvm"
 
@@ -305,7 +306,7 @@ function dcq {
 	if [[ $# -eq 0 ]]; then
 		bg 2> /dev/null
 		disown %1
-		xdotool getactivewindow windowkill 
+		xdotool getactivewindow windowkill
 	else
 		dc_arg -q "$@"
 	fi
@@ -447,9 +448,9 @@ function mkmv {
 		echo "mkmv source destination" >&2
 	elif [ -d "${@: -1}" ]; then
 		echo "\'${@: -1}' already exists, mving anyway" >&2
-		mv "$@" 
+		mv "$@"
 	else
-		mkdir "${@: -1}" && mv "$@" 
+		mkdir "${@: -1}" && mv "$@"
 	fi
 }
 
@@ -469,7 +470,7 @@ function lo {
 }
 
 #this needs to be a function so that it has the current context
-#running from a file will make a new shell, which doesn't share the 
+#running from a file will make a new shell, which doesn't share the
 #environment we are looking to analyze
 function edita {
 	target="$1"
@@ -480,7 +481,7 @@ function edita {
 		cut=$(echo "$decl" | sed "s/^$target //")
 		linenumber=$(echo "$cut" | sed "s/ .*$//")
 		fname=$(echo "$cut" | sed "s/^[0-9]* //")
-	else 
+	else
 		aliasresult=$(alias "$target")
 		pat="^alias\ ${target}='.*"
 		if [[ "$aliasresult" =~ $pat ]]; then
@@ -491,7 +492,7 @@ function edita {
 			line=$(bash -xci : 2>&1 | /usr/bin/grep "alias '\?${target}=" )
 
 			#for some reason I can't trim off these end parens in the same sed.  Whatever
-			trim=$(echo "$line" | sed 's/^[0-9]*\:(*//' | sed "s/^(*//") 
+			trim=$(echo "$line" | sed 's/^[0-9]*\:(*//' | sed "s/^(*//")
 			fname=$(echo "$trim" | sed "s/ ::::.*//")
 			linenumber=$(echo "$trim" | sed "s/^.* :::: //" | sed "s/).*$//")
 		else
@@ -506,7 +507,7 @@ function edita {
 alias ea="edita"
 
 # will need to be run with sudo
-# if you would like to mount /sdc1, you would run 
+# if you would like to mount /sdc1, you would run
 # $sudo dev c1 <mountpoint>
 # if run without args, will list all possible drives to mount
 function dev {
@@ -514,7 +515,7 @@ function dev {
 		# echo $(ls /dev/sd* | grep -s "/dev/sd[a-z][0-9]" | sed -s 's|/dev/sd||')
 		lsblk #this is just better honestly
 		return
-	elif [[ ! "$1" =~ [a-z][0-9] ]];then 
+	elif [[ ! "$1" =~ [a-z][0-9] ]];then
 		echo "no such filesystem /dev/sd${1}"
 		return
 	fi
