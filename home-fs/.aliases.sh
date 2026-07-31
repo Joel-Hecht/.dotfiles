@@ -118,8 +118,8 @@ alias nv="nvim"
 alias gcm="git commit -m"
 alias dif="git diff"
 alias staged="git diff --name-only --staged"
-alias gaa="git add --all && git diff --name-only --staged | sed 's/^/staged: /' "
-alias gau="git add --update && git diff --name-only --staged | sed 's/^/staged: /' "
+alias gaa="gitwhitespace ; git add --all && git diff --name-only --staged | sed 's/^/staged: /' "
+alias gau="gitwhitespace ; git add --update && git diff --name-only --staged | sed 's/^/staged: /' "
 alias gaup="git add --update --patch"
 alias gaap="git add --all --patch"
 alias names="git diff --name-only"
@@ -143,7 +143,7 @@ alias uncommit="git reset --soft HEAD~1"
 alias accesscpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat access_token_github.txt | cpy ; cd \"\$curr\""
 alias ghlogincpy="curr=\"\$(pwd)\" && cd $HOME/auth && cat github_login_cred.txt | cpy ; cd \"\$curr\""
 
-# programs 
+# programs
 alias chirp="sudo ~/.local/bin/chirp &"
 alias icat="kitty +kitten icat"
 alias bat="batcat"
@@ -158,7 +158,7 @@ alias fh="fileshere"
 alias f="fh"
 alias dfh="dc nautilus $HOME/Downloads"
 
-# reload after updates	
+# reload after updates
 alias sb="source ~/.bashrc"
 alias sa="source ~/.aliases.sh"
 alias sf="source ~/.funcs.sh"
@@ -184,11 +184,12 @@ alias vix="vi -X" # use if vim is slow due to x11 issues
 alias sexy="cowsay sexy!"
 alias sex="sexy"
 alias whitespace="sed -i 's/\s\+$//' \$(fd -t f -X grep -lI .)"
+alias gitwhitespace="sed -i 's/\s\+$//' \$(git diff HEAD --name-only)"
 # fixes pdfs and excel spreadsheets becoming transparent
 alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 2>&1 &"
 
 # source aliases that act as applications
-source ${HOME}/.aliases_dmenu.sh 
+source ${HOME}/.aliases_dmenu.sh
 
 # pope
 alias sl="[[ $(( $RANDOM % 2 )) -eq 0 ]] && /usr/games/sl-1 || pope"
