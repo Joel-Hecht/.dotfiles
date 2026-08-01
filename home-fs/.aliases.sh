@@ -184,7 +184,7 @@ alias vix="vi -X" # use if vim is slow due to x11 issues
 alias sexy="cowsay sexy!"
 alias sex="sexy"
 alias whitespace="sed -i 's/\s\+$//' \$(fd -t f -X grep -lI .)"
-alias gitwhitespace="sed -i 's/\s\+$//' \$(git diff HEAD --name-only)"
+alias gitwhitespace="if [[ -n \"\$(git diff HEAD --name-only)\" ]]; then sed -i 's/\s\+$//' \$(git diff HEAD --name-only); fi"
 # fixes pdfs and excel spreadsheets becoming transparent
 alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 2>&1 &"
 
