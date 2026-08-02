@@ -9,7 +9,7 @@ i3-wm `_necessary for i3`\
 i3lock \
 i3blocks \
 suckless-tools \
-libx11-dev libxrandr-dev `_x11 support`  \
+xorg-dev libx11-dev libxrandr-dev `_x11 support`  \
 konsole `_backup terminal emulator, we dont use this anymore`\
 compton `_allows transparent terminals` \
 maim `_needed for screenshots` \
