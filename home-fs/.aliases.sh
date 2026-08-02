@@ -74,6 +74,7 @@ alias upgrade="sudo apt update && sudo apt upgrade"
 alias autopurge="sudo apt autopurge"
 alias rshift="xmodmap -e 'keycode 62 = Shift_R NoSymbol' && xmodmap -e 'add shift = Shift_R'"
 alias unrshift="xmodmap -e 'keycode 62 = Escape NoSymbol' && xmodmap -e 'remove shift = Escape'"
+alias settings="XDG_CURRENT_DESKTOP=GNOME gnome-control-center"
 
 # remove things
 alias unclean="mv /tmp/trash/* ." # reverse dbin/clean
