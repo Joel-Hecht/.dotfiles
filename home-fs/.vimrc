@@ -2,7 +2,7 @@ set nocompatible | "use vim instead of vi, even when launching as vi
 
 if has("nvim") || exists('$NVIM')
 	 " THIS DOESN'T WORK BUT IT SHOULD IT ACTUALLY DOESNT EFFECT ANYTHING THOUGH
-	 
+
 	 "if we opened vim in a vim/nvim terminal by accident, set these so that it
 	 "opens up in the parent nvim instance
 	 "This won't affect anything else
@@ -34,7 +34,7 @@ set viminfo+=<500
 :set softtabstop=0 noexpandtab
 ":set clipboard=unnamedplus | " default vim clipbaord is system clipboard
 :set ruler | "always show cursor
-:set showcmd | "show incomplete commands (should be on by default) 
+:set showcmd | "show incomplete commands (should be on by default)
 :syntax enable
 
 " vimplug stuff - doesnt work at all right now
@@ -49,10 +49,10 @@ call plug#end()
 " end vimplug stuff
 
 " language dependent indents
-filetype plugin indent on 
+filetype plugin indent on
 
 "defualt vimrc textwidth
-autocmd FileType text setlocal textwidth=78 
+autocmd FileType text setlocal textwidth=78
 
 "explit mouse enable
 set mouse=a
@@ -73,8 +73,8 @@ autocmd BufWinLeave * silent! mkview
   \ |   exe "normal! g`\""
   \ | endif
 
-" Save '+' vim register to clipboard when we leave 
-autocmd VimLeave * call system("xclip -sel c ", getreg('+'))
+" Save 'c' vim register to clipboard when we leave
+autocmd VimLeave * call system("xclip -sel c ", getreg('c'))
 
 " Map key chord `jk` to <Esc> in insert mode.
 " Useful if we don't have a convenient <Esc> remap
@@ -108,7 +108,7 @@ let g:mapleader="\<Space>"
 nnoremap <SPACE> <Nop>
 
 " copy to clipboard again
-nnoremap <Leader>y :let @+=@"<CR> 
+nnoremap <Leader>y :call system("xclip -sel c ", getreg('"'))
 " go between buffers and save
 nnoremap <Leader>n :bn<CR>
 nnoremap <Leader>p :bp<CR>
