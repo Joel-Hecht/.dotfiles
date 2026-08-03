@@ -158,6 +158,7 @@ alias fileshere="dc nautilus ."
 alias fh="fileshere"
 alias f="fh"
 alias dfh="dc nautilus $HOME/Downloads"
+alias jpnb="jupyter-notebook"
 
 # reload after updates
 alias sb="source ~/.bashrc"

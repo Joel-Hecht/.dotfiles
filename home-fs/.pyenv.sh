@@ -39,7 +39,6 @@ function vpy {
 	fi
 	deactivate
 }
-alias jpnb="venv && dc jupyter-notebook && venvl"
 
 function thisvenv {
 	# assume you have something named like this in this directory
