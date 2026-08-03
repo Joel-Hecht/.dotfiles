@@ -26,7 +26,7 @@ clang-format clang-tidy `_cpp in nvim` \
 pylint `_python linter for no good reason` \
 cowsay \
 build-essential gdb debhelper `_prob alr have these` \
-bat \
+bat tree \
 bfs `_breadth-first _find that we build our bfs on top of ` \
 pipx `_python _cli installer` \
 gcc `_put this here again so ALL PREVIOUS can have escaped newlines`
