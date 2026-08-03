@@ -7,6 +7,11 @@ function editor {
 	${EDITOR} "$@"
 }
 
+# search replace, might not work
+function sr {
+	sed -i "s/$1/$2/g" $(fd -t f -X grep -lI .)
+}
+
 # buoy vim
 function bv {
 	if [[ -z "$1" ]]; then
