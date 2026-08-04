@@ -47,3 +47,23 @@ if [[ -z $(command -v xsct) ]]; then
 	cd ..
 	rm -rf sct
 fi
+
+#install touchegg from source, which may or may not work this time
+if [[ -z $(command -v touchegg) ]]; then
+	sudo apt install libudev-dev libinput-dev libpugixml-dev libcairo2-dev libx11-dev libxtst-dev libxrandr-dev libxi-dev libglib2.0-dev libgtk-3-dev
+	# Clone touchegg
+	mkdir -p ~/apps
+	git clone https://github.com/JoseExposito/touchegg.git ~/apps/touchegg
+	cd ~/apps/touchegg
+	# Edit cmake for our real systemd dir before building
+	sed -i 's!${SYSTEMD_SERVICE_DIR}!/etc/systemd/system/!' CMakeLists.txt
+	mkdir build
+	cd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
+	# Make, install, and run touchegg
+	make -j$(nproc)
+	sudo make install
+	sudo systemctl daemon-reload
+	sudo systemctl restart touchegg
+	touchegg >/dev/null &
+fi
