@@ -54,7 +54,7 @@ if [[ ! -z $(which kitty) ]]; then
 	alias rg='kitty +kitten hyperlinked_grep --smart-case -L'
 fi
 
-alias vim="vim.basic"
+alias vim="vim.gtk3"
 
 # set default editor to vim - if you'd rather nvim, put redefinition in ~/.work.sh (sourced below)
 export VISUAL='vim'
