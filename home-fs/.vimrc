@@ -108,7 +108,7 @@ let g:mapleader="\<Space>"
 nnoremap <SPACE> <Nop>
 
 " copy to clipboard again
-nnoremap <Leader>y :call system("xclip -sel c ", getreg('"'))
+nnoremap <Leader>y :call system("xclip -sel c ", getreg('"'))<CR>
 " go between buffers and save
 nnoremap <Leader>n :bn<CR>
 nnoremap <Leader>p :bp<CR>
