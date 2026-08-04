@@ -527,3 +527,11 @@ function dev {
 
 	sudo mount /dev/sd"$1" "$2"
 }
+
+function gitwhitespace {
+	if [[ -n $(git diff HEAD --name-only) ]]; then
+		top="$(git rev-parse --show-toplevel)/"
+		sed -i 's/\s\+$//' $(git diff HEAD --name-only | sed "s|^|${top}|")
+	fi
+
+}
