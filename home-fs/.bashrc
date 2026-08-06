@@ -104,6 +104,12 @@ if [ -n "$NVIM" ]; then
 	#note that you will need to manually buffer delete these files.  Whatever.
 	alias vim="nvr -cc vsplit --remote" # don't let us open vim sessions nested in nvim
 	alias nvim="nvr -cc vsplit --remote" # " " " nvim
+
+	# 'clear' should also clear the scrollback buffer
+	# exit terminal and execute lua command to do this
+	# then return to insertmode
+	alias clear="nvr --remote-send '<C-\><C-n>:lua ClearTerminalAndScrollback()<CR>'"
+
 else
 	# each nvim opens a unique socket, needed to attach others using nvim-remote
 	alias nvim='nvim --listen /tmp/nvim-$(date +%s).sock'

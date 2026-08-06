@@ -173,6 +173,42 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 -- UPDATE: because neovim-remote makes it impossible to nest sessions, insteadwe will use a single escape (initial kickstart config had <Esc><Esc>)
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
+-- used in bashrc: set 'clear' to execute this function, which also clears the scrollback buffer
+--_G makes this global
+function _G.ClearTerminalAndScrollback()
+	-- local server_name = vim.api.nvim_get_vvar("servername")
+	local current_scrollback = vim.opt_local.scrollback:get()
+
+	-- get id of currently selected terminal job, but we are in normal mode, so we have to select the terminal channel
+	local current_buffer = vim.api.nvim_get_current_buf()
+	local term_channel = vim.b[current_buffer].terminal_job_id
+
+	--now when we clear, it will save only this line
+	vim.opt_local.scrollback = 1
+
+	if term_channel then
+		vim.api.nvim_chan_send(term_channel, "command clear\n")
+	else
+		vim.notify("no terminal channel", vim.log.levels.ERROR, { timeout = false })
+	end
+
+	--we have to delay here to give nvim time to process the clear, delay time can be anything
+	vim.defer_fn(function()
+		vim.opt_local.scrollback = current_scrollback
+	end, 100)
+
+	--then put us back in the terminal
+	vim.cmd("startinsert")
+end
+
+-- now that clear works in the terminal, we can reamp <C-l>, since you will just use clear all the time anyway!
+-- use CTRL+hjkl to move around in terminal mode, same as you would in normal mode
+-- this is to avoid accidental truncation of the terminal buffer by typing C-l, which clears everything you just got
+vim.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w><C-k>", { desc = "Move focus to the upper window" })
+
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
