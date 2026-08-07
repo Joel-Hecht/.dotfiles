@@ -487,7 +487,7 @@ function edita {
 		linenumber=$(echo "$cut" | sed "s/ .*$//")
 		fname=$(echo "$cut" | sed "s/^[0-9]* //")
 	else
-		aliasresult=$(alias "$target")
+		aliasresult=$(alias "$target" 2> /dev/null)
 		pat="^alias\ ${target}='.*"
 		if [[ "$aliasresult" =~ $pat ]]; then
 			# make line tell source file and line number with this format
@@ -501,8 +501,21 @@ function edita {
 			fname=$(echo "$trim" | sed "s/ ::::.*//")
 			linenumber=$(echo "$trim" | sed "s/^.* :::: //" | sed "s/).*$//")
 		else
-			echo "No function or alias in current env named $target"
-			return 1
+			fname=$(which "$target")
+			status=$?
+			if [ $status -eq 0 ]; then
+				ftype=$(file -b --mime-type "$fname" | sed 's|/.*||')
+				if [[ "$ftype" == "application" ]]; then
+					echo "Name $target is a binary file"
+					return 1
+				else
+					#continue to editor step
+					linenumber=0
+				fi
+			else
+				echo "Couldn't find name in env named $target"
+				return 1
+			fi
 		fi
 	fi
 
