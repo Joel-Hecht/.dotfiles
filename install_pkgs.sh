@@ -1,35 +1,31 @@
 #!/bin/bash
 
+pkgs=(
+	fonts-jetbrains-mono fonts-font-awesome fonts-powerline # fonts
+	git gh
+	wget curl sed grep
+	vim vim-gtk3
+	gcc make cmake
+	fdisk # volume viewer thats worse than lsblk
+	calcurse # calendar TUI
+	python3-venv python3-pip # needed to use pip
+	python-is-python3 ipython3 pipx pylint # useful python stuff
+	lua5.4 # lua language
+	ninja-build gettext unzip # will use for nvim install
+	ascii
+	bat tree # useful display stuff
+	sl cowsay # very important
+	keychain # ssh-agent / key manager used in bashrc
+	ripgrep fd-find fzf # useful tools
+	clangd clang-format clang-tidy # for cpp in nvim
+	build-essential gdb debhelper
+	bfs # breadth-first find that we built our bfs on top of
+)
+
 #packages installed with apt (run first)
 sudo apt update
 #sudo apt upgrade -y
-sudo apt install \
-fonts-jetbrains-mono `_fonts`\
-fonts-font-awesome \
-fonts-powerline \
-wget sed grep `_cant believe this isnt default`\
-gcc make cmake vim ripgrep  `_general tools` \
-fdisk `_volume viwer thats worst than lsblk but i like it`\
-git gh `_if you got this far you should already have this` \
-calcurse `_in-terminal calendar` \
-vim-gtk3 `_install graphical vim, installation gives vim access to system clipboard register`\
-python3-venv python3-pip `_needed to use pip`\
-lua5.4 `_lua language` \
-ninja-build gettext cmake unzip curl `_tools we need for later to install neovim` \
-ascii \
-sl \
-python-is-python3 ipython3 \
-keychain `_ssh-agent / key manager used in bashrc` \
-clangd `_for cpp in nvim` \
-fd-find fzf `_for nvim ` \
-clang-format clang-tidy `_cpp in nvim` \
-pylint `_python linter for no good reason` \
-cowsay \
-build-essential gdb debhelper `_prob alr have these` \
-bat tree \
-bfs `_breadth-first _find that we build our bfs on top of ` \
-pipx `_python _cli installer` \
-gcc `_put this here again so ALL PREVIOUS can have escaped newlines`
+sudo apt install ${pkgs[@]}
 
 # pipx installs
 pipx install thefuck
@@ -87,7 +83,6 @@ fi
 #neovim version 0.8 isnt in apt
 #we need to build from source
 #Solution from https://www.reddit.com/r/debian/comments/188d3wc/neovim_on_debian/
-#
 #here I should check if neovim exists or if the version is less than 0.9.0
 nvim_version=$(nvim --version | head -1 | sed "s/[^\.]*\.//" | sed "s/\..*//")
 if [[ $nvim_version -lt 9 ||  -z $(command -v nvim)  ]]; then

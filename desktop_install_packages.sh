@@ -4,25 +4,25 @@
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo tee /etc/apt/keyrings/sublimehq-pub.asc > /dev/null
 echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable/\nSigned-By: /etc/apt/keyrings/sublimehq-pub.asc' | sudo tee /etc/apt/sources.list.d/sublime-text.sources
 
-sudo apt install \
-i3-wm `_necessary for i3`\
-i3lock \
-i3blocks \
-suckless-tools \
-xorg-dev libx11-dev libxrandr-dev `_x11 support`  \
-konsole `_backup terminal emulator, we dont use this anymore`\
-compton `_allows transparent terminals` \
-maim `_needed for screenshots` \
-xclip \
-xdotool \
-xcape `_multiple remapping for tap caps lock = escape` \
-nitrogen `_desktop background manager` \
-polkitd `_polkit needed to authenticate as root from i3wm` \
-feh `_lighter weight than eog for pope` \
-wmctrl `_to target x11 windows by pid` \
-kitty-terminfo `_tells nvim about kitty for terminal mode` \
-notepadqq \
-chromium `_needed for microsoft crap that doesnt play nice with firefox`
+pkgs=(
+	i3-wm i3lock i3blocks suckless-tools # necessary for i3
+	xorg-dev libx11-dev libxrandr-dev # x11 support
+	wmctrl # target x11 windows by pid
+	konsole # backup terminal emulator
+	nitrogen # background manager
+	compton # allows transparent terminals
+	maim # for screenshots
+	xclip # clipboard
+	xdotool
+	xcape # for remapping capslock to escape
+	polkitd # polkit for authenticating as root for i3wm
+	feh # lightweight image displayer for pope better than eog
+	kitty-terminfo # tell nvim about kitty for terminal mode
+	notepadqq
+	chromium # needed for microsoft crap
+)
+
+sudo apt install ${pkgs[@]}
 
 #flatpak setup
 sudo apt install flatpak
