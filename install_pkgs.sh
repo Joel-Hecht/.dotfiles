@@ -74,11 +74,14 @@ fi
 
 #lean stuff
 if ! [ -f "${HOME}/.elan/bin/lean" ]; then
-	lean --version || wget -q https://raw.githubusercontent.com/leanprover-community/mathlib4/master/scripts/install_debian.sh && bash install_debian.sh ; rm -f install_debian.sh && source ~/.profile
+	echo "installing lean"
+	wget https://raw.githubusercontent.com/leanprover-community/mathlib-tools/master/scripts/install_debian.sh && bash install_debian.sh
+	rm -f install_debian.sh && source ~/.profile
+	lean --version
 else
-	echo "lean installed already"
+	lean --version
 fi
-
+sudo apt remove code -y
 
 #neovim version 0.8 isnt in apt
 #we need to build from source
@@ -135,3 +138,4 @@ if ! [[ -e ~/.bash-preexec.sh ]]; then
 	curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
 fi
 
+sudo apt autoremove -y
