@@ -128,7 +128,6 @@ else
 	echo "buoy already installed"
 fi
 
-
 #install vimplug for vim if it does not exist already
 if [[ -z $(ls ~/.vim/autoload/plug.vim) ]]; then
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

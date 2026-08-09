@@ -4,7 +4,7 @@
 sh ~/bin/primarydisplay
 
 # environments like wsl launch without desktop in a login shell
-# we need a quick way to get bashrc when launching these shells, but 
+# we need a quick way to get bashrc when launching these shells, but
 # sourcing directly is an easy way to make your login take 1000 years
 alias sb="source ~/.bashrc"
 
