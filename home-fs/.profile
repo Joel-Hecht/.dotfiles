@@ -19,11 +19,11 @@ export PATH="${HOME}/.kitty/kitty/kitty/launcher/:$PATH"
 # !! Contents within this block are managed by juliaup !!
 
 case ":$PATH:" in
-    *:/home/pi/.juliaup/bin:*)
+    *:${HOME}/.juliaup/bin:*)
         ;;
 
     *)
-        export PATH=/home/pi/.juliaup/bin${PATH:+:${PATH}}
+        export PATH=${HOME}/.juliaup/bin${PATH:+:${PATH}}
         ;;
 esac
 
