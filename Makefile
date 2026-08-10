@@ -1,9 +1,7 @@
 .PHONY: all
 all:
-	./install_pkgs.sh
-#	./home-fs/makealiases.sh
-#	./home-fs/makesymlinks.sh
-#	source ./home-fs/.bashrc
+	./build/install_pkgs.sh
+	./build/makemans.sh
 	cd home-fs && make $@
 
 .PHONY: sym
@@ -12,7 +10,7 @@ sym:
 
 .PHONY: mans
 mans:
-	cd home-fs && make $@
+	./build/makemans.sh
 
 .PHONY: font
 font:
