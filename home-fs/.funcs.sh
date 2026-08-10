@@ -544,7 +544,11 @@ function dev {
 function gitwhitespace {
 	if [[ -n $(git diff HEAD --name-only) ]]; then
 		top="$(git rev-parse --show-toplevel)/"
-		sed -i 's/\s\+$//' $(git diff HEAD --name-only | sed "s|^|${top}|")
+		# Append toplevel to diff names, remove files that dont exist anymore
+		files="$(git diff HEAD --name-only | sed "s|^|${top}|" | xargs -I {} stat -c '%n' "{}" 2>/dev/null)"
+		if [[ -n $files ]]; then
+			sed -i 's/\s\+$//' $files
+		fi
 	fi
 
 }
