@@ -1,12 +1,12 @@
 all:
-	scripts/makealiases.sh
-	scripts/makebfsaliases.py
-	scripts/makenitrogenconfig.sh
-	scripts/makesymlinks.sh
+	scripts/make_aliases.sh
+	scripts/make_bfs_aliases.py
+	scripts/make_nitrogen_config.sh
+	scripts/make_symlinks.sh
 	scripts/permission_setup.sh
 
 sym:
-	scripts/makesymlinks.sh
+	scripts/make_symlinks.sh
 
 font:
-	scripts/fontsetup.sh
+	scripts/font_setup.sh

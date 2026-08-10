@@ -35,7 +35,7 @@ fi
 
 for i in $from_location/*.cfg; do
 	fname=$(echo $i | sed "s/.*\///")
-	echo "makenitrogenconfig: added $fname"
+	echo "make_nitrogen_config: added $fname"
 	sed "s/$pattern_string/$replace_string/g" "$i" > "$move_location/$fname"
 done
 

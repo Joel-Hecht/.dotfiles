@@ -1,7 +1,7 @@
 .PHONY: all
 all:
 	./build/install_pkgs.sh
-	./build/makemans.sh
+	./build/make_mans.sh
 	cd home-fs && make $@
 
 .PHONY: sym
@@ -10,7 +10,7 @@ sym:
 
 .PHONY: mans
 mans:
-	./build/makemans.sh
+	./build/make_mans.sh
 
 .PHONY: font
 font:
