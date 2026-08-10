@@ -131,20 +131,6 @@ function clone {
 	git clone git@github.com:"$1".git
 }
 
-function rust {
-	[[ -d $HOME/.test-rust ]] || cp -rL $HOME/.template-rust $HOME/.test-rust
-	cd $HOME/.test-rust
-	sed -i 's/template/test/' Cargo.toml
-	if [[ -n $1 ]]; then
-		cargo $@
-	else
-		vi src/main.rs
-		cargo run
-	fi
-	cd - >/dev/null
-}
-function dust { rm -rf $HOME/.test-rust; }
-
 function rmscs {
 	mkdir /tmp/old 2> /dev/null
 	mv /tmp/trash/* /tmp/old 2> /dev/null

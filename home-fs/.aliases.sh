@@ -49,10 +49,6 @@ alias P="dc browser https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
 #for testing
 alias C="[[ -f $HOME/.test.c ]] || cp $HOME/.template.c $HOME/.test.c ; vi $HOME/.test.c && gcc $HOME/.test.c -lm && ./a.out && rm ./a.out"
 alias D="rm $HOME/.test.c"
-alias cpp="[[ -f $HOME/.test.cpp ]] || cp $HOME/.template.cpp $HOME/.test.cpp ; vi $HOME/.test.cpp && g++ $HOME/.test.cpp && ./a.out && rm ./a.out"
-alias Cpp="cpp"
-alias dpp="rm $HOME/.test.cpp"
-alias Dpp="rm $HOME/.test.cpp"
 
 # build stuff
 alias cgb="cargo build"
