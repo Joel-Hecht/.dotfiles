@@ -1,5 +1,16 @@
 #!/bin/bash
 
+#single-char defs
+alias o="cd - >/dev/null" # go to Older directory in this terminal
+alias b="cd build"
+alias p="cdparent"
+alias f="dc nautilus ."
+alias l="ls"
+#buoy navigation
+alias m="buoy -m"
+alias e="buoy -e"
+alias c="buoy -c"
+
 #general
 alias me="echo \"$(whoami)@$(hostname)\""
 alias dup='dc kitty $( pwd ) 2>/dev/null' # make new terminal in this directory
@@ -14,15 +25,7 @@ alias scs="cd ~/Pictures"
 alias proj="cd ~/proj"
 alias down="cd ~/Downloads"
 alias dnv="cd ~/.dotfiles/home-fs/.config/nvim"
-alias b="cd build"
 alias bd="cd build.debug"
-
-alias o="cd - >/dev/null" # go to Older directory in this terminal
-
-#buoy navigation
-alias m="buoy -m"
-alias e="buoy -e"
-alias c="buoy -c"
 
 #files
 alias config="editor ~/.dotfiles/home-fs/.config/i3/config"
@@ -156,7 +159,6 @@ alias judgel="./jpm_tree/bin/judge"
 alias dds="docker desktop start"
 alias fileshere="dc nautilus ."
 alias fh="fileshere"
-alias f="fh"
 alias dfh="dc nautilus $HOME/Downloads"
 alias jpnb="dc jupyter-notebook"
 

@@ -241,16 +241,19 @@ function repo {
 	fi
 }
 
-function p {
+function parent {
 	if [[ $# -lt 1 ]]; then
-		cd ..
+		echo ..
 	else
 		target=""
 		for ((i=1; i<=$1; i++)); do
 			target+="../"
 		done
-		cd "$target"
+		echo "$target"
 	fi
+}
+function cdparent {
+	cd $( parent $@ )
 }
 
 function lockin {
