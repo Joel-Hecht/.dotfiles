@@ -73,8 +73,8 @@ autocmd BufWinLeave * silent! mkview
   \ |   exe "normal! g`\""
   \ | endif
 
-" Save 'c' vim register to clipboard when we leave
-autocmd VimLeave * call system("xclip -sel c ", getreg('c'))
+" Save '+' vim register to clipboard when we leave
+autocmd VimLeave * call system("xclip -sel c ", getreg('+'))
 
 " Map key chord `jk` to <Esc> in insert mode.
 " Useful if we don't have a convenient <Esc> remap
@@ -108,7 +108,7 @@ let g:mapleader="\<Space>"
 nnoremap <SPACE> <Nop>
 
 " copy to clipboard again
-nnoremap <Leader>y :call system("xclip -sel c ", getreg('"'))<CR>
+nnoremap <Leader>y :let @+=@"<CR>
 " go between buffers and save
 nnoremap <Leader>n :bn<CR>
 nnoremap <Leader>p :bp<CR>
