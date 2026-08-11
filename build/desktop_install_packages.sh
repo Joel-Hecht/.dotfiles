@@ -33,6 +33,7 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 flatpak install flathub com.github.PintaProject.Pinta
 #discord
 flatpak install flathub com.discordapp.Discord
+sudo flatpak override com.github.PintaProject.Pinta --filesystem=~/ && echo "pinta permissions added"
 
 # kitty terminal emulator, this is what we use now
 dotdir=$(dirname $(realpath "$0"))

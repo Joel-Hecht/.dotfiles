@@ -11,7 +11,3 @@ for f in "$bindir"* ; do
 done
 
 chmod +x "$HOME/.bash_exit.sh"
-
-if [ -n "$XDG_CURRENT_DESKTOP" ]; then
-	bash "$thisdir"/desktop_permission_setup.sh
-fi

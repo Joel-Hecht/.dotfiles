@@ -7,6 +7,3 @@ all:
 
 sym:
 	scripts/make_symlinks.sh
-
-font:
-	scripts/font_setup.sh

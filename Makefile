@@ -14,4 +14,4 @@ mans:
 
 .PHONY: font
 font:
-	cd home-fs && make $@
+	./build/font_setup.sh
