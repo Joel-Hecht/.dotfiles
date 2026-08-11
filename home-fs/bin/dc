@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [[ $# -eq 0 ]]; then
+	bg 2>/dev/null
+	disown %1
+fi
+
 [[ $# -gt 0 && $1 == '-q' ]] && { quit=yes; shift ;} || quit=no
 [[ ! -d ~/.dclog ]] && mkdir $HOME/.dclog
 file=$HOME/.dclog/"$( basename "$1" )"

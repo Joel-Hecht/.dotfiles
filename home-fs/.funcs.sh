@@ -288,21 +288,13 @@ function getvm {
 }
 alias vmget="getvm"
 
-function dc {
-	if [[ $# -eq 0 ]]; then
-		bg 2> /dev/null
-		disown %1
-	else
-		dc_arg "$@"
-	fi
-}
 function dcq {
 	if [[ $# -eq 0 ]]; then
 		bg 2> /dev/null
 		disown %1
 		xdotool getactivewindow windowkill
 	else
-		dc_arg -q "$@"
+		dc -q "$@"
 	fi
 }
 
