@@ -158,9 +158,9 @@ function schere {
 }
 
 function sc {
-	file="$( _scname )"
+	fname="$( _scname )"
 	# open in pinta, or feh if that doesn't work
-	( flatpak run com.github.PintaProject.Pinta "$fname" 2> /dev/null ||  feh "$fname" 2> /dev/null ) &
+	dc flatpak run com.github.PintaProject.Pinta "$fname" || dc feh "$fname" 2>/dev/null
 }
 
 function _scname {

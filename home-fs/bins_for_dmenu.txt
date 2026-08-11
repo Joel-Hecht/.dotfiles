@@ -1,4 +1,6 @@
 pope
 g
 v
+countermeasures
+sc
 FAKE_DONT_TOUCHME
