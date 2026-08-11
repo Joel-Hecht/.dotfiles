@@ -162,7 +162,7 @@ alias jpnb="dc jupyter-notebook"
 alias sb="source ~/.bashrc"
 alias sa="source ~/.aliases.sh"
 alias sf="source ~/.funcs.sh"
-alias ms="curr=\"\$(pwd)\" && dhome && scripts/makesymlinks.sh; cd \"\$curr\""
+alias ms="curr=\"\$(pwd)\" && dhome && scripts/make_symlinks.sh; cd \"\$curr\""
 alias reload="sb && sa && sf"
 
 # clipboard
