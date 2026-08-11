@@ -501,7 +501,7 @@ function edita {
 	fi
 
 	editor "+$linenumber" "$fname"
-	sb
+	source "$fname"
 }
 alias ea="edita"
 
