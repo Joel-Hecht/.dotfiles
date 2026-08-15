@@ -8,12 +8,20 @@ function precmd {
 	return 0
 }
 function preexec {
+	# kitty appends its prompt hook to PROMPT_COMMAND after bash-preexec
+	# installs, so on the first prompt the DEBUG trap fires for kitty's
+	# hook and consumes the flag meant for our first command
+	if [[ "$BASH_COMMAND ${FUNCNAME[*]}" == *_ksi_* ]]; then
+		  __bp_preexec_interactive_mode=on
+		  return 0
+	fi
+
 	# don't preexec on automatic kitty history functions
 	[[ $HISTCMD -le $LASTHISTCMD ]] && return 0
 	export LASTHISTCMD=$HISTCMD
 
 	# 1/512 chance to run pope before commands
-	[[ $RANDOM -lt 64 ]] && pope && return 0
+	[[ $RANDOM -lt 32 ]] && pope && return 0
 
 	# get command name
 	# TODO: treat quoted name w/ spaces as one thing instead of multiple
