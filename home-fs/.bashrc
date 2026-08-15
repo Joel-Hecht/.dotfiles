@@ -51,7 +51,7 @@ export TERM=xterm-256color
 
 # kitty grep
 if [[ ! -z $(which kitty) ]]; then
-	alias rg='kitty +kitten hyperlinked_grep --smart-case -L'
+	alias rg='kitty +kitten hyperlinked_grep --smart-case -L --max-columns=150 --max-columns-preview'
 fi
 
 alias vim="vim.gtk3"
