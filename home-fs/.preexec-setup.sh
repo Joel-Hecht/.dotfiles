@@ -20,7 +20,7 @@ function preexec {
 	[[ $HISTCMD -le $LASTHISTCMD ]] && return 0
 	export LASTHISTCMD=$HISTCMD
 
-	# 1/512 chance to run pope before commands
+	# 1/1024 chance to run pope before commands
 	[[ $RANDOM -lt 32 ]] && pope && return 0
 
 	# get command name
