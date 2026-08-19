@@ -29,7 +29,7 @@ alias bd="cd build.debug"
 
 #files
 alias config="editor ~/.dotfiles/home-fs/.config/i3/config"
-alias todo="editor ~/.dotfiles/todo"
+alias todo="[[ -f todo ]] && editor todo || editor ~/.dotfiles/todo"
 alias aliases="editor ~/.dotfiles/home-fs/.aliases.sh && source ~/.aliases.sh"
 alias funcs="editor ~/.dotfiles/home-fs/.funcs.sh && source ~/.funcs.sh"
 alias worksh="editor ~/.work.sh && source ~/.work.sh"
