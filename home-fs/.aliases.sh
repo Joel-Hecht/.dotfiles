@@ -43,7 +43,7 @@ alias barconfig="editor ~/.dotfiles/home-fs/.i3status.conf"
 # websites
 alias md="dc browser markdownlivepreview.com"
 alias t="dc browser www.tumblr.com/"
-alias kb="chromium launcher.keychron.com"
+alias kb="sudo chmod 666 /dev/hydraw* && chromium launcher.keychron.com"
 alias P="dc browser https://youtu.be/vG0ina57osc?si=nivlqGbcTwJtwWdJ"
 
 #for testing
