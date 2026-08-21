@@ -213,17 +213,22 @@ function rmx {
 }
 
 function repo {
-	url=$( git remote get-url origin 2> /dev/null )
+	url=$( git remote get-url origin 2> /dev/null)
+	branch=$(git branch --show-current 2> /dev/null)
+
 	if [[ -z "$url" ]]; then
 		dc browser github.com/Joel-Hecht/.dotfiles
 	elif [[ "$url" == https* ]]; then
-		dc browser "$url"
+		url=$( echo "$url" | sed 's/\.git$//' )
+		concat="$url""/tree/""$branch"
+		dc browser "$concat"
 	else
 		ssh_url=${url#*@} # Delete leading *@
 		ssh_home=${ssh_url%:*} # Delete trailing :*
 		ssh_name=${ssh_url#*:} # Delete leading *:
 		ssh_name=${ssh_name%.*} # Delete trailing .*
-		dc browser "$ssh_home/$ssh_name"
+		concat="$ssh_home/$ssh_name/tree/$branch"
+		dc browser concat
 	fi
 }
 
