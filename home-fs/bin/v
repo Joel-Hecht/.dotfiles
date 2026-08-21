@@ -25,7 +25,7 @@ else # idk what im doing copying from home-fs/bin/.VOLUME
 	# reload i3bar
 	sed -i "s/= \".*W:/= \"VOLUME: ${1#0}% :|: W:/" ~/.i3status.conf
 	killall i3bar &>/dev/null
-	dc i3bar --bar_id=bar-0 & &>/dev/null # this & is very necessary for some reason
+	i3bar --bar_id=bar-0 & &>/dev/null # this & is very necessary for some reason
 
 	# set volume file
 	echo $1 > $VOLUME
