@@ -154,9 +154,13 @@ trap "${HOME}/.bash_exit.sh" EXIT
 source ${HOME}/.local/share/buoy/buoy-interface.sh
 # <<<<< source file for buoy <<<<<
 
-if [[ $( command -v thefuck ) ]]; then
-	eval "$(thefuck --alias)"
-fi
+# Slow set up, opt-in by putting it in work.sh
+#if [[ $( command -v thefuck ) ]]; then
+#	eval "$(thefuck --alias)"
+#fi
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # remove error bells in less (git diff, man pages, etc)
 # This is basically only useful in wsl where this sucks
