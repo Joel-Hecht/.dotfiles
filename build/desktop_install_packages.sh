@@ -65,6 +65,6 @@ if [[ -z $(command -v touchegg) ]]; then
 	make -j$(nproc)
 	sudo make install
 	sudo systemctl daemon-reload
+	sudo systemctl enable touchegg
 	sudo systemctl restart touchegg
-	touchegg >/dev/null &
 fi
