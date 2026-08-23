@@ -228,7 +228,7 @@ function repo {
 		ssh_name=${ssh_url#*:} # Delete leading *:
 		ssh_name=${ssh_name%.*} # Delete trailing .*
 		concat="$ssh_home/$ssh_name/tree/$branch"
-		dc browser concat
+		dc browser "$concat"
 	fi
 }
 
