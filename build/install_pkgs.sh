@@ -81,7 +81,6 @@ if ! [ -f "${HOME}/.elan/bin/lean" ]; then
 else
 	lean --version
 fi
-sudo apt remove code -y
 
 #neovim version 0.8 isnt in apt
 #we need to build from source
