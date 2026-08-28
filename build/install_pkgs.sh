@@ -9,7 +9,7 @@ pkgs=(
 	fdisk # volume viewer thats worse than lsblk
 	calcurse # calendar TUI
 	python3-venv python3-pip # needed to use pip
-	python-is-python3 ipython3 pipx pylint # useful python stuff
+	python-is-python3 ipython3 pylint # useful python stuff
 	lua5.4 # lua language
 	ninja-build gettext unzip # will use for nvim install
 	ascii
@@ -27,13 +27,19 @@ sudo apt update
 #sudo apt upgrade -y
 sudo apt install ${pkgs[@]}
 
-# pipx installs
-pipx install thefuck
-pipx inject thefuck setuptools #distutils compatibility to allow thefuck to work out of the box
-pipx inject thefuck zombie-imp #we need to add these hack layers to allow deprecated python 3.11 features
-pipx install neovim-remote #_opening neovim in a neovim terminal pane can communicate with neovim parent instance
-pipx install notebook # jupyter notebook
-pipx install mypy # python type checker
+# stupid better pip and python install
+# We could also do this with pipx but i am evil
+# TODO: we should use uv pip to install a stable python version for .dotfiles
+if [[ -z $(command -v uv) ]]; then
+	curl -LsSf https://astral.sh/uv/install.sh | sh
+else
+	echo "uv already installed"
+fi
+
+# pip installs to PATH outside venv
+uv tool install neovim-remote #_opening neovim in a neovim terminal pane can communicate with neovim parent instance
+uv tool install notebook # jupyter notebook
+uv tool install mypy # python type checker
 
 [[ -e /usr/games/sl ]] && sudo mv /usr/games/sl /usr/games/sl-1
 
@@ -124,6 +130,7 @@ if [[ -z $(command -v buoy-client) ]]; then
 else
 	echo "buoy already installed"
 fi
+
 
 #install vimplug for vim if it does not exist already
 if [[ -z $(ls ~/.vim/autoload/plug.vim) ]]; then
