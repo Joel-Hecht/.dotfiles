@@ -480,7 +480,8 @@ function edita {
 			export PS4='(${BASH_SOURCE} :::: ${LINENO}) '
 
 			# need ? on ' because aliases to functions do not get quoted
-			line=$(bash -xci : 2>&1 | /usr/bin/grep "alias '\?${target}=" )
+			# need tail to get the last alias to dominate the name
+			line=$(bash -xci : 2>&1 | /usr/bin/grep "alias '\?${target}=" | tail -1 )
 
 			#for some reason I can't trim off these end parens in the same sed.  Whatever
 			trim=$(echo "$line" | sed 's/^[0-9]*\:(*//' | sed "s/^(*//")
