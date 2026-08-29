@@ -52,6 +52,7 @@ alias D="rm $HOME/.test.c"
 
 # build stuff
 alias cgb="cargo build"
+alias cgr="cargo run"
 alias cip="cargo install --path ."
 alias cdb="cmake -DCMAKE_BUILD_TYPE=Debug"
 alias cbd="cdb" # as funny as it is I find myself typing this all the time instead so whatever
@@ -125,6 +126,7 @@ alias gaap="git add --all --patch"
 alias names="git diff --name-only"
 alias staged="git diff --name-only --staged"
 alias gp="git pull"
+alias log="git log"
 alias pull="git pull"
 alias push="git push"
 alias pp="git pull && git push"
