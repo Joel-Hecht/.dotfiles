@@ -57,6 +57,7 @@ alias cip="cargo install --path ."
 alias cdb="cmake -DCMAKE_BUILD_TYPE=Debug"
 alias cbd="cdb" # as funny as it is I find myself typing this all the time instead so whatever
 alias crel="cmake -DCMAKE_BUILD_TYPE=Release"
+alias mcm="make clean; make"
 
 # computer control
 alias eep="systemctl suspend"
@@ -186,6 +187,8 @@ alias vix="vi -X" # use if vim is slow due to x11 issues
 alias sexy="cowsay sexy!"
 alias sex="sexy"
 alias whitespace="sed -i 's/\s\+$//' \$(fd -t f -X grep -lI .)"
+alias tabstospaces="sed -i 's/\t/    /g' \$(fd -t f -X grep -lI .)"
+alias spacestotabs="sed -i 's/    /\t/g' \$(fd -t f -X grep -lI .)"
 # fixes pdfs and excel spreadsheets becoming transparent
 alias helpme="killall compton && sleep 1 && setsid /usr/bin/compton > /dev/null 2>&1 &"
 

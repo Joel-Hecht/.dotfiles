@@ -29,6 +29,7 @@ set viminfo+=<500
 :set wildmode=longest:full
 :set hls
 :set ic
+:set expandtab
 :set tabstop=4
 :set shiftwidth=4
 :set softtabstop=0 noexpandtab
