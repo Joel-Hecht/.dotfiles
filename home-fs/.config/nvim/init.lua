@@ -153,6 +153,10 @@ vim.termguicolors = false
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- [[ inline lsp options, not poart of the lsp config]]
+-- NOTE: reenable this when trying to debug the lsp
+vim.lsp.log.set_level(vim.lsp.log.levels.OFF)
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
