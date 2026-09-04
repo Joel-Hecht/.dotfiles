@@ -23,6 +23,11 @@ function preexec {
 	# 1/1024 chance to run pope before commands
 	[[ $RANDOM -lt 32 ]] && pope && return 0
 
+	# if command contains @, send to buoy exec
+	if [[ "$1" == *@* ]]; then
+		buoy -e $1 && return 1
+	fi
+
 	# get command name
 	# TODO: treat quoted name w/ spaces as one thing instead of multiple
 	arg0=$( awk '{ print $1 }' <<< "$1" )
