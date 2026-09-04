@@ -20,6 +20,7 @@ pkgs=(
 	clangd clang-format clang-tidy # for cpp in nvim
 	build-essential gdb debhelper
 	bfs # breadth-first find that we built our bfs on top of
+	zsh
 )
 
 #packages installed with apt (run first)
