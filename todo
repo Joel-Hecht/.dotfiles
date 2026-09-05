@@ -5,6 +5,7 @@ easy
 - nitrogen -> feh for background, which sets up on initial build
 - Run fontsetup.sh automaticall IF you don't already have the font installed/configured
 - SCDIR env variable instead of hardcoding ~/Pictures
+- clean up bin
 
 medium
 - bfs early exit if not -f

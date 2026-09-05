@@ -284,8 +284,8 @@ bindsym Control+$alt+h       exec --no-startup-id bash ${HOME}/bin/.toggleScroll
 
 # audio buttons
 bindsym F1 exec --no-startup-id bash ${HOME}/bin/.mute_unmute
-bindsym F2 exec --no-startup-id bash ${HOME}/bin/.volume down
-bindsym F3 exec --no-startup-id bash ${HOME}/bin/.volume up
+bindsym F2 exec --no-startup-id bash ${HOME}/bin/v down
+bindsym F3 exec --no-startup-id bash ${HOME}/bin/v up
 bindsym F4 exec --no-startup-id bash ${HOME}/bin/.fix_volume
 exec_always --no-startup-id touch "${HOME}/.VOLUME"
 
