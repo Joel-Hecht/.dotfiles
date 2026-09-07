@@ -71,9 +71,9 @@ function _src {
 _src ${HOME}/.aliases.sh
 _src ${HOME}/.funcs.sh
 _src ${HOME}/.aliases_bfs.sh
-_src ${HOME}/.pyenv.sh
 
-# rust environment setup
+# environment setup
+_src ${HOME}/.pyenv.sh
 _src ${HOME}/.cargo/env
 
 # shell prompt (PS1)

@@ -37,3 +37,12 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 alias zr="vim ~/.zshrc && source ~/.zshrc"
+
+source ${HOME}/.path.sh
+source ${HOME}/.aliases.sh
+source ${HOME}/.funcs.sh
+#source ${HOME}/.work.sh
+
+# environment setup
+source ${HOME}/.pyenv.sh
+source ${HOME}/.cargo/env
