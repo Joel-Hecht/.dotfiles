@@ -2,7 +2,7 @@
 # check out man clean
 
 [[ "$(pwd)" == ${HOME} ]] && echo "Don't do that here." >&2 && exit 1
-depth=0
+[[ $1 =~ ^[0-9]+$ ]] && maxdepth=$1 || maxdepth=4
 
 # recursively remove empty directories, leaving any directory with any file in any subdirectory of it
 rmdir_rec () {
@@ -31,5 +31,6 @@ for file in *; do
 done
 
 for file in *; do
+	depth=0
 	[[ -d "$file" ]] && rmdir_rec "$file"
 done

@@ -1,13 +1,13 @@
 ./" Manpage for clean
-.TH man 1 "25 June 2025" "1.0" "User Commands"
+.TH man 1 "7 Sep 2026" "1.0" "User Commands"
 .SH NAME
 	clean - clean files and empty subdirectories
 .SH SYNOPSIS
-	clean (no arguments)
+	clean [maxdepth=4]
 .SH DESCRIPTION
 	moves all files in directory to /tmp/trash/, where they will die; if there was stuff there it goes to /tmp/old/.
 .br
-	also recursively goes through subdirectory tree to delete all directories that are empty or only contain empty directories (only up to depth 4 to save time. Use deepclean to go all the way).
+	also recursively goes through subdirectory tree to delete all directories that are empty or only contain empty directories (up to depth maxdepth (first arg, 4 by default)).
 .br
 	use unclean or mv /tmp/trash/ . to reverse the file deletion, empty subdirectory deletion is unreversible because you did not need them.
 .SH OPTIONS
@@ -22,5 +22,3 @@
 	tell me in person
 .SH COPYRIGHT
 	This is free software, you are free to change and redistribute it, there is no warranty
-.SH ALIASES
-	deepclean for no max depth
