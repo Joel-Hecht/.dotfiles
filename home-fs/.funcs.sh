@@ -117,7 +117,7 @@ function pull {
 	fi
 }
 function amend {
-	if [[ -n "$( git diff --staged )" ]]; then
+	if [[ -n "$( git diff --staged )" && $1 != "-f" && $1 != "--force" ]]; then
 		echo You have staged changes, git commit --amend will merge them into the last commit
 		echo If you just want to rewrite your commit message, unstage your changes first
 	elif [[ -z $( git status | grep "ahead" ) ]]; then
