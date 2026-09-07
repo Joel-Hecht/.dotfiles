@@ -2,5 +2,6 @@ pope
 g
 v
 countermeasures
+brightness
 sc
 FAKE_DONT_TOUCHME
