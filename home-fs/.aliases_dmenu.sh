@@ -16,6 +16,7 @@ alias video="totem"
 alias shop="gnome-software &"
 alias chirp="~/.local/bin/chirp"
 alias drexelvpn="gtk-launch com.cisco.secureclient.gui"
+alias eep="systemctl sleep"
 
 alias discord="flatpak run com.discordapp.Discord &"
 alias prusaslicer="flatpak run com.prusa3d.PrusaSlicer &"
