@@ -21,6 +21,7 @@ pkgs=(
 	build-essential gdb debhelper
 	bfs # breadth-first find that we built our bfs on top of
 	zsh
+	ca-certificates # necessary for docker or something
 )
 
 #packages installed with apt (run first)
@@ -144,5 +145,29 @@ if ! [[ -e ~/.bash-preexec.sh ]]; then
 	echo "installing bash preexec"
 	curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
 fi
+
+# install docker
+# Add Docker's official GPG key:
+sudo apt update
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc -y
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/debian
+Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+sudo systemctl enable --now docker
+
+# enable us to run docker
+sudo usermod -aG docker $USER
 
 sudo apt autoremove -y
