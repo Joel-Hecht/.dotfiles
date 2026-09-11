@@ -1,7 +1,6 @@
 #!/bin/bash
 
 #single-char defs
-alias o="cd - >/dev/null" # go to Older directory in this terminal
 alias b="cd build"
 alias p="cdparent"
 alias f="dc nautilus ."

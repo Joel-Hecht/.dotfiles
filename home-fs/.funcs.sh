@@ -539,3 +539,41 @@ function gitwhitespace {
 	fi
 
 }
+
+function pushBackup {
+	BACKUPDIRSTACK+=("$1")
+}
+function popBackup {
+	unset 'BACKUPDIRSTACK[-1]'
+}
+
+function fwd {
+	if [ -z "$1" ]; then
+		if [[ ${#BACKUPDIRSTACK[@]} -eq 0 ]]; then
+			echo "No fwd stack" >&2
+			return
+		else
+			nextDir="${BACKUPDIRSTACK[-1]}"
+			popBackup
+			echo "$nextDir"
+			pushd "$nextDir" > /dev/null
+		fi
+	fi
+}
+function backwd {
+	if [[ ${#DIRSTACK[@]} -eq 0 ]]; then
+		echo "No dir stack" >&2
+		return
+	fi
+	pushBackup "${DIRSTACK[0]}"
+	popd > /dev/null
+}
+function moveDirStackily {
+	pushd "$1" > /dev/null
+	#cd somewhere normally, so now there is no 'forward'
+	export BACKUPDIRSTACK=()
+}
+alias o="backwd"
+alias i="fwd"
+alias cd="moveDirStackily"
+

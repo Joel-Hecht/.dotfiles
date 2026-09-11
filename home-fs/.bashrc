@@ -115,6 +115,9 @@ else
 	alias nvim='nvim --listen /tmp/nvim-$(date +%s).sock'
 fi
 
+#initialize so fwd and backwd functions are never in invalid state
+export BACKUPDIRSTACK=()
+
 # add things to path
 export PATH="${HOME}/.juliaup/bin:$PATH"
 export PATH="${HOME}/.kitty/kitty/kitty/launcher:$PATH"
