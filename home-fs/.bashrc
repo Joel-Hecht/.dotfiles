@@ -68,8 +68,8 @@ export BROWSER='firefox'
 function _src {
 	source $1 || { touch $1 && source $1 ;}
 }
-_src ${HOME}/.aliases.sh
 _src ${HOME}/.funcs.sh
+_src ${HOME}/.aliases.sh
 _src ${HOME}/.aliases_bfs.sh
 
 # environment setup

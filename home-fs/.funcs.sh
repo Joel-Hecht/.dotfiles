@@ -555,7 +555,7 @@ function fwd {
 		else
 			nextDir="${BACKUPDIRSTACK[-1]}"
 			popBackup
-			echo "$nextDir"
+			#echo "$nextDir"
 			pushd "$nextDir" > /dev/null
 		fi
 	fi
@@ -569,11 +569,14 @@ function backwd {
 	popd > /dev/null
 }
 function moveDirStackily {
-	pushd "$1" > /dev/null
+	if [[ -n "$1" ]]; then
+		pushd "$1" > /dev/null
+	else
+		pushd "$HOME" > /dev/null
+	fi
 	#cd somewhere normally, so now there is no 'forward'
 	export BACKUPDIRSTACK=()
 }
 alias o="backwd"
 alias i="fwd"
 alias cd="moveDirStackily"
-
