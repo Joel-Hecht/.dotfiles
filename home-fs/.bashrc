@@ -64,6 +64,17 @@ export GIT_EDITOR='vim.gtk3'
 # default browser option, allow redefinition in ~/.work.sh
 export BROWSER='firefox'
 
+# Have cd use dirstack, we must do this here so all other cds use it
+function cd {
+	if [[ -n "$1" ]]; then
+		pushd "$1" > /dev/null
+	else
+		pushd "$HOME" > /dev/null
+	fi
+	# cd somewhere normally, so now there is no 'forward'
+	export BACKUPDIRSTACK=()
+}
+
 # import all aliases
 function _src {
 	source $1 || { touch $1 && source $1 ;}

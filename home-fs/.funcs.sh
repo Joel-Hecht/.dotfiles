@@ -568,15 +568,8 @@ function backwd {
 	pushBackup "${DIRSTACK[0]}"
 	popd > /dev/null
 }
-function moveDirStackily {
-	if [[ -n "$1" ]]; then
-		pushd "$1" > /dev/null
-	else
-		pushd "$HOME" > /dev/null
-	fi
-	#cd somewhere normally, so now there is no 'forward'
-	export BACKUPDIRSTACK=()
-}
-alias o="backwd"
-alias i="fwd"
-alias cd="moveDirStackily"
+
+alias o="backwd" # move to Older directory
+alias i="fwd"	 # move In down directory stack
+# To support this, cd is 'aliased' to pushd + clear backup. We do this with cd
+# func in bashrc, so that all cds in aliases and functions use the dirstack.
