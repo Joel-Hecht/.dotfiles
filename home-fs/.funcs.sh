@@ -465,6 +465,7 @@ function lo {
 #environment we are looking to analyze
 function edita {
 	target="$1"
+	should_source=true
 
 	decl=$(declare -F "$target")
 	if [ -n "$decl" ];then
@@ -498,6 +499,7 @@ function edita {
 				else
 					#continue to editor step
 					linenumber=0
+					should_source=false
 				fi
 			else
 				echo "Couldn't find name in env named $target"
@@ -507,7 +509,7 @@ function edita {
 	fi
 
 	editor "+$linenumber" "$fname"
-	source "$fname"
+	$should_source && source "$fname"
 }
 alias ea="edita"
 
