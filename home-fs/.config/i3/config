@@ -300,3 +300,6 @@ exec_always --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authenticati
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms
 exec --no-startup-id xset s noblank
+
+# Rui mtga bullshit
+for_window [class="(?i)mtga\.exe"] floating disable
