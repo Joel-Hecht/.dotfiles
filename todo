@@ -8,7 +8,6 @@ easy
 medium
 - bfs early exit if not -f
 - bfs -a to work more like find for simple cases
-		- "bfsa rm *.swp" as less syntactically demanding "find -name *.swp -exec rm {} \;"
+	- "bfsa rm *.swp" as less syntactically demanding "find -name *.swp -exec rm {} \;"
 - keyboard shortcut to change kitty text size and reload all kitty terminals
 - set up fzf/fdfind defaults
-- look into kitty history for preexec

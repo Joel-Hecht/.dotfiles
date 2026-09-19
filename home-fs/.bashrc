@@ -66,13 +66,10 @@ export BROWSER='firefox'
 
 # Have cd use dirstack, we must do this here so all other cds use it
 function cd {
-	if [[ -n "$1" ]]; then
-		pushd "$1" > /dev/null
-	else
-		pushd "$HOME" > /dev/null
-	fi
-	# cd somewhere normally, so now there is no 'forward'
-	export BACKUPDIRSTACK=()
+	# With no argument, we cd to home, as normal
+	[[ -n "$1" ]] || set -- "$HOME"
+	# If pushd succeeds, clear backup stack
+	pushd "$1" > /dev/null && export BACKUPDIRSTACK=()
 }
 
 # import all aliases
