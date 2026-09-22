@@ -147,14 +147,18 @@ if ! [[ -e ~/.bash-preexec.sh ]]; then
 fi
 
 # install docker
-# Add Docker's official GPG key:
-sudo apt update
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-
-# Add the repository to Apt sources:
-sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+if [[ -z $(command -v docker) ]]; then
+	echo "installing docker"
+	# Remove unofficial packages
+	sudo apt remove $(dpkg --get-selections docker.io docker-compose docker-doc docker-buildx podman-docker containerd runc | cut -f1)
+	# Add Docker's official GPG key:
+	sudo apt update
+	sudo install -m 0755 -d /etc/apt/keyrings
+	sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+	sudo chmod a+r /etc/apt/keyrings/docker.asc
+	
+	# Add the repository to Apt sources:
+	sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
 Types: deb
 URIs: https://download.docker.com/linux/debian
 Suites: $(. /etc/os-release && echo "$VERSION_CODENAME")
@@ -162,12 +166,15 @@ Components: stable
 Architectures: $(dpkg --print-architecture)
 Signed-By: /etc/apt/keyrings/docker.asc
 EOF
-
-sudo apt update
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
-sudo systemctl enable --now docker
-
-# enable us to run docker
-sudo usermod -aG docker $USER
+	
+	sudo apt update
+	sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+	sudo systemctl enable --now docker
+	
+	# enable us to run docker
+	sudo usermod -aG docker $USER
+else
+	echo "docker already installed"
+fi
 
 sudo apt autoremove -y
