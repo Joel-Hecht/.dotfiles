@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #for bar tray, set which monitor is primary using screen script
-sh ~/bin/primarydisplay
+if [ -z $XDG_CURRENT_DESKTOP ]; then
+	sh ~/bin/.primarydisplay
+fi
 
 # environments like wsl launch without desktop in a login shell
 # we need a quick way to get bashrc when launching these shells, but

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -z $XDG_CURRENT_DESKTOP ]; then
+	exit
+fi
+
 #default is Leo XIV, who is alive
 popeid="267"
 
