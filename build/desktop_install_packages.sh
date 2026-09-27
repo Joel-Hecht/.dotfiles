@@ -6,6 +6,7 @@ echo -e 'Types: deb\nURIs: https://download.sublimetext.com/\nSuites: apt/stable
 
 pkgs=(
 	i3-wm i3lock i3blocks suckless-tools # necessary for i3
+	network-manager-applet #networkmanager in i3bar
 	xorg-dev libx11-dev libxrandr-dev # x11 support
 	wmctrl # target x11 windows by pid
 	konsole # backup terminal emulator
