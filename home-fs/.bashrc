@@ -54,12 +54,10 @@ if [[ ! -z $(which kitty) ]]; then
 	alias rg='kitty +kitten hyperlinked_grep --smart-case -L --max-columns=150 --max-columns-preview'
 fi
 
-alias vim="vim.gtk3"
-
 # set default editor to vim - if you'd rather nvim, put redefinition in ~/.work.sh (sourced below)
-export VISUAL='vim.gtk3'
-export EDITOR='vim.gtk3'
-export GIT_EDITOR='vim.gtk3'
+export VISUAL='vim'
+export EDITOR='vim'
+export GIT_EDITOR='vim'
 
 # default browser option, allow redefinition in ~/.work.sh
 export BROWSER='firefox'
