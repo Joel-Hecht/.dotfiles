@@ -38,8 +38,6 @@ set viminfo+=<500
 :set showcmd | "show incomplete commands (should be on by default)
 :syntax enable
 
-" vimplug stuff - doesnt work at all right now
-
 call plug#begin()
 Plug 'farmergreg/vim-lastplace'
 Plug 'kshenoy/vim-signature'
@@ -67,9 +65,8 @@ set foldlevelstart=99
 autocmd FileType c,cpp,h,hpp setlocal foldmethod=syntax
 autocmd BufWinLeave * silent! mkview
 
-"  automatically restore to last edited location
-"  should be replaced by vim-lastplace in vimrc but it doesnt work
- autocmd BufReadPost *
+" automatically restore to last edited location, if vim-lastplace doesnt work
+" autocmd BufReadPost *
   \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
   \ |   exe "normal! g`\""
   \ | endif
@@ -92,6 +89,18 @@ inoremap <expr> j JKescape('j')
 inoremap <expr> k JKescape('k')
 
 command DiffOrig let g:diffline = line('.') | vert new | set bt=nofile | r # | 0d_ | diffthis | :exe "norm! ".g:diffline."G" | wincmd p | diffthis | wincmd p
+
+if &diff
+	" [s]ingle [p]ut
+	nnoremap sp :.diffput<CR>0j
+
+	" [w]rite [o]ther only
+	nnoremap wo :q!<CR>:wq<CR>
+endif
+
+" shortcut for  difforig
+" nnoremap <Leader>do :DiffOrig<cr>
+" nnoremap <leader>dc :q<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>k
 
 " Don't copy on x
 nnoremap x "_x
@@ -149,15 +158,3 @@ nnoremap <leader>FL :silent! loadview<CR>
 nnoremap <Leader>FF zM
 " [U]nfold everything
 nnoremap <Leader>FU zR
-
-if &diff
-	" [s]ingle [p]ut
-	nnoremap sp :.diffput<CR>0j
-
-	" [w]rite [o]ther only
-	nnoremap wo :q!<CR>:wq<CR>
-endif
-
-" shortcut for  difforig
-" nnoremap <Leader>do :DiffOrig<cr>
-" nnoremap <leader>dc :q<cr>:diffoff<cr>:exe "norm! ".g:diffline."G"<cr>k
