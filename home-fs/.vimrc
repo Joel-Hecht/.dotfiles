@@ -36,6 +36,7 @@ set viminfo+=<500
 ":set clipboard=unnamedplus | " default vim clipbaord is system clipboard
 :set ruler | "always show cursor
 :set showcmd | "show incomplete commands (should be on by default)
+:set hidden | " for nested vims' parent terminals
 :syntax enable
 
 call plug#begin()
@@ -142,13 +143,6 @@ vnoremap <Leader>j 5j
 vnoremap <Leader>k 5k
 onoremap <Leader>j 5j
 onoremap <Leader>k 5k
-" move by 10
-nnoremap <C-j> 10j
-nnoremap <C-k> 10k
-vnoremap <C-j> 10j
-vnoremap <C-k> 10k
-onoremap <C-j> 10j
-onoremap <C-k> 10k
 
 " toggle fold
 nnoremap <Leader>f za
@@ -158,3 +152,45 @@ nnoremap <leader>FL :silent! loadview<CR>
 nnoremap <Leader>FF zM
 " [U]nfold everything
 nnoremap <Leader>FU zR
+
+" panes & terminals
+set splitbelow splitright
+nnoremap <C-t> :vertical terminal<CR>
+nnoremap <C-n> :terminal<CR>
+tnoremap <C-t> <Cmd>vertical terminal<CR>
+nnoremap <C-n> <Cmd>terminal<CR>
+
+" pane & terminal nav
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+tnoremap <C-h> <C-w>h
+tnoremap <C-j> <C-w>j
+tnoremap <C-k> <C-w>k
+tnoremap <C-l> <C-w>l
+
+" Move the terminal that sent the API request, not an unrelated window.
+function! Tapi_MovePane(bufnum, direction)
+	if type(a:direction) != v:t_string
+		\ || a:direction !~# '^[HJKL]$'
+		return
+	endif
+	let l:winid = bufwinid(a:bufnum)
+	if l:winid != -1 && win_gotoid(l:winid)
+		execute 'wincmd ' . a:direction
+	endif
+endfunction
+
+" pane & terminal movement
+nnoremap H <C-w>H
+nnoremap J <C-w>J
+nnoremap K <C-w>K
+nnoremap L <C-w>L
+
+" replace J to join lines with M
+nnoremap M J
+" Z to close vim and replace w terminal
+nnoremap Z :w<CR>:term<CR><C-w>k:q<CR>
+" scroll up in terminal and expand it, i to go back
+tnoremap <C-s> <C-w>N5<C-w>>

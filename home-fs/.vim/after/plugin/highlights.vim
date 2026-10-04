@@ -1,6 +1,7 @@
 syntax on
 
 colorscheme default
+set background=dark
 
 highlight! SpecialKey ctermfg=cyan
 highlight! Search ctermfg=black ctermbg=yellow

@@ -55,8 +55,8 @@ if [[ ! -z $(which kitty) ]]; then
 fi
 
 # set default editor to vim - if you'd rather nvim, put redefinition in ~/.work.sh (sourced below)
-export VISUAL='vim'
-export EDITOR='vim'
+export VISUAL='vim --servername VIM'
+export EDITOR='vim --servername VIM'
 export GIT_EDITOR='vim'
 
 # default browser option, allow redefinition in ~/.work.sh
@@ -119,6 +119,30 @@ if [ -n "$NVIM" ]; then
 else
 	# each nvim opens a unique socket, needed to attach others using nvim-remote
 	alias nvim='nvim --listen /tmp/nvim-$(date +%s).sock'
+fi
+
+# same thing for vim, for terminals opened inside of vim
+if [[ -n "$VIM_SERVERNAME" ]]; then
+	# Connect to the parent vim of this terminal
+	alias vi="exec vim --servername $VIM_SERVERNAME --remote"
+	alias vim="exec vim --servername $VIM_SERVERNAME --remote"
+	export VISUAL="exec vim --servername $VIM_SERVERNAME --remote"
+	export EDITOR="exec vim --servername $VIM_SERVERNAME --remote"
+	export GIT_EDITOR="vim --servername $VIM_SERVERNAME --remote-wait"
+
+	# Ask the parent Vim to move this terminal pane
+	_vim_move_pane() {
+		printf '\033]51;["call", "Tapi_MovePane", "%s"]\007' "$1"
+	}
+	alias H='_vim_move_pane H'
+	alias J='_vim_move_pane J'
+	alias K='_vim_move_pane K'
+	alias L='_vim_move_pane L'
+
+	# make bash-preexec work
+	unset LAST_HISTCMD
+else
+	alias vim="vim --servername VIM"
 fi
 
 #initialize so fwd and backwd functions are never in invalid state
