@@ -140,7 +140,7 @@ if [[ -n "$VIM_SERVERNAME" ]]; then
 	alias L='_vim_move_pane L'
 
 	# make bash-preexec work
-	unset LAST_HISTCMD
+	unset LASTHISTCMD
 else
 	alias vim="vim --servername VIM"
 fi

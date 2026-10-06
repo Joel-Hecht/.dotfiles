@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #for bar tray, set which monitor is primary using screen script
-if [ -z $XDG_CURRENT_DESKTOP ]; then
+if ! [ -z $XDG_CURRENT_DESKTOP ]; then
 	sh ~/bin/.primarydisplay
 fi
 
