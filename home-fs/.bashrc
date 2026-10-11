@@ -168,7 +168,7 @@ esac
 for key in ${HOME}/.ssh/*; do
 	fname=$(basename $key)
 	if  [[ -f "$key" && ! "$fname" =~ .*\.pub$ && ! "$fname" =~ ^known_hosts.* && ! "$fname" =~ ^config$ && ! "$fname" =~ ^authorized_keys.* ]]; then
-		eval $(keychain -q --eval "$key" )
+		eval $(keychain -q --quick --eval "$key" )
 	fi
 done
 
