@@ -12,13 +12,11 @@ function preexec {
 	# installs, so on the first prompt the DEBUG trap fires for kitty's
 	# hook and consumes the flag meant for our first command
 	if [[ "$BASH_COMMAND ${FUNCNAME[*]}" == *_ksi_* ]]; then
-		  __bp_preexec_interactive_mode=on
-		  return 0
+		if [[ $BASH_SUBSHELL -eq 0 ]]; then
+			__bp_preexec_interactive_mode=on
+		fi
+		return 0
 	fi
-
-	# don't preexec on automatic kitty history functions
-	[[ $HISTCMD -le $LASTHISTCMD ]] && return 0
-	export LASTHISTCMD=$HISTCMD
 
 	# 1/1024 chance to run pope before commands
 	[[ $RANDOM -lt 32 ]] && pope && return 0

@@ -87,10 +87,6 @@ _src ${HOME}/.fancy_prompt.sh
 
 # enable programmable completion features
 _src /usr/share/bash-completion/bash_completion
-_src /etc/bash_completion
-
-# bash-preexec
-_src ${HOME}/.preexec-setup.sh
 
 #files not under version control
 _src ${HOME}/.path.sh
@@ -138,9 +134,6 @@ if [[ -n "$VIM_SERVERNAME" ]]; then
 	alias J='_vim_move_pane J'
 	alias K='_vim_move_pane K'
 	alias L='_vim_move_pane L'
-
-	# make bash-preexec work
-	unset LASTHISTCMD
 else
 	alias vim="vim --servername VIM"
 fi
@@ -211,6 +204,9 @@ case ":$PATH:" in
 esac
 # Tab completion for juliaup and julia channel selection
 [ -f "$HOME/.julia/juliaup/completions/bash.sh" ] && source "$HOME/.julia/juliaup/completions/bash.sh"
+
+# Source bash-preexec last, so that it does not affect rest of bashrc
+_src ${HOME}/.preexec-setup.sh
 
 # <<< juliaup initialize <<<
 
