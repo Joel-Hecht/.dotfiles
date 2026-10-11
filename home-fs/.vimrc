@@ -37,6 +37,11 @@ set viminfo+=<500
 :set ruler | "always show cursor
 :set showcmd | "show incomplete commands (should be on by default)
 :set hidden | " for nested vims' parent terminals
+set autoread
+augroup AutoReloadBuffers
+	autocmd!
+	autocmd FocusGained,BufEnter * checktime
+augroup END
 :syntax enable
 
 call plug#begin()
@@ -152,6 +157,9 @@ nnoremap <leader>FL :silent! loadview<CR>
 nnoremap <Leader>FF zM
 " [U]nfold everything
 nnoremap <Leader>FU zR
+
+" Delete the buffer when quitting a split; keep normal quit for the last pane.
+cnoreabbrev <expr> q getcmdtype() ==# ':' && getcmdline() =~# '^q!\?$' && getcmdpos() == strlen(getcmdline()) + 1 && winnr('$') > 1 ? 'bd' : 'q'
 
 " panes & terminals
 set splitbelow splitright
