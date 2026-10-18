@@ -113,6 +113,7 @@ fi
 
 # alias vim to real vim, not nvim
 sudo ln -sf "$( which vim.gtk3 )" /etc/alternatives/vim
+sudo ln -sf "$( which vim.gtk3 )" /etc/alternatives/vi
 
 #install buoy - no routine to update of yet
 if [[ -z $(command -v buoy-client) ]]; then
