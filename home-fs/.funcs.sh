@@ -131,6 +131,13 @@ function clone {
 	git clone git@github.com:"$1".git
 }
 
+function rmlt {
+	num=${1:-1}
+	for ((i=0;i<num;i++)); do
+		rm "$( ls -t | head -n 1 )"
+	done
+}
+
 function rmscs {
 	mkdir /tmp/old 2> /dev/null
 	mv /tmp/trash/* /tmp/old 2> /dev/null
