@@ -120,11 +120,15 @@ fi
 # same thing for vim, for terminals opened inside of vim
 if [[ -n "$VIM_SERVERNAME" ]]; then
 	# Connect to the parent vim of this terminal
-	alias vi="exec vim --servername $VIM_SERVERNAME --remote"
-	alias vim="exec vim --servername $VIM_SERVERNAME --remote"
-	export VISUAL="exec vim --servername $VIM_SERVERNAME --remote"
-	export EDITOR="exec vim --servername $VIM_SERVERNAME --remote"
-	export GIT_EDITOR="vim --servername $VIM_SERVERNAME --remote-wait"
+	_vim_remote() {
+		exec vim --servername $VIM_SERVERNAME --remote \
+			+"let b:tcwd = '$PWD'" "$@"
+	}
+	alias vi="_vim_remote"
+	alias vim="_vim_remote"
+	export VISUAL="_vim_remote"
+	export EDITOR="_vim_remote"
+	export GIT_EDITOR="_vim_remote"
 
 	# Ask the parent Vim to move this terminal pane
 	_vim_move_pane() {

@@ -199,6 +199,6 @@ nnoremap L <C-w>L
 " replace J to join lines with M
 nnoremap M J
 " Z to close vim and replace w terminal
-nnoremap Z :w<CR>:term<CR><C-w>k:q<CR>
+nnoremap Z :w<CR>:call term_start(&shell, {'cwd': get(b:, 'tcwd', getcwd())})<CR><C-w>k:q<CR>
 " scroll up in terminal and expand it, i to go back
 tnoremap <C-s> <C-w>N5<C-w>>
